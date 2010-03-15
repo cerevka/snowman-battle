@@ -1,0 +1,34 @@
+=Dokumentace=
+
+==Technická dokumentace==
+
+  * Vize
+  * Model
+  * Dokumentace tříd
+    * Model
+      * Block
+        * Player
+        * Immovable
+          * ShootableBlock
+          * UnshootableBlock  
+      * Weapon
+        * HandGun
+        * ShotGun
+        * MachineRifle
+      * Shot
+    * View
+      *  Window
+    * Controller
+      * Game
+      * Network
+        * Client
+        * Server
+      * KeyboardHandler
+    * main.cpp
+
+
+==Uživatelská dokumentace==
+
+  * Spuštění aplikace
+  * ...
+  * Ukončení aplikace
