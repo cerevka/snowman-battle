@@ -1,6 +1,7 @@
 
 #include <QtCore>
 #include <QtGui>
+#include "view/window.h"
 
 /**
  * Funkce main = vstupní bod programu
@@ -20,6 +21,9 @@ int main(int argc, char * argv[])
 
     // TODO zde bude alokace proměnných pro vlastní program (např. hlavní okno programu)
     // ...
+
+    Window mainWindow;
+    mainWindow.show();
 
     // Spouštim Qt
     returnValue = app.exec();
