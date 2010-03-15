@@ -1,5 +1,29 @@
-#Vize projektu
-
 = Vize =
 
-Add your content here.
+==Základní specifikace==
+
+  * klon populární hry [http://www.bulanci.sleepteam.com Bulánci]
+  * 2D real-time střílečka pro více hráčů
+  * jeden z hráčů bude sloužit jako server, ostatní se na něj budou připojovat
+  * podpora chatu mezi hráči
+  * automatická obnova spojení při výpadku
+  * identifikace lagů bez ukončení celé hry, dočasné postavení hráče mimo hru (duch)
+  * jazyk C++ s grafickou knihovnou [http://qt.nokia.com/ Qt] v Linuxu
+
+==Rozšiřujíc specifikace==
+
+  * možnost změny ovládání
+  * přestřelitelné a nepřestřestřelitelné překážky
+    * díry, voda...
+    * zdi, bedny...
+  * více zbraní - základ tři
+    * Sněhopistol
+    * Sněhovnice
+    * Sněhopal
+
+
+==Fáze vývoje==
+  # Návrh a vize
+  # Základný engine
+  # Síťová komunikace
+  # Testování
