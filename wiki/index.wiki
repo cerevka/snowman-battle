@@ -2,8 +2,8 @@
 
 ==Technická dokumentace==
 
-  * Vize
-  * Model
+  * [Vize]
+  * [Model]
   * Dokumentace tříd
     * Model
       * Block
