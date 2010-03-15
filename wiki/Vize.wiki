@@ -10,7 +10,7 @@
   * identifikace lagů bez ukončení celé hry, dočasné postavení hráče mimo hru (duch)
   * jazyk C++ s grafickou knihovnou [http://qt.nokia.com/ Qt] v Linuxu
 
-==Rozšiřujíc specifikace==
+==Rozšiřující specifikace==
 
   * možnost změny ovládání
   * přestřelitelné a nepřestřestřelitelné překážky
@@ -24,6 +24,6 @@
 
 ==Fáze vývoje==
   # Návrh a vize
-  # Základný engine
+  # Základní engine
   # Síťová komunikace
   # Testování
