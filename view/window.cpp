@@ -42,12 +42,12 @@ void Window::createActions()
 
 
     createGameAct = new QAction(tr("&Vytvorit hru"), this);
-    createGameAct->setShortcut(tr("F1"));
+    createGameAct->setShortcut(tr("F2"));
     connect(createGameAct, SIGNAL(triggered()),
             this, SLOT(createGame()));
 
     joinGameAct = new QAction(tr("&Pripojit se"), this);
-    joinGameAct->setShortcut(tr("F2"));
+    joinGameAct->setShortcut(tr("F3"));
     connect(joinGameAct, SIGNAL(triggered()),
             this, SLOT(joinGame()));
 
