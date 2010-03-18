@@ -1,3 +1,3 @@
 =Model=
 
-<wiki:gadget url="http://cactus-wave.appspot.com/net.brucecooper.mindmapgadget.MindMapGadget/net.brucecooper.mindmapgadget.client.MindMapGadget.gadget.xml" border="0" />
+<wiki:gadget url="http://cactus-wave.appspot.com/net.brucecooper.mindmapgadget.MindMapGadget/net.brucecooper.mindmapgadget.client.MindMapGadget.gadget.xml" width="1000" />
