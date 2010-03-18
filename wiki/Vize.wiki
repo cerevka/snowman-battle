@@ -16,6 +16,7 @@
   * přestřelitelné a nepřestřestřelitelné překážky
     * díry, voda...
     * zdi, bedny...
+    * balíčky zbraní
   * více zbraní - základ tři
     * Sněhopistol
     * Sněhovnice
