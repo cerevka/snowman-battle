@@ -20,6 +20,16 @@
     * Sněhopistol
     * Sněhovnice
     * Sněhopal
+  * základní zbraní bude pistole - bez omezení střeliva
+    * ostatní zbraně se budou objevovat ve formě "balíčku", které budou hráči moci sbírat ovšem s omezenou municí
+
+==Bonusové specifikace==
+
+_(aneb když zbude čas)_
+
+  * hudba na pozadí
+  * zvuky na popředí
+  * granáty a miny
 
 
 ==Fáze vývoje==
