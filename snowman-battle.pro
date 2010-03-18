@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     model/immovable.cpp \
     model/shootableblock.cpp \
     model/unshootableblock.cpp \
-    model/weaponpackage.cpp
+    model/weaponpackage.cpp \
+    controller/game.cpp
 TRANSLATIONS += snowman-battle_cs.ts
 OTHER_FILES += 
 HEADERS += controller/keyboardhandler.h \
@@ -26,4 +27,5 @@ HEADERS += controller/keyboardhandler.h \
     model/immovable.h \
     model/shootableblock.h \
     model/unshootableblock.h \
-    model/weaponpackage.h
+    model/weaponpackage.h \
+    controller/game.h
