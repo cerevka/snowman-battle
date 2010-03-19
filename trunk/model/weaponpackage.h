@@ -6,7 +6,7 @@
 class WeaponPackage : public Immovable
 {
 public:
-    WeaponPackage();
+    explicit WeaponPackage(QObject * parent = 0);
 };
 
 #endif // WEAPONPACKAGE_H

@@ -1,5 +1,6 @@
 #include "weaponpackage.h"
 
-WeaponPackage::WeaponPackage()
+WeaponPackage::WeaponPackage(QObject * parent) :
+        Immovable(parent)
 {
 }

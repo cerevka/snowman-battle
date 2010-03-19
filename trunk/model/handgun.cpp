@@ -1,5 +1,6 @@
 #include "handgun.h"
 
-HandGun::HandGun()
+HandGun::HandGun(QObject * parent) :
+        Weapon(parent)
 {
 }

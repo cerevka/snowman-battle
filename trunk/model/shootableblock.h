@@ -6,7 +6,7 @@
 class ShootableBlock : public Immovable
 {
 public:
-    ShootableBlock();
+    explicit ShootableBlock(QObject * parent = 0);
 };
 
 #endif // SHOOTABLEBLOCK_H

@@ -6,7 +6,7 @@
 class MachineGun : public Weapon
 {
 public:
-    MachineGun();
+    explicit MachineGun(QObject * parent = 0);
 };
 
 #endif // MACHINEGUN_H

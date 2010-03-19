@@ -6,7 +6,7 @@
 class Immovable : public MapObject
 {
 public:
-    Immovable();
+    explicit Immovable(QObject * parent = 0);
 };
 
 #endif // IMMOVABLE_H

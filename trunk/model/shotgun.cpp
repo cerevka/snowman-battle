@@ -1,5 +1,6 @@
 #include "shotgun.h"
 
-ShotGun::ShotGun()
+ShotGun::ShotGun(QObject * parent) :
+        Weapon(parent)
 {
 }

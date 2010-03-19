@@ -6,7 +6,7 @@
 class ShotGun : public Weapon
 {
 public:
-    ShotGun();
+    explicit ShotGun(QObject * parent = 0);
 };
 
 #endif // SHOTGUN_H

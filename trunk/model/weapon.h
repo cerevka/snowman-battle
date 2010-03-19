@@ -5,13 +5,11 @@
 
 class Weapon : public QObject
 {
-Q_OBJECT
+
+    Q_OBJECT
+
 public:
-    explicit Weapon(QObject *parent = 0);
-
-signals:
-
-public slots:
+    explicit Weapon(QObject * parent = 0);
 
 };
 

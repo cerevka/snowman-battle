@@ -6,7 +6,7 @@
 class Player : public MapObject
 {
 public:
-    Player();
+    explicit Player(QObject * parent = 0);
 };
 
 #endif // PLAYER_H
