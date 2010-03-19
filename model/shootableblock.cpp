@@ -1,5 +1,6 @@
 #include "shootableblock.h"
 
-ShootableBlock::ShootableBlock()
+ShootableBlock::ShootableBlock(QObject * parent) :
+        Immovable(parent)
 {
 }

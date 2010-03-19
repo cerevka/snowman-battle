@@ -6,7 +6,7 @@
 class UnshootableBlock : public Immovable
 {
 public:
-    UnshootableBlock();
+    explicit UnshootableBlock(QObject * parent = 0);
 };
 
 #endif // UNSHOOTABLEBLOCK_H

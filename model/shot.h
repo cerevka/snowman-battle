@@ -5,13 +5,11 @@
 
 class Shot : public QObject
 {
-Q_OBJECT
+
+    Q_OBJECT
+
 public:
-    explicit Shot(QObject *parent = 0);
-
-signals:
-
-public slots:
+    explicit Shot(QObject * parent = 0);
 
 };
 
