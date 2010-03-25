@@ -64,13 +64,26 @@ void Window::createActions()
 //Zalozi hru
 void Window::createGame()
 {
+    CreateGame creategame;
 
+    if (creategame.exec()) {
+        QString nickname = creategame.nickname->text();
+        int players = creategame.players->currentIndex();
+        int color = creategame.color->currentIndex();
+    }
 }
 
 //Pripoji se ke hre
 void Window::joinGame()
 {
+    JoinGame joingame;
 
+    if (joingame.exec()) {
+        QString nickname = joingame.nickname->text();
+        QString address = joingame.address->text();
+        int port = joingame.port->text().toInt();
+        int color = joingame.color->currentIndex();
+    }
 }
 
 //Nastaveni
