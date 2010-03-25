@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QtGui>
+#include "dialogs/creategame.h"
+#include "dialogs/joingame.h"
 
 class QAction;
 class QMenu;

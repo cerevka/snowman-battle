@@ -12,7 +12,9 @@ SOURCES += main.cpp \
     model/shootableblock.cpp \
     model/unshootableblock.cpp \
     model/weaponpackage.cpp \
-    controller/game.cpp
+    controller/game.cpp \
+    view/dialogs/creategame.cpp \
+    view/dialogs/joingame.cpp
 TRANSLATIONS += snowman-battle_cs.ts
 OTHER_FILES += 
 HEADERS += controller/keyboardhandler.h \
@@ -28,4 +30,6 @@ HEADERS += controller/keyboardhandler.h \
     model/shootableblock.h \
     model/unshootableblock.h \
     model/weaponpackage.h \
-    controller/game.h
+    controller/game.h \
+    view/dialogs/creategame.h \
+    view/dialogs/joingame.h
