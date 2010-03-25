@@ -4,7 +4,8 @@
 #include "mapobject.h"
 
 // Výčtový typ pro směr hráče
-enum Directions {
+enum Directions
+{
     NORTH, WEST, SOUTH, EAST
 };
 
