@@ -27,7 +27,7 @@ public:
     double getX2(void) const;
     double getY2(void) const;
 
-private:
+protected:
 
     // levý horní roh
     double x1;
