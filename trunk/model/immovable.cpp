@@ -1,6 +1,6 @@
 #include "immovable.h"
 
-Immovable::Immovable(QObject * parent) :
+Immovable::Immovable(Game * const parent) :
         MapObject(parent)
 {
 }

@@ -1,6 +1,6 @@
 #include "game.h"
 
-Game::Game(QObject * parent) :
+Game::Game(QObject * const  parent) :
         QThread(parent)
 {
 
@@ -15,6 +15,8 @@ Game::Game(QObject * parent) :
 Game::~Game(void)
 {
 
+    gameRun = false;
+
     delete allObjects;
     delete allPlayers;
     delete allShots;
@@ -24,10 +26,16 @@ Game::~Game(void)
 void Game::run(void)
 {
 
+    // Naspawnování všech hráčů
+    for(int i = 0; allPlayers->size(); i++){
+        allPlayers->value(i)->respawn();
+    }
+
+    // Dokud proměnná gameRun je true, tak provádím hlavní smyčku programu
     while(gameRun){
 
-        moveObjects();
-        sendChanges();
+        movePlayers();
+        moveShots();
 
     }
 
@@ -38,41 +46,110 @@ void Game::quitGame(void)
     gameRun = false;
 }
 
-void Game::moveObjects(void)
-{
+bool Game::colideAllObjects(MapObject * const object){
 
-    for(int i = 0; i < allPlayers->size(); i++){
+    bool output = false;
 
-        // TODO pohyb hráče ...
+    // Prohledávám všechny objekty na herní ploše
+    for(int i = 0; i < allObjects->size(); i++){
 
-        for(int j = 0; j < allObjects->size(); j++){
+        // Pokud jsem vzal totožný objekt, tak netestuji kolize
+        if(object == allObjects->value(i)){
+            continue;
+        }
 
-            if(colideObjects(allObjects->value(j), allPlayers->value(i))){
-                allObjects->value(j)->interPlayer(allPlayers->value(i));
-            }
-
+        // Pokud objekt koliduje, ukončím metodu s tím, že existuje objekt, který koliduje
+        if (colideObjects(object, allObjects->value(i))){
+            output = true;
+            break;
         }
 
     }
 
+    return output;
+
+}
+
+void Game::movePlayers(void)
+{
+
+    // Projíždím seznam všech hráčů
+    for(int i = 0; i < allPlayers->size(); i++){
+
+        // Ukazatel na právě vybraného hráče (abych jej pořád nemusel vytahovat ze senamu)
+        Player * actualPlayer = allPlayers->value(i);
+
+        // Hráč mě zajímavá pouze pokud má nastavený příznak pohybu
+        if(actualPlayer->isMoving()){
+
+            // Je true, pokud se hráč může přesunout
+            bool canMove = true;
+
+            // Pokud je hráč mrtvý, tak jdu na dalšího
+            if(actualPlayer->isSpawned() == false){
+                continue;
+            }
+
+            // Pohnu s hráčem
+            actualPlayer->tryMove();
+
+            // Prohledávám všechny objekty na mapě
+            for(int j = 0; j < allObjects->size(); j++){
+
+                // Ukazatel na právě vybraný objekt
+                MapObject * actualObect = allObjects->value(j);
+
+                // Pokud jsem vzal sám sebe, tak nedetekuji kolizi
+                if(actualObect == actualPlayer){
+                    continue;
+                }
+
+                // Pokud koliduji
+                if(colideObjects(actualObect, actualPlayer)){
+                    // Zavolám kolizní metodu
+                    if(actualObect->interactPlayer(actualPlayer) == false){
+                        // Pokud je objekt neprůchozí, pak rovnou vím, že se hráč nepohne
+                        canMove = false;
+                        break;
+                    }
+                }
+
+            }
+
+            // Pokud nestojí v cestě překážka, tak dám informaci o pohybu, jinak vrátím pohyb zpět
+            if(canMove){
+                // TODO - poslat zprávu o pohybu hráče
+            } else {
+                actualPlayer->backMove();
+            }
+
+            // TODO - zde ještě bude rutina obsluhující výstřel
+
+        }
+
+    }
+}
+
+void Game::moveShots(void)
+{
+
+    // Projíždím seznam střel
     for(int i = 0; i < allShots->size(); i++){
 
         // TODO pohyb střely ...
 
+        // Prohledám všechny objekty
         for(int j = 0; j < allObjects->size(); j++){
 
+            // Pokud koliduji
             if(colideObjects(allObjects->value(j), allShots->value(i))){
-                allObjects->value(j)->interShot(allShots->value(i));
+                // zavolám kolizní metodu
+                allObjects->value(j)->interactShot(allShots->value(i));
             }
 
         }
 
     }
-
-}
-
-void Game::sendChanges(void)
-{
 
 }
 
@@ -87,7 +164,7 @@ bool Game::colideObjects(MapObject * const object, Shot * const shot)
     return colideAlgorythm(object->getX1(), object->getY1(), object->getX2(), object->getY2(), shot->getX(), shot->getY());
 }
 
-bool Game::colideAlgorythm(double recX1, double recY1, double recX2, double recY2, double pointX, double pointY)
+bool Game::colideAlgorythm(const double recX1, const double recY1, const double recX2, const double recY2, const double pointX, const double pointY)
 {
 
     if(pointX >= recX1 && pointX <= recX2 && pointY >= recY1 && pointY <= recY2){

@@ -10,31 +10,59 @@ class Game : public QThread
 {
 public:
 
-    explicit Game(QObject * parent = 0);
+    /**
+     * Vytvoří novou hru
+     * @param parent určuje rodičovský objekt
+     */
+    explicit Game(QObject * const parent = 0);
 
+    /**
+     * Uvolňuje prostředky alokované pro potřeby hry
+     */
     virtual ~Game(void);
 
+    /**
+     * Ukončí smyčku(vlákno) detekce kolizí
+     */
     void quitGame(void);
+
+    /**
+     * Pomocná metoda, která zjistí jestli zadaný objekt koliduje s kterýmkoli jiným na herní ploše
+     * @param object objekt, se kterým se mají počítat kolize
+     * @return true, pokud koliduje s některým jiným objektem
+     */
+    bool colideAllObjects(MapObject * const object);
 
 protected:
 
+    /**
+     * Hlavní výkonná smyčka hry (detekce kolizí a pohyb objektů)
+     */
     virtual void run(void);
 
 private:
 
     bool gameRun;
 
+    /**
+     * Tyto seznamy v sobě drží všechny objekty hry
+     */
     QList<MapObject *> * allObjects;
     QList<Player *> * allPlayers;
     QList<Shot *> * allShots;
 
-    void moveObjects(void);
-    void sendChanges(void);
+    /**
+     * Pomocné metody používané hlavní smyčkou
+     */
+    void movePlayers(void);
+    void moveShots(void);
 
-    // pomocné metody, které se používají k detekci kolizí
-    bool colideObjects(MapObject * const first, MapObject * const second);
-    bool colideObjects(MapObject * const object, Shot * const shot);
-    bool colideAlgorythm(double recX1, double recY1, double recX2, double recY2, double pointX, double pointY);
+    /**
+     * Pomocné metody, které se používají k detekci kolizí
+     */
+    static bool colideObjects(MapObject * const first, MapObject * const second);
+    static bool colideObjects(MapObject * const object, Shot * const shot);
+    static bool colideAlgorythm(const double recX1, const double recY1, const double recX2, const double recY2, const double pointX, const double pointY);
 
 };
 
