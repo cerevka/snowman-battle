@@ -46,7 +46,8 @@ void Game::quitGame(void)
     gameRun = false;
 }
 
-bool Game::colideAllObjects(MapObject * const object){
+bool Game::colideAllObjects(MapObject * const object) const
+{
 
     bool output = false;
 
@@ -67,6 +68,24 @@ bool Game::colideAllObjects(MapObject * const object){
     }
 
     return output;
+
+}
+
+void Game::addShot(Shot * const shot)
+{
+
+    allShots->append(shot);
+
+    // TODO - poslat signál o vytvoření střely
+
+}
+
+void Game::removeWeaponPackage(WeaponPackage * const wPackage)
+{
+
+    allObjects->removeOne(wPackage);
+
+    // TODO - poslat signál o sebrání zbraně
 
 }
 
@@ -123,7 +142,10 @@ void Game::movePlayers(void)
                 actualPlayer->backMove();
             }
 
-            // TODO - zde ještě bude rutina obsluhující výstřel
+            // Pokud mě hráč nastaven příznak střelby, tak vystřelí
+            if(actualPlayer->isShoting()){
+                actualPlayer->shot();
+            }
 
         }
 

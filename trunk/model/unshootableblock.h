@@ -1,14 +1,14 @@
 #ifndef UNSHOOTABLEBLOCK_H
 #define UNSHOOTABLEBLOCK_H
 
-#include "immovable.h"
+#include "mapobject.h"
 
-class UnshootableBlock : public Immovable
+class UnshootableBlock : public MapObject
 {
 
 public:
 
-    explicit UnshootableBlock(Game * const parent = 0);
+    UnshootableBlock(Game * const parent, const double x1, const double y1, const double x2, const double y2);
 
     /**
      * Implementace abstraktní metody předka

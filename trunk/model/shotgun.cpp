@@ -1,6 +1,25 @@
 #include "shotgun.h"
 
-ShotGun::ShotGun(QObject * parent) :
+ShotGun::ShotGun(Player * const parent) :
         Weapon(parent)
 {
+
+    this->refill();
+
+}
+
+void ShotGun::shot(void)
+{
+
+    // TODO - doplnit výstřel zbraně
+
+    ammo--;
+
+}
+
+void ShotGun::refill(void)
+{
+
+    ammo = 4;
+
 }

@@ -4,6 +4,7 @@
 #include "mapobject.h"
 
 class Game;
+class Weapon;
 
 /**
  * Výčtový typ pro směr hráče
@@ -13,6 +14,9 @@ enum Directions
     NORTH, WEST, SOUTH, EAST
 };
 
+/**
+ * Tato třída reprezentuje hráče v herní logice
+ */
 class Player : public MapObject
 {
 
@@ -54,29 +58,67 @@ public:
     void backMove(void);
 
     /**
+     * Po zavolání této metody hráč vytřelí aktuální zbraní
+     */
+    void shot(void);
+
+    /**
+     * Změní aktuální zbraň hráče na další, která má náboje
+     */
+    void changeWeapon(void);
+
+    /**
      * Getr a setr pro směr hráče
      */
     Directions getDirection(void) const;
     void setDirection(const Directions direction);
 
     /**
-     * Getr a setr příznak, zda se hráč pohybuje
+     * Getr a setr pro příznak, zda se hráč pohybuje
      */
     bool isMoving(void) const;
     void setMoving(const bool moving);
+
+    /**
+     * Getr a setr pro příznak, zda hráč střílí
+     */
+    bool isShoting(void) const;
+    void setShoting(const bool shoting);
 
     /**
      * Getr pro příznak, zda je hráč na mapě
      */
     bool isSpawned(void) const;
 
+    /**
+     * Getr pro inventář zbraní
+     */
+    Weapon * const * getInventory(void) const;
+
 private:
 
     /**
-     * Proměnné pro směr a příznak pohybu
+     * Velikost hráče a kroku hráče
+     */
+    static double playerSize;
+    static double stepSize;
+
+    /**
+     * Seznam zbraní hráče
+     */
+    Weapon * inventory[3];
+
+    /**
+     * Pořadí zbraně, kterou hráč právě používá, v inventáři
+     */
+    int actualWeapon;
+
+    /**
+     * Proměnná pro směr, příznak pohybu a příznak střelby
      */
     Directions direction;
     bool moving;
+    bool shoting;
 
     /**
      * Pokud je true, tak je hráč na herní ploše

@@ -1,8 +1,14 @@
 #include "player.h"
 #include "../controller/game.h"
+#include "handgun.h"
+#include "machinegun.h"
+#include "shotgun.h"
 #include "cstdlib"
 #include "ctime"
 using namespace std;
+
+double Player::playerSize = 30.0; // TODO - doplnit skutečnou šířku a výšku hráče v pixelech
+double Player::stepSize = 0.5; // TODO - doplnit skutečnou velikost kroku
 
 Player::Player(Game * const parent) :
         MapObject(parent)
@@ -11,6 +17,13 @@ Player::Player(Game * const parent) :
     spawned = false;
     direction = NORTH;
     moving = false;
+    shoting = false;
+
+    // Vytvoření inventáře se zbraněmi
+    inventory[0] = new HandGun(this);
+    inventory[1] = new MachineGun(this);
+    inventory[2] = new ShotGun(this);
+    actualWeapon = 0;
 
 }
 
@@ -39,22 +52,21 @@ bool Player::interactShot(Shot * const shot)
 void Player::respawn(void)
 {
 
-    int size = 30; // TODO - doplnit skutečnou šířku a výšku hráče v pixelech
-
-    // vygenerování nových souřednic
+    // Vygenerování nových souřednic
     do {
 
         x1 = rand() * time(NULL) * 1000; // TODO - Přidat modulo podle velikosti mapy
-        x2 = x1 + size;
+        x2 = x1 + playerSize;
         y1 = rand() * time(NULL) * 1000;
-        y2 = y1 + size;
+        y2 = y1 + playerSize;
 
     } while(parentGame->colideAllObjects(this)); // provádím generování souřadnic, dokud nanajdu vyhovující místo
 
-    // vygenerování nového směru
-    direction = NORTH;//(rand() * time(NULL)) % 4;
+    // Vygenerování nového směru
+    direction = (Directions)((rand() * time(NULL)) % 4);
 
     moving = false;
+    shoting = false;
     spawned = true;
 
     // TODO poslat informaci o spawnutí
@@ -63,8 +75,6 @@ void Player::respawn(void)
 
 void Player::tryMove(void)
 {
-
-    double stepSize = 0.5; // TODO - doplnit skutečnou velikost kroku
 
     int modificatorX = 0;
     int modificatorY = 0;
@@ -83,13 +93,11 @@ void Player::tryMove(void)
             modificatorY = -1;
             break;
         }
-
     case WEST:
         {
             modificatorX = -1;
             break;
         }
-
     case SOUTH:
         {
             modificatorY = 1;
@@ -120,6 +128,26 @@ void Player::backMove(void)
 
 }
 
+void Player::shot(void)
+{
+
+    shoting = false;
+    inventory[actualWeapon]->shot();
+
+}
+
+void Player::changeWeapon(void)
+{
+
+    // Hledám v inventáři zbraň, která nemá nula zbývajících nábojů
+    do {
+        actualWeapon++;
+    } while(inventory[actualWeapon]->getAmmo() == 0);
+
+    // TODO - poslat signál o změně zbraně
+
+}
+
 void Player::setDirection(const Directions direction)
 {
     this->direction = direction;
@@ -140,7 +168,22 @@ bool Player::isMoving(void) const
     return moving;
 }
 
+void Player::setShoting(const bool shoting)
+{
+    this->shoting = shoting;
+}
+
+bool Player::isShoting(void) const
+{
+    return shoting;
+}
+
 bool Player::isSpawned(void) const
 {
     return spawned;
+}
+
+Weapon * const * Player::getInventory(void) const
+{
+    return inventory;
 }

@@ -5,8 +5,15 @@
 
 class MachineGun : public Weapon
 {
+
 public:
-    explicit MachineGun(QObject * parent = 0);
+
+    explicit MachineGun(Player * const parent);
+
+    void shot(void);
+
+    void refill(void);
+
 };
 
 #endif // MACHINEGUN_H

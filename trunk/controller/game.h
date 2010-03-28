@@ -4,6 +4,7 @@
 #include "../model/mapobject.h"
 #include "../model/player.h"
 #include "../model/shot.h"
+#include "../model/weaponpackage.h"
 #include <QThread>
 
 class Game : public QThread
@@ -31,7 +32,19 @@ public:
      * @param object objekt, se kterým se mají počítat kolize
      * @return true, pokud koliduje s některým jiným objektem
      */
-    bool colideAllObjects(MapObject * const object);
+    bool colideAllObjects(MapObject * const object) const;
+
+    /**
+     * Přidá střelu do seznamu střel(bude s ní pohybovat)
+     * @param shot ukazatel na střelu, která bude do seznamu přidána
+     */
+    void addShot(Shot * const shot);
+
+    /**
+     * Odebere zbraň ze seznamu objektů (poté co jí hráč vezme)
+     * @param wPackage zbraň, jenž bude odebrána
+     */
+    void removeWeaponPackage(WeaponPackage * const wPackage);
 
 protected:
 

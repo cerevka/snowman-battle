@@ -1,7 +1,7 @@
 #include "unshootableblock.h"
 
-UnshootableBlock::UnshootableBlock(Game * const parent) :
-        Immovable(parent)
+UnshootableBlock::UnshootableBlock(Game * const parent, const double x1, const double y1, const double x2, const double y2) :
+        MapObject(parent, x1, y1, x2, y2)
 {
 }
 
