@@ -5,8 +5,15 @@
 
 class HandGun : public Weapon
 {
+
 public:
-    explicit HandGun(QObject * parent = 0);
+
+    explicit HandGun(Player * const parent);
+
+    void shot(void);
+
+    void refill(void);
+
 };
 
 #endif // HANDGUN_H

@@ -8,7 +8,6 @@ SOURCES += main.cpp \
     model/machinegun.cpp \
     model/mapobject.cpp \
     model/player.cpp \
-    model/immovable.cpp \
     model/shootableblock.cpp \
     model/unshootableblock.cpp \
     model/weaponpackage.cpp \
@@ -30,7 +29,6 @@ HEADERS += controller/keyboardhandler.h \
     model/machinegun.h \
     model/mapobject.h \
     model/player.h \
-    model/immovable.h \
     model/shootableblock.h \
     model/unshootableblock.h \
     model/weaponpackage.h \

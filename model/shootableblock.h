@@ -1,14 +1,14 @@
 #ifndef SHOOTABLEBLOCK_H
 #define SHOOTABLEBLOCK_H
 
-#include "immovable.h"
+#include "mapobject.h"
 
-class ShootableBlock : public Immovable
+class ShootableBlock : public MapObject
 {
 
 public:
 
-    explicit ShootableBlock(Game * const parent = 0);
+    ShootableBlock(Game * const parent, const double x1, const double y1, const double x2, const double y2);
 
     /**
      * Implementace abstraktní metody předka
