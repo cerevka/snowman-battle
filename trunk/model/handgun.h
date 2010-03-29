@@ -3,6 +3,9 @@
 
 #include "weapon.h"
 
+/**
+ * Tato třída reprezentuje pistoly, kterou každý hráč používá jako základní zbraň
+ */
 class HandGun : public Weapon
 {
 
