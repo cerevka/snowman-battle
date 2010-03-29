@@ -17,7 +17,8 @@ SOURCES += main.cpp \
     controller/network.cpp \
     controller/networkinterface.cpp \
     controller/client.cpp \
-    controller/server.cpp
+    controller/server.cpp \
+    controller/gamefacade.cpp
 TRANSLATIONS += snowman-battle_cs.ts
 OTHER_FILES += 
 HEADERS += controller/keyboardhandler.h \
@@ -38,4 +39,5 @@ HEADERS += controller/keyboardhandler.h \
     controller/network.h \
     controller/networkinterface.h \
     controller/client.h \
-    controller/server.h
+    controller/server.h \
+    controller/gamefacade.h

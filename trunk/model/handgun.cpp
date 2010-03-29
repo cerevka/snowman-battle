@@ -43,7 +43,7 @@ void HandGun::shot(void)
     case SOUTH:
         {
             x = (owner->getX1() + owner->getX2()) / 2.0;
-            y = owner->getY1() + 1.0;
+            y = owner->getY2() + 1.0;
             angle = 3.0 * M_PI / 2.0;
 
             break;
@@ -51,7 +51,7 @@ void HandGun::shot(void)
 
     case EAST:
         {
-            x = owner->getX1() + 1.0;
+            x = owner->getX2() + 1.0;
             y = (owner->getY1() + owner->getY2()) / 2.0;
             angle = 0.0;
 

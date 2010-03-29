@@ -8,11 +8,18 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
     allPlayers = new QList<Player *>();
     allShots = new QList<Shot *>();
 
+    // Zde vytvářím hráče pro hru
     for(int i = 0; i < countOfPlayers; i++){
-        allPlayers->append(new Player(this));
+        Player * const newPlayer = new Player(this);
+        allPlayers->append(newPlayer);
+        allObjects->append(newPlayer);
     }
 
     // TODO - zde bude definice mapy
+    allObjects->append(new UnshootableBlock(this, 0, 0, 500, 30));
+    allObjects->append(new UnshootableBlock(this, 0, 470, 500, 500));
+    allObjects->append(new UnshootableBlock(this, 0, 30, 30, 470));
+    allObjects->append(new UnshootableBlock(this, 470, 0, 500, 470));
 
     gameRun = true;
 
@@ -33,7 +40,7 @@ void Game::run(void)
 {
 
     // Naspawnování všech hráčů
-    for(int i = 0; allPlayers->size(); i++){
+    for(int i = 0; i < allPlayers->size(); i++){
         allPlayers->value(i)->respawn();
     }
 
@@ -85,6 +92,9 @@ void Game::addShot(Shot * const shot)
     allShots->append(shot);
 
     // TODO - poslat signál o vytvoření střely
+    #ifdef _DEBUG_
+    cout << "Game engine: Shot " << allShots->size() - 1 << " created at " << shot->getX() << ", " << shot->getY() << endl;
+    #endif
 
 }
 
@@ -146,15 +156,17 @@ void Game::movePlayers(void)
             // Pokud nestojí v cestě překážka, tak dám informaci o pohybu, jinak vrátím pohyb zpět
             if(canMove){
                 // TODO - poslat zprávu o pohybu hráče
+                #ifdef _DEBUG_
+                cout << "Game engine: Player moved to " << actualPlayer->getX1() << ", " << actualPlayer->getY1() << endl;
+                #endif
             } else {
                 actualPlayer->backMove();
             }
+        }
 
-            // Pokud mě hráč nastaven příznak střelby, tak vystřelí
-            if(actualPlayer->isShoting()){
-                actualPlayer->shot();
-            }
-
+        // Pokud mě hráč nastaven příznak střelby, tak vystřelí
+        if(actualPlayer->isShoting()){
+            actualPlayer->shot();
         }
 
     }
@@ -185,7 +197,7 @@ void Game::moveShots(void)
             if(colideObjects(actualObject, actualShot)){
                 // Zavolám kolizní metodu
                 if(actualObject->interactShot(actualShot) == false){
-                    // Pokud je objekt neprůstřelný, pak rovnou vím, že se střela rozapdne
+                    // Pokud je objekt neprůstřelný, pak rovnou vím, že se střela rozpadne
                     canMove = false;
                     break;
                 }
@@ -195,10 +207,16 @@ void Game::moveShots(void)
 
         // Pokud nestojí v cestě překážka, tak dám informaci o pohybu, jinak smažu střelu
         if(canMove){
+            #ifdef _DEBUG_
+            cout << "Game engine: Shot " << i << " moved to " << actualShot->getX() << ", " << actualShot->getY() << endl;
+            #endif
             // TODO - poslat informaci o pohybu střely
         } else {
             allShots->removeAt(i); // POZOR - ověřit chování QList
             delete actualShot;
+            #ifdef _DEBUG_
+            cout << "Game engine: Shot " << i << " destroyed" << endl;
+            #endif
             // TODO - poslat informaci o rozpadnutí střely
         }
 

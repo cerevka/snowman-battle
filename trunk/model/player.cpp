@@ -3,6 +3,7 @@
 #include "handgun.h"
 #include "machinegun.h"
 #include "shotgun.h"
+#include "cmath"
 #include "cstdlib"
 #include "ctime"
 using namespace std;
@@ -44,6 +45,9 @@ bool Player::interactShot(Shot * const shot)
     y2 = -1.0;
 
     // TODO poslat informaci o zabití
+    #ifdef _DEBUG_
+    cout << "Game engine: Player killed" << endl;
+    #endif
 
     return false;
 
@@ -55,9 +59,9 @@ void Player::respawn(void)
     // Vygenerování nových souřednic
     do {
 
-        x1 = rand() * time(NULL) * 1000; // TODO - Přidat modulo podle velikosti mapy
+        x1 = abs((rand() * time(NULL) * 1000) % 500); // TODO - Přidat modulo podle velikosti mapy
         x2 = x1 + playerSize;
-        y1 = rand() * time(NULL) * 1000;
+        y1 = abs((rand() * time(NULL) * 1000) % 500);
         y2 = y1 + playerSize;
 
     } while(parentGame->colideAllObjects(this)); // provádím generování souřadnic, dokud nanajdu vyhovující místo
@@ -65,9 +69,14 @@ void Player::respawn(void)
     // Vygenerování nového směru
     direction = (Directions)((rand() * time(NULL)) % 4);
 
+    // Resetování příznaků
     moving = false;
     shoting = false;
     spawned = true;
+
+    #ifdef _DEBUG_
+    cout << "Game engine: Player spawned at (" << x1 << ", " << y1 << "),(" << x2 << ", " << y2 << "); direction: " << direction << endl;
+    #endif
 
     // TODO poslat informaci o spawnutí
 

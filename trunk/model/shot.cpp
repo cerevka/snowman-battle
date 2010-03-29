@@ -16,7 +16,7 @@ Shot::Shot(QObject * const parent, const double x, const double y, const double 
 void Shot::move(void)
 {
     x = x + cos(angle) / speed;
-    y = y + sin(angle) / speed;
+    y = y + (-1 * sin(angle)) / speed;
 }
 
 double Shot::getX(void) const
