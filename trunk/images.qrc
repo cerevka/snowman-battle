@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/snowman-stickup.jpg</file>
+        <file>images/background1.jpg</file>
+        <file>images/snowman_black.png</file>
+        <file>images/snowman_blue.png</file>
+    </qresource>
+</RCC>
