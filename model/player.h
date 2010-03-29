@@ -95,6 +95,11 @@ public:
      */
     Weapon * const * getInventory(void) const;
 
+    /**
+     * Getr vracející ukaztel na hru, v rámci níž je tento hráč vytvořen
+     */
+    Game * getParentGame(void) const;
+
 private:
 
     /**

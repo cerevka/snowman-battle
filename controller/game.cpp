@@ -1,12 +1,18 @@
 #include "game.h"
 
-Game::Game(QObject * const  parent) :
+Game::Game(const int countOfPlayers, QObject * const parent) :
         QThread(parent)
 {
 
     allObjects = new QList<MapObject *>();
     allPlayers = new QList<Player *>();
     allShots = new QList<Shot *>();
+
+    for(int i = 0; i < countOfPlayers; i++){
+        allPlayers->append(new Player(this));
+    }
+
+    // TODO - zde bude definice mapy
 
     gameRun = true;
 
@@ -36,6 +42,8 @@ void Game::run(void)
 
         movePlayers();
         moveShots();
+
+        QThread::msleep(20);
 
     }
 
@@ -116,17 +124,17 @@ void Game::movePlayers(void)
             for(int j = 0; j < allObjects->size(); j++){
 
                 // Ukazatel na právě vybraný objekt
-                MapObject * actualObect = allObjects->value(j);
+                MapObject * actualObject = allObjects->value(j);
 
                 // Pokud jsem vzal sám sebe, tak nedetekuji kolizi
-                if(actualObect == actualPlayer){
+                if(actualObject == actualPlayer){
                     continue;
                 }
 
                 // Pokud koliduji
-                if(colideObjects(actualObect, actualPlayer)){
+                if(colideObjects(actualObject, actualPlayer)){
                     // Zavolám kolizní metodu
-                    if(actualObect->interactPlayer(actualPlayer) == false){
+                    if(actualObject->interactPlayer(actualPlayer) == false){
                         // Pokud je objekt neprůchozí, pak rovnou vím, že se hráč nepohne
                         canMove = false;
                         break;
@@ -158,17 +166,40 @@ void Game::moveShots(void)
     // Projíždím seznam střel
     for(int i = 0; i < allShots->size(); i++){
 
-        // TODO pohyb střely ...
+        // Ukazatel na právě vybranou střelu (abych ji pořád nemusel vytahovat ze senamu)
+        Shot * actualShot = allShots->value(i);
+
+        // Je true, pokud se střela může pohnout
+        bool canMove = true;
+
+        // Pohnu střelou
+        actualShot->move();
 
         // Prohledám všechny objekty
         for(int j = 0; j < allObjects->size(); j++){
 
+            // Ukazatel na právě vybraný objekt
+            MapObject * actualObject = allObjects->value(j);
+
             // Pokud koliduji
-            if(colideObjects(allObjects->value(j), allShots->value(i))){
-                // zavolám kolizní metodu
-                allObjects->value(j)->interactShot(allShots->value(i));
+            if(colideObjects(actualObject, actualShot)){
+                // Zavolám kolizní metodu
+                if(actualObject->interactShot(actualShot) == false){
+                    // Pokud je objekt neprůstřelný, pak rovnou vím, že se střela rozapdne
+                    canMove = false;
+                    break;
+                }
             }
 
+        }
+
+        // Pokud nestojí v cestě překážka, tak dám informaci o pohybu, jinak smažu střelu
+        if(canMove){
+            // TODO - poslat informaci o pohybu střely
+        } else {
+            allShots->removeAt(i); // POZOR - ověřit chování QList
+            delete actualShot;
+            // TODO - poslat informaci o rozpadnutí střely
         }
 
     }

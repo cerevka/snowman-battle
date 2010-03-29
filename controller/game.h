@@ -7,15 +7,19 @@
 #include "../model/weaponpackage.h"
 #include <QThread>
 
+/**
+ * Třída reprezentující hru samotnou, je to vlákno které obsluhuje pohyb objektů a kolizi mezi nimi
+ */
 class Game : public QThread
 {
 public:
 
     /**
      * Vytvoří novou hru
+     * @param countOfPlayers počet hráču, kteří budou hrát hru
      * @param parent určuje rodičovský objekt
      */
-    explicit Game(QObject * const parent = 0);
+    explicit Game(const int countOfPlayers, QObject * const parent = 0);
 
     /**
      * Uvolňuje prostředky alokované pro potřeby hry
@@ -55,6 +59,9 @@ protected:
 
 private:
 
+    /**
+     * Pokud je true, tak hlavní smyčka hry běží
+     */
     bool gameRun;
 
     /**

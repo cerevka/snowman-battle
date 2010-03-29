@@ -187,3 +187,8 @@ Weapon * const * Player::getInventory(void) const
 {
     return inventory;
 }
+
+Game * Player::getParentGame(void) const
+{
+    return parentGame;
+}
