@@ -3,6 +3,8 @@
 JoinGame::JoinGame(QWidget *parent)
     : QDialog(parent)
 {
+
+    //Vytvoreni labelu a buttonu
     nicknameLabel = new QLabel(tr("Nickname:"));
     addressLabel = new QLabel(tr("Address of server:"));
     portLabel = new QLabel(tr("Port:"));
@@ -14,14 +16,16 @@ JoinGame::JoinGame(QWidget *parent)
     address = new QLineEdit;
     port = new QLineEdit;
 
+    //Naplneni comboboxu
     color = new QComboBox;
     color->addItem(tr("Black"));
     color->addItem(tr("Red"));
     color->addItem(tr("Blue"));
     color->addItem(tr("Green"));
-    color->addItem(tr("Pink"));
+    color->addItem(tr("Brown"));
     color->addItem(tr("Yellow"));
 
+    //Nastaveni hlavniho layoutu
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(nicknameLabel, 0, 0);
     layout->addWidget(nickname, 0, 1);
@@ -32,6 +36,7 @@ JoinGame::JoinGame(QWidget *parent)
     layout->addWidget(colorLabel, 3, 0);
     layout->addWidget(color, 3, 1);
 
+    //Layout pro buttony
     QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->addWidget(okButton);
     buttonLayout->addWidget(cancelButton);
@@ -40,9 +45,12 @@ JoinGame::JoinGame(QWidget *parent)
 
     setLayout(layout);
 
+    //Akce potvrzeni
     connect(okButton, SIGNAL(clicked()), this, SLOT(accept()));
+    //Akce odmitnuti
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
-    setWindowTitle(tr("Create Game"));
+    //Nazev dialogu
+    setWindowTitle(tr("Join Game"));
 
 }

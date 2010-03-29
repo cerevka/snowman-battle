@@ -76,6 +76,8 @@ int main(int argc, char * argv[])
     // TODO zde bude alokace proměnných pro vlastní program (např. hlavní okno programu)
     // ...
 
+
+    //Vytvori hlavni okno
     Window mainWindow;
     mainWindow.show();
 

@@ -5,6 +5,22 @@ Window::Window()
 
     //Tady se pridavaji dalsi komponenty hlavniho okna
 
+    //Vytvori hraci plochu
+    scenepanel = new ScenePanel();
+    setCentralWidget(scenepanel);
+
+    //////////////////Pro testovani/////////////
+    QString *str = new QString("background1.jpg");
+    scenepanel->setBackground(*str);
+    x = 400;
+    y = 220;
+    snow = new PixmapItem("snowman_black.png");
+    scenepanel->setNewGraficObj(*snow, x, y, 0);
+    x1 = 0;
+    y1 = 0;
+    snow1 = new PixmapItem("snowman_blue.png");
+    scenepanel->setNewGraficObj(*snow1, x1, y1, 0);
+    /////////////////Konec testovani////////////
 
     //Vytvori akce
     createActions();
@@ -66,6 +82,7 @@ void Window::createGame()
 {
     CreateGame creategame;
 
+    //Zpracuje informace z create game dialigu
     if (creategame.exec()) {
         QString nickname = creategame.nickname->text();
         int players = creategame.players->currentIndex();
@@ -78,6 +95,7 @@ void Window::joinGame()
 {
     JoinGame joingame;
 
+    //Zpracuje informace z join game dialigu
     if (joingame.exec()) {
         QString nickname = joingame.nickname->text();
         QString address = joingame.address->text();
@@ -89,6 +107,16 @@ void Window::joinGame()
 //Nastaveni
 void Window::settings()
 {
+
+    ///////////////////testovani//////////////////////////////////
+
+
+    scenepanel->setPosition(*snow, x--, y);
+    scenepanel->setPosition(*snow1, x1++, y1);
+
+
+
+    ///////////////////testovani/////////////////////////////////
 
 }
 
