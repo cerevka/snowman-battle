@@ -5,10 +5,22 @@
 #include "../model/player.h"
 #include "../model/shot.h"
 #include "../model/weaponpackage.h"
+#include "../model/unshootableblock.h"
 #include <QThread>
 
+//#define _DEBUG_
+
+#ifdef _DEBUG_
+
+#include "iostream"
+using namespace std;
+
+#endif
+
+class GameFacade;
+
 /**
- * Třída reprezentující hru samotnou, je to vlákno které obsluhuje pohyb objektů a kolizi mezi nimi
+ * Třída reprezentující hru samotnou, je to vlákno které obsluhuje pohyb objektů a kolizí mezi nimi
  */
 class Game : public QThread
 {
@@ -84,6 +96,7 @@ private:
     static bool colideObjects(MapObject * const object, Shot * const shot);
     static bool colideAlgorythm(const double recX1, const double recY1, const double recX2, const double recY2, const double pointX, const double pointY);
 
+    friend class GameFacade;
 };
 
 #endif // GAME_H
