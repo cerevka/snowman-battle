@@ -18,7 +18,9 @@ SOURCES += main.cpp \
     controller/networkinterface.cpp \
     controller/client.cpp \
     controller/server.cpp \
-    controller/gamefacade.cpp
+    controller/gamefacade.cpp \
+    view/scenepanel.cpp \
+    view/pixmapitem.cpp
 TRANSLATIONS += snowman-battle_cs.ts
 OTHER_FILES += 
 HEADERS += controller/keyboardhandler.h \
@@ -40,4 +42,7 @@ HEADERS += controller/keyboardhandler.h \
     controller/networkinterface.h \
     controller/client.h \
     controller/server.h \
-    controller/gamefacade.h
+    controller/gamefacade.h \
+    view/scenepanel.h \
+    view/pixmapitem.h
+RESOURCES += images.qrc
