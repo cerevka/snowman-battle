@@ -10,7 +10,7 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
 
     // Zde vytvářím hráče pro hru
     for(int i = 0; i < countOfPlayers; i++){
-        Player * const newPlayer = new Player(this);
+        Player * const newPlayer = new Player(this, i);
         allPlayers->append(newPlayer);
         allObjects->append(newPlayer);
     }
@@ -19,7 +19,7 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
     allObjects->append(new UnshootableBlock(this, 0, 0, 500, 30));
     allObjects->append(new UnshootableBlock(this, 0, 470, 500, 500));
     allObjects->append(new UnshootableBlock(this, 0, 30, 30, 470));
-    allObjects->append(new UnshootableBlock(this, 470, 0, 500, 470));
+    allObjects->append(new UnshootableBlock(this, 470, 30, 500, 470));
 
     gameRun = true;
 
@@ -50,7 +50,7 @@ void Game::run(void)
         movePlayers();
         moveShots();
 
-        QThread::msleep(20);
+        QThread::msleep(100);
 
     }
 
@@ -75,7 +75,7 @@ bool Game::colideAllObjects(MapObject * const object) const
         }
 
         // Pokud objekt koliduje, ukončím metodu s tím, že existuje objekt, který koliduje
-        if (colideObjects(object, allObjects->value(i))){
+        if (colideRectangles(allObjects->value(i), object)){
             output = true;
             break;
         }
@@ -142,7 +142,7 @@ void Game::movePlayers(void)
                 }
 
                 // Pokud koliduji
-                if(colideObjects(actualObject, actualPlayer)){
+                if(colideRectangles(actualObject, actualPlayer)){
                     // Zavolám kolizní metodu
                     if(actualObject->interactPlayer(actualPlayer) == false){
                         // Pokud je objekt neprůchozí, pak rovnou vím, že se hráč nepohne
@@ -157,7 +157,7 @@ void Game::movePlayers(void)
             if(canMove){
                 // TODO - poslat zprávu o pohybu hráče
                 #ifdef _DEBUG_
-                cout << "Game engine: Player moved to " << actualPlayer->getX1() << ", " << actualPlayer->getY1() << endl;
+                cout << "Game engine: Player " << actualPlayer->getID() << " moved to " << actualPlayer->getX1() << ", " << actualPlayer->getY1() << endl;
                 #endif
             } else {
                 actualPlayer->backMove();
@@ -194,7 +194,7 @@ void Game::moveShots(void)
             MapObject * actualObject = allObjects->value(j);
 
             // Pokud koliduji
-            if(colideObjects(actualObject, actualShot)){
+            if(colideShots(actualObject, actualShot)){
                 // Zavolám kolizní metodu
                 if(actualObject->interactShot(actualShot) == false){
                     // Pokud je objekt neprůstřelný, pak rovnou vím, že se střela rozpadne
@@ -207,30 +207,38 @@ void Game::moveShots(void)
 
         // Pokud nestojí v cestě překážka, tak dám informaci o pohybu, jinak smažu střelu
         if(canMove){
+            // TODO - poslat informaci o pohybu střely
             #ifdef _DEBUG_
             cout << "Game engine: Shot " << i << " moved to " << actualShot->getX() << ", " << actualShot->getY() << endl;
             #endif
-            // TODO - poslat informaci o pohybu střely
         } else {
-            allShots->removeAt(i); // POZOR - ověřit chování QList
-            delete actualShot;
+            allShots->removeAt(i);
+            delete actualShot; // TODO - pořešit ID střel
+            // TODO - poslat informaci o rozpadnutí střely
             #ifdef _DEBUG_
             cout << "Game engine: Shot " << i << " destroyed" << endl;
             #endif
-            // TODO - poslat informaci o rozpadnutí střely
+            i--;
         }
 
     }
 
 }
 
-bool Game::colideObjects(MapObject * const first, MapObject * const second)
+bool Game::colideObjects(MapObject * const one, MapObject * const two)
 {
-    return colideAlgorythm(first->getX1(), first->getY1(), first->getX2(), first->getY2(), second->getX1(), second->getY1())
-            || colideAlgorythm(first->getX1(), first->getY1(), first->getX2(), first->getY2(), second->getX2(), second->getY2());
+    return colideRectangles(one, two) || colideRectangles(two, one);
 }
 
-bool Game::colideObjects(MapObject * const object, Shot * const shot)
+bool Game::colideRectangles(MapObject * const first, MapObject * const second)
+{
+    return     colideAlgorythm(first->getX1(), first->getY1(), first->getX2(), first->getY2(), second->getX1(), second->getY1())
+            || colideAlgorythm(first->getX1(), first->getY1(), first->getX2(), first->getY2(), second->getX2(), second->getY2())
+            || colideAlgorythm(first->getX1(), first->getY1(), first->getX2(), first->getY2(), second->getX2(), second->getY1())
+            || colideAlgorythm(first->getX1(), first->getY1(), first->getX2(), first->getY2(), second->getX1(), second->getY2());
+}
+
+bool Game::colideShots(MapObject * const object, Shot * const shot)
 {
     return colideAlgorythm(object->getX1(), object->getY1(), object->getX2(), object->getY2(), shot->getX(), shot->getY());
 }

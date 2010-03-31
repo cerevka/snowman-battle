@@ -4,7 +4,7 @@ MachineGun::MachineGun(Player * const parent) :
         Weapon(parent)
 {
 
-    this->refill();
+    ammo = 0;
 
 }
 

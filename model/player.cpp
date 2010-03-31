@@ -11,10 +11,11 @@ using namespace std;
 double Player::playerSize = 30.0; // TODO - doplnit skutečnou šířku a výšku hráče v pixelech
 double Player::stepSize = 0.5; // TODO - doplnit skutečnou velikost kroku
 
-Player::Player(Game * const parent) :
+Player::Player(Game * const parent, const int id) :
         MapObject(parent)
 {
 
+    playerID = id;
     spawned = false;
     direction = NORTH;
     moving = false;
@@ -46,7 +47,7 @@ bool Player::interactShot(Shot * const shot)
 
     // TODO poslat informaci o zabití
     #ifdef _DEBUG_
-    cout << "Game engine: Player killed" << endl;
+    cout << "Game engine: Player " << playerID << " killed" << endl;
     #endif
 
     return false;
@@ -74,11 +75,10 @@ void Player::respawn(void)
     shoting = false;
     spawned = true;
 
-    #ifdef _DEBUG_
-    cout << "Game engine: Player spawned at (" << x1 << ", " << y1 << "),(" << x2 << ", " << y2 << "); direction: " << direction << endl;
-    #endif
-
     // TODO poslat informaci o spawnutí
+    #ifdef _DEBUG_
+    cout << "Game engine: Player " << playerID << " spawned at (" << x1 << ", " << y1 << "),(" << x2 << ", " << y2 << "); direction: " << direction << endl;
+    #endif
 
 }
 
@@ -150,11 +150,19 @@ void Player::changeWeapon(void)
 
     // Hledám v inventáři zbraň, která nemá nula zbývajících nábojů
     do {
-        actualWeapon++;
+        actualWeapon = (actualWeapon + 1) % 3;
     } while(inventory[actualWeapon]->getAmmo() == 0);
 
     // TODO - poslat signál o změně zbraně
+    #ifdef _DEBUG_
+    cout << "Game engine: Player " << playerID << " equiped weapon " << actualWeapon << endl;
+    #endif
 
+}
+
+int Player::getID(void) const
+{
+    return playerID;
 }
 
 void Player::setDirection(const Directions direction)

@@ -34,6 +34,8 @@ public:
      */
     int getAmmo(void) const;
 
+    void findPointOfCreatingShots(double & x, double & y, double & angle);
+
 protected:
 
     /**

@@ -26,7 +26,7 @@ public:
      * Vytvoření nového hráče (pouze na začátku hry)
      * @param parent hra, v rámci níž je hráč vytvořen
      */
-    explicit Player(Game * const parent = 0);
+    Player(Game * const parent, const int id);
 
     /**
      * Implementace abstraktní metody předka
@@ -66,6 +66,11 @@ public:
      * Změní aktuální zbraň hráče na další, která má náboje
      */
     void changeWeapon(void);
+
+    /**
+     * Getr pro id
+     */
+    int getID(void) const;
 
     /**
      * Getr a setr pro směr hráče
@@ -117,6 +122,11 @@ private:
      * Pořadí zbraně, kterou hráč právě používá, v inventáři
      */
     int actualWeapon;
+
+    /**
+     * Jednoznačný idetifikátor hráče (pořadí v allPlayer)
+     */
+    int playerID;
 
     /**
      * Proměnná pro směr, příznak pohybu a příznak střelby
