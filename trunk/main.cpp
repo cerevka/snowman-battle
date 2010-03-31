@@ -38,7 +38,9 @@ void debugConsole(void)
             facade->stopMove(0);
         } else if(!strcmp(input.c_str(), "shot")){
             facade->shot(0);
-        } else{
+        } else if(!strcmp(input.c_str(), "change")){
+            facade->changeWeapon(0);
+        } else {
             cout << "Exiting debug console" << endl;
             run = false;
         }
