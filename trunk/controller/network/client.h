@@ -1,7 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "../controller/networkinterface.h";
+#include "networkinterface.h";
 
 /**
  * Client implementuje clientskou logiku. Je zapouzdren

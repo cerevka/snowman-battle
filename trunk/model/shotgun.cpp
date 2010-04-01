@@ -1,5 +1,5 @@
 #include "shotgun.h"
-#include "../controller/game.h"
+#include "../controller/game/game.h"
 #include "shot.h"
 #include "player.h"
 

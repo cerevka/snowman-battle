@@ -1,5 +1,5 @@
 #include "handgun.h"
-#include "../controller/game.h"
+#include "../controller/game/game.h"
 #include "shot.h"
 #include "cmath"
 using namespace std;

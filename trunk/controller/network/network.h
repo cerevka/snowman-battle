@@ -2,9 +2,9 @@
 #define NETWORK_H
 
 #include <QObject>
-#include "../controller/networkinterface.h"
-#include "../controller/client.h"
-#include "../controller/server.h"
+#include "networkinterface.h"
+#include "client.h"
+#include "server.h"
 
 /**
  * Network zaobaluje sitove rozhrani dle navrhoveho vzoru Strategy. Na

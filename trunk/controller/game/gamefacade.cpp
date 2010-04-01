@@ -1,7 +1,7 @@
 #include "gamefacade.h"
 
 #include "game.h"
-#include "../model/player.h"
+#include "../../model/player.h"
 
 GameFacade::GameFacade(QObject * const parent) :
     QObject(parent)

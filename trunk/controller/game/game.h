@@ -1,11 +1,11 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../model/mapobject.h"
-#include "../model/player.h"
-#include "../model/shot.h"
-#include "../model/weaponpackage.h"
-#include "../model/unshootableblock.h"
+#include "../../model/mapobject.h"
+#include "../../model/player.h"
+#include "../../model/shot.h"
+#include "../../model/weaponpackage.h"
+#include "../../model/unshootableblock.h"
 #include <QThread>
 #include <QMutex>
 
