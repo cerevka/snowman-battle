@@ -50,6 +50,8 @@ bool Player::interactShot(Shot * const shot)
     cout << "Game engine: Player " << playerID << " killed" << endl;
     #endif
 
+    startTimer(5000);
+
     return false;
 
 }
@@ -157,6 +159,15 @@ void Player::changeWeapon(void)
     #ifdef _DEBUG_
     cout << "Game engine: Player " << playerID << " equiped weapon " << actualWeapon << endl;
     #endif
+
+}
+
+void Player::timerEvent(QTimerEvent * const event)
+{
+    cout << "timerEvent" << endl;
+    parentGame->getBigGameMutex()->lock();
+    respawn();
+    parentGame->getBigGameMutex()->unlock();
 
 }
 
