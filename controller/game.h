@@ -7,6 +7,7 @@
 #include "../model/weaponpackage.h"
 #include "../model/unshootableblock.h"
 #include <QThread>
+#include <QMutex>
 
 #define _DEBUG_
 
@@ -62,6 +63,9 @@ public:
      */
     void removeWeaponPackage(WeaponPackage * const wPackage);
 
+
+    QMutex * getBigGameMutex(void) const;
+
 protected:
 
     /**
@@ -75,6 +79,11 @@ private:
      * Pokud je true, tak hlavní smyčka hry běží
      */
     bool gameRun;
+
+    /**
+     * Mutex uzamykající vykonou část hlavní smyčky
+     */
+    QMutex * bigGameMutex;
 
     /**
      * Tyto seznamy v sobě drží všechny objekty hry

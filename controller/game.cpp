@@ -4,6 +4,8 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
         QThread(parent)
 {
 
+    bigGameMutex = new QMutex();
+
     allObjects = new QList<MapObject *>();
     allPlayers = new QList<Player *>();
     allShots = new QList<Shot *>();
@@ -30,6 +32,8 @@ Game::~Game(void)
 
     gameRun = false;
 
+    delete bigGameMutex;
+
     delete allObjects;
     delete allPlayers;
     delete allShots;
@@ -47,8 +51,12 @@ void Game::run(void)
     // Dokud proměnná gameRun je true, tak provádím hlavní smyčku programu
     while(gameRun){
 
+        bigGameMutex->lock();
+
         movePlayers();
         moveShots();
+
+        bigGameMutex->unlock();
 
         QThread::msleep(100);
 
@@ -105,6 +113,11 @@ void Game::removeWeaponPackage(WeaponPackage * const wPackage)
 
     // TODO - poslat signál o sebrání zbraně
 
+}
+
+QMutex * Game::getBigGameMutex(void) const
+{
+    return bigGameMutex;
 }
 
 void Game::movePlayers(void)

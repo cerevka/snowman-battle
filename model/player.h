@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "QMutex"
+
 #include "mapobject.h"
 
 class Game;
@@ -66,6 +68,8 @@ public:
      * Změní aktuální zbraň hráče na další, která má náboje
      */
     void changeWeapon(void);
+
+    void timerEvent (QTimerEvent * const event);
 
     /**
      * Getr pro id
