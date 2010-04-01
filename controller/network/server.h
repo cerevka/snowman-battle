@@ -2,7 +2,7 @@
 #define SERVER_H
 
 #include "networkinterface.h"
-#include <QAbstractSocket>
+#include <QTcpSocket>
 
 /**
  * Server implementuje serverovou logiku. Je zapouzdren

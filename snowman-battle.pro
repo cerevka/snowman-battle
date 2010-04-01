@@ -1,52 +1,48 @@
 QT += network
-SOURCES += main.cpp \
-    view/window.cpp \
-    model/shot.cpp \
-    model/weapon.cpp \
-    model/handgun.cpp \
-    model/shotgun.cpp \
-    model/machinegun.cpp \
-    model/mapobject.cpp \
-    model/player.cpp \
-    model/shootableblock.cpp \
-    model/unshootableblock.cpp \
-    model/weaponpackage.cpp \
-    view/dialogs/creategame.cpp \
-    view/dialogs/joingame.cpp \
-    view/scenepanel.cpp \
-    view/pixmapitem.cpp \
-    ../snowman-battle \
-    (copy)/controller/client.cpp \
-    controller/game/game.cpp \
-    controller/game/gamefacade.cpp \
-    controller/game/game.cpp \
-    controller/gui/keyboardhandler.cpp \
-    controller/network/server.cpp \
-    controller/network/networkinterface.cpp \
-    controller/network/network.cpp \
-    controller/network/client.cpp
-TRANSLATIONS += snowman-battle_cs.ts
-OTHER_FILES += 
-HEADERS += view/window.h \
-    model/shot.h \
-    model/weapon.h \
-    model/handgun.h \
-    model/shotgun.h \
-    model/machinegun.h \
-    model/mapobject.h \
-    model/player.h \
-    model/shootableblock.h \
-    model/unshootableblock.h \
-    model/weaponpackage.h \
-    view/dialogs/creategame.h \
-    view/dialogs/joingame.h \
-    view/scenepanel.h \
-    view/pixmapitem.h \
-    controller/game/gamefacade.h \
+HEADERS += controller/game/gamefacade.h \
     controller/game/game.h \
     controller/gui/keyboardhandler.h \
     controller/network/server.h \
     controller/network/networkinterface.h \
     controller/network/network.h \
-    controller/network/client.h
+    controller/network/client.h \
+    model/weaponpackage.h \
+    model/weapon.h \
+    model/unshootableblock.h \
+    model/shotgun.h \
+    model/shot.h \
+    model/shootableblock.h \
+    model/player.h \
+    model/mapobject.h \
+    model/machinegun.h \
+    model/immovable.h \
+    model/handgun.h \
+    view/window.h \
+    view/scenepanel.h \
+    view/pixmapitem.h \
+    view/dialogs/joingame.h \
+    view/dialogs/creategame.h
+SOURCES += controller/game/gamefacade.cpp \
+    controller/game/game.cpp \
+    controller/gui/keyboardhandler.cpp \
+    controller/network/server.cpp \
+    controller/network/networkinterface.cpp \
+    controller/network/network.cpp \
+    controller/network/client.cpp \
+    model/weaponpackage.cpp \
+    model/weapon.cpp \
+    model/unshootableblock.cpp \
+    model/shotgun.cpp \
+    model/shot.cpp \
+    model/shootableblock.cpp \
+    model/player.cpp \
+    model/mapobject.cpp \
+    model/machinegun.cpp \
+    model/handgun.cpp \
+    view/window.cpp \
+    view/scenepanel.cpp \
+    view/pixmapitem.cpp \
+    view/dialogs/joingame.cpp \
+    view/dialogs/creategame.cpp \
+    main.cpp
 RESOURCES += images.qrc
