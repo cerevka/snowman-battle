@@ -1,6 +1,6 @@
 #include "client.h"
 
-Client::Client(char *address, int port)
+Client::Client(char *address, int port, NetworkInterface *const parent)
 {
 
 }

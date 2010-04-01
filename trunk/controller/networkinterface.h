@@ -9,7 +9,7 @@
 class NetworkInterface : public QObject
 {
 public:
-    NetworkInterface();
+    NetworkInterface(QObject * const parent = 0);
 
     /**
      * Odeslani dat v poli znaku.

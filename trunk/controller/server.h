@@ -2,6 +2,7 @@
 #define SERVER_H
 
 #include "../controller/networkinterface.h"
+#include <QAbstractSocket>
 
 /**
  * Server implementuje serverovou logiku. Je zapouzdren
@@ -15,7 +16,7 @@ public:
      * Vytvoreni serveru naslouchajiciho na zvolenem portu.
      * @param port port, na kterem bude server naslouchat
      */
-    Server(int port);
+    Server(int port, NetworkInterface * const parent = 0);
 
     /**
      * Odesilani dat v poli znaku.
@@ -27,7 +28,11 @@ public:
      * Prijimani dat v poli znaku.
      * @return prijate pole znaku
      */
-    virtual char * recieve();
+    char * recieve();
+private:
+    QTcpSocket * socket;
+
+
 };
 
 #endif // SERVER_H

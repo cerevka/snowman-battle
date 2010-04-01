@@ -1,3 +1,4 @@
+QT += network
 SOURCES += main.cpp \
     controller/keyboardhandler.cpp \
     view/window.cpp \
