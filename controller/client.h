@@ -17,7 +17,7 @@ public:
      * @param address adresa, na ktere nasloucha server
      * @param port port, na kterem nasloucha server
      */
-    Client(char * address, int port);
+    Client(char * address, int port, NetworkInterface * const parent = 0);
 
     /**
      * Odeslani dat v poli znaku.

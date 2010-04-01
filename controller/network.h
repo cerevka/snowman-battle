@@ -20,7 +20,7 @@ public:
      * Vytvoreni sitoveho rozhrani jako server ci client.
      * @param strategy ukazatel na zvoleny zpusob prace se siti
      */
-    explicit Network(NetworkInterface *strategy):network(strategy){
+    explicit Network(NetworkInterface *strategy, QObject * const parent = 0){
         network = strategy;
     }
 

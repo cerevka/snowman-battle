@@ -1,6 +1,6 @@
 #include "server.h"
 
-Server::Server(int port)
+Server::Server(int port, NetworkInterface *const parent)
 {
 }
 

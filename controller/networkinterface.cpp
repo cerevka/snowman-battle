@@ -1,6 +1,6 @@
 #include "networkinterface.h"
 
-NetworkInterface::NetworkInterface()
+NetworkInterface::NetworkInterface(QObject *const parent)
 {
 }
 
