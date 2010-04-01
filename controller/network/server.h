@@ -1,7 +1,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include "../controller/networkinterface.h"
+#include "networkinterface.h"
 #include <QAbstractSocket>
 
 /**

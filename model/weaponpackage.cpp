@@ -1,7 +1,7 @@
 #include "weaponpackage.h"
 #include "player.h"
 #include "weapon.h"
-#include "../controller/game.h"
+#include "../controller/game/game.h"
 #include "cstdlib"
 #include "ctime"
 using namespace std;
