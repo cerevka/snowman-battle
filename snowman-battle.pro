@@ -1,6 +1,5 @@
 QT += network
 SOURCES += main.cpp \
-    controller/keyboardhandler.cpp \
     view/window.cpp \
     model/shot.cpp \
     model/weapon.cpp \
@@ -12,20 +11,23 @@ SOURCES += main.cpp \
     model/shootableblock.cpp \
     model/unshootableblock.cpp \
     model/weaponpackage.cpp \
-    controller/game.cpp \
     view/dialogs/creategame.cpp \
     view/dialogs/joingame.cpp \
-    controller/network.cpp \
-    controller/networkinterface.cpp \
-    controller/client.cpp \
-    controller/server.cpp \
-    controller/gamefacade.cpp \
     view/scenepanel.cpp \
-    view/pixmapitem.cpp
+    view/pixmapitem.cpp \
+    ../snowman-battle \
+    (copy)/controller/client.cpp \
+    controller/game/game.cpp \
+    controller/game/gamefacade.cpp \
+    controller/game/game.cpp \
+    controller/gui/keyboardhandler.cpp \
+    controller/network/server.cpp \
+    controller/network/networkinterface.cpp \
+    controller/network/network.cpp \
+    controller/network/client.cpp
 TRANSLATIONS += snowman-battle_cs.ts
 OTHER_FILES += 
-HEADERS += controller/keyboardhandler.h \
-    view/window.h \
+HEADERS += view/window.h \
     model/shot.h \
     model/weapon.h \
     model/handgun.h \
@@ -36,14 +38,15 @@ HEADERS += controller/keyboardhandler.h \
     model/shootableblock.h \
     model/unshootableblock.h \
     model/weaponpackage.h \
-    controller/game.h \
     view/dialogs/creategame.h \
     view/dialogs/joingame.h \
-    controller/network.h \
-    controller/networkinterface.h \
-    controller/client.h \
-    controller/server.h \
-    controller/gamefacade.h \
     view/scenepanel.h \
-    view/pixmapitem.h
+    view/pixmapitem.h \
+    controller/game/gamefacade.h \
+    controller/game/game.h \
+    controller/gui/keyboardhandler.h \
+    controller/network/server.h \
+    controller/network/networkinterface.h \
+    controller/network/network.h \
+    controller/network/client.h
 RESOURCES += images.qrc
