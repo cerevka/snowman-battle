@@ -11,6 +11,21 @@ ScenePanel::ScenePanel()
     setBackgroundBrush(QBrush(QColor(255, 255, 200)));
     //setOpeningView();
 
+    ///// Testování Ota
+
+    GameFacade * const facade = new GameFacade();
+    facade->newGame(6);
+    handler = new KeyboardHandler(NULL, 0);
+    connect(handler, SIGNAL(upMove(int)), facade, SLOT(startMoveNorth(int)));
+    connect(handler, SIGNAL(downMove(int)), facade, SLOT(startMoveSouth(int)));
+    connect(handler, SIGNAL(leftMove(int)), facade, SLOT(startMoveWest(int)));
+    connect(handler, SIGNAL(rightMove(int)), facade, SLOT(startMoveEast(int)));
+    connect(handler, SIGNAL(stopMove(int)), facade, SLOT(stopMove(int)));
+    connect(handler, SIGNAL(shot(int)), facade, SLOT(shot(int)));
+    connect(handler, SIGNAL(changeWeapon(int)), facade, SLOT(changeWeapon(int)));
+
+    ///// Konec testování Ota
+
 }
 
 void ScenePanel::setBackground(const QString &background)
@@ -69,4 +84,26 @@ void ScenePanel::setPosition(PixmapItem &item, int x, int y)
 {
     item.setPos(x, y);
 }
+
+///// Testování Ota
+
+void ScenePanel::keyPressEvent(QKeyEvent * event)
+{
+
+    QWidget::keyPressEvent(event);
+
+    handler->handleKeyEvent(event);
+
+}
+
+void ScenePanel::keyReleaseEvent(QKeyEvent * event)
+{
+
+    QWidget::keyReleaseEvent(event);
+
+    handler->handleKeyEvent(event);
+
+}
+
+///// Konec testování Ota
 

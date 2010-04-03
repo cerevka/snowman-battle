@@ -8,8 +8,7 @@
 #include "../../model/unshootableblock.h"
 #include <QThread>
 #include <QMutex>
-
-#define _DEBUG_
+#include <QApplication>
 
 #ifdef _DEBUG_
 
@@ -63,7 +62,10 @@ public:
      */
     void removeWeaponPackage(WeaponPackage * const wPackage);
 
-
+    /**
+     * Getr pro hlavní mutex
+     * @return ukazatel mutex, který slouží pro uzamykání hlavního vlákna
+     */
     QMutex * getBigGameMutex(void) const;
 
 protected:
@@ -75,10 +77,7 @@ protected:
 
 private:
 
-    /**
-     * Pokud je true, tak hlavní smyčka hry běží
-     */
-    bool gameRun;
+//    QThread * parentThread;
 
     /**
      * Mutex uzamykající vykonou část hlavní smyčky
@@ -91,6 +90,12 @@ private:
     QList<MapObject *> * allObjects;
     QList<Player *> * allPlayers;
     QList<Shot *> * allShots;
+
+    /**
+     * Pokud je true, tak hlavní smyčka hry běží
+     */
+    bool gameRun;
+
 
     /**
      * Pomocné metody používané hlavní smyčkou
