@@ -5,7 +5,9 @@
 #include <QEvent>
 #include <QKeyEvent>
 
-
+/**
+ * Tato třída se napojí na grafický prvek a na něm odchytává herní klávesy a podle nich posílá signály
+ */
 class KeyboardHandler : public QObject
 {
 
@@ -13,26 +15,28 @@ Q_OBJECT
 
 public:
 
-    explicit KeyboardHandler(QObject * parent = 0);
+    explicit KeyboardHandler(QObject * const parent, const int myID);
 
     void handleKeyEvent(QKeyEvent * const event);
 
 signals:
 
-    void upMove(void);
-    void downMove(void);
-    void leftMove(void);
-    void rightMove(void);
+    void upMove(const int);
+    void downMove(const int);
+    void leftMove(const int);
+    void rightMove(const int);
 
-    void stopMove(void);
+    void stopMove(const int);
 
-    void shot(void);
+    void shot(const int);
 
-    void changeWeapon(void);
+    void changeWeapon(const int);
 
     void pauseGame(void);
 
 private:
+
+    int myID;
 
     int upKey;
     int downKey;

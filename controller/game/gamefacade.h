@@ -27,6 +27,8 @@ public:
      */
     virtual ~GameFacade(void);
 
+public slots:
+
     /**
      * Vytvoří novou hru se zadaným počtem hráčů
      * @param countOfPlayers počet hráčů, kteří budou hrát
@@ -62,8 +64,16 @@ public:
 
 private:
 
+    /**
+     * Ukazatel na právě spuštěnou hru
+     */
     Game * actualGame;
 
+    /**
+     * Jednoduchá metoda, kterou tato tída používá, aby se v ní tolik neopakoval kód
+     * @param playerID id hráče, který se má vyhledat
+     * @return ukazatel na hráče, který byl vyhledán podle id
+     */
     Player * getPlayerById(const int playerID) const;
 
 };

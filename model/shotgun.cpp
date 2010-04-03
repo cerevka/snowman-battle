@@ -24,19 +24,19 @@ void ShotGun::shot(void)
 
     Shot * newShot;
 
-    newShot = new Shot(owner, x, y, angle - 0.2, speed);
+    newShot = new Shot(x, y, angle - 0.2, speed);
     owner->getParentGame()->addShot(newShot);
 
-    newShot = new Shot(owner, x, y, angle - 0.1, speed);
+    newShot = new Shot(x, y, angle - 0.1, speed);
     owner->getParentGame()->addShot(newShot);
 
-    newShot = new Shot(owner, x, y, angle, speed);
+    newShot = new Shot(x, y, angle, speed);
     owner->getParentGame()->addShot(newShot);
 
-    newShot = new Shot(owner, x, y, angle + 0.1, speed);
+    newShot = new Shot(x, y, angle + 0.1, speed);
     owner->getParentGame()->addShot(newShot);
 
-    newShot = new Shot(owner, x, y, angle + 0.2, speed);
+    newShot = new Shot(x, y, angle + 0.2, speed);
     owner->getParentGame()->addShot(newShot);
 
     ammo--;

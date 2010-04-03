@@ -6,6 +6,9 @@
 #include <QtGui/QGraphicsView>
 #include "pixmapitem.h"
 
+#include "../controller/gui/keyboardhandler.h"
+#include "../controller/game/gamefacade.h"
+
 class QLabel;
 
 /**
@@ -62,8 +65,18 @@ public:
       */
     void setDirection(PixmapItem &item, int direction);
 
+    ///// Testování Ota
+
+    void keyPressEvent(QKeyEvent * event);
+    void keyReleaseEvent(QKeyEvent * event);
+
+    ///// Konec testování Ota
+
 private:
     QGraphicsScene *scene;
+
+    /// Testování Ota
+    KeyboardHandler * handler;
 
 };
 

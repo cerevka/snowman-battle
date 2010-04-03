@@ -164,7 +164,7 @@ void Player::changeWeapon(void)
 
 void Player::timerEvent(QTimerEvent * const event)
 {
-    cout << "timerEvent" << endl;
+    killTimer(event->timerId());
     parentGame->getBigGameMutex()->lock();
     respawn();
     parentGame->getBigGameMutex()->unlock();

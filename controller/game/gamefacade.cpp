@@ -23,7 +23,7 @@ GameFacade::~GameFacade(void)
 void GameFacade::newGame(const int countOfPlayers)
 {
 
-    // Vytvářm objekt hry
+    // Vytvářím objekt hry
     actualGame = new Game(countOfPlayers);
 
     // Startuji vlákno

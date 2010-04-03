@@ -4,6 +4,7 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
         QThread(parent)
 {
 
+//    parentThread = QThread::currentThread();
     bigGameMutex = new QMutex();
 
     allObjects = new QList<MapObject *>();
@@ -58,7 +59,7 @@ void Game::run(void)
 
         bigGameMutex->unlock();
 
-        QThread::msleep(100);
+        QThread::msleep(20);
 
     }
 
@@ -97,11 +98,13 @@ bool Game::colideAllObjects(MapObject * const object) const
 void Game::addShot(Shot * const shot)
 {
 
+    shot->moveToThread(QApplication::instance()->thread());
+    shot->setParent(this);
     allShots->append(shot);
 
     // TODO - poslat signál o vytvoření střely
     #ifdef _DEBUG_
-    cout << "Game engine: Shot " << allShots->size() - 1 << " created at " << shot->getX() << ", " << shot->getY() << endl;
+    cout << "Game engine: Shot " << shot->getShotID() << " created at " << shot->getX() << ", " << shot->getY() << endl;
     #endif
 
 }
@@ -222,14 +225,14 @@ void Game::moveShots(void)
         if(canMove){
             // TODO - poslat informaci o pohybu střely
             #ifdef _DEBUG_
-            cout << "Game engine: Shot " << i << " moved to " << actualShot->getX() << ", " << actualShot->getY() << endl;
+            cout << "Game engine: Shot " << actualShot->getShotID() << " moved to " << actualShot->getX() << ", " << actualShot->getY() << endl;
             #endif
         } else {
             allShots->removeAt(i);
-            delete actualShot; // TODO - pořešit ID střel
+            delete actualShot;
             // TODO - poslat informaci o rozpadnutí střely
             #ifdef _DEBUG_
-            cout << "Game engine: Shot " << i << " destroyed" << endl;
+            cout << "Game engine: Shot " << actualShot->getShotID() << " destroyed" << endl;
             #endif
             i--;
         }

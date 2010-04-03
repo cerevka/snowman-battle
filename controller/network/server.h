@@ -30,6 +30,7 @@ public:
      */
     char * recieve();
 private:
+
     QTcpSocket * socket;
 
 

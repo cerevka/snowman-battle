@@ -1,7 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "QMutex"
+#include <QMutex>
+#include <QTimerEvent>
 
 #include "mapobject.h"
 

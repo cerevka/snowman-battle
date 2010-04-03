@@ -15,7 +15,6 @@ HEADERS += controller/game/gamefacade.h \
     model/player.h \
     model/mapobject.h \
     model/machinegun.h \
-    model/immovable.h \
     model/handgun.h \
     view/window.h \
     view/scenepanel.h \
@@ -46,3 +45,5 @@ SOURCES += controller/game/gamefacade.cpp \
     view/dialogs/creategame.cpp \
     main.cpp
 RESOURCES += images.qrc
+TRANSLATIONS += snowman-battle_cs.ts
+DEFINES += _DEBUG_

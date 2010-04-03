@@ -3,15 +3,16 @@
 #include <QtGui>
 #include "view/window.h"
 
-//#define _DEBUG_
-
 #ifdef _DEBUG_
 
-#include "controller/gamefacade.h"
+#include "controller/game/gamefacade.h"
 #include "iostream"
 #include "string"
 using namespace std;
 
+/**
+ * Jednoduchá funkce používaná pro debugování, příjmá příkazy z konzole a předává je hře
+ */
 void debugConsole(void)
 {
 
@@ -72,7 +73,7 @@ int main(int argc, char * argv[])
     app.installTranslator(&translator);
 
     #ifdef _DEBUG_
-    debugConsole();
+//    debugConsole();
     #endif
 
     // TODO zde bude alokace proměnných pro vlastní program (např. hlavní okno programu)
