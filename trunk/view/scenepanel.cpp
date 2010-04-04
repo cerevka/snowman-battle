@@ -38,7 +38,7 @@ void ScenePanel::setBackground(const QString &background)
 void ScenePanel::setOpeningView()
 {
 
-    PixmapItem *item = new PixmapItem("snowman-stickup.jpg");
+    PixmapItem *item = new PixmapItem("snowman-stickup.jpg", 1000, 800, 1000, 800);
     scene->addItem(item);
 }
 
@@ -56,25 +56,31 @@ void ScenePanel::removeGraficObj(PixmapItem &item)
 
 void ScenePanel::setDirection(PixmapItem &item, int direction)
 {
+
+    int x = item.w / 2;
+    int y = item.h / 2;
+
+
     switch (direction)
     {
     case 0:
         {
+            item.setTransform(QTransform().translate(x, y).rotate(0).translate(-x, -y));
             break;
         }
     case 1:
         {
-            item.rotate(-90);
+            item.setTransform(QTransform().translate(x, y).rotate(90).translate(-x, -y));
             break;
         }
     case 2:
         {
-            item.rotate(180);
+            item.setTransform(QTransform().translate(x, y).rotate(180).translate(-x, -y));
             break;
         }
     case 3:
         {
-            item.rotate(90);
+            item.setTransform(QTransform().translate(x, y).rotate(-90).translate(-x, -y));
             break;
         }
     }

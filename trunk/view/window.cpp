@@ -12,14 +12,16 @@ Window::Window()
     //////////////////Pro testovani/////////////
     QString *str = new QString("background1.jpg");
     scenepanel->setBackground(*str);
-    x = 400;
-    y = 220;
-    snow = new PixmapItem("snowman_black.png");
-    scenepanel->setNewGraficObj(*snow, x, y, 0);
-    x1 = 0;
-    y1 = 0;
-    snow1 = new PixmapItem("snowman_blue.png");
+
+    x1 = 300;
+    y1 = 150;
+    snow1 = new PixmapItem("machine_gun.png", 30, 100, 30-80, 100-15);
     scenepanel->setNewGraficObj(*snow1, x1, y1, 0);
+
+    x = 200;
+    y = 150;
+    snow = new PixmapItem("snowman_black.png", 150, 85, 150, 85);
+    scenepanel->setNewGraficObj(*snow, x, y, 0);
     /////////////////Konec testovani////////////
 
     //Vytvori akce
@@ -110,9 +112,10 @@ void Window::settings()
 
     ///////////////////testovani//////////////////////////////////
 
-
-    scenepanel->setPosition(*snow, x--, y);
-    scenepanel->setPosition(*snow1, x1++, y1);
+    scenepanel->setPosition(*snow, x--, y--);
+    scenepanel->setPosition(*snow1, x1--, y1--);
+    scenepanel->setDirection(*snow, x%4);
+    scenepanel->setDirection(*snow1, x%4);
 
 
 

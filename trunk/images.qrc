@@ -4,5 +4,6 @@
         <file>images/background1.jpg</file>
         <file>images/snowman_black.png</file>
         <file>images/snowman_blue.png</file>
+        <file>images/machine_gun.png</file>
     </qresource>
 </RCC>

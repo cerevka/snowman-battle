@@ -14,8 +14,22 @@ public:
     /**
       * Vytvori graficky objekt
       * @param filename jemno obrazku, ktery chceme nahrat
+      * @parem w sirka obrazku
+      * @param h vyska obrazku
+      * @param x x-ovy rozmer obrazku kvuli rotaci
+      * @param y y-ovy rozmer obrazku kvuli rotaci
       */
-    PixmapItem(const QString &filename);
+    PixmapItem(const QString &filename, int w, int h, int x, int y);
+
+    /**
+      * Vyska obrazku
+      */
+    int h;
+
+    /**
+      * Sirska obrazku
+      */
+    int w;
 };
 
 #endif // PIXMAPITEM_H
