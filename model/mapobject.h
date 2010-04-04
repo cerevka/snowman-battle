@@ -22,7 +22,7 @@ public:
      * @param y2 y-ová souřadnice pravého dolního rohu objektu
      * @param parent hra v rámci níž je tento objekt vytvořen
      */
-    MapObject(Game * const parent, const double x1 = -1.0, const double y1 = -1.0, const double x2 = -1.0, const double y2 = -1.0);
+    MapObject(Game * const parent, const double x1 = -100.0, const double y1 = -100.0, const double x2 = -100.0, const double y2 = -100.0);
 
     /**
      * Metoda popisující jak se objekt zachová, když na něj vběhne hráč
@@ -64,6 +64,8 @@ protected:
      */
     double x2;
     double y2;
+
+    friend class Game;
 
 };
 

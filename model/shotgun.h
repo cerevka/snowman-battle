@@ -3,6 +3,9 @@
 
 #include "weapon.h"
 
+/**
+ * Třída reprezentující brokovnici
+ */
 class ShotGun : public Weapon
 {
 

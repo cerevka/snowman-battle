@@ -1,8 +1,6 @@
 #include "handgun.h"
 #include "../controller/game/game.h"
 #include "shot.h"
-#include "cmath"
-using namespace std;
 
 HandGun::HandGun(Player * const parent) :
         Weapon(parent)

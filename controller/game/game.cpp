@@ -18,11 +18,36 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
         allObjects->append(newPlayer);
     }
 
-    // TODO - zde bude definice mapy
-    allObjects->append(new UnshootableBlock(this, 0, 0, 500, 30));
-    allObjects->append(new UnshootableBlock(this, 0, 470, 500, 500));
-    allObjects->append(new UnshootableBlock(this, 0, 30, 30, 470));
-    allObjects->append(new UnshootableBlock(this, 470, 30, 500, 470));
+    // Okraje mapy
+    allObjects->append(new UnshootableBlock(this, -30, -30, 905, 0));
+    allObjects->append(new UnshootableBlock(this, -30, 713, 905, 743));
+    allObjects->append(new UnshootableBlock(this, -30, 0, 0, 713));
+    allObjects->append(new UnshootableBlock(this, 875, 0, 905, 743));
+
+    // Skály
+    allObjects->append(new UnshootableBlock(this, 201, 118, 282, 235));
+    allObjects->append(new UnshootableBlock(this, 724, 280, 799, 353));
+
+    // Lesy
+    allObjects->append(new UnshootableBlock(this, 361, 0, 443, 73));
+    allObjects->append(new UnshootableBlock(this, 522, 40, 600, 114));
+    allObjects->append(new UnshootableBlock(this, 81, 480, 162, 602));
+    allObjects->append(new UnshootableBlock(this, 242, 602, 322, 681));
+    allObjects->append(new UnshootableBlock(this, 401, 561, 482, 636));
+
+    // Voda
+    allObjects->append(new ShootableBlock(this, 98, 264, 142, 301));
+    allObjects->append(new ShootableBlock(this, 59, 302, 182, 387));
+    allObjects->append(new ShootableBlock(this, 95, 388, 182, 424));
+
+    allObjects->append(new ShootableBlock(this, 343, 214, 415, 256));
+    allObjects->append(new ShootableBlock(this, 343, 257, 506, 421));
+    allObjects->append(new ShootableBlock(this, 507, 340, 542, 421));
+
+    allObjects->append(new ShootableBlock(this, 577, 466, 648, 544));
+    allObjects->append(new ShootableBlock(this, 624, 419, 734, 510));
+
+    countOfWeapons = 0;
 
     gameRun = true;
 
@@ -44,6 +69,9 @@ Game::~Game(void)
 void Game::run(void)
 {
 
+    // inicializace náhodného generátoru čísel
+    qsrand(QTime::currentTime().msec());
+
     // Naspawnování všech hráčů
     for(int i = 0; i < allPlayers->size(); i++){
         allPlayers->value(i)->respawn();
@@ -56,6 +84,7 @@ void Game::run(void)
 
         movePlayers();
         moveShots();
+        generateWeaponPackages();
 
         bigGameMutex->unlock();
 
@@ -70,29 +99,16 @@ void Game::quitGame(void)
     gameRun = false;
 }
 
-bool Game::colideAllObjects(MapObject * const object) const
+void Game::generateValidCoordinates(const double size, MapObject * const object)
 {
+    do {
 
-    bool output = false;
+        object->x1 = qAbs(qrand() % 875);
+        object->x2 = object->x1 + size;
+        object->y1 = qAbs(qrand() % 713);
+        object->y2 = object->y1 + size;
 
-    // Prohledávám všechny objekty na herní ploše
-    for(int i = 0; i < allObjects->size(); i++){
-
-        // Pokud jsem vzal totožný objekt, tak netestuji kolize
-        if(object == allObjects->value(i)){
-            continue;
-        }
-
-        // Pokud objekt koliduje, ukončím metodu s tím, že existuje objekt, který koliduje
-        if (colideRectangles(allObjects->value(i), object)){
-            output = true;
-            break;
-        }
-
-    }
-
-    return output;
-
+    } while(colideAllObjects(object)); // provádím generování souřadnic, dokud nanajdu vyhovující místo
 }
 
 void Game::addShot(Shot * const shot)
@@ -104,7 +120,7 @@ void Game::addShot(Shot * const shot)
 
     // TODO - poslat signál o vytvoření střely
     #ifdef _DEBUG_
-    cout << "Game engine: Shot " << shot->getShotID() << " created at " << shot->getX() << ", " << shot->getY() << endl;
+    qDebug() << "Game engine: Shot" << shot->getShotID() << "created at" << shot->getX() << "," << shot->getY();
     #endif
 
 }
@@ -113,8 +129,12 @@ void Game::removeWeaponPackage(WeaponPackage * const wPackage)
 {
 
     allObjects->removeOne(wPackage);
+    countOfWeapons--;
 
     // TODO - poslat signál o sebrání zbraně
+    #ifdef _DEBUG_
+    qDebug() << "Game engine: Weapon package" << wPackage->getWeaponPackageID() << "removed from" << wPackage->getX1() << "," << wPackage->getY1();
+    #endif
 
 }
 
@@ -173,7 +193,7 @@ void Game::movePlayers(void)
             if(canMove){
                 // TODO - poslat zprávu o pohybu hráče
                 #ifdef _DEBUG_
-                cout << "Game engine: Player " << actualPlayer->getID() << " moved to " << actualPlayer->getX1() << ", " << actualPlayer->getY1() << endl;
+                qDebug() << "Game engine: Player" << actualPlayer->getID() << "moved to" << actualPlayer->getX1() << "," << actualPlayer->getY1();
                 #endif
             } else {
                 actualPlayer->backMove();
@@ -225,14 +245,14 @@ void Game::moveShots(void)
         if(canMove){
             // TODO - poslat informaci o pohybu střely
             #ifdef _DEBUG_
-            cout << "Game engine: Shot " << actualShot->getShotID() << " moved to " << actualShot->getX() << ", " << actualShot->getY() << endl;
+            qDebug() << "Game engine: Shot" << actualShot->getShotID() << "moved to" << actualShot->getX() << "," << actualShot->getY();
             #endif
         } else {
             allShots->removeAt(i);
             delete actualShot;
             // TODO - poslat informaci o rozpadnutí střely
             #ifdef _DEBUG_
-            cout << "Game engine: Shot " << actualShot->getShotID() << " destroyed" << endl;
+            qDebug() << "Game engine: Shot" << actualShot->getShotID() << "destroyed";
             #endif
             i--;
         }
@@ -241,12 +261,60 @@ void Game::moveShots(void)
 
 }
 
-bool Game::colideObjects(MapObject * const one, MapObject * const two)
+void Game::generateWeaponPackages(void)
+{
+
+    // Pokud není na ploše žádná zbraň, můžu ji s určitou pravděpodobností vytvořit
+    if((countOfWeapons < 3) && ((qrand()%1000) < 5)){
+
+        countOfWeapons++;
+
+        // TODO - dovyřešit problém parent systému a vláken
+        WeaponPackage * const newPack = new WeaponPackage(this);
+        newPack->moveToThread(QApplication::instance()->thread());
+        newPack->setParent(this);
+        allObjects->append(newPack);
+
+        // TODO - poslat signál o vytvoření ležící zbraně
+        #ifdef _DEBUG_
+        qDebug() << "Game engine: Weapon pack" << newPack->getWeaponPackageID() << "created at" << newPack->getX1() << "," << newPack->getY1() << "; Type:" << newPack->getType();
+        #endif
+
+    }
+
+}
+
+bool Game::colideAllObjects(MapObject * const object) const
+{
+
+    bool output = false;
+
+    // Prohledávám všechny objekty na herní ploše
+    for(int i = 0; i < allObjects->size(); i++){
+
+        // Pokud jsem vzal totožný objekt, tak netestuji kolize
+        if(object == allObjects->value(i)){
+            continue;
+        }
+
+        // Pokud objekt koliduje, ukončím metodu s tím, že existuje objekt, který koliduje
+        if (colideRectangles(allObjects->value(i), object)){
+            output = true;
+            break;
+        }
+
+    }
+
+    return output;
+
+}
+
+inline bool Game::colideObjects(MapObject * const one, MapObject * const two)
 {
     return colideRectangles(one, two) || colideRectangles(two, one);
 }
 
-bool Game::colideRectangles(MapObject * const first, MapObject * const second)
+inline bool Game::colideRectangles(MapObject * const first, MapObject * const second)
 {
     return     colideAlgorythm(first->getX1(), first->getY1(), first->getX2(), first->getY2(), second->getX1(), second->getY1())
             || colideAlgorythm(first->getX1(), first->getY1(), first->getX2(), first->getY2(), second->getX2(), second->getY2())
@@ -254,12 +322,12 @@ bool Game::colideRectangles(MapObject * const first, MapObject * const second)
             || colideAlgorythm(first->getX1(), first->getY1(), first->getX2(), first->getY2(), second->getX1(), second->getY2());
 }
 
-bool Game::colideShots(MapObject * const object, Shot * const shot)
+inline bool Game::colideShots(MapObject * const object, Shot * const shot)
 {
     return colideAlgorythm(object->getX1(), object->getY1(), object->getX2(), object->getY2(), shot->getX(), shot->getY());
 }
 
-bool Game::colideAlgorythm(const double recX1, const double recY1, const double recX2, const double recY2, const double pointX, const double pointY)
+inline bool Game::colideAlgorythm(const double recX1, const double recY1, const double recX2, const double recY2, const double pointX, const double pointY)
 {
 
     if(pointX >= recX1 && pointX <= recX2 && pointY >= recY1 && pointY <= recY2){

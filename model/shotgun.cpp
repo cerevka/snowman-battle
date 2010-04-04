@@ -7,7 +7,7 @@ ShotGun::ShotGun(Player * const parent) :
         Weapon(parent)
 {
 
-    ammo = 3;
+    ammo = 0;
 
 }
 
