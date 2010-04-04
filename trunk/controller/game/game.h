@@ -5,15 +5,16 @@
 #include "../../model/player.h"
 #include "../../model/shot.h"
 #include "../../model/weaponpackage.h"
+#include "../../model/shootableblock.h"
 #include "../../model/unshootableblock.h"
 #include <QThread>
 #include <QMutex>
 #include <QApplication>
+#include <QTime>
 
 #ifdef _DEBUG_
 
-#include "iostream"
-using namespace std;
+#include <QtDebug>
 
 #endif
 
@@ -44,11 +45,11 @@ public:
     void quitGame(void);
 
     /**
-     * Pomocná metoda, která zjistí jestli zadaný objekt koliduje s kterýmkoli jiným na herní ploše
-     * @param object objekt, se kterým se mají počítat kolize
-     * @return true, pokud koliduje s některým jiným objektem
+     * Metoda, která slouží pro vyhledání náhodných souřadnic, do kterých může být umísteň objekt
+     * @param size velikost daného objektu v pixelech
+     * @param object ukazatel na objekt, který se má umístit
      */
-    bool colideAllObjects(MapObject * const object) const;
+    void generateValidCoordinates(const double size, MapObject * const object);
 
     /**
      * Přidá střelu do seznamu střel(bude s ní pohybovat)
@@ -96,12 +97,24 @@ private:
      */
     bool gameRun;
 
+    /**
+     * Počet zbraní, které jsou na ploše
+     */
+    int countOfWeapons;
 
     /**
      * Pomocné metody používané hlavní smyčkou
      */
     void movePlayers(void);
     void moveShots(void);
+    void generateWeaponPackages(void);
+
+    /**
+     * Pomocná metoda, která zjistí jestli zadaný objekt koliduje s kterýmkoli jiným na herní ploše
+     * @param object objekt, se kterým se mají počítat kolize
+     * @return true, pokud koliduje s některým jiným objektem
+     */
+    bool colideAllObjects(MapObject * const object) const;
 
     /**
      * Pomocné metody, které se používají k detekci kolizí

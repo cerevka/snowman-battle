@@ -15,12 +15,15 @@ Shot::Shot(const double x, const double y, const double angle, const double spee
 
     shotID = 0;
 
-    // TODO - Co když je víc jak 255 střel
-    for(int i = 0; i < 255; i++){
+    for(int i = 0; i < idArray.size(); i++){
         if(idArray[i] == false){
             shotID = i;
             idArray[i] = true;
             break;
+        }
+
+        if(i == idArray.size()){
+            throw QString(tr("Too many shots (over 256)"));
         }
     }
 

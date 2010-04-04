@@ -70,7 +70,17 @@ public:
      */
     void changeWeapon(void);
 
+    /**
+     * Tato metoda je zavolána pět vteřin poté, co byl hráč zabit, a způsobí, že se hráč znovu spawne
+     * @param event časovač, který spustil tuto metodu
+     */
     void timerEvent (QTimerEvent * const event);
+
+    /**
+     * Setr pro nastavení konkrétní zbraně jako aktuální (volá se po sebrání zbraně)
+     * @param actualWeapon pořadí zbraně, na kterou se má přepnout
+     */
+    void setActualWeapon(const int actualWeapon);
 
     /**
      * Getr pro id

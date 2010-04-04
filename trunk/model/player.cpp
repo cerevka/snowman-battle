@@ -3,10 +3,6 @@
 #include "handgun.h"
 #include "machinegun.h"
 #include "shotgun.h"
-#include "cmath"
-#include "cstdlib"
-#include "ctime"
-using namespace std;
 
 double Player::playerSize = 30.0; // TODO - doplnit skutečnou šířku a výšku hráče v pixelech
 double Player::stepSize = 0.5; // TODO - doplnit skutečnou velikost kroku
@@ -40,16 +36,17 @@ bool Player::interactShot(Shot * const shot)
     spawned = false;
 
     // Zabití hráče
-    x1 = -1.0;
-    y1 = -1.0;
-    x2 = -1.0;
-    y2 = -1.0;
+    x1 = -100.0;
+    y1 = -100.0;
+    x2 = -100.0;
+    y2 = -100.0;
 
     // TODO poslat informaci o zabití
     #ifdef _DEBUG_
-    cout << "Game engine: Player " << playerID << " killed" << endl;
+    qDebug() << "Game engine: Player" << playerID << "killed";
     #endif
 
+    // startuji časovač pro respawnutí
     startTimer(5000);
 
     return false;
@@ -60,17 +57,10 @@ void Player::respawn(void)
 {
 
     // Vygenerování nových souřednic
-    do {
-
-        x1 = abs((rand() * time(NULL) * 1000) % 500); // TODO - Přidat modulo podle velikosti mapy
-        x2 = x1 + playerSize;
-        y1 = abs((rand() * time(NULL) * 1000) % 500);
-        y2 = y1 + playerSize;
-
-    } while(parentGame->colideAllObjects(this)); // provádím generování souřadnic, dokud nanajdu vyhovující místo
+    parentGame->generateValidCoordinates(playerSize, this);
 
     // Vygenerování nového směru
-    direction = (Directions)((rand() * time(NULL)) % 4);
+    direction = (Directions)(qrand() % 4);
 
     // Resetování příznaků
     moving = false;
@@ -79,7 +69,7 @@ void Player::respawn(void)
 
     // TODO poslat informaci o spawnutí
     #ifdef _DEBUG_
-    cout << "Game engine: Player " << playerID << " spawned at (" << x1 << ", " << y1 << "),(" << x2 << ", " << y2 << "); direction: " << direction << endl;
+    qDebug() << "Game engine: Player" << playerID << "spawned at (" << x1 << "," << y1 << "),(" << x2 << "," << y2 << "); direction:" << direction;
     #endif
 
 }
@@ -143,7 +133,13 @@ void Player::shot(void)
 {
 
     shoting = false;
-    inventory[actualWeapon]->shot();
+
+    // Výjimka nastane, pokud je více než 256 střel
+    try{
+        inventory[actualWeapon]->shot();
+    } catch (QString & ex){
+        // Tato výjimka se ignoruje (střely navíc se prostě nevytvoří)
+    }
 
 }
 
@@ -157,7 +153,7 @@ void Player::changeWeapon(void)
 
     // TODO - poslat signál o změně zbraně
     #ifdef _DEBUG_
-    cout << "Game engine: Player " << playerID << " equiped weapon " << actualWeapon << endl;
+    qDebug() << "Game engine: Player" << playerID << "equiped weapon" << actualWeapon;
     #endif
 
 }
@@ -168,6 +164,18 @@ void Player::timerEvent(QTimerEvent * const event)
     parentGame->getBigGameMutex()->lock();
     respawn();
     parentGame->getBigGameMutex()->unlock();
+
+}
+
+void Player::setActualWeapon(const int actualWeapon)
+{
+
+    this->actualWeapon = actualWeapon;
+
+    // TODO - poslat signál o změně zbraně
+    #ifdef _DEBUG_
+    qDebug() << "Game engine: Player" << playerID << "equiped weapon" << actualWeapon;
+    #endif
 
 }
 

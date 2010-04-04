@@ -70,6 +70,11 @@ private:
     Game * actualGame;
 
     /**
+     * Je true pokud pod fasádou běží hra
+     */
+    bool isGameActive;
+
+    /**
      * Jednoduchá metoda, kterou tato tída používá, aby se v ní tolik neopakoval kód
      * @param playerID id hráče, který se má vyhledat
      * @return ukazatel na hráče, který byl vyhledán podle id
