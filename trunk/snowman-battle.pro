@@ -20,7 +20,9 @@ HEADERS += controller/game/gamefacade.h \
     view/scenepanel.h \
     view/pixmapitem.h \
     view/dialogs/joingame.h \
-    view/dialogs/creategame.h
+    view/dialogs/creategame.h \
+    view/statusbar.h \
+    view/chatpanel.h
 SOURCES += controller/game/gamefacade.cpp \
     controller/game/game.cpp \
     controller/gui/keyboardhandler.cpp \
@@ -43,7 +45,9 @@ SOURCES += controller/game/gamefacade.cpp \
     view/pixmapitem.cpp \
     view/dialogs/joingame.cpp \
     view/dialogs/creategame.cpp \
-    main.cpp
+    main.cpp \
+    view/statusbar.cpp \
+    view/chatpanel.cpp
 RESOURCES += images.qrc
 TRANSLATIONS += snowman-battle_cs.ts
 DEFINES += _DEBUG_

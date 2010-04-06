@@ -6,6 +6,8 @@
 #include "dialogs/creategame.h"
 #include "dialogs/joingame.h"
 #include "scenepanel.h"
+#include "statusbar.h"
+#include "chatpanel.h"
 
 class QAction;
 class QMenu;
@@ -75,6 +77,8 @@ class Window : public QMainWindow
      QAction *aboutQtAct;
 
      ScenePanel *scenepanel;
+     StatusBar *statusbar;
+     ChatPanel *chatpanel;
 
      //// Tohle je pro testovani////
      int x, x1;
