@@ -4,7 +4,8 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
         QThread(parent)
 {
 
-//    parentThread = QThread::currentThread();
+    this->moveToThread(this);
+
     bigGameMutex = new QMutex();
     pauseCondition = new QWaitCondition();
 
@@ -72,7 +73,7 @@ Game::~Game(void)
 void Game::run(void)
 {
 
-    // inicializace náhodného generátoru čísel
+    // Inicializace náhodného generátoru čísel
     qsrand(QTime::currentTime().msec());
 
     // Naspawnování všech hráčů
@@ -80,25 +81,9 @@ void Game::run(void)
         allPlayers->value(i)->respawn();
     }
 
-    // Dokud proměnná gameRun je true, tak provádím hlavní smyčku programu
-    while(gameRun){
-
-        bigGameMutex->lock();
-
-        movePlayers();
-        moveShots();
-        generateWeaponPackages();
-
-        bigGameMutex->unlock();
-
-        if(paused){
-            pauseCondition->wait(bigGameMutex);
-            paused = false;
-        }
-
-        QThread::msleep(20);
-
-    }
+    // Nastartuji časovač a spustím event loop
+    startTimer(20);
+    this->exec();
 
 }
 
@@ -122,8 +107,9 @@ void Game::generateValidCoordinates(const double size, MapObject * const object)
 void Game::addShot(Shot * const shot)
 {
 
-    shot->moveToThread(QApplication::instance()->thread());
+    shot->moveToThread(this);
     shot->setParent(this);
+
     allShots->append(shot);
 
     // TODO - poslat signál o vytvoření střely
@@ -143,6 +129,33 @@ void Game::removeWeaponPackage(WeaponPackage * const wPackage)
     #ifdef _DEBUG_
     qDebug() << "Game engine: Weapon package" << wPackage->getWeaponPackageID() << "removed from" << wPackage->getX1() << "," << wPackage->getY1();
     #endif
+
+}
+
+void Game::timerEvent (QTimerEvent * const event)
+{
+
+    bigGameMutex->lock();
+
+    movePlayers();
+    moveShots();
+    generateWeaponPackages();
+
+    bigGameMutex->unlock();
+
+    // pokud se má hra pauznout zastavím vlákno
+    if(paused){
+        pauseCondition->wait(bigGameMutex);
+        paused = false;
+    }
+
+    // pokud se má hra ukončit, ukončím event loop
+    if(!gameRun){
+
+        killTimer(event->timerId());
+        this->exit(0);
+
+    }
 
 }
 
