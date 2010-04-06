@@ -5,6 +5,9 @@
 
 class Player;
 
+/**
+ * Třída reprezentující zbraň, kterou nese hráč
+ */
 class Weapon : public QObject
 {
 
@@ -34,8 +37,6 @@ public:
      */
     int getAmmo(void) const;
 
-    void findPointOfCreatingShots(double & x, double & y, double & angle);
-
 protected:
 
     /**
@@ -47,6 +48,14 @@ protected:
      * Hráč, který má tuto zbraň
      */
     Player * owner;
+
+    /**
+     * Pomocná metoda, která na základě parametrů hráče, zjistí, ve kterém bodu se objeví střela(y)
+     * @param x na místo, kam ukazuje tento ukazatel, se zapíše x-ové souřadnice bodu
+     * @param y na místo, kam ukazuje tento ukazatel, se zapíše y-ové souřadnice bodu
+     * @param angle na místo, kam ukazuje tento ukazatel, se zapíše úhel, pod kterým bude střela leťet
+     */
+    void findPointOfCreatingShots(double & x, double & y, double & angle);
 
 };
 

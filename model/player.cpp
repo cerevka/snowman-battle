@@ -12,10 +12,15 @@ Player::Player(Game * const parent, const int id) :
 {
 
     playerID = id;
+    active = true;
     spawned = false;
     direction = NORTH;
     moving = false;
     shoting = false;
+    canShot = true;
+
+    idCooldownTimer = 0;
+    idRespawnTimer = 0;
 
     // Vytvoření inventáře se zbraněmi
     inventory[0] = new HandGun(this);
@@ -47,7 +52,7 @@ bool Player::interactShot(Shot * const shot)
     #endif
 
     // startuji časovač pro respawnutí
-    startTimer(5000);
+    idRespawnTimer = startTimer(5000);
 
     return false;
 
@@ -134,11 +139,17 @@ void Player::shot(void)
 
     shoting = false;
 
-    // Výjimka nastane, pokud je více než 256 střel
-    try{
-        inventory[actualWeapon]->shot();
-    } catch (QString & ex){
-        // Tato výjimka se ignoruje (střely navíc se prostě nevytvoří)
+    // Mohu vystřelit jen pokud neběží cooldown
+    if(canShot){
+        // Výjimka nastane, pokud je více než 256 střel
+        try{
+            inventory[actualWeapon]->shot();
+            canShot = false;
+            idCooldownTimer = startTimer(600);
+        } catch (QString & ex){
+            // Tato výjimka se ignoruje (střely navíc se prostě nevytvoří)
+        }
+
     }
 
 }
@@ -160,10 +171,20 @@ void Player::changeWeapon(void)
 
 void Player::timerEvent(QTimerEvent * const event)
 {
+
     killTimer(event->timerId());
-    parentGame->getBigGameMutex()->lock();
-    respawn();
-    parentGame->getBigGameMutex()->unlock();
+
+    // Obsluha časovače na respawn hráče
+    if(event->timerId() == idRespawnTimer) {
+        parentGame->getBigGameMutex()->lock();
+        respawn();
+        parentGame->getBigGameMutex()->unlock();
+    }
+
+    // Obsluha časovače na cooldown zbraně
+    if(event->timerId() == idCooldownTimer) {
+        canShot = true;
+    }
 
 }
 
@@ -217,6 +238,30 @@ bool Player::isShoting(void) const
 bool Player::isSpawned(void) const
 {
     return spawned;
+}
+
+bool Player::isActive(void) const
+{
+    return active;
+}
+
+void Player::setActive(const bool active)
+{
+
+    this->active = active;
+
+    if(active){
+        // TODO - poslat signál o aktivování hráče
+        #ifdef _DEBUG_
+        qDebug() << "Game engine: Player" << playerID << "activated";
+        #endif
+    } else {
+        // TODO - poslat signál o deaktivování hráče
+        #ifdef _DEBUG_
+        qDebug() << "Game engine: Player" << playerID << "deactivated";
+        #endif
+    }
+
 }
 
 Weapon * const * Player::getInventory(void) const

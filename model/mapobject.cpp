@@ -1,8 +1,11 @@
 #include "mapobject.h"
 
 MapObject::MapObject(Game * const parent, const double x1, const double y1, const double x2, const double y2) :
-    QObject((QObject *)parent)
+    QObject()
 {
+
+    this->moveToThread(QApplication::instance()->thread());
+    this->setParent((QObject *)parent);
 
     this->parentGame = parent;
 

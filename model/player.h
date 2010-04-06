@@ -111,6 +111,12 @@ public:
     bool isSpawned(void) const;
 
     /**
+     * Getr a setr pro příznak aktivity
+     */
+    bool isActive(void) const;
+    void setActive(const bool active);
+
+    /**
      * Getr pro inventář zbraní
      */
     Weapon * const * getInventory(void) const;
@@ -144,6 +150,21 @@ private:
     int playerID;
 
     /**
+     * Pokud je false, tak hráč nemůže vystřelit, protože mu běží cooldown
+     */
+    bool canShot;
+
+    /**
+     * Id timeru, který řídí respawn hráče
+     */
+    int idRespawnTimer;
+
+    /**
+     * Id timeru, který řídí cooldown zbraně
+     */
+    int idCooldownTimer;
+
+    /**
      * Proměnná pro směr, příznak pohybu a příznak střelby
      */
     Directions direction;
@@ -154,6 +175,11 @@ private:
      * Pokud je true, tak je hráč na herní ploše
      */
     bool spawned;
+
+    /**
+     * Pokud hráč na síti neodpovídá, je označen jako neaktivní, tzn. tato proměnná bude false
+     */
+    bool active;
 
     /**
      * Zálohy souřadnice pro případ, že je potřeba hráče posunout zpět (na cílové místě je překážka)

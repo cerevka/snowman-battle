@@ -11,10 +11,20 @@ class MachineGun : public Weapon
 
 public:
 
+    /**
+     * Konstruktor vytvoří danému hráči samopal
+     * @param parent hráč, kterému zbraň patří
+     */
     explicit MachineGun(Player * const parent);
 
+    /**
+     * Implementace abstraktní metody předka (výstřel zbraně)
+     */
     void shot(void);
 
+    /**
+     * Implementace abstraktní metody předka (doplnění nábojů)
+     */
     void refill(void);
 
     /**
@@ -25,6 +35,9 @@ public:
 
 private:
 
+    /**
+     * Počet nábojů, které se mají v dané dávce ještě vystřelit
+     */
     int restShots;
 
 };
