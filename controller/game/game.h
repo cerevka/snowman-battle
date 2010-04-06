@@ -65,6 +65,12 @@ public:
     void removeWeaponPackage(WeaponPackage * const wPackage);
 
     /**
+     * Tato metoda se spouští každý frame a rpovádí deteci kolizí
+     * @param event časovač, který spustil tuhle metodu
+     */
+    void timerEvent (QTimerEvent * const event);
+
+    /**
      * Getr pro hlavní mutex
      * @return ukazatel mutex, který slouží pro uzamykání hlavního vlákna
      */
@@ -73,13 +79,11 @@ public:
 protected:
 
     /**
-     * Hlavní výkonná smyčka hry (detekce kolizí a pohyb objektů)
+     * Metoda běhu vlákna, provede nezbytnou inicializaci a spustí smyčku událostí
      */
     virtual void run(void);
 
 private:
-
-//    QThread * parentThread;
 
     /**
      * Mutex uzamykající vykonou část hlavní smyčky

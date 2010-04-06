@@ -3,8 +3,12 @@
 #include "cmath"
 
 Weapon::Weapon(Player * const parent) :
-    QObject((QObject *)parent)
+    QObject(/*(QObject *)parent*/)
 {
+
+    this->moveToThread((QThread *)parent->getParentGame());
+    this->setParent(parent);
+
     ammo = 1;
     owner = parent;
 }

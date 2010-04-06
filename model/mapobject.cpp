@@ -4,7 +4,7 @@ MapObject::MapObject(Game * const parent, const double x1, const double y1, cons
     QObject()
 {
 
-    this->moveToThread(QApplication::instance()->thread());
+    this->moveToThread((QThread *)parent);
     this->setParent((QObject *)parent);
 
     this->parentGame = parent;
