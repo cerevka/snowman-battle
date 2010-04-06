@@ -23,6 +23,7 @@ ScenePanel::ScenePanel()
     connect(handler, SIGNAL(stopMove(int)), facade, SLOT(stopMove(int)));
     connect(handler, SIGNAL(shot(int)), facade, SLOT(shot(int)));
     connect(handler, SIGNAL(changeWeapon(int)), facade, SLOT(changeWeapon(int)));
+    connect(handler, SIGNAL(pauseGame()), facade, SLOT(pauseGame()));
 
     ///// Konec testování Ota
 

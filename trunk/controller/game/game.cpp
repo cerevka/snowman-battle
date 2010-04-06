@@ -6,6 +6,7 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
 
 //    parentThread = QThread::currentThread();
     bigGameMutex = new QMutex();
+    pauseCondition = new QWaitCondition();
 
     allObjects = new QList<MapObject *>();
     allPlayers = new QList<Player *>();
@@ -49,6 +50,7 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
 
     countOfWeapons = 0;
 
+    paused = false;
     gameRun = true;
 
 }
@@ -59,6 +61,7 @@ Game::~Game(void)
     gameRun = false;
 
     delete bigGameMutex;
+    delete pauseCondition;
 
     delete allObjects;
     delete allPlayers;
@@ -87,6 +90,11 @@ void Game::run(void)
         generateWeaponPackages();
 
         bigGameMutex->unlock();
+
+        if(paused){
+            pauseCondition->wait(bigGameMutex);
+            paused = false;
+        }
 
         QThread::msleep(20);
 
@@ -159,7 +167,7 @@ void Game::movePlayers(void)
             bool canMove = true;
 
             // Pokud je hráč mrtvý, tak jdu na dalšího
-            if(actualPlayer->isSpawned() == false){
+            if((actualPlayer->isSpawned() == false) || (actualPlayer->isActive() == false)){
                 continue;
             }
 
@@ -269,10 +277,7 @@ void Game::generateWeaponPackages(void)
 
         countOfWeapons++;
 
-        // TODO - dovyřešit problém parent systému a vláken
         WeaponPackage * const newPack = new WeaponPackage(this);
-        newPack->moveToThread(QApplication::instance()->thread());
-        newPack->setParent(this);
         allObjects->append(newPack);
 
         // TODO - poslat signál o vytvoření ležící zbraně

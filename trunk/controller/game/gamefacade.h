@@ -41,12 +41,12 @@ public slots:
     void endGame(void);
 
     /**
-     * Pauzne aktuální hru
+     * Pauzne (nebo odpauzne) aktuální hru
      */
     void pauseGame(void);
 
     /**
-     * Metody pro zahájení pohybu danným směrem
+     * Sloty pro zahájení pohybu danným směrem
      * @param playerID id hráče, který tuto akci má vykonat
      */
     void startMoveNorth(const int playerID);
@@ -55,12 +55,19 @@ public slots:
     void startMoveEast(const int playerID);
 
     /**
-     * Metody pro přerušení pohybu, střelbu a změnu zbraně
+     * Sloty pro přerušení pohybu, střelbu a změnu zbraně
      * @param playerID id hráče, který tuto akci má vykonat
      */
     void stopMove(const int playerID);
     void shot(const int playerID);
     void changeWeapon(const int playerID);
+
+    /**
+     * Sloty pro aktivování a deaktivování hráče
+     * @param playerID id hráče, jenž se má aktivovat nebo deaktivovat
+     */
+    void activatePlayer(const int playerID);
+    void deactivatePlayer(const int playerID);
 
 private:
 

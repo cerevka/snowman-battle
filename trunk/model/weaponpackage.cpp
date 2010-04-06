@@ -76,6 +76,8 @@ bool WeaponPackage::interactPlayer(Player * const player)
     // Odstraním zbraň ze seznamů
     parentGame->removeWeaponPackage(this);
 
+//    delete this;
+
     return true;
 }
 

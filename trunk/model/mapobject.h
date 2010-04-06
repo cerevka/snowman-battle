@@ -2,11 +2,15 @@
 #define MAPOBJECT_H
 
 #include <QObject>
+#include <QApplication>
 
 class Player;
 class Shot;
 class Game;
 
+/**
+ * Toto je abstraktní třída, která reprezentuje objekt na herní ploše
+ */
 class MapObject : public QObject
 {
 
@@ -16,11 +20,11 @@ public:
 
     /**
      * Vytvoří objekt na mapě na konkrétních souřadnicích
+     * @param parent hra v rámci níž je tento objekt vytvořen
      * @param x1 x-ová souřadnice levého horního rohu objektu
      * @param y1 y-ová souřadnice levého horního rohu objektu
      * @param x2 x-ová souřadnice pravého dolního rohu objektu
      * @param y2 y-ová souřadnice pravého dolního rohu objektu
-     * @param parent hra v rámci níž je tento objekt vytvořen
      */
     MapObject(Game * const parent, const double x1 = -100.0, const double y1 = -100.0, const double x2 = -100.0, const double y2 = -100.0);
 

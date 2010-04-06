@@ -15,7 +15,7 @@ GameFacade::GameFacade(QObject * const parent) :
 GameFacade::~GameFacade(void)
 {
 
-    if(actualGame != NULL){
+    if(isGameActive){
         endGame();
     }
 
@@ -58,6 +58,16 @@ void GameFacade::endGame(void)
 
 void GameFacade::pauseGame(void)
 {
+
+    if(isGameActive){
+
+        if(actualGame->paused){
+            actualGame->pauseCondition->wakeAll();
+        } else {
+            actualGame->paused = true;
+        }
+
+    }
 
 }
 
@@ -127,6 +137,20 @@ void GameFacade::changeWeapon(const int playerID)
 {
     if(isGameActive){
         getPlayerById(playerID)->changeWeapon();
+    }
+}
+
+void GameFacade::activatePlayer(const int playerID)
+{
+    if(isGameActive){
+        getPlayerById(playerID)->setActive(true);
+    }
+}
+
+void GameFacade::deactivatePlayer(const int playerID)
+{
+    if(isGameActive){
+        getPlayerById(playerID)->setActive(false);
     }
 }
 

@@ -9,6 +9,7 @@
 #include "../../model/unshootableblock.h"
 #include <QThread>
 #include <QMutex>
+#include <QWaitCondition>
 #include <QApplication>
 #include <QTime>
 
@@ -96,6 +97,16 @@ private:
      * Pokud je true, tak hlavní smyčka hry běží
      */
     bool gameRun;
+
+    /**
+     * Tato proměnná je true, pokud se má hra zapauzovat
+     */
+    bool paused;
+
+    /**
+     * WaitCondition, pomocí které je realizována pauza hry
+     */
+    QWaitCondition * pauseCondition;
 
     /**
      * Počet zbraní, které jsou na ploše
