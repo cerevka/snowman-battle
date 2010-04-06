@@ -9,7 +9,37 @@ Window::Window()
     scenepanel = new ScenePanel();
     setCentralWidget(scenepanel);
 
+    statusbar = new StatusBar();
+    chatpanel = new ChatPanel();
+
+    QDockWidget *statusWidget = new QDockWidget(tr(""), this);
+    statusWidget->setAllowedAreas(Qt::BottomDockWidgetArea);
+    statusWidget->setFixedHeight(100);
+    statusWidget->setWidget(statusbar);
+    addDockWidget(Qt::BottomDockWidgetArea, statusWidget);
+
+    QDockWidget *chatWidget = new QDockWidget(tr(""), this);
+    chatWidget->setAllowedAreas(Qt::LeftDockWidgetArea |
+                                Qt::RightDockWidgetArea);
+    chatWidget->setFixedWidth(150);
+    chatWidget->setWidget(chatpanel);
+    addDockWidget(Qt::RightDockWidgetArea, chatWidget);
+
     //////////////////Pro testovani/////////////
+
+    QString *na = new QString("Balouch");
+    QString *me = new QString("Tohle je zprava");
+    chatpanel->newMessage(na, me);
+
+    QString *pl = new QString("Balouch");
+    statusbar->addPlayer(0, *pl, 2);
+
+    QString *pl1 = new QString("Zabijak");
+    statusbar->addPlayer(1, *pl1, 2);
+
+    QString *pl2 = new QString("Ajtak");
+    statusbar->addPlayer(2, *pl2, 2);
+
     QString *str = new QString("background1.jpg");
     scenepanel->setBackground(*str);
 
