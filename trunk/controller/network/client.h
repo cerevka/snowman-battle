@@ -2,6 +2,7 @@
 #define CLIENT_H
 
 #include "networkinterface.h";
+#include <QTcpSocket>
 
 /**
  * Client implementuje clientskou logiku. Je zapouzdren
@@ -30,6 +31,9 @@ public:
      * @return prijate pole dat
      */
     virtual char * recieve() const;
+
+private:
+    QTcpSocket * clientSocket;
 };
 
 #endif // CLIENT_H

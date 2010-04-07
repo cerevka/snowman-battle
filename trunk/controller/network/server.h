@@ -2,7 +2,14 @@
 #define SERVER_H
 
 #include "networkinterface.h"
-#include <QTcpSocket>
+#include <QTcpServer>
+#include <QNetworkProxy>
+
+#ifdef _DEBUG_
+
+#include <QtDebug>
+
+#endif
 
 /**
  * Server implementuje serverovou logiku. Je zapouzdren
@@ -31,7 +38,7 @@ public:
     char * recieve();
 private:
 
-    QTcpSocket * socket;
+    QTcpServer * serverSocket;
 
 
 };
