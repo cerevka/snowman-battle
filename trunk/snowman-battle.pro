@@ -22,6 +22,7 @@ HEADERS += controller/game/gamefacade.h \
     view/dialogs/creategame.h \
     view/statusbar.h \
     view/chatpanel.h \
+    controller/network/packetparser.h \
     controller/network/networkinterface.h \
     controller/network/listenthread.h \
     controller/network/clientthread.h
@@ -48,6 +49,7 @@ SOURCES += controller/game/gamefacade.cpp \
     view/dialogs/creategame.cpp \
     main.cpp \
     view/statusbar.cpp \
+    controller/network/packetparser.cpp \
     view/chatpanel.cpp \
     controller/network/networkinterface.cpp \
     controller/network/listenthread.cpp \
