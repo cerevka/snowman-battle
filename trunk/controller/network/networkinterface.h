@@ -14,6 +14,8 @@
  */
 class NetworkInterface : public QObject
 {
+
+    //Q_OBJECT
 public:
     NetworkInterface(QObject * const parent = 0);
 

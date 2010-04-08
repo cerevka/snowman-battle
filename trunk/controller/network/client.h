@@ -21,6 +21,11 @@ public:
     Client(QHostAddress address, int port, NetworkInterface * const parent = 0);
 
     /**
+     * Destruktor uzavirajici socket
+     */
+    ~Client();
+
+    /**
      * Odeslani dat v poli znaku.
      * @param message pole dat k odeslani
      */

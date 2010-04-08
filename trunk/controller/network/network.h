@@ -5,8 +5,6 @@
 #include <QThread>
 #include <QHostAddress>
 #include "networkinterface.h"
-#include "client.h"
-#include "server.h"
 
 /**
  * Network zaobaluje sitove rozhrani dle navrhoveho vzoru Strategy. Na

@@ -1,6 +1,6 @@
 #include "server.h"
 
-Server::Server(int port, NetworkInterface *const parent)
+Server::Server(int port, NetworkInterface *const parent):NetworkInterface(parent)
 {
     serverSocket = new QTcpServer(this);
     // zakaze se pouziti proxy
@@ -14,10 +14,20 @@ Server::Server(int port, NetworkInterface *const parent)
 
     #ifdef _DEBUG_
       if (listening) {
-        qDebug() << "Server is ready on port " << port << ".";
+          qDebug() << "Network Server: Server is ready on port " << serverSocket->serverPort() << ".";
       }
     #endif
 
+    // spusti se naslouchajici vlakno
+    listenThread->start();
+
+}
+
+/**
+ * Imlementuje uzavreni socketu.
+ */
+Server::~Server(){
+    serverSocket->close();
 }
 
 /**
@@ -34,4 +44,3 @@ void Server::send(QByteArray message) const
 QByteArray Server::recieve()
 {
 }
-
