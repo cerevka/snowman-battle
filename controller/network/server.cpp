@@ -18,9 +18,8 @@ Server::Server(int port, NetworkInterface *const parent):NetworkInterface(parent
       }
     #endif
 
-    // spusti se naslouchajici vlakno
-    listenThread->start();
-
+    // propoji se signal noveho spojeni s jeho obsluhou
+      QObject::connect(serverSocket, SIGNAL(newConnection()), this, SLOT(slotNewClient(QTcpSocket)));
 }
 
 /**
@@ -43,4 +42,13 @@ void Server::send(QByteArray message) const
  */
 QByteArray Server::recieve()
 {
+}
+
+void Server::slotNewClient(QTcpSocket * socket)
+{
+    // prida se ukazatel na klientsky socket do seznamu
+    clientsList << socket;
+    // vytvori se nove klientske vlakno a spusti se
+    ClientThread(socket).start();
+
 }
