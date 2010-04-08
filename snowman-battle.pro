@@ -22,7 +22,9 @@ HEADERS += controller/game/gamefacade.h \
     view/dialogs/creategame.h \
     view/statusbar.h \
     view/chatpanel.h \
-    controller/network/networkinterface.h
+    controller/network/networkinterface.h \
+    controller/network/listenthread.h \
+    controller/network/clientthread.h
 SOURCES += controller/game/gamefacade.cpp \
     controller/game/game.cpp \
     controller/gui/keyboardhandler.cpp \
@@ -47,7 +49,9 @@ SOURCES += controller/game/gamefacade.cpp \
     main.cpp \
     view/statusbar.cpp \
     view/chatpanel.cpp \
-    controller/network/networkinterface.cpp
+    controller/network/networkinterface.cpp \
+    controller/network/listenthread.cpp \
+    controller/network/clientthread.cpp
 RESOURCES += images.qrc
 TRANSLATIONS += snowman-battle_cs.ts
 DEFINES += _DEBUG_
