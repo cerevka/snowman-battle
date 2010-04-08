@@ -3,7 +3,10 @@
 
 #include "networkinterface.h"
 #include <QTcpServer>
+#include <QTcpSocket>
 #include <QNetworkProxy>
+#include <QList>
+#include "listenthread.h"
 
 /**
  * Server implementuje serverovou logiku. Je zapouzdren
@@ -20,6 +23,11 @@ public:
     Server(int port, NetworkInterface * const parent = 0);
 
     /**
+     * Desktruktor uzavirajici serverovy socket.
+     */
+    ~Server();
+
+    /**
      * Odesilani dat v poli znaku.
      * @param message pole znaku k odeslani
      */
@@ -33,8 +41,23 @@ public:
 
 
 private:
-
+    /**
+     * Uchovava ukazatel na serverovy socket, ke
+     * kteremu se pripojuji klienti.
+     */
     QTcpServer * serverSocket;
+
+    /**
+     * V tomto vlakne spousti naslouchani.
+     */
+    ListenThread * listenThread;
+
+    QList<QTcpSocket*> clientsList;
+
+
+
+private slots:
+    void slotNewClient(QTcpSocket socket);
 
 
 };
