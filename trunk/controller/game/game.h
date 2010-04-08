@@ -91,10 +91,18 @@ private:
     QMutex * bigGameMutex;
 
     /**
-     * Tyto seznamy v sobě drží všechny objekty hry
+     * Tento seznam v sobě drží všechny objekty hry
      */
     QList<MapObject *> * allObjects;
+
+    /**
+     * Tento seznam v sobě drží všechny hráče
+     */
     QList<Player *> * allPlayers;
+
+    /**
+     * Tento seznam v sobě drží všechny letící střely
+     */
     QList<Shot *> * allShots;
 
     /**
@@ -118,22 +126,35 @@ private:
     int countOfWeapons;
 
     /**
-     * Pomocné metody používané hlavní smyčkou
-     */
-    void movePlayers(void);
-    void moveShots(void);
-    void generateWeaponPackages(void);
-
-    /**
      * Pomocná metoda, která zjistí jestli zadaný objekt koliduje s kterýmkoli jiným na herní ploše
      * @param object objekt, se kterým se mají počítat kolize
      * @return true, pokud koliduje s některým jiným objektem
      */
     bool colideAllObjects(MapObject * const object) const;
 
+    /***************************************************/
+
+    /* Pomocné metody používané hlavní smyčkou */
+
     /**
-     * Pomocné metody, které se používají k detekci kolizí
+     * Tato metoda projede seznam hráčů a zkusí s nimi pohnout a detekuje kolize
      */
+    void movePlayers(void);
+
+    /**
+     * Tato metoda projede seznam letících střel, pohne s nimi a spočítá kolize
+     */
+    void moveShots(void);
+
+    /**
+     * Tato metoda slouží pro generování zbraní ležících na ploše
+     */
+    void generateWeaponPackages(void);
+
+    /***************************************************/
+
+    /* Pomocné metody, které se používají k detekci kolizí */
+
     static bool colideObjects(MapObject * const one, MapObject * const two);
     static bool colideRectangles(MapObject * const first, MapObject * const second);
     static bool colideShots(MapObject * const object, Shot * const shot);
