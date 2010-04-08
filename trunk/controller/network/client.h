@@ -18,19 +18,19 @@ public:
      * @param address adresa, na ktere nasloucha server
      * @param port port, na kterem nasloucha server
      */
-    Client(char * address, int port, NetworkInterface * const parent = 0);
+    Client(QHostAddress address, int port, NetworkInterface * const parent = 0);
 
     /**
      * Odeslani dat v poli znaku.
      * @param message pole dat k odeslani
      */
-    virtual void send(char * message) const;
+    virtual void send(QByteArray message) const;
 
     /**
      * Prijmuti dat v poli znaku.
      * @return prijate pole dat
      */
-    virtual char * recieve() const;
+    virtual QByteArray recieve() const;
 
 private:
     QTcpSocket * clientSocket;

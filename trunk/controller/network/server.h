@@ -5,12 +5,6 @@
 #include <QTcpServer>
 #include <QNetworkProxy>
 
-#ifdef _DEBUG_
-
-#include <QtDebug>
-
-#endif
-
 /**
  * Server implementuje serverovou logiku. Je zapouzdren
  * pod vzorem Strategy pod jednotne rozhrani s NetworkInterface
@@ -29,13 +23,15 @@ public:
      * Odesilani dat v poli znaku.
      * @param message pole znaku k odeslani
      */
-    virtual void send(char * message) const;
+    virtual void send(QByteArray message) const;
 
     /**
      * Prijimani dat v poli znaku.
      * @return prijate pole znaku
      */
-    char * recieve();
+    virtual QByteArray recieve();
+
+
 private:
 
     QTcpServer * serverSocket;

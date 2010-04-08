@@ -1,11 +1,12 @@
 #include "network.h"
 
 
-void Network::send(char * message) const
+void Network::send(QByteArray message) const
 {
     network->send(message);
 }
 
-char * Network::recieve() {
+QByteArray Network::recieve() {
     return network->recieve();
 }
+
