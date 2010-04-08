@@ -2,6 +2,8 @@
 #define NETWORK_H
 
 #include <QObject>
+#include <QThread>
+#include <QHostAddress>
 #include "networkinterface.h"
 #include "client.h"
 #include "server.h"
@@ -28,13 +30,13 @@ public:
      * Odeslani dat v poli znaku.
      * @param pole znaku k odeslani
      */
-    void send(char * message) const;
+    void send(QByteArray message) const;
 
     /**
      * Prijmuti dat v poli znaku.
      * @return prijate pole znaku
      */
-    char * recieve();
+    QByteArray recieve();
 
 
 private:

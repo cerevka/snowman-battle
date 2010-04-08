@@ -1,6 +1,6 @@
 #include "client.h"
 
-Client::Client(char *address, int port, NetworkInterface *const parent)
+Client::Client(QHostAddress address, int port, NetworkInterface *const parent)
 {
 
 }
@@ -8,7 +8,7 @@ Client::Client(char *address, int port, NetworkInterface *const parent)
 /**
  * Metoda implementujici odesilani klienta.
  */
-void Client::send(char *message) const
+void Client::send(QByteArray message) const
 {
 
 }
@@ -16,7 +16,7 @@ void Client::send(char *message) const
 /**
  * Metoda implemenutujici prijimani dat klientem.
  */
-char * Client::recieve() const
+QByteArray Client::recieve() const
 {
 
 }
