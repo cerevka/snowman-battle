@@ -20,9 +20,10 @@ public:
 
 private:
     QTcpSocket * socket;
+    QByteArray message;
 
 signals:
-    QByteArray newMessage();
+    void newMessage(QByteArray message);
 };
 
 #endif // CLIENTTHREAD_H

@@ -7,6 +7,7 @@
 #include <QNetworkProxy>
 #include <QList>
 #include "listenthread.h"
+#include "clientthread.h"
 
 /**
  * Server implementuje serverovou logiku. Je zapouzdren
@@ -57,7 +58,7 @@ private:
 
 
 private slots:
-    void slotNewClient(QTcpSocket socket);
+    void slotNewClient(QTcpSocket * socket);
 
 
 };

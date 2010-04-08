@@ -1,7 +1,9 @@
 #include "listenthread.h"
 
-ListenThread::ListenThread()
+ListenThread::ListenThread(QTcpServer * serverSocket)
 {
+    this->serverSocket = serverSocket;
+
 }
 
 void ListenThread::run() {

@@ -2,16 +2,20 @@
 #define LISTENTHREAD_H
 
 #include <QThread>
+#include <QTcpServer>
 
 class ListenThread : public QThread
 {
 public:
-    ListenThread();
+    ListenThread(QTcpServer * serverSocket);
 
     /**
      * Definuje cinnost naslouchajiciho vlakna.
      */
     void run();
+private:
+    QTcpServer * serverSocket;
 };
+
 
 #endif // LISTENTHREAD_H
