@@ -5,6 +5,21 @@ PacketParser::PacketParser(QObject * const parent) :
 {
 }
 
+void PacketParser::parseAll(QByteArray * const packets) {
+
+    unsigned char * pointer = (unsigned char *)packets->data();
+
+    unsigned char * endOfArray = pointer + packets->size();
+
+    while(pointer < endOfArray){
+
+        pointer = parse(pointer);
+
+    }
+
+
+}
+
 unsigned char * PacketParser::parse(unsigned char * const packet)
 {
 
@@ -172,48 +187,111 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
 
     /* ----------------signály server->vsem------------- */
 
-    // 20 - zjevení hráče na X,Y + IDp hráče
+    // 20 - zjevení hráče IDp hráče na X,Y + směr
     case 20: {
+
+            if(length != 8){
+                // TODO - chyba!!!
+            }
+
+            emit playerSpawned(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]), packet[8]);
+
             break;
         }
 
     // 21 - zjevení zbraně IDg na X,Y + typ
     case 21: {
+
+            if(length != 8){
+                // TODO - chyba!!!
+            }
+
+            emit weaponPackSpawned(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]), packet[8]);
+
             break;
         }
 
     // 22 - zabití hráče IDp
     case 22: {
+
+            if(length != 3){
+                // TODO - chyba!!!
+            }
+
+            emit playerKilled(packet[3]);
+
             break;
         }
 
     // 23 - zmizení zbraně IDg
     case 23: {
+
+            if(length != 3){
+                // TODO - chyba!!!
+            }
+
+            emit weaponPackDespawned(packet[3]);
+
             break;
         }
 
     // 24 - výměna zbraně IDp, typ zbraně
     case 24: {
+
+            if(length != 5){
+                // TODO - chyba!!!
+            }
+
+            emit weaponChanged(packet[3], packet[4], packet[5]);
+
             break;
         }
 
-    // 25 - vytvoření střely IDs, X, Y, směr
+    // 25 - vytvoření střely IDs, X, Y
     case 25: {
+
+            if(length != 7){
+                // TODO - chyba!!!
+            }
+
+            emit shotCreated(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]));
+
             break;
         }
 
-    // 26 - začátek pohybu hráče IDp, směr
+    // 26 - přesun hráče IDp, X, Y
     case 26: {
+
+            if(length != 7){
+                // TODO - chyba!!!
+            }
+
+            emit playerMoved(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]));
+
             break;
         }
 
-    // 27 - konec pohybu hráče IDp
+    // 27 - přesun střely IDs, X, Y
     case 27: {
+
+            if(length != 7){
+                // TODO - chyba!!!
+            }
+
+            emit shotMoved(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]));
+
             break;
         }
 
     // 28 - zničení střely IDs
     case 28: {
+
+            if(length != 3){
+                // TODO - chyba!!!
+            }
+
+            emit shotDestroyed(packet[3]);
+
             break;
         }
 
@@ -223,11 +301,25 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
 
     // 30 - konec hry
     case 30: {
+
+            if(length != 2){
+                // TODO - chyba!!!
+            }
+
+            emit gameQuited();
+
             break;
         }
 
     // 31 - pauza hry
     case 31: {
+
+            if(length != 2){
+                // TODO - chyba!!!
+            }
+
+            emit gamePaused();
+
             break;
         }
 
@@ -237,11 +329,32 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
 
     // 40 - pokračující zpráva
     case 40: {
+
+            if(length < 3){
+                // TODO - chyba!!!
+            }
+
+            for(int i = 4; i < (length + 1); i++){
+                msg.append(packet[i]);
+            }
+
             break;
+
         }
 
     // 41 - ukončená zpráva
     case 41: {
+
+            if(length < 3){
+                // TODO - chyba!!!
+            }
+
+            for(int i = 4; i < (length + 1); i++){
+                msg.append(packet[i]);
+            }
+
+            emit chatMessageRecieved(packet[3], &msg);
+
             break;
         }
 
@@ -253,5 +366,14 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
         }
 
     }
+
+    return (packet + length + 1);
+
+}
+
+int PacketParser::convertBytesToInt(unsigned char high, unsigned char low)
+{
+
+    return ( (high * 256) + low );
 
 }
