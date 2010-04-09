@@ -25,7 +25,8 @@ HEADERS += controller/game/gamefacade.h \
     controller/network/packetparser.h \
     controller/network/networkinterface.h \
     controller/network/listenthread.h \
-    controller/network/clientthread.h
+    controller/network/clientthread.h \
+    globals.h
 SOURCES += controller/game/gamefacade.cpp \
     controller/game/game.cpp \
     controller/gui/keyboardhandler.cpp \
