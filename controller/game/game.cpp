@@ -22,7 +22,7 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
 
     // Okraje mapy
     allObjects->append(new UnshootableBlock(this, -30, -30, 905, 0));
-    allObjects->append(new UnshootableBlock(this, -30, 713, 905, 743));
+    allObjects->append(new UnshootableBlock(this, -30, 567, 905, 743));
     allObjects->append(new UnshootableBlock(this, -30, 0, 0, 713));
     allObjects->append(new UnshootableBlock(this, 875, 0, 905, 743));
 
