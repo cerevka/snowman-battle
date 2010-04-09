@@ -4,6 +4,9 @@
 #include <QObject>
 #include <QByteArray>
 
+/**
+ * Tato třída slouží pro parsování paketů přicházejících ze sítě
+ */
 class PacketParser : public QObject
 {
 
@@ -11,7 +14,18 @@ Q_OBJECT
 
 public:
 
+    /**
+     * Konstrutor vytvoří parser
+     * @param parent objekt, který je rodičem
+     */
     explicit PacketParser(QObject * const parent = 0);
+
+    /**
+     * Destruktor zruší parser
+     */
+    ~PacketParser(void);
+
+public slots:
 
     /**
      * Zpracuje všechny pakety v zadanám poli bytů
@@ -194,7 +208,10 @@ signals:
 
 private:
 
-    QString msg;
+    /**
+     * Seznam textových řetězců pro kompletování zpráv
+     */
+    QList<QString *> messagesForChat;
 
     /**
      * Pomocná metoda která naparsuje jeden paket a vrátí ukazatel na začátek dalšího

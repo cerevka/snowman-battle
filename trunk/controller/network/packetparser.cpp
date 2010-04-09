@@ -3,20 +3,40 @@
 PacketParser::PacketParser(QObject * const parent) :
     QObject(parent)
 {
+
+    // Vytvářim textové řetězce pro chat pro jednotlivé hráče
+    for(int i = 0; i < 6; i++){
+
+        messagesForChat.append(new QString(""));
+
+    }
+
+}
+
+PacketParser::~PacketParser(void)
+{
+
+    for(int i = 0; i < 6; i++){
+
+        delete messagesForChat.value(i);
+    }
+
 }
 
 void PacketParser::parseAll(QByteArray * const packets) {
 
+    // Najdu si ukazatel na první znak
     unsigned char * pointer = (unsigned char *)packets->data();
 
+    // Najdu si ukazatel, který mi ukazuje přesně o jedno místo za pole
     unsigned char * endOfArray = pointer + packets->size();
 
+    // Dokud jsem nedojel nakonec tak parsuji paket po paketu
     while(pointer < endOfArray){
 
         pointer = parse(pointer);
 
     }
-
 
 }
 
@@ -335,7 +355,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             }
 
             for(int i = 4; i < (length + 1); i++){
-                msg.append(packet[i]);
+                messagesForChat.value(packet[3])->append(packet[i]);
             }
 
             break;
@@ -349,11 +369,19 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
                 // TODO - chyba!!!
             }
 
+            // Vyberu správnou zprávu pro daného hráče ze seznamu
+            QString * const message = messagesForChat.value(packet[3]);
+
+            // A rozšířím jí o znaky v paketu
             for(int i = 4; i < (length + 1); i++){
-                msg.append(packet[i]);
+                message->append(packet[i]);
             }
 
-            emit chatMessageRecieved(packet[3], &msg);
+            // Vyšlu signál
+            emit chatMessageRecieved(packet[3], message);
+
+            // A svůj řetězec vynuluji
+            message->clear();
 
             break;
         }

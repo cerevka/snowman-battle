@@ -10,7 +10,6 @@
 
 #ifdef _DEBUG_
 
-#include "controller/game/gamefacade.h"
 #include "iostream"
 #include "string"
 using namespace std;
@@ -60,6 +59,23 @@ void debugConsole(void)
 #endif
 
 
+
+void connectAll(void)
+{
+
+    QObject::connect(packetParser, SIGNAL(norhtKeyPressed(int)), gameFacade, SLOT(startMoveNorth(int)));
+    QObject::connect(packetParser, SIGNAL(westKeyPressed(int)), gameFacade, SLOT(startMoveWest(int)));
+    QObject::connect(packetParser, SIGNAL(southKeyPressed(int)), gameFacade, SLOT(startMoveSouth(int)));
+    QObject::connect(packetParser, SIGNAL(eastKeyPressed(int)), gameFacade, SLOT(startMoveEast(int)));
+    QObject::connect(packetParser, SIGNAL(shotKeyPressed(int)), gameFacade, SLOT(shot(int)));
+    QObject::connect(packetParser, SIGNAL(changeKeyPressed(int)), gameFacade, SLOT(changeWeapon(int)));
+    QObject::connect(packetParser, SIGNAL(moveKeyReleased(int)), gameFacade, SLOT(stopMove(int)));
+
+
+
+}
+
+
 /**
  * Funkce main = vstupní bod programu
  * @param argc počet parametrů příkazové řádky (předává se pro Qt)
@@ -92,6 +108,9 @@ int main(int argc, char * argv[])
 
     packetParser = new PacketParser();
     gameFacade = new GameFacade();
+
+    // Spojím sokety a sloty
+    connectAll();
 
     // Spouštim Qt
     returnValue = app.exec();
