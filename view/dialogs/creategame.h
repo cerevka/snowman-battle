@@ -17,13 +17,13 @@ class CreateGame : public QDialog
      CreateGame(QWidget *parent=0);
      QLineEdit *nickname;
      QComboBox *players;
-     QComboBox *color;
+     //QComboBox *color;
 
 
  private:
      QLabel *nicknameLabel;
      QLabel *playersLabel;
-     QLabel *colorLabel;
+     //QLabel *colorLabel;
      QPushButton *okButton;
      QPushButton *cancelButton;
  };

@@ -16,15 +16,15 @@ class JoinGame : public QDialog
      JoinGame(QWidget *parent=0);
      QLineEdit *nickname;
      QLineEdit *address;
-     QLineEdit *port;
-     QComboBox *color;
+     //QLineEdit *port;
+     //QComboBox *color;
 
 
  private:
      QLabel *nicknameLabel;
      QLabel *addressLabel;
-     QLabel *portLabel;
-     QLabel *colorLabel;
+     //QLabel *portLabel;
+     //QLabel *colorLabel;
      QPushButton *okButton;
      QPushButton *cancelButton;
  };
