@@ -30,6 +30,16 @@ public:
       * Sirska obrazku
       */
     int w;
+
+    /**
+      * Orientace obrazku
+      */
+    int dir;
+
+    /**
+      * Aktualni zbran
+      */
+    int actGun;
 };
 
 #endif // PIXMAPITEM_H

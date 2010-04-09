@@ -6,7 +6,7 @@ CreateGame::CreateGame(QWidget *parent)
     //Vytvoreni labelu a buttonu
     nicknameLabel = new QLabel(tr("Nickname:"));
     playersLabel = new QLabel(tr("Number of players:"));
-    colorLabel = new QLabel(tr("Your color:"));
+    //colorLabel = new QLabel(tr("Your color:"));
     okButton = new QPushButton(tr("Create game"));
     cancelButton = new QPushButton(tr("Cancel"));
 
@@ -22,6 +22,7 @@ CreateGame::CreateGame(QWidget *parent)
     players->addItem(tr("6"));
 
     //Naplneni comboboxu hodnotami
+    /*
     color = new QComboBox;
     color->addItem(tr("Black"));
     color->addItem(tr("Red"));
@@ -29,7 +30,7 @@ CreateGame::CreateGame(QWidget *parent)
     color->addItem(tr("Green"));
     color->addItem(tr("Brown"));
     color->addItem(tr("Yellow"));
-
+    */
 
     //Nastaveni hlavniho layoutu
     QGridLayout *layout = new QGridLayout;
@@ -37,8 +38,8 @@ CreateGame::CreateGame(QWidget *parent)
     layout->addWidget(nickname, 0, 1);
     layout->addWidget(playersLabel, 1, 0);
     layout->addWidget(players, 1, 1);
-    layout->addWidget(colorLabel, 2, 0);
-    layout->addWidget(color, 2, 1);
+    //layout->addWidget(colorLabel, 2, 0);
+    //layout->addWidget(color, 2, 1);
 
     //Nastaveni layouto pro buttony
     QHBoxLayout *buttonLayout = new QHBoxLayout;

@@ -21,37 +21,52 @@ Window::Window()
     QDockWidget *chatWidget = new QDockWidget(tr(""), this);
     chatWidget->setAllowedAreas(Qt::LeftDockWidgetArea |
                                 Qt::RightDockWidgetArea);
-    chatWidget->setFixedWidth(150);
+    chatWidget->setFixedWidth(250);
     chatWidget->setWidget(chatpanel);
     addDockWidget(Qt::RightDockWidgetArea, chatWidget);
 
     //////////////////Pro testovani/////////////
 
     QString *na = new QString("Balouch");
-    QString *me = new QString("Tohle je zprava");
+    QString *me = new QString("Tohle je zpravadfs fs dfdsf dsf dsf dsf d sf sd f dsf ds f dsf ds");
     chatpanel->newMessage(na, me);
 
     QString *pl = new QString("Balouch");
-    statusbar->addPlayer(0, *pl, 2);
+    statusbar->addPlayer(0, *pl);
+    statusbar->changeScore(0, 10);
 
     QString *pl1 = new QString("Zabijak");
-    statusbar->addPlayer(1, *pl1, 2);
+    statusbar->addPlayer(1, *pl1);
 
     QString *pl2 = new QString("Ajtak");
-    statusbar->addPlayer(2, *pl2, 2);
+    statusbar->addPlayer(2, *pl2);
+
+    QString *pl3 = new QString("Mad");
+    statusbar->addPlayer(3, *pl3);
+
+    QString *pl4 = new QString("Good");
+    statusbar->addPlayer(4, *pl4);
+
+    QString *pl5 = new QString("Blod");
+    statusbar->addPlayer(5, *pl5);
 
     QString *str = new QString("background1.jpg");
     scenepanel->setBackground(*str);
 
-    x1 = 300;
+    x1 = 265;
     y1 = 150;
-    snow1 = new PixmapItem("machine_gun.png", 30, 100, 30-80, 100-15);
-    scenepanel->setNewGraficObj(*snow1, x1, y1, 0);
+    //snow1 = new PixmapItem("machine_gun.png", 30, 100, 30-80, 100-15);
+
+
+
 
     x = 200;
     y = 150;
-    snow = new PixmapItem("snowman_black.png", 150, 85, 150, 85);
-    scenepanel->setNewGraficObj(*snow, x, y, 0);
+    //snow = new PixmapItem("snowman_black.png", 150, 85, 150, 85);
+    scenepanel->addNewPlayer(3, x, y, 0);
+    scenepanel->addNewShot(0, 300, 300);
+    scenepanel->addNewGun(0, 300, 250, 0, 0);
+    //scenepanel->addNewGun(5, x1, y1, 0, 1);
     /////////////////Konec testovani////////////
 
     //Vytvori akce
@@ -61,7 +76,7 @@ Window::Window()
     createMenus();
 
     setWindowTitle(tr("Snowman Battle"));
-    resize(800, 500);
+    resize(1150, 700);
 
 }
 
@@ -118,7 +133,16 @@ void Window::createGame()
     if (creategame.exec()) {
         QString nickname = creategame.nickname->text();
         int players = creategame.players->currentIndex();
-        int color = creategame.color->currentIndex();
+        //int color = creategame.color->currentIndex();
+
+        if(!nickname.compare(""))
+        {
+            QMessageBox::warning(this, tr("Create game"),
+                                   tr("Please, insert your nickname."));
+            return;
+        }
+
+        //TODO misto pro volani socketu
     }
 }
 
@@ -131,8 +155,19 @@ void Window::joinGame()
     if (joingame.exec()) {
         QString nickname = joingame.nickname->text();
         QString address = joingame.address->text();
-        int port = joingame.port->text().toInt();
-        int color = joingame.color->currentIndex();
+        //int port = joingame.port->text().toInt();
+        //int color = joingame.color->currentIndex();
+
+        if(!nickname.compare("") || !address.compare(""))
+        {
+            QMessageBox::warning(this, tr("Join game"),
+                                   tr("Please, insert all items."));
+            return;
+        }
+
+
+
+        //TODO misto pro volani socketu
     }
 }
 
@@ -142,13 +177,22 @@ void Window::settings()
 
     ///////////////////testovani//////////////////////////////////
 
-    scenepanel->setPosition(*snow, x--, y--);
-    scenepanel->setPosition(*snow1, x1--, y1--);
-    scenepanel->setDirection(*snow, x%4);
-    scenepanel->setDirection(*snow1, x%4);
+    //scenepanel->changeGun(3, 1);
 
-
-
+    scenepanel->changePlayerPosition(3, x--, y);
+    scenepanel->removeGun(0);
+    scenepanel->removeShot(0);
+    scenepanel->changeGun(3, x%2);
+    scenepanel->changePlayerDirection(3, x%4);
+    /*scenepanel->setDirection(1, x%4);
+    scenepanel->setPosition(2, x1--, y1--);
+    scenepanel->setDirection(2, x%4);
+    scenepanel->hidePlayer(3);
+    if(x%4 == 0)
+    {
+        scenepanel->appearePlayer(3, x, y, x%3);
+    }
+*/
     ///////////////////testovani/////////////////////////////////
 
 }
