@@ -1,7 +1,12 @@
 
+#include "globals.h"
+
 #include <QtCore>
 #include <QtGui>
 #include "view/window.h"
+//#include "controller/network/server.h"
+#include "controller/network/packetparser.h"
+#include "controller/game/gamefacade.h"
 
 #ifdef _DEBUG_
 
@@ -81,16 +86,22 @@ int main(int argc, char * argv[])
     // TODO zde bude alokace proměnných pro vlastní program (např. hlavní okno programu)
     // ...
 
-
     //Vytvori hlavni okno
-    Window mainWindow;
-    mainWindow.show();
+    mainWindow = new Window();
+    mainWindow->show();
+
+    packetParser = new PacketParser();
+    gameFacade = new GameFacade();
 
     // Spouštim Qt
     returnValue = app.exec();
 
     // TODO zde bude dealokace dynamicky alokovanýh proměných
     // ...
+
+    delete mainWindow;
+    delete packetParser;
+    delete gameFacade;
 
     return returnValue;
 
