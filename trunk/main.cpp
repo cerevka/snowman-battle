@@ -1,13 +1,13 @@
 
-
-
 #include <QtCore>
 #include <QtGui>
-#include "view/window.h"
-//#include "controller/network/server.h"
-#include "controller/network/packetparser.h"
-#include "controller/game/gamefacade.h"
+
 #include "globals.h"
+
+Window * Globals::mainWindow = NULL;
+Network * Globals::network = NULL;
+PacketParser * Globals::packetParser = NULL;
+GameFacade * Globals::gameFacade = NULL;
 
 #ifdef _DEBUG_
 
@@ -64,15 +64,13 @@ void debugConsole(void)
 void connectAll(void)
 {
 
-    QObject::connect(packetParser, SIGNAL(norhtKeyPressed(int)), gameFacade, SLOT(startMoveNorth(int)));
-    QObject::connect(packetParser, SIGNAL(westKeyPressed(int)), gameFacade, SLOT(startMoveWest(int)));
-    QObject::connect(packetParser, SIGNAL(southKeyPressed(int)), gameFacade, SLOT(startMoveSouth(int)));
-    QObject::connect(packetParser, SIGNAL(eastKeyPressed(int)), gameFacade, SLOT(startMoveEast(int)));
-    QObject::connect(packetParser, SIGNAL(shotKeyPressed(int)), gameFacade, SLOT(shot(int)));
-    QObject::connect(packetParser, SIGNAL(changeKeyPressed(int)), gameFacade, SLOT(changeWeapon(int)));
-    QObject::connect(packetParser, SIGNAL(moveKeyReleased(int)), gameFacade, SLOT(stopMove(int)));
-
-
+    QObject::connect(Globals::packetParser, SIGNAL(norhtKeyPressed(int)), Globals::gameFacade, SLOT(startMoveNorth(int)));
+    QObject::connect(Globals::packetParser, SIGNAL(westKeyPressed(int)), Globals::gameFacade, SLOT(startMoveWest(int)));
+    QObject::connect(Globals::packetParser, SIGNAL(southKeyPressed(int)), Globals::gameFacade, SLOT(startMoveSouth(int)));
+    QObject::connect(Globals::packetParser, SIGNAL(eastKeyPressed(int)), Globals::gameFacade, SLOT(startMoveEast(int)));
+    QObject::connect(Globals::packetParser, SIGNAL(shotKeyPressed(int)), Globals::gameFacade, SLOT(shot(int)));
+    QObject::connect(Globals::packetParser, SIGNAL(changeKeyPressed(int)), Globals::gameFacade, SLOT(changeWeapon(int)));
+    QObject::connect(Globals::packetParser, SIGNAL(moveKeyReleased(int)), Globals::gameFacade, SLOT(stopMove(int)));
 
 }
 
@@ -104,11 +102,11 @@ int main(int argc, char * argv[])
     // ...
 
     //Vytvori hlavni okno
-    mainWindow = new Window();
-    mainWindow->show();
+    Globals::mainWindow = new Window();
+    Globals::mainWindow->show();
 
-    packetParser = new PacketParser();
-    gameFacade = new GameFacade();
+    Globals::packetParser = new PacketParser();
+    Globals::gameFacade = new GameFacade();
 
     // Spojím sokety a sloty
     connectAll();
@@ -119,9 +117,9 @@ int main(int argc, char * argv[])
     // TODO zde bude dealokace dynamicky alokovanýh proměných
     // ...
 
-    delete mainWindow;
-    delete packetParser;
-    delete gameFacade;
+    delete Globals::mainWindow;
+    delete Globals::packetParser;
+    delete Globals::gameFacade;
 
     return returnValue;
 
