@@ -2,6 +2,7 @@
 
 #include "game.h"
 #include "../../model/player.h"
+#include "globals.h"
 
 GameFacade::GameFacade(QObject * const parent) :
     QObject(parent)
@@ -28,6 +29,8 @@ void GameFacade::newGame(const int countOfPlayers)
 
         // Vytvářím objekt hry
         actualGame = new Game(countOfPlayers);
+
+        connectAll();
 
         // Startuji vlákno
         actualGame->start();
@@ -152,6 +155,29 @@ void GameFacade::deactivatePlayer(const int playerID)
     if(isGameActive){
         getPlayerById(playerID)->setActive(false);
     }
+}
+
+void GameFacade::connectAll(void)
+{
+
+    connect(actualGame, SIGNAL(shotCreated(int,int,int)), Globals::packetCreator, SLOT(createShot(int,int,int)));
+    connect(actualGame, SIGNAL(shotMoved(int,int,int)), Globals::packetCreator, SLOT(moveShot(int,int,int)));
+    connect(actualGame, SIGNAL(shotDestroyed(int)), Globals::packetCreator, SLOT(destroyShot(int)));
+
+    connect(actualGame, SIGNAL(playerMoved(int,int,int)), Globals::packetCreator, SLOT(movePlayer(int,int,int)));
+
+    connect(actualGame, SIGNAL(wPackCreated(int,int,int,int)), Globals::packetCreator, SLOT(spawnWeaponPack(int,int,int,int)));
+    connect(actualGame, SIGNAL(wPackRemoved(int)), Globals::packetCreator, SLOT(despawnedWeaponPack(int)));
+
+    for(int i = 0; i < actualGame->allPlayers->size(); i++){
+
+        Player * actualPlayer = actualGame->allPlayers->value(i);
+
+        connect(actualPlayer, SIGNAL(playerSpawned(int,int,int,int)), Globals::packetCreator, SLOT(spawnPlayer(int,int,int,int)));
+        connect(actualPlayer, SIGNAL(playerKilled(int)), Globals::packetCreator, SLOT(killPlayer(int)));
+        connect(actualPlayer, SIGNAL(weaponChanged(int,int,int)), Globals::packetCreator, SLOT(changedWeapon(int,int,int)));
+    }
+
 }
 
 Player * GameFacade::getPlayerById(const int playerID) const

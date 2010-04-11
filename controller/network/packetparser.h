@@ -117,7 +117,7 @@ signals:
 
     /**
      * Signál naspawnování hráče
-     * @param playerID id hráče, který se mám spawnout
+     * @param playerID id hráče, který se má spawnout
      * @param x x-ová souřadnice místa spawnutí (levý horní roh)
      * @param y y-ová souřadnice místa spawnutí (levý horní roh)
      * @param direction směr, kterým bude hráč otočený

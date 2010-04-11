@@ -68,7 +68,7 @@ public:
     void removeWeaponPackage(WeaponPackage * const wPackage);
 
     /**
-     * Tato metoda se spouští každý frame a rpovádí deteci kolizí
+     * Tato metoda se spouští každý frame a provádí deteci kolizí
      * @param event časovač, který spustil tuhle metodu
      */
     void timerEvent (QTimerEvent * const event);
@@ -78,6 +78,15 @@ public:
      * @return ukazatel mutex, který slouží pro uzamykání hlavního vlákna
      */
     QMutex * getBigGameMutex(void) const;
+
+signals:
+
+    void shotCreated(int shotID, int x, int y);
+    void wPackRemoved(int wPackID);
+    void playerMoved(int playerID, int x, int y);
+    void shotMoved(int shotID, int x, int y);
+    void shotDestroyed(int shotID);
+    void wPackCreated(int wPackID, int x, int y, int type);
 
 protected:
 

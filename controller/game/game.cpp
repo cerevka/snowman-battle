@@ -112,7 +112,7 @@ void Game::addShot(Shot * const shot)
 
     allShots->append(shot);
 
-    // TODO - poslat signál o vytvoření střely
+    emit shotCreated(shot->getShotID(), qRound(shot->getX()), qRound(shot->getY()));
     #ifdef _DEBUG_
     qDebug() << "Game engine: Shot" << shot->getShotID() << "created at" << shot->getX() << "," << shot->getY();
     #endif
@@ -125,7 +125,7 @@ void Game::removeWeaponPackage(WeaponPackage * const wPackage)
     allObjects->removeOne(wPackage);
     countOfWeapons--;
 
-    // TODO - poslat signál o sebrání zbraně
+    emit wPackRemoved(wPackage->getWeaponPackageID());
     #ifdef _DEBUG_
     qDebug() << "Game engine: Weapon package" << wPackage->getWeaponPackageID() << "removed from" << wPackage->getX1() << "," << wPackage->getY1();
     #endif
@@ -212,7 +212,7 @@ void Game::movePlayers(void)
 
             // Pokud nestojí v cestě překážka, tak dám informaci o pohybu, jinak vrátím pohyb zpět
             if(canMove){
-                // TODO - poslat zprávu o pohybu hráče
+                emit playerMoved(actualPlayer->getID(), qRound(actualPlayer->getX1()), qRound(actualPlayer->getY1()));
                 #ifdef _DEBUG_
                 qDebug() << "Game engine: Player" << actualPlayer->getID() << "moved to" << actualPlayer->getX1() << "," << actualPlayer->getY1();
                 #endif
@@ -264,17 +264,17 @@ void Game::moveShots(void)
 
         // Pokud nestojí v cestě překážka, tak dám informaci o pohybu, jinak smažu střelu
         if(canMove){
-            // TODO - poslat informaci o pohybu střely
+            emit shotMoved(actualShot->getShotID(), qRound(actualShot->getX()), qRound(actualShot->getY()));
             #ifdef _DEBUG_
             qDebug() << "Game engine: Shot" << actualShot->getShotID() << "moved to" << actualShot->getX() << "," << actualShot->getY();
             #endif
         } else {
             allShots->removeAt(i);
-            delete actualShot;
-            // TODO - poslat informaci o rozpadnutí střely
+            emit shotDestroyed(actualShot->getShotID());
             #ifdef _DEBUG_
             qDebug() << "Game engine: Shot" << actualShot->getShotID() << "destroyed";
             #endif
+            delete actualShot;
             i--;
         }
 
@@ -293,7 +293,7 @@ void Game::generateWeaponPackages(void)
         WeaponPackage * const newPack = new WeaponPackage(this);
         allObjects->append(newPack);
 
-        // TODO - poslat signál o vytvoření ležící zbraně
+        emit wPackCreated(newPack->getWeaponPackageID(), newPack->getX1(), newPack->getY1(), newPack->getType());
         #ifdef _DEBUG_
         qDebug() << "Game engine: Weapon pack" << newPack->getWeaponPackageID() << "created at" << newPack->getX1() << "," << newPack->getY1() << "; Type:" << newPack->getType();
         #endif

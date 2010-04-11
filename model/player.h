@@ -128,6 +128,12 @@ public:
      */
     Game * getParentGame(void) const;
 
+signals:
+
+    void playerKilled(int playerID);
+    void playerSpawned(int playerID, int x, int y, int direction);
+    void weaponChanged(int playerId, int weapon, int restOfAmmo);
+
 private:
 
     /**
