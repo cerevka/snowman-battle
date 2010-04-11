@@ -18,20 +18,13 @@ Client::~Client(void)
       clientSocket->close();
 }
 
-/**
- * Metoda implementujici odesilani klienta.
- */
-void Client::send(QByteArray message) const
+void Client::send(const QByteArray * message) const
 {
-
-}
-
-/**
- * Metoda implemenutujici prijimani dat klientem.
- */
-QByteArray * Client::recieve()
-{
-    return new QByteArray();
+    if (clientSocket->write(*message) == -1) {
+        #ifdef _DEBUG_
+            qDebug() << "Network Client: Write error into socket.";
+        #endif
+    }
 
 }
 
