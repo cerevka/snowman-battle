@@ -23,19 +23,19 @@ public:
     /**
      * Destruktor uzavirajici socket
      */
-    ~Client();
+    virtual ~Client(void);
 
     /**
      * Odeslani dat v poli znaku.
      * @param message pole dat k odeslani
      */
-    virtual void send(QByteArray message) const;
+    void send(QByteArray message) const;
 
     /**
      * Prijmuti dat v poli znaku.
      * @return prijate pole dat
      */
-    virtual QByteArray recieve() const;
+    QByteArray * recieve() const;
 
 private:
     QTcpSocket * clientSocket;

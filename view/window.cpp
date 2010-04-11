@@ -143,7 +143,8 @@ void Window::createGame()
         }
 
         //TODO misto pro volani socketu
-    }
+        Server * server = new Server(1234);
+     }
 }
 
 //Pripoji se ke hre

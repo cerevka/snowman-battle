@@ -1,6 +1,6 @@
 #include "client.h"
 
-Client::Client(QHostAddress address, int port, NetworkInterface *const parent)
+Client::Client(QHostAddress address, int port, NetworkInterface *const parent):NetworkInterface(parent)
 {
     // vytvori se TCP socket, kterym se pripoji k serveru
     clientSocket = new QTcpSocket(this);
@@ -14,7 +14,7 @@ Client::Client(QHostAddress address, int port, NetworkInterface *const parent)
 
 }
 
-Client::~Client()
+Client::~Client(void)
 {
       clientSocket->close();
 }
@@ -30,7 +30,8 @@ void Client::send(QByteArray message) const
 /**
  * Metoda implemenutujici prijimani dat klientem.
  */
-QByteArray Client::recieve() const
+QByteArray * Client::recieve() const
 {
+    return new QByteArray();
 
 }

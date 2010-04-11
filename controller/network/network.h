@@ -34,7 +34,7 @@ public:
      * Prijmuti dat v poli znaku.
      * @return prijate pole znaku
      */
-    QByteArray recieve();
+    QByteArray * recieve();
 
 
 private:

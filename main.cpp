@@ -1,5 +1,5 @@
 
-#include "globals.h"
+
 
 #include <QtCore>
 #include <QtGui>
@@ -7,6 +7,7 @@
 //#include "controller/network/server.h"
 #include "controller/network/packetparser.h"
 #include "controller/game/gamefacade.h"
+#include "globals.h"
 
 #ifdef _DEBUG_
 
