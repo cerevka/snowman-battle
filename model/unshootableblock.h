@@ -9,6 +9,8 @@
 class UnshootableBlock : public MapObject
 {
 
+    Q_OBJECT
+
 public:
 
     /**

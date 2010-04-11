@@ -26,6 +26,9 @@ class GameFacade;
  */
 class Game : public QThread
 {
+
+    Q_OBJECT
+
 public:
 
     /**

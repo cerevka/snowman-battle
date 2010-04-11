@@ -9,6 +9,8 @@
 class ShotGun : public Weapon
 {
 
+    Q_OBJECT
+
 public:
 
     /**
