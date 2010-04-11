@@ -46,7 +46,7 @@ bool Player::interactShot(Shot * const shot)
     x2 = -100.0;
     y2 = -100.0;
 
-    // TODO poslat informaci o zabití
+    emit playerKilled(playerID);
     #ifdef _DEBUG_
     qDebug() << "Game engine: Player" << playerID << "killed";
     #endif
@@ -72,7 +72,7 @@ void Player::respawn(void)
     shoting = false;
     spawned = true;
 
-    // TODO poslat informaci o spawnutí
+    emit playerSpawned(playerID, qRound(x1), qRound(y1), direction);
     #ifdef _DEBUG_
     qDebug() << "Game engine: Player" << playerID << "spawned at (" << x1 << "," << y1 << "),(" << x2 << "," << y2 << "); direction:" << direction;
     #endif
@@ -162,7 +162,7 @@ void Player::changeWeapon(void)
         actualWeapon = (actualWeapon + 1) % 3;
     } while(inventory[actualWeapon]->getAmmo() == 0);
 
-    // TODO - poslat signál o změně zbraně
+    emit weaponChanged(playerID, actualWeapon, inventory[actualWeapon]->getAmmo());
     #ifdef _DEBUG_
     qDebug() << "Game engine: Player" << playerID << "equiped weapon" << actualWeapon;
     #endif
@@ -193,7 +193,7 @@ void Player::setActualWeapon(const int actualWeapon)
 
     this->actualWeapon = actualWeapon;
 
-    // TODO - poslat signál o změně zbraně
+    emit weaponChanged(playerID, actualWeapon, inventory[actualWeapon]->getAmmo());
     #ifdef _DEBUG_
     qDebug() << "Game engine: Player" << playerID << "equiped weapon" << actualWeapon;
     #endif

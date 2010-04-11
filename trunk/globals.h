@@ -7,6 +7,7 @@
 class Window;
 class Network;
 class PacketParser;
+class PacketCreator;
 class GameFacade;
 
 #include <QObject>
@@ -14,6 +15,7 @@ class GameFacade;
 #include "view/window.h"
 #include "controller/network/network.h"
 #include "controller/network/packetparser.h"
+#include "controller/network/packetcreator.h"
 #include "controller/game/gamefacade.h"
 
 
@@ -44,6 +46,11 @@ public:
      * Parser na pakety
      */
     static PacketParser * packetParser;
+
+    /**
+     * Vytvářeč paketů
+     */
+    static PacketCreator * packetCreator;
 
     /**
      * Instance herní fasády

@@ -82,6 +82,11 @@ private:
     bool isGameActive;
 
     /**
+     * Pomocná metoda určená k tomu, aby pospojovala signály a sloty
+     */
+    void connectAll(void);
+
+    /**
      * Jednoduchá metoda, kterou tato tída používá, aby se v ní tolik neopakoval kód
      * @param playerID id hráče, který se má vyhledat
      * @return ukazatel na hráče, který byl vyhledán podle id

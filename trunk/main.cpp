@@ -7,6 +7,7 @@
 Window * Globals::mainWindow = NULL;
 Network * Globals::network = NULL;
 PacketParser * Globals::packetParser = NULL;
+PacketCreator * Globals::packetCreator = NULL;
 GameFacade * Globals::gameFacade = NULL;
 
 #ifdef _DEBUG_
@@ -55,11 +56,7 @@ void debugConsole(void)
 
 }
 
-
-
 #endif
-
-
 
 void connectAll(void)
 {
@@ -106,6 +103,7 @@ int main(int argc, char * argv[])
     Globals::mainWindow->show();
 
     Globals::packetParser = new PacketParser();
+    Globals::packetCreator = new PacketCreator();
     Globals::gameFacade = new GameFacade();
 
     // Spojím sokety a sloty
@@ -119,6 +117,7 @@ int main(int argc, char * argv[])
 
     delete Globals::mainWindow;
     delete Globals::packetParser;
+    delete Globals::packetCreator;
     delete Globals::gameFacade;
 
     return returnValue;
