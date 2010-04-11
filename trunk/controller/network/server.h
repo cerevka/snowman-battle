@@ -33,14 +33,7 @@ public:
      * Odesilani dat v poli znaku.
      * @param message pole znaku k odeslani
      */
-    void send(QByteArray message) const;
-
-    /**
-     * Prijimani dat v poli znaku.
-     * @return prijate pole znaku
-     */
-    QByteArray * recieve();
-
+    void send(const QByteArray * message) const;
 
 private:
     /**

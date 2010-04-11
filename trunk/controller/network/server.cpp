@@ -22,28 +22,21 @@ Server::Server(int port, NetworkInterface *const parent) : NetworkInterface(pare
       connect(serverSocket, SIGNAL(newConnection()), this, SLOT(slotNewClient()));
 }
 
-/**
- * Imlementuje uzavreni socketu.
- */
+
 Server::~Server(void){
     serverSocket->close();
 }
 
-/**
- * Metoda implementujici odesilani serveru.
- */
-void Server::send(QByteArray message) const
+
+void Server::send(const QByteArray * message) const
 {
+    // server rozesle zpravu vsem klientum
+    for (int i = 0; clientsList.size(); ++i) {
+        clientsList.at(i)->write(*message);
+    }
 
 }
 
-/**
- * Metoda implemenutujici prijimani dat serverem.
- */
-QByteArray * Server::recieve()
-{
-    return new QByteArray();
-}
 
 void Server::slotNewClient()
 {

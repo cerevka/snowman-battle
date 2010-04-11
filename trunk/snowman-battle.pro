@@ -54,7 +54,6 @@ SOURCES += controller/game/gamefacade.cpp \
     controller/network/packetparser.cpp \
     view/chatpanel.cpp \
     controller/network/networkinterface.cpp \
-    controller/network/listenthread.cpp \
     controller/network/clientthread.cpp \
     controller/network/packetcreator.cpp
 RESOURCES += images.qrc

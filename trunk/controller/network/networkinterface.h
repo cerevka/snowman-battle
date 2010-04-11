@@ -26,13 +26,7 @@ public:
      * Odeslani dat v poli znaku.
      * @param message pole znaku k odeslani
      */
-    virtual void send(QByteArray message) const = 0;
-
-    /**
-     * Prijmuti dat v poli znaku.
-     * @return prijate pole znaku
-     */
-    virtual QByteArray * recieve() = 0;
+    virtual void send(const QByteArray * message) const = 0;
 };
 
 #endif // NETWORKINTERFACE_H
