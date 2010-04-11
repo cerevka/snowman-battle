@@ -19,7 +19,7 @@ Server::Server(int port, NetworkInterface *const parent) : NetworkInterface(pare
     #endif
 
     // propoji se signal noveho spojeni s jeho obsluhou
-      QObject::connect(serverSocket, SIGNAL(newConnection()), this, SLOT(slotNewClient(QTcpSocket)));
+      connect(serverSocket, SIGNAL(newConnection()), this, SLOT(slotNewClient()));
 }
 
 /**
@@ -52,6 +52,14 @@ void Server::slotNewClient()
     // prida se ukazatel na klientsky socket do seznamu
     clientsList << clientSocket;
     // vytvori se nove klientske vlakno a spusti se
-    ClientThread(clientSocket).start();
+    ClientThread * thread = new ClientThread(clientSocket);
+    thread->start();
+
+    // schova se ukazatel na vlakno
+    clientThreadList << thread;
+
+    #ifdef _DEBUG_
+      qDebug() << "Network Server: Client has been connected.\n";
+    #endif
 
 }

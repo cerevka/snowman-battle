@@ -1,8 +1,10 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "networkinterface.h";
+
 #include <QTcpSocket>
+#include "networkinterface.h";
+#include "clientthread.h"
 
 /**
  * Client implementuje clientskou logiku. Je zapouzdren
@@ -11,6 +13,7 @@
  */
 class Client : NetworkInterface
 {
+    Q_OBJECT
 public:
     /**
      * Vytvoreni klienta, ktery se pokusi pripojit na
@@ -35,10 +38,20 @@ public:
      * Prijmuti dat v poli znaku.
      * @return prijate pole dat
      */
-    QByteArray * recieve() const;
+    QByteArray * recieve();
 
 private:
+    /**
+     * Udrzuje si ukazatel na socket, kterym komunikuje
+     * se serverem.
+     */
     QTcpSocket * clientSocket;
+
+private slots:
+    /**
+     * Informuje o uspesnem pripojeni k serveru.
+     */
+    void slotConnected();
 };
 
 #endif // CLIENT_H
