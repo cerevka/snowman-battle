@@ -4,9 +4,14 @@
 #include <QThread>
 #include <QTcpServer>
 
+
 class ListenThread : public QThread
 {
 public:
+    /**
+     * Vytvori nove naslouchajici vlakno.
+     * @param serverSocket
+     */
     ListenThread(QTcpServer * serverSocket);
 
     /**

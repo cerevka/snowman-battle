@@ -1,13 +1,13 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include "networkinterface.h"
+
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QNetworkProxy>
 #include <QList>
-#include "listenthread.h"
 #include "clientthread.h"
+#include "networkinterface.h"
 
 /**
  * Server implementuje serverovou logiku. Je zapouzdren
@@ -16,6 +16,7 @@
  */
 class Server : public NetworkInterface
 {
+    Q_OBJECT
 public:
     /**
      * Vytvoreni serveru naslouchajiciho na zvolenem portu.
@@ -48,12 +49,17 @@ private:
      */
     QTcpServer * serverSocket;
 
-    /**
-     * V tomto vlakne spousti naslouchani.
-     */
-    ListenThread * listenThread;
 
+    /**
+     * Udrzuje seznam otevrenych socketu s klienty.
+     */
     QList<QTcpSocket*> clientsList;
+
+    /**
+     * Udrzuje seznam spustenych vlaken, ktera
+     * ctou data od klientu.
+     */
+    QList<ClientThread*> clientThreadList;
 
 
 

@@ -24,6 +24,8 @@ public:
         network = strategy;
     }
 
+    virtual ~Network();
+
     /**
      * Odeslani dat v poli znaku.
      * @param pole znaku k odeslani

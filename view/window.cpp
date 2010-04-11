@@ -169,6 +169,7 @@ void Window::joinGame()
 
 
         //TODO misto pro volani socketu
+        Client * client = new Client(QHostAddress(address), 1234);
     }
 }
 

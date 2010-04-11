@@ -14,10 +14,13 @@
  */
 class NetworkInterface : public QObject
 {
-public:
-    NetworkInterface(QObject * const parent = 0);
 
-    virtual ~NetworkInterface(void);
+    Q_OBJECT
+
+public:
+    NetworkInterface(QObject * parent = 0);
+
+    ~NetworkInterface();
 
     /**
      * Odeslani dat v poli znaku.
