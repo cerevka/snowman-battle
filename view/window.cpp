@@ -144,6 +144,7 @@ void Window::createGame()
 
         //TODO misto pro volani socketu
         Server * server = new Server(1234);
+        Globals::network = new Network(server);
      }
 }
 
@@ -171,6 +172,7 @@ void Window::joinGame()
         //TODO misto pro volani socketu
         Client * client = new Client(QHostAddress(address), 1234);
         // zapouzdreni do Network
+        Globals::network = new Network(client);
 
     }
 }

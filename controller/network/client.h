@@ -3,15 +3,16 @@
 
 
 #include <QTcpSocket>
-#include "networkinterface.h";
+#include "networkinterface.h"
 #include "clientthread.h"
+#include "globals.h"
 
 /**
  * Client implementuje clientskou logiku. Je zapouzdren
  * pod vzorem Strategy pod jednotne rozhrani s NetworkInterface
  * a volani ji predava trida Network, ktera ho obsluhuje.
  */
-class Client : NetworkInterface
+class Client : public NetworkInterface
 {
     Q_OBJECT
 public:
@@ -55,7 +56,7 @@ private:
     /**
      * Udrzuje ukazatel na naslouchajici vlakno
      */
-    ClientThread * thread;
+    ClientThread * clientThread;
 
     /**
      * Uchovava ID v siti.

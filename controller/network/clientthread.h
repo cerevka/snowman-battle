@@ -3,6 +3,7 @@
 
 #include <QThread>
 #include <QTcpSocket>
+//#include "globals.h"
 
 #ifdef _DEBUG_
 #include <QtDebug>
@@ -44,7 +45,7 @@ private:
     /**
      * Pole prijatych dat.
      */
-    QByteArray message;
+    QByteArray * message;
 
     /**
      * Uchovava informaci o delce prichoziho packetu.
@@ -57,7 +58,7 @@ signals:
      * nova data a predava je ke zpracovani.
      * @param message pole prijatych dat
      */
-    void newMessage(QByteArray message);
+    void newMessage(QByteArray * message);
 
 private slots:
     /**

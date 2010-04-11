@@ -8,6 +8,7 @@
 #include <QList>
 #include "clientthread.h"
 #include "networkinterface.h"
+#include "globals.h"
 
 /**
  * Server implementuje serverovou logiku. Je zapouzdren

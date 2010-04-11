@@ -1,6 +1,7 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "../globals.h"
 #include <QMainWindow>
 #include <QtGui>
 #include "dialogs/creategame.h"
@@ -11,6 +12,7 @@
 #include "controller/network/server.h"
 #include "controller/network/client.h"
 #include "controller/network/network.h"
+
 
 class QAction;
 class QMenu;

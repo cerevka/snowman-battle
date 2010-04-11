@@ -63,8 +63,13 @@ void Server::slotNewClient()
     QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
     // prida se ukazatel na klientsky socket do seznamu
     clientsList << clientSocket;
-    // vytvori se nove klientske vlakno a spusti se
+    // vytvori se nove klientske vlakno
     ClientThread * thread = new ClientThread(clientSocket);
+
+    // napoji se signal, ze byla prijata zprava, na parser
+    QObject::connect(thread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
+
+    // a spusti se
     thread->start();
 
     // schova se ukazatel na vlakno
