@@ -26,19 +26,19 @@ public:
     /**
      * Desktruktor uzavirajici serverovy socket.
      */
-    ~Server();
+    virtual ~Server(void);
 
     /**
      * Odesilani dat v poli znaku.
      * @param message pole znaku k odeslani
      */
-    virtual void send(QByteArray message) const;
+    void send(QByteArray message) const;
 
     /**
      * Prijimani dat v poli znaku.
      * @return prijate pole znaku
      */
-    virtual QByteArray recieve();
+    QByteArray * recieve();
 
 
 private:
@@ -58,7 +58,7 @@ private:
 
 
 private slots:
-    void slotNewClient(QTcpSocket * socket);
+    void slotNewClient();
 
 
 };

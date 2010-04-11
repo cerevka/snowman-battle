@@ -8,6 +8,8 @@
 #include "scenepanel.h"
 #include "statusbar.h"
 #include "chatpanel.h"
+//#include "globals.h"
+#include "controller/network/server.h"
 
 class QAction;
 class QMenu;

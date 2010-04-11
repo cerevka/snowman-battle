@@ -14,10 +14,10 @@
  */
 class NetworkInterface : public QObject
 {
-
-    //Q_OBJECT
 public:
     NetworkInterface(QObject * const parent = 0);
+
+    virtual ~NetworkInterface(void);
 
     /**
      * Odeslani dat v poli znaku.
@@ -29,7 +29,7 @@ public:
      * Prijmuti dat v poli znaku.
      * @return prijate pole znaku
      */
-    virtual QByteArray recieve() const = 0;
+    virtual QByteArray * recieve() = 0;
 };
 
 #endif // NETWORKINTERFACE_H

@@ -1,6 +1,6 @@
 #include "server.h"
 
-Server::Server(int port, NetworkInterface *const parent):NetworkInterface(parent)
+Server::Server(int port, NetworkInterface *const parent) : NetworkInterface(parent)
 {
     serverSocket = new QTcpServer(this);
     // zakaze se pouziti proxy
@@ -25,7 +25,7 @@ Server::Server(int port, NetworkInterface *const parent):NetworkInterface(parent
 /**
  * Imlementuje uzavreni socketu.
  */
-Server::~Server(){
+Server::~Server(void){
     serverSocket->close();
 }
 
@@ -40,15 +40,18 @@ void Server::send(QByteArray message) const
 /**
  * Metoda implemenutujici prijimani dat serverem.
  */
-QByteArray Server::recieve()
+QByteArray * Server::recieve()
 {
+    return new QByteArray();
 }
 
-void Server::slotNewClient(QTcpSocket * socket)
+void Server::slotNewClient()
 {
+    // ziska se socket, pomoci ktereho se bude komunikovat s klientam
+    QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
     // prida se ukazatel na klientsky socket do seznamu
-    clientsList << socket;
+    clientsList << clientSocket;
     // vytvori se nove klientske vlakno a spusti se
-    ClientThread(socket).start();
+    ClientThread(clientSocket).start();
 
 }
