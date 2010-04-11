@@ -24,6 +24,13 @@ Server::Server(int port, NetworkInterface *const parent) : NetworkInterface(pare
 
 
 Server::~Server(void){
+    // ukonci vsechna vlakna, se kterymi komunikuje
+    // kazde vlakno pak pri svem niceni uzavre prislusny socket
+    for (int i = 0; clientThreadList.size(); ++i) {
+        clientThreadList.at(i)->quit();
+    }
+
+    // nakonec se uzavre poslouchajici socket
     serverSocket->close();
 }
 
@@ -35,6 +42,18 @@ void Server::send(const QByteArray * message) const
         clientsList.at(i)->write(*message);
     }
 
+}
+
+int Server::getNetworkID() const
+{
+    // pro server vzdy nula, kvuli jednotnemu pristupu
+    return 0;
+}
+
+void Server::setNetworkID(int networkID)
+{
+    // nic nedela, server je vzdy 0
+    // kvuli jednotnemu pristupu z Network
 }
 
 

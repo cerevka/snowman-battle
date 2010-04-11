@@ -8,6 +8,11 @@ ClientThread::ClientThread(QTcpSocket * socket)
     QObject::connect(socket, SIGNAL(readyRead()), this, SLOT(incomingMessage()));
 }
 
+ClientThread::~ClientThread(){
+    // pri zanikani vlakna se uzavre socket
+    socket->disconnectFromHost();
+}
+
 void ClientThread::run()
 {
     // spusti se smycka udalosti

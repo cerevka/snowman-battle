@@ -25,6 +25,11 @@ public:
     ClientThread(QTcpSocket * socket);
 
     /**
+     * Definuje ukonceni vlakna.
+     */
+    ~ClientThread();
+
+    /**
      * Definuje cinnost vlakna - pouze spusti smycku udalosti
      * a dale jiz reaguje jen na signaly.
      */

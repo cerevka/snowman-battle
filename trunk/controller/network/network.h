@@ -32,11 +32,16 @@ public:
      */
     void send(QByteArray * message) const;
 
+    int getNetworkID() const;
+
+    void setNetworkID(int networkID);
+
 private:
     /**
      * Udrzuje odkaz na zvolenou strategii.
      */
     NetworkInterface * network;
+
 
 };
 

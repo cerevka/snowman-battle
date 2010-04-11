@@ -35,6 +35,17 @@ public:
      */
     void send(const QByteArray * message) const;
 
+    /**
+     * Vrati ID server - vzdy 0.
+     */
+    int getNetworkID() const;
+
+    /**
+     * Nastavi ID serveru - nic nemeni, je pouze
+     * kvuli jednotnemu pristupu pres Network.
+     */
+    void setNetworkID(int networkID);
+
 private:
     /**
      * Uchovava ukazatel na serverovy socket, ke

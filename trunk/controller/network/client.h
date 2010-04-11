@@ -34,6 +34,17 @@ public:
      */
     void send(const QByteArray * message) const;
 
+    /**
+     * Vrati ID v siti, ktera mu byla pridelena klientem.
+     */
+    int getNetworkID() const;
+
+    /**
+     * Nastavi klientovi jeho networkID
+     * @param networkID pridelovane ID
+     */
+    void setNetworkID(int networkID);
+
 private:
     /**
      * Udrzuje si ukazatel na socket, kterym komunikuje
@@ -41,11 +52,31 @@ private:
      */
     QTcpSocket * clientSocket;
 
+    /**
+     * Udrzuje ukazatel na naslouchajici vlakno
+     */
+    ClientThread * thread;
+
+    /**
+     * Uchovava ID v siti.
+     */
+    int networkID;
+
 private slots:
     /**
      * Informuje o uspesnem pripojeni k serveru.
      */
     void slotConnected();
+
+    /**
+     * Informuje o odpojeni od serveru.
+     */
+    void slotDisconnected();
+
+    /**
+     * Informuje o chybe pripojeni.
+     */
+    void slotErrorConnect();
 };
 
 #endif // CLIENT_H

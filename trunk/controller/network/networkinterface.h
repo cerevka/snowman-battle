@@ -27,6 +27,16 @@ public:
      * @param message pole znaku k odeslani
      */
     virtual void send(const QByteArray * message) const = 0;
+
+    /**
+     * Vrati hodnotu ID v siti.
+     */
+    virtual int getNetworkID() const = 0;
+
+    /**
+     * Nastavi ID v siti.
+     */
+    virtual void setNetworkID(int networkID) = 0;
 };
 
 #endif // NETWORKINTERFACE_H
