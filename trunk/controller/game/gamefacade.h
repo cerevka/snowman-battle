@@ -12,7 +12,7 @@ class Player;
 class GameFacade : public QObject
 {
 
-Q_OBJECT
+    Q_OBJECT
 
 public:
 

@@ -23,6 +23,8 @@ enum Directions
 class Player : public MapObject
 {
 
+    Q_OBJECT
+
 public:
 
     /**

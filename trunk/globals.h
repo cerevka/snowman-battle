@@ -1,39 +1,56 @@
+
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-// Speciální hlavičkový soubor, který v sobě udržuje ukazatele instance všech singletonových tříd
+#include "cstdlib"
 
 class Window;
-class Server;
-class Client;
+class Network;
 class PacketParser;
 class GameFacade;
 
-/**
- * Instance hlavního okna
- */
-Window * mainWindow;
+#include <QObject>
 
-// TODO tady možná místo Server a Client dáme NetworkInterface
+#include "view/window.h"
+#include "controller/network/network.h"
+#include "controller/network/packetparser.h"
+#include "controller/game/gamefacade.h"
 
-/**
- * Instance serveru
- */
-Server * server;
 
 /**
- * Instance klienta
+ * Speciální třída, který v sobě udržuje ukazatele instance všech singletonových tříd
  */
-Client * client;
+class Globals : public QObject
+{
 
-/**
- * Parser na pakety
- */
-PacketParser * packetParser;
+    Q_OBJECT
 
-/**
- * Instance herní fasády
- */
-GameFacade * gameFacade;
+public:
+
+    explicit Globals(QObject * const parent = 0) :
+            QObject(parent) {};
+
+    /**
+     * Instance hlavního okna
+     */
+    static Window * mainWindow;
+
+    /**
+     * Instance síťového rozhraní
+     */
+    static Network * network;
+
+    /**
+     * Parser na pakety
+     */
+    static PacketParser * packetParser;
+
+    /**
+     * Instance herní fasády
+     */
+    static GameFacade * gameFacade;
+
+};
+
 
 #endif // GLOBALS_H

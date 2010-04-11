@@ -18,6 +18,8 @@ enum WeaponType
 class WeaponPackage : public MapObject
 {
 
+    Q_OBJECT
+
 public:
 
     /**

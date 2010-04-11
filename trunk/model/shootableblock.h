@@ -9,6 +9,8 @@
 class ShootableBlock : public MapObject
 {
 
+    Q_OBJECT
+
 public:
 
     /**

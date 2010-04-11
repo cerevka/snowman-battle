@@ -9,6 +9,8 @@
 class HandGun : public Weapon
 {
 
+    Q_OBJECT
+
 public:
 
     /**
