@@ -24,7 +24,6 @@ HEADERS += controller/game/gamefacade.h \
     view/chatpanel.h \
     controller/network/packetparser.h \
     controller/network/networkinterface.h \
-    controller/network/listenthread.h \
     controller/network/clientthread.h \
     globals.h \
     controller/network/packetcreator.h

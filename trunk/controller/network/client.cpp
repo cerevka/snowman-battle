@@ -21,7 +21,7 @@ Client::~Client(void)
 {
     // ukonci naslouchaji vlakno, ktere pri svem zaniku
     // uzavre komunikacni socket
-    thread->quit();
+    clientThread->quit();
 }
 
 void Client::send(const QByteArray * message) const
@@ -48,8 +48,13 @@ void Client::slotConnected()
 {
     // spojeni bylo navazano, spusti se vlakno, ktere
     // bude cist data ze serveru
-    ClientThread * thread = new ClientThread(clientSocket);
-    thread->start();
+    clientThread = new ClientThread(clientSocket);
+
+    // napoji se na parser
+    QObject::connect(clientThread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
+
+
+    clientThread->start();
 
 
     #ifdef _DEBUG_

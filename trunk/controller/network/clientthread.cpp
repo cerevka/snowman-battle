@@ -6,6 +6,8 @@ ClientThread::ClientThread(QTcpSocket * socket)
 
     // vlakno se napoji na signal
     QObject::connect(socket, SIGNAL(readyRead()), this, SLOT(incomingMessage()));
+
+
 }
 
 ClientThread::~ClientThread(){
@@ -28,7 +30,7 @@ void ClientThread::incomingMessage()
     length = this->socket->read(1).at(0);
 
     // prectu vsechny znaky patrici k prichozimu packetu
-    message = socket->read(length);
+    message = &socket->read(length);
 
     // vyemituji signal nove prichozi zpravy
     emit newMessage(message);
