@@ -10,6 +10,7 @@
 #include "chatpanel.h"
 #include "controller/network/server.h"
 #include "controller/network/client.h"
+#include "controller/network/network.h"
 
 class QAction;
 class QMenu;
