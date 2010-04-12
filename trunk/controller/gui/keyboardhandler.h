@@ -20,7 +20,7 @@ public:
      * @param parent grafický prvek, na který je tento objekt napojen
      * @param myID id lokálního hráče
      */
-    KeyboardHandler(QObject * const parent, const int myID);
+    KeyboardHandler(QObject * const parent);
 
     /**
      * Tato metoda rozpozná daný key event a podle toho vyšle odpovídající signál
@@ -33,25 +33,25 @@ signals:
     /**
      * Tyto signály jsou vyslány, když je stisknuta odpovídající směrová klávesa
      */
-    void upMove(const int);
-    void downMove(const int);
-    void leftMove(const int);
-    void rightMove(const int);
+    void upMove(void);
+    void downMove(void);
+    void leftMove(void);
+    void rightMove(void);
 
     /**
      * Tento signál je vyslán, když je puštěna pohybová klávesa
      */
-    void stopMove(const int);
+    void stopMove(void);
 
     /**
      * Toto je signál stisknutí talčítka pro střelbu
      */
-    void shot(const int);
+    void shot(void);
 
     /**
      * Toto je signál stisknutí talčítka pro změnu zbraně
      */
-    void changeWeapon(const int);
+    void changeWeapon(void);
 
     /**
      * Toto je signál stisknutí talčítka pro pozastavení hry
@@ -60,10 +60,7 @@ signals:
 
 private:
 
-    /**
-     * Id lokálního hráce
-     */
-    int myID;
+
 
     /**
      * Zde jsou uloženy klávesy, které k daným akcím patří

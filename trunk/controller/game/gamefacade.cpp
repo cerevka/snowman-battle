@@ -31,7 +31,7 @@ void GameFacade::newGame(const int countOfPlayers)
         actualGame = new Game(countOfPlayers);
 
         // Spojím signály a sloty
-//        connectAll();
+        connectAll();
 
         // Startuji vlákno
         actualGame->start();
