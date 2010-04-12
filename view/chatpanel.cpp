@@ -17,7 +17,7 @@ ChatPanel::ChatPanel(QWidget *parent) :
     setLayout(layout);
 
     connect(sendButton, SIGNAL(clicked()), this, SLOT(sendMessage()));
-    connect(this, SIGNAL(sendMessage(int, QString)), Globals::packetCreator, SLOT(sendMessage(int, QString)));
+    connect(this, SIGNAL(sendMessage(int, QString*)), Globals::packetCreator, SLOT(sendChatMessage(int, QString*)));
 }
 
 void ChatPanel::newMessage(QString *player, QString *message)
