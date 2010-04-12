@@ -1,4 +1,5 @@
 #include "window.h"
+#include "view/dialogs/connecteddialog.h"
 
 Window::Window()
 {
@@ -27,7 +28,7 @@ Window::Window()
 
     //////////////////Pro testovani/////////////
 
-    QString *na = new QString("Balouch");
+    /*QString *na = new QString("Balouch");
     QString *me = new QString("Tohle je zpravadfs fs dfdsf dsf dsf dsf d sf sd f dsf ds f dsf ds");
     chatpanel->newMessage(na, me);
 
@@ -49,10 +50,10 @@ Window::Window()
 
     QString *pl5 = new QString("Blod");
     statusbar->addPlayer(5, *pl5);
-
+*/
     QString *str = new QString("background1.jpg");
     scenepanel->setBackground(*str);
-
+/*
     x1 = 265;
     y1 = 150;
     //snow1 = new PixmapItem("machine_gun.png", 30, 100, 30-80, 100-15);
@@ -68,7 +69,7 @@ Window::Window()
     scenepanel->addNewGun(0, 300, 250, 0, 0);
     //scenepanel->addNewGun(5, x1, y1, 0, 1);
     /////////////////Konec testovani////////////
-
+*/
     //Vytvori akce
     createActions();
 
@@ -150,6 +151,9 @@ void Window::createGame()
         //TODO misto pro volani socketu
         Server * server = new Server(1234, players);
         Globals::network = new Network(server);
+        QDialog *dia = new ConnectedDialog();
+        dia->show();
+        dia->exec();
         Globals::gameFacade->newGame(players + 1);
      }
 }
