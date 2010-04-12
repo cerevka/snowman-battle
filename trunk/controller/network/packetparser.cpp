@@ -25,7 +25,11 @@ PacketParser::~PacketParser(void)
 
 }
 
-void PacketParser::parseAll(QByteArray * const packets) {
+void PacketParser::parseAll(QByteArray * packets) {
+
+    #ifdef _DEBUG_
+    qDebug() << "Packet parser: Start parsing all";
+    #endif
 
     // Najdu si ukazatel na první znak
     unsigned char * pointer = (unsigned char *)packets->data();
@@ -50,6 +54,8 @@ void PacketParser::parseAll(QByteArray * const packets) {
 
 unsigned char * PacketParser::parse(unsigned char * const packet)
 {
+
+    qDebug() << "Packet parser: Start parsing a packet";
 
     // Čtu první znak (délka paketu)
     unsigned char length = packet[0];
