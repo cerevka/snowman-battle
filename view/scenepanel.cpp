@@ -116,7 +116,7 @@ void ScenePanel::setDirection(int id, int direction)
             // Orientace doleva
         case 3:
             {
-                items.at(id)->setTransform(QTransform().translate(x, y).rotate(-90).translate(-x, -y));
+                items.at(id)->setTransform(QTransform().translate(x, y).rotate(270).translate(-x, -y));
                 break;
             }
         }
@@ -210,13 +210,13 @@ void ScenePanel::changePlayerPosition(int id, int x, int y)
     int px = items.at(id)->x() - x;
     int py = items.at(id)->y() - y;
 
-    if(px < 0 && pos != 1)
+    if(px < 0 /*&& pos != 1*/)
         changePlayerDirection(id, 1);
-    if(px > 0 && pos != 3)
+    if(px > 0 /*&& pos != 3*/)
         changePlayerDirection(id, 3);
-    if(py > 0 && pos != 0)
+    if(py > 0 /*&& pos != 0*/)
         changePlayerDirection(id, 0);
-    if(py < 0 && pos != 2)
+    if(py < 0 /*&& pos != 2*/)
         changePlayerDirection(id, 2);
 
     setPosition(id, x, y);
