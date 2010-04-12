@@ -29,11 +29,11 @@ public slots:
 
     // TODO tyhle sloty si ještě musím promylset
 
-//    /**
-//     * Slot pro přidělení packetu
-//     * @param id id, které se stanici přidělí
-//     */
-//    void assignID(int id);
+    /**
+     * Slot pro přidělení packetu
+     * @param id id, které se stanici přidělí
+     */
+    QByteArray * assignID(int id);
 //
 //    /**
 //     * Slot představovacího paketu
