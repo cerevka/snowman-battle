@@ -28,7 +28,7 @@ PacketParser::~PacketParser(void)
 void PacketParser::parseAll(QByteArray * packets) {
 
     #ifdef _DEBUG_
-    qDebug() << "Packet parser: Start parsing all";
+    qDebug() << "Packet parser: Start parsing all" << packets->size();
     #endif
 
     // Najdu si ukazatel na první znak
@@ -36,6 +36,8 @@ void PacketParser::parseAll(QByteArray * packets) {
 
     // Najdu si ukazatel, který mi ukazuje přesně o jedno místo za pole
     unsigned char * endOfArray = pointer + packets->size();
+
+    qDebug() << "Packet parser: " << pointer << endOfArray << packets->size();
 
     // Dokud jsem nedojel nakonec, tak parsuji paket po paketu
     while(pointer < endOfArray){
@@ -46,6 +48,7 @@ void PacketParser::parseAll(QByteArray * packets) {
             #ifdef _DEBUG_
             qDebug() << "Packet parser: Exception in parsing (" << ex << ")";
             #endif
+            return;
         }
 
     }
@@ -54,8 +57,9 @@ void PacketParser::parseAll(QByteArray * packets) {
 
 unsigned char * PacketParser::parse(unsigned char * const packet)
 {
-
+    #ifdef _DEBUG_
     qDebug() << "Packet parser: Start parsing a packet";
+    #endif
 
     // Čtu první znak (délka paketu)
     unsigned char length = packet[0];
@@ -85,6 +89,10 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             testLenght(packet, 3, true);
 
             emit idAssigned(packet[3]);
+
+            #ifdef _DEBUG_
+            qDebug() << "Packet parser: ID assigned";
+            #endif
 
             break;
         }
