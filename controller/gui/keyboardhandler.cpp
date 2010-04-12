@@ -1,10 +1,8 @@
 #include "keyboardhandler.h"
 
-KeyboardHandler::KeyboardHandler(QObject * const parent, const int myID) :
+KeyboardHandler::KeyboardHandler(QObject * const parent) :
     QObject(parent)
 {
-
-    this->myID = myID;
 
     // Pokud budeme chtít změnit ovládání, tak je to možná udělat tady
 
@@ -33,50 +31,50 @@ void KeyboardHandler::handleKeyEvent(QKeyEvent * const event)
     if(key == upKey)
     {
         if(type == QEvent::KeyPress){
-            emit upMove(myID);
+            emit upMove();
         } else {
-            emit stopMove(myID);
+            emit stopMove();
         }
     }
     // Klávesa pro pohyb dolů
     else if (key == downKey)
     {
         if(type == QEvent::KeyPress){
-            emit downMove(myID);
+            emit downMove();
         } else {
-            emit stopMove(myID);
+            emit stopMove();
         }
     }
     // Klávesa pro pohyb doleva
     else if (key == leftKey)
     {
         if(type == QEvent::KeyPress){
-            emit leftMove(myID);
+            emit leftMove();
         } else {
-            emit stopMove(myID);
+            emit stopMove();
         }
     }
     // Klávesa pro pohyb doprava
     else if (key == rightKey)
     {
         if(type == QEvent::KeyPress){
-            emit rightMove(myID);
+            emit rightMove();
         } else {
-            emit stopMove(myID);
+            emit stopMove();
         }
     }
     // Klávesa pro střelbu
     else if (key == shotKey)
     {
         if(type == QEvent::KeyPress){
-            emit shot(myID);
+            emit shot();
         }
     }
     // Klávesa pro výměnu zbraně
     else if (key == changeKey)
     {
         if(type == QEvent::KeyPress){
-            emit changeWeapon(myID);
+            emit changeWeapon();
         }
     }
     // Klávesa pro zastavení hry

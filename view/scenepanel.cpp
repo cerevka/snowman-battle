@@ -1,4 +1,5 @@
 #include "scenepanel.h"
+#include "globals.h"
 
 ScenePanel::ScenePanel()
 {
@@ -17,17 +18,15 @@ ScenePanel::ScenePanel()
 
     ///// Testování Ota
 
-    GameFacade * const facade = new GameFacade();
-    facade->newGame(6);
-    handler = new KeyboardHandler(NULL, 0);
-    connect(handler, SIGNAL(upMove(int)), facade, SLOT(startMoveNorth(int)));
-    connect(handler, SIGNAL(downMove(int)), facade, SLOT(startMoveSouth(int)));
-    connect(handler, SIGNAL(leftMove(int)), facade, SLOT(startMoveWest(int)));
-    connect(handler, SIGNAL(rightMove(int)), facade, SLOT(startMoveEast(int)));
-    connect(handler, SIGNAL(stopMove(int)), facade, SLOT(stopMove(int)));
-    connect(handler, SIGNAL(shot(int)), facade, SLOT(shot(int)));
-    connect(handler, SIGNAL(changeWeapon(int)), facade, SLOT(changeWeapon(int)));
-    connect(handler, SIGNAL(pauseGame()), facade, SLOT(pauseGame()));
+    handler = new KeyboardHandler(NULL);
+    connect(handler, SIGNAL(upMove()), Globals::packetCreator, SLOT(startMoveNorth()));
+    connect(handler, SIGNAL(downMove()), Globals::packetCreator, SLOT(startMoveSouth()));
+    connect(handler, SIGNAL(leftMove()), Globals::packetCreator, SLOT(startMoveWest()));
+    connect(handler, SIGNAL(rightMove()), Globals::packetCreator, SLOT(startMoveEast()));
+    connect(handler, SIGNAL(stopMove()), Globals::packetCreator, SLOT(stopMove()));
+    connect(handler, SIGNAL(shot()), Globals::packetCreator, SLOT(pressShot()));
+    connect(handler, SIGNAL(changeWeapon()), Globals::packetCreator, SLOT(pressChangeWeapon()));
+    //connect(handler, SIGNAL(pauseGame()), facade, SLOT(pauseGame()));
 
     ///// Konec testování Ota
 
