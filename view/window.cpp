@@ -65,11 +65,13 @@ Window::Window()
     y = 150;
     //snow = new PixmapItem("snowman_black.png", 150, 85, 150, 85);
     scenepanel->addNewPlayer(3, x, y, 0);
-    scenepanel->addNewShot(0, 300, 300);
-    scenepanel->addNewGun(0, 300, 250, 0, 0);
+    scenepanel->changeGun(3, 2);
+    //scenepanel->addNewShot(0, 300, 300);
+    //scenepanel->addNewGun(0, 300, 250, 0, 0);
     //scenepanel->addNewGun(5, x1, y1, 0, 1);
+    */
     /////////////////Konec testovani////////////
-*/
+
     //Vytvori akce
     createActions();
 
@@ -203,15 +205,16 @@ void Window::settings()
     scenepanel->changePlayerDirection(3, x%4);
     scenepanel->setDirection(1, x%4);
     scenepanel->setPosition(2, x1--, y1--);
-    scenepanel->setDirection(2, x%4);
+    scenepanel->changePlayerDirection(3, x--%4);
     scenepanel->hidePlayer(3);
     if(x%4 == 0)
     {
         scenepanel->appearePlayer(3, x, y, x%3);
     }
-    */
+
 
     scenepanel->changePlayerPosition(3, 180, 150);
+    */
     ///////////////////testovani/////////////////////////////////
 
 }

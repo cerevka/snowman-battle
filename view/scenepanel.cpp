@@ -177,7 +177,7 @@ void ScenePanel::addNewGun(int id, int x, int y, int direction, int type)
 
         // Brokovnice
     case 2:
-        items[id] = new PixmapItem("shot_gun.png", machinegunW, machinegunH, machinegunW, machinegunH);
+        items[id] = new PixmapItem("shotgun.png", machinegunW, machinegunH, machinegunW - 50, machinegunH - 10);
         setNewGraficObj(id, x, y, direction);
         break;
     }
