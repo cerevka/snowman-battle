@@ -24,6 +24,19 @@ PacketCreator::~PacketCreator(void)
 /***********************************************************/
 /* -------------------------init-------------------------- */
 
+QByteArray * PacketCreator::assignID(int id){
+
+    QByteArray * const packet = new QByteArray();
+
+    packet->append(3); // délka
+    packet->append(Globals::network->getNetworkID());
+    packet->append(0); // typ přirazení
+    packet->append(ID);
+
+    return packet;
+
+}
+
 void PacketCreator::chooseMap(int mapID)
 {
 
