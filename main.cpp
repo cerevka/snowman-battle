@@ -11,6 +11,8 @@ PacketParser * Globals::packetParser = NULL;
 PacketCreator * Globals::packetCreator = NULL;
 GameFacade * Globals::gameFacade = NULL;
 
+class ScenePanel;
+
 #ifdef _DEBUG_
 
 #include "iostream"
@@ -72,6 +74,18 @@ void connectAll(void)
     QObject::connect(Globals::packetParser, SIGNAL(shotKeyPressed(int)), Globals::gameFacade, SLOT(shot(int)));
     QObject::connect(Globals::packetParser, SIGNAL(changeKeyPressed(int)), Globals::gameFacade, SLOT(changeWeapon(int)));
     QObject::connect(Globals::packetParser, SIGNAL(moveKeyReleased(int)), Globals::gameFacade, SLOT(stopMove(int)));
+
+    ScenePanel * panel = Globals::mainWindow->getScenePanel();
+
+    QObject::connect(Globals::packetParser, SIGNAL(playerSpawned(int,int,int,int)), panel, SLOT(addNewPlayer(int,int,int,int)));
+    QObject::connect(Globals::packetParser, SIGNAL(weaponPackSpawned(int,int,int,int)), panel, SLOT(addNewGun(int,int,int,int,int)));
+    QObject::connect(Globals::packetParser, SIGNAL(playerKilled(int)), panel, SLOT(hidePlayer(int)));
+    QObject::connect(Globals::packetParser, SIGNAL(weaponPackDespawned(int)), panel, SLOT(removeGun(int)));
+    QObject::connect(Globals::packetParser, SIGNAL(weaponChanged(int,int,int)), panel, SLOT(changeGun(int,int)));
+    QObject::connect(Globals::packetParser, SIGNAL(shotCreated(int,int,int)), panel, SLOT(addNewShot(int,int,int)));
+    QObject::connect(Globals::packetParser, SIGNAL(playerMoved(int,int,int)), panel, SLOT(changePlayerPosition(int,int,int)));
+    QObject::connect(Globals::packetParser, SIGNAL(shotMoved(int,int,int)), panel, SLOT(changeShotPosition(int,int,int)));
+    QObject::connect(Globals::packetParser, SIGNAL(shotDestroyed(int)), panel, SLOT(removeShot(int)));
 
 }
 
