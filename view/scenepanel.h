@@ -36,27 +36,8 @@ public:
       */
     void setOpeningView();
 
-    /**
-      * Odstrani objekt z hraci plochy
-      * @param id id grafickeho objektu
-      */
-    void removeGraficObj(int id);
 
-    /**
-      * Presune objekt na pozici [x,y]
-      * @param id id grafickeho objektu
-      * @param x x-ova souradnice objektu
-      * @param y y-ova souradnice objektu
-      */
-    void setPosition(int id, int x, int y);
-
-    /**
-      * Nastavi orientaci objektu
-      * @param id id grafickeho objektu
-      * @param direction pozadovana orientace
-      */
-    void setDirection(int id, int direction);
-
+public slots:
     /**
       * Prida noveho hrace
       * @param id id hrace
@@ -83,21 +64,6 @@ public:
       * @param y y-ova souradnice objektu
       */
     void addNewShot(int id, int x, int y);
-
-    /**
-      * Skryje objekt
-      * @param id id objektu
-      */
-    void hideObject(int id);
-
-    /**
-      * Zobrazi objekt na plose
-      * @param id id objektu
-      * @param x x-ova souradnice objektu
-      * @param y y-ova souradnice objektu
-      * @param direction orientace objektu
-      */
-    void appearObject(int id, int x, int y, int direction);
 
     /**
       * Zmeni hracovu zbran
@@ -173,6 +139,43 @@ private:
       * @param direction orientace objektu
       */
     void setNewGraficObj(int id, int x, int y, int direction);
+
+    /**
+      * Odstrani objekt z hraci plochy
+      * @param id id grafickeho objektu
+      */
+    void removeGraficObj(int id);
+
+    /**
+      * Presune objekt na pozici [x,y]
+      * @param id id grafickeho objektu
+      * @param x x-ova souradnice objektu
+      * @param y y-ova souradnice objektu
+      */
+    void setPosition(int id, int x, int y);
+
+    /**
+      * Nastavi orientaci objektu
+      * @param id id grafickeho objektu
+      * @param direction pozadovana orientace
+      */
+    void setDirection(int id, int direction);
+
+    /**
+      * Skryje objekt
+      * @param id id objektu
+      */
+    void hideObject(int id);
+
+    /**
+      * Zobrazi objekt na plose
+      * @param id id objektu
+      * @param x x-ova souradnice objektu
+      * @param y y-ova souradnice objektu
+      * @param direction orientace objektu
+      */
+
+    void appearObject(int id, int x, int y, int direction);
 
     QGraphicsScene *scene;
 

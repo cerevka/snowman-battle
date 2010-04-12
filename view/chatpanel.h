@@ -14,6 +14,7 @@ class QPushButton;
   */
 class ChatPanel : public QWidget
 {
+
 Q_OBJECT
 public:
 
@@ -46,6 +47,8 @@ private:
     QLineEdit *messageEdit;
     QPushButton *sendButton;
 
+signals:
+    void sendMessage(int id, QString *message);
 
 };
 

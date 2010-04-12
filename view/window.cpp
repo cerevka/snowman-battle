@@ -80,6 +80,11 @@ Window::Window()
 
 }
 
+ScenePanel * Window::getScenePanel( void )
+{
+    return scenepanel;
+}
+
 void Window::createMenus()
 {
     gameMenu = menuBar()->addMenu(tr("&Game"));
