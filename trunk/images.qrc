@@ -11,5 +11,6 @@
         <file>images/snowman_green.png</file>
         <file>images/snowman_red.png</file>
         <file>images/snowman_yellow.png</file>
+        <file>images/shotgun.png</file>
     </qresource>
 </RCC>
