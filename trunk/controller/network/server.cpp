@@ -19,7 +19,9 @@ Server::Server(int port, NetworkInterface *const parent) : NetworkInterface(pare
     #endif
 
     // propoji se signal noveho spojeni s jeho obsluhou
-      connect(serverSocket, SIGNAL(newConnection()), this, SLOT(slotNewClient()));
+    QObject::connect(serverSocket, SIGNAL(newConnection()), this, SLOT(slotNewClient()));
+    // propoji se signal o odeslani packetu s parserem
+    QObject::connect(this, SIGNAL(sentMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
 }
 
 
@@ -41,6 +43,11 @@ void Server::send(const QByteArray * message) const
     for (int i = 0; clientsList.size(); ++i) {
         clientsList.at(i)->write(*message);
     }
+
+    // vyemituje zpravu o odeslanem signalu, aby se zpracovala
+    // take serverem
+    emit sentMessage(message);
+
 
 }
 
@@ -68,6 +75,8 @@ void Server::slotNewClient()
 
     // napoji se signal, ze byla prijata zprava, na parser
     QObject::connect(thread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
+
+    //clientSocket->write()
 
     // a spusti se
     thread->start();
