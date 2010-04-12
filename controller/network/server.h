@@ -66,6 +66,13 @@ private:
      */
     QList<ClientThread*> clientThreadList;
 
+signals:
+    /**
+     * Vyemituje zpravu, ze odeslal packet, aby ho i server
+     * zpracoval.
+     */
+    void sentMessage(const QByteArray * message) const;
+
 
 
 private slots:
