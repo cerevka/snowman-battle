@@ -6,7 +6,7 @@ Network::~Network()
 
 }
 
-void Network::send(QByteArray * message) const
+void Network::send(QByteArray * message)
 {
     network->send(message);
 }

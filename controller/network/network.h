@@ -30,7 +30,7 @@ public:
      * Odeslani dat v poli znaku.
      * @param pole znaku k odeslani
      */
-    void send(QByteArray * message) const;
+    void send(QByteArray * message);
 
     int getNetworkID() const;
 

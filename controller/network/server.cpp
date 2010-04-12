@@ -29,7 +29,7 @@ Server::Server(int port, int count, NetworkInterface *const parent) : NetworkInt
     // propoji se signal noveho spojeni s jeho obsluhou
     QObject::connect(serverSocket, SIGNAL(newConnection()), this, SLOT(slotNewClient()));
     // propoji se signal o odeslani packetu s parserem
-    QObject::connect(this, SIGNAL(sentMessage(const QByteArray*const)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
+    QObject::connect(this, SIGNAL(sentMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*)));
 }
 
 
@@ -45,7 +45,7 @@ Server::~Server(void){
 }
 
 
-void Server::send(const QByteArray * message) const
+void Server::send(QByteArray * message)
 {
 
     // server rozesle zpravu vsem klientum
@@ -75,7 +75,7 @@ void Server::setNetworkID(int networkID)
 
 void Server::slotNewClient()
 {
-    if ((!clientsList.isEmpty()) && (clientsList.size()<this->count))
+    if (clientsList.size()<10)
     {
       // ziska se socket, pomoci ktereho se bude komunikovat s klientam
       QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
@@ -85,7 +85,7 @@ void Server::slotNewClient()
       ClientThread * thread = new ClientThread(clientSocket);
 
       // napoji se signal, ze byla prijata zprava, na parser
-      QObject::connect(thread, SIGNAL(newMessage(QByteArray* const)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
+      QObject::connect(thread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*)));
 
       clientSocket->write(*Globals::packetCreator->assignID(clientsList.size()));
 
