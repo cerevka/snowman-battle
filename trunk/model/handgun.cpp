@@ -15,7 +15,7 @@ void HandGun::shot(void)
     double y;
     double angle;
 
-    double speed = 1.0;
+    double speed = 5.0;
 
     findPointOfCreatingShots(x, y, angle);
 

@@ -37,10 +37,12 @@ void ClientThread::incomingMessage()
 
     qDebug() << "Velikost: " << message->size() << " ukazatel: " << message->data();
 
+    printMessage(message);
+
     // vyemituji signal nove prichozi zpravy
     emit newMessage(message);
 
-    printMessage(message);
+
 }
 
 void ClientThread::printMessage(QByteArray * message)
