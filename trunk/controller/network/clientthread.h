@@ -58,7 +58,7 @@ signals:
      * nova data a predava je ke zpracovani.
      * @param message pole prijatych dat
      */
-    void newMessage(QByteArray * message);
+    void newMessage(QByteArray * const message);
 
 private slots:
     /**

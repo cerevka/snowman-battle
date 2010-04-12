@@ -77,7 +77,7 @@ signals:
      * Vyemituje zpravu, ze odeslal packet, aby ho i server
      * zpracoval.
      */
-    void sentMessage(const QByteArray * message) const;
+    void sentMessage(const QByteArray * const message) const;
 
 
 
