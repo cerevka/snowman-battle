@@ -150,7 +150,7 @@ void Window::createGame()
         //TODO misto pro volani socketu
         Server * server = new Server(1234, players);
         Globals::network = new Network(server);
-        Globals::gameFacade->newGame(players);
+        Globals::gameFacade->newGame(players + 1);
      }
 }
 
