@@ -75,9 +75,8 @@ void Server::setNetworkID(int networkID)
 
 void Server::slotNewClient()
 {
-    qDebug() << "Pred prvnim pozitim.";
-    //if ((!clientsList.isEmpty()) && (clientsList.size()<this->count))
-    //{
+    if ((!clientsList.isEmpty()) && (clientsList.size()<this->count))
+    {
       // ziska se socket, pomoci ktereho se bude komunikovat s klientam
       QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
       // prida se ukazatel na klientsky socket do seznamu
@@ -99,14 +98,13 @@ void Server::slotNewClient()
       #ifdef _DEBUG_
         qDebug() << "Network Server: Client has been connected.\n";
       #endif
-//    } else {
-//        QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
-//        clientSocket->disconnectFromHost();
-//        #ifdef _DEBUG_
-//         qDebug() << "Network Server: Client has been refused.";
-//        #endif
-//
-//    }
-    qDebug() << "Po poziti.";
+    } else {
+        QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
+        clientSocket->disconnectFromHost();
+        #ifdef _DEBUG_
+         qDebug() << "Network Server: Client has been refused.";
+        #endif
+
+    }
 
 }
