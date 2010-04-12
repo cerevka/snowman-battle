@@ -9,14 +9,22 @@ class QPushButton;
 class QLineEdit;
 class QComboBox;
 
+/**
+  * Trida reprezentujici dialog pro zalozeni serveru
+  */
 class CreateGame : public QDialog
  {
      Q_OBJECT
 
  public:
-     CreateGame(QWidget *parent=0);
-     QLineEdit *nickname;
-     QComboBox *players;
+
+    /**
+      * Vytvori dialog
+      * @param parent rodic dialogu
+      */
+    CreateGame(QWidget *parent=0);
+    QLineEdit *nickname;
+    QComboBox *players;
      //QComboBox *color;
 
 
