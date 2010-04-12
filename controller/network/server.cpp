@@ -6,8 +6,9 @@ Server::Server(int port, int count, NetworkInterface *const parent) : NetworkInt
     this->count = count;
 
     // vytvori se QListy
-    //QList<QTcpSocket*> clientsList;
-    //clientThreadList =  QList<QThread*>();
+    /*
+    clientsList = new QList<QTcpSocket*>();
+    clientThreadList =  QList<QThread*>();*/
 
     serverSocket = new QTcpServer(this);
     // zakaze se pouziti proxy
@@ -35,7 +36,7 @@ Server::Server(int port, int count, NetworkInterface *const parent) : NetworkInt
 Server::~Server(void){
     // ukonci vsechna vlakna, se kterymi komunikuje
     // kazde vlakno pak pri svem niceni uzavre prislusny socket
-    for (int i = 0; clientThreadList.size(); ++i) {
+    for (int i = 0; i < clientThreadList.size(); ++i) {
         clientThreadList.at(i)->quit();
     }
 
@@ -46,8 +47,9 @@ Server::~Server(void){
 
 void Server::send(const QByteArray * message) const
 {
+
     // server rozesle zpravu vsem klientum
-    for (int i = 0; clientsList.size(); ++i) {
+    for (int i = 0; i < clientsList.size(); ++i) {
         clientsList.at(i)->write(*message);
     }
 
@@ -74,8 +76,8 @@ void Server::setNetworkID(int networkID)
 void Server::slotNewClient()
 {
     qDebug() << "Pred prvnim pozitim.";
-    if (clientsList.size()<this->count)
-    {
+    //if ((!clientsList.isEmpty()) && (clientsList.size()<this->count))
+    //{
       // ziska se socket, pomoci ktereho se bude komunikovat s klientam
       QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
       // prida se ukazatel na klientsky socket do seznamu
@@ -84,7 +86,7 @@ void Server::slotNewClient()
       ClientThread * thread = new ClientThread(clientSocket);
 
       // napoji se signal, ze byla prijata zprava, na parser
-      QObject::connect(thread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
+      QObject::connect(thread, SIGNAL(newMessage(QByteArray* const)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
 
       clientSocket->write(*Globals::packetCreator->assignID(clientsList.size()));
 
@@ -97,14 +99,14 @@ void Server::slotNewClient()
       #ifdef _DEBUG_
         qDebug() << "Network Server: Client has been connected.\n";
       #endif
-    } else {
-        QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
-        clientSocket->disconnectFromHost();
-        #ifdef _DEBUG_
-         qDebug() << "Network Server: Client has been refused.";
-        #endif
-
-    }
+//    } else {
+//        QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
+//        clientSocket->disconnectFromHost();
+//        #ifdef _DEBUG_
+//         qDebug() << "Network Server: Client has been refused.";
+//        #endif
+//
+//    }
     qDebug() << "Po poziti.";
 
 }
