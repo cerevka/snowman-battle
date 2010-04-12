@@ -5,12 +5,12 @@ ShootableBlock::ShootableBlock(Game * const parent, const double x1, const doubl
 {
 }
 
-bool ShootableBlock::interactPlayer(Player * const player)
+bool ShootableBlock::interactPlayer(Player * const)
 {
     return false;
 }
 
-bool ShootableBlock::interactShot(Shot * const shot)
+bool ShootableBlock::interactShot(Shot * const)
 {
     return true;
 }

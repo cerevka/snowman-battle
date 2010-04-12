@@ -5,12 +5,12 @@ UnshootableBlock::UnshootableBlock(Game * const parent, const double x1, const d
 {
 }
 
-bool UnshootableBlock::interactPlayer(Player * const player)
+bool UnshootableBlock::interactPlayer(Player * const)
 {
     return false;
 }
 
-bool UnshootableBlock::interactShot(Shot * const shot)
+bool UnshootableBlock::interactShot(Shot * const)
 {
     return false;
 }

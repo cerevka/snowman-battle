@@ -81,7 +81,7 @@ bool WeaponPackage::interactPlayer(Player * const player)
     return true;
 }
 
-bool WeaponPackage::interactShot(Shot * const shot)
+bool WeaponPackage::interactShot(Shot * const)
 {
     return true;
 }
