@@ -5,7 +5,7 @@
 #include "shotgun.h"
 
 double Player::playerSize = 55.0; // TODO - doplnit skutečnou šířku a výšku hráče v pixelech
-double Player::stepSize = 0.5; // TODO - doplnit skutečnou velikost kroku
+double Player::stepSize = 2.5; // TODO - doplnit skutečnou velikost kroku
 
 Player::Player(Game * const parent, const int id) :
         MapObject(parent)
