@@ -24,7 +24,7 @@ Server::Server(int port, int count, NetworkInterface *const parent) : NetworkInt
     // propoji se signal noveho spojeni s jeho obsluhou
     QObject::connect(serverSocket, SIGNAL(newConnection()), this, SLOT(slotNewClient()));
     // propoji se signal o odeslani packetu s parserem
-    QObject::connect(this, SIGNAL(sentMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
+    QObject::connect(this, SIGNAL(sentMessage(const QByteArray*const)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
 }
 
 

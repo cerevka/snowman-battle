@@ -39,6 +39,6 @@ void ClientThread::incomingMessage()
     emit newMessage(message);
 
     #ifdef _DEBUG_
-    qDebug() << "Network Client Thread: New message";
+    qDebug() << "Network Client Thread: New message" << message->data();
     #endif
 }
