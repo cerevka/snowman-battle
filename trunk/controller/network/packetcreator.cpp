@@ -30,8 +30,8 @@ QByteArray * PacketCreator::assignID(int id){
 
     packet->append(3); // délka
     packet->append(Globals::network->getNetworkID());
-    packet->append(0); // typ přirazení
-    packet->append(ID);
+    packet->append((char)0); // typ přirazení
+    packet->append(id);
 
     return packet;
 
