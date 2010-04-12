@@ -274,7 +274,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 27 - přesun střely IDs, X, Y
     case 27: {
 
-            testLenght(packet, 3, true);
+            testLenght(packet, 7, true);
 
             emit shotMoved(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]));
 
