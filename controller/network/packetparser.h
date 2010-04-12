@@ -183,6 +183,12 @@ signals:
      */
     void shotDestroyed(int shotID);
 
+    /**
+     * Signál výstřelu hráče (pro odečtení nábojů)
+     * @param playerID id hráče, který vystřelil
+     */
+    void playerShoted(int playerID);
+
     /**********************************************************/
     /* -------------------řídící signály--------------------- */
 
@@ -195,6 +201,18 @@ signals:
      * Signál zapauzování hry
      */
     void gamePaused(void);
+
+    /**
+     * Signál aktivování hráče
+     * @param playerID id hráče, který se má aktivovat
+     */
+    void playerActivated(int playerID);
+
+    /**
+     * Signál deaktivování hráče
+     * @param playerID id hráče, který se má deaktivovat
+     */
+    void playerDeactivated(int playerID);
 
     /**********************************************************/
     /* -------------------chatové signály-------------------- */
@@ -226,7 +244,15 @@ private:
      * @param low bity reprezentující nižší řád čísla
      * @return číslo které reprezentovaly dva vstupní znaky
      */
-    int convertBytesToInt(unsigned char high, unsigned char low);
+    int convertBytesToInt(const unsigned char high, const unsigned char low);
+
+    /**
+     * Pomocná metoda, která se používá pro zjištění správnosti délky paketu
+     * @param ukazatel na začátek paketu
+     * @param expectedLength očekávaná nebo minimální délka paketu
+     * @param equal pokud je true tak je zadaná délka očekávaná, pokud false tak minimální
+     */
+    void testLenght(unsigned char * const packet, const int expectedLength, const bool equal);
 
 };
 

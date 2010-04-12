@@ -141,6 +141,8 @@ void Game::timerEvent (QTimerEvent * const event)
     moveShots();
     generateWeaponPackages();
 
+    emit frameEnded();
+
     bigGameMutex->unlock();
 
     // pokud se má hra pauznout zastavím vlákno

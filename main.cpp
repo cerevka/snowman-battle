@@ -98,13 +98,13 @@ int main(int argc, char * argv[])
     // TODO zde bude alokace proměnných pro vlastní program (např. hlavní okno programu)
     // ...
 
-    //Vytvori hlavni okno
-    Globals::mainWindow = new Window();
-    Globals::mainWindow->show();
-
     Globals::packetParser = new PacketParser();
     Globals::packetCreator = new PacketCreator();
     Globals::gameFacade = new GameFacade();
+
+    //Vytvori hlavni okno
+    Globals::mainWindow = new Window();
+    Globals::mainWindow->show();
 
     // Spojím sokety a sloty
     connectAll();

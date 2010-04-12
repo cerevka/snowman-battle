@@ -4,7 +4,7 @@
 #include "machinegun.h"
 #include "shotgun.h"
 
-double Player::playerSize = 30.0; // TODO - doplnit skutečnou šířku a výšku hráče v pixelech
+double Player::playerSize = 55.0; // TODO - doplnit skutečnou šířku a výšku hráče v pixelech
 double Player::stepSize = 0.5; // TODO - doplnit skutečnou velikost kroku
 
 Player::Player(Game * const parent, const int id) :
@@ -38,21 +38,25 @@ bool Player::interactPlayer(Player * const player)
 bool Player::interactShot(Shot * const shot)
 {
 
-    spawned = false;
+    if(active){
 
-    // Zabití hráče
-    x1 = -100.0;
-    y1 = -100.0;
-    x2 = -100.0;
-    y2 = -100.0;
+        spawned = false;
 
-    emit playerKilled(playerID);
-    #ifdef _DEBUG_
-    qDebug() << "Game engine: Player" << playerID << "killed";
-    #endif
+        // Zabití hráče
+        x1 = -100.0;
+        y1 = -100.0;
+        x2 = -100.0;
+        y2 = -100.0;
 
-    // startuji časovač pro respawnutí
-    idRespawnTimer = startTimer(5000);
+        emit playerKilled(playerID);
+        #ifdef _DEBUG_
+        qDebug() << "Game engine: Player" << playerID << "killed";
+        #endif
+
+        // startuji časovač pro respawnutí
+        idRespawnTimer = startTimer(5000);
+
+    }
 
     return false;
 
@@ -146,8 +150,17 @@ void Player::shot(void)
             inventory[actualWeapon]->shot();
             canShot = false;
             idCooldownTimer = startTimer(600);
+
+            emit playerShoted(playerID);
+            #ifdef _DEBUG_
+            qDebug() << "Game engine: Player" << playerID << "shoted";
+            #endif
+
         } catch (QString & ex){
             // Tato výjimka se ignoruje (střely navíc se prostě nevytvoří)
+            #ifdef _DEBUG_
+            qDebug() << "Game engine: Exception - to many shots";
+            #endif
         }
 
     }
@@ -251,12 +264,12 @@ void Player::setActive(const bool active)
     this->active = active;
 
     if(active){
-        // TODO - poslat signál o aktivování hráče
+        emit playerActivated(playerID);
         #ifdef _DEBUG_
         qDebug() << "Game engine: Player" << playerID << "activated";
         #endif
     } else {
-        // TODO - poslat signál o deaktivování hráče
+        emit playerDeactivated(playerID);
         #ifdef _DEBUG_
         qDebug() << "Game engine: Player" << playerID << "deactivated";
         #endif
