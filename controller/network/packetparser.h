@@ -31,7 +31,7 @@ public slots:
      * Zpracuje všechny pakety v zadanám poli bytů
      * @param packets pole bytů, které se má naparsovat
      */
-    void parseAll(QByteArray * const packets);
+    void parseAll(QByteArray * packets);
 
 signals:
 
