@@ -22,8 +22,9 @@ public:
     /**
      * Vytvoreni serveru naslouchajiciho na zvolenem portu.
      * @param port port, na kterem bude server naslouchat
+     * @param count pocet hracu, kteri budou hrat
      */
-    Server(int port, NetworkInterface * const parent = 0);
+    Server(int port, int count, NetworkInterface * const parent = 0);
 
     /**
      * Desktruktor uzavirajici serverovy socket.
@@ -65,6 +66,11 @@ private:
      * ctou data od klientu.
      */
     QList<ClientThread*> clientThreadList;
+
+    /**
+     * Udrzuje informaci, kolik hracu se bude hry ucastnit.
+     */
+    int count;
 
 signals:
     /**

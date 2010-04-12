@@ -1,7 +1,10 @@
 #include "server.h"
 
-Server::Server(int port, NetworkInterface *const parent) : NetworkInterface(parent)
+Server::Server(int port, int count, NetworkInterface *const parent) : NetworkInterface(parent)
 {
+    // ulozi si pocet hracu
+    this->count = count;
+
     serverSocket = new QTcpServer(this);
     // zakaze se pouziti proxy
     serverSocket->setProxy(QNetworkProxy::NoProxy);
@@ -66,26 +69,36 @@ void Server::setNetworkID(int networkID)
 
 void Server::slotNewClient()
 {
-    // ziska se socket, pomoci ktereho se bude komunikovat s klientam
-    QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
-    // prida se ukazatel na klientsky socket do seznamu
-    clientsList << clientSocket;
-    // vytvori se nove klientske vlakno
-    ClientThread * thread = new ClientThread(clientSocket);
+    if (clientsList.size()<this->count)
+    {
+      // ziska se socket, pomoci ktereho se bude komunikovat s klientam
+      QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
+      // prida se ukazatel na klientsky socket do seznamu
+      clientsList << clientSocket;
+      // vytvori se nove klientske vlakno
+      ClientThread * thread = new ClientThread(clientSocket);
 
-    // napoji se signal, ze byla prijata zprava, na parser
-    QObject::connect(thread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
+      // napoji se signal, ze byla prijata zprava, na parser
+      QObject::connect(thread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
 
-    //clientSocket->write()
+      clientSocket->write(Globals::packetCreator->assignID(clientsList.size()));
 
-    // a spusti se
-    thread->start();
+      // a spusti se
+      thread->start();
 
-    // schova se ukazatel na vlakno
-    clientThreadList << thread;
+      // schova se ukazatel na vlakno
+      clientThreadList << thread;
 
-    #ifdef _DEBUG_
-      qDebug() << "Network Server: Client has been connected.\n";
-    #endif
+      #ifdef _DEBUG_
+        qDebug() << "Network Server: Client has been connected.\n";
+      #endif
+    } else {
+        QTcpSocket * clientSocket = serverSocket->nextPendingConnection();
+        clientSocket->disconnectFromHost();
+        #ifdef _DEBUG_
+         qDebug() << "Network Server: Client has been refused.";
+        #endif
+
+    }
 
 }
