@@ -1,8 +1,9 @@
 #include "chatpanel.h"
+#include "globals.h"
 
 ChatPanel::ChatPanel(QWidget *parent) :
     QWidget(parent)
-{
+{    
     messageEdit = new QLineEdit;
     sendButton = new QPushButton(tr("Send"));
     layout = new QGridLayout;
@@ -16,6 +17,7 @@ ChatPanel::ChatPanel(QWidget *parent) :
     setLayout(layout);
 
     connect(sendButton, SIGNAL(clicked()), this, SLOT(sendMessage()));
+    connect(this, SIGNAL(sendMessage(int, QString)), Globals::packetCreator, SLOT(sendMessage(int, QString)));
 }
 
 void ChatPanel::newMessage(QString *player, QString *message)
@@ -31,5 +33,8 @@ void ChatPanel::newMessage(QString *player, QString *message)
 void ChatPanel::sendMessage( void )
 {
     QString mess = messageEdit->text();
+    int id = Globals::network->getNetworkID();
     messageEdit->clear();
+
+    emit sendMessage(id, &mess);
 }

@@ -30,6 +30,8 @@ class Window : public QMainWindow
       */
      Window();
 
+     ScenePanel * getScenePanel( void );
+
  private slots:
 
      /**
