@@ -81,7 +81,7 @@ void Server::slotNewClient()
       // napoji se signal, ze byla prijata zprava, na parser
       QObject::connect(thread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
 
-      clientSocket->write(Globals::packetCreator->assignID(clientsList.size()));
+      clientSocket->write(*Globals::packetCreator->assignID(clientsList.size()));
 
       // a spusti se
       thread->start();
