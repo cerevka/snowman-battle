@@ -5,6 +5,10 @@ Server::Server(int port, int count, NetworkInterface *const parent) : NetworkInt
     // ulozi si pocet hracu
     this->count = count;
 
+    // vytvori se QListy
+    //QList<QTcpSocket*> clientsList;
+    //clientThreadList =  QList<QThread*>();
+
     serverSocket = new QTcpServer(this);
     // zakaze se pouziti proxy
     serverSocket->setProxy(QNetworkProxy::NoProxy);
@@ -69,6 +73,7 @@ void Server::setNetworkID(int networkID)
 
 void Server::slotNewClient()
 {
+    qDebug() << "Pred prvnim pozitim.";
     if (clientsList.size()<this->count)
     {
       // ziska se socket, pomoci ktereho se bude komunikovat s klientam
@@ -100,5 +105,6 @@ void Server::slotNewClient()
         #endif
 
     }
+    qDebug() << "Po poziti.";
 
 }
