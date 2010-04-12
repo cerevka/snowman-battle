@@ -28,7 +28,7 @@ PacketParser::~PacketParser(void)
 void PacketParser::parseAll(QByteArray * packets) {
 
     #ifdef _DEBUG_
-    qDebug() << "Packet parser: Start parsing all" << packets->size();
+    qDebug() << "Packet parser: Start parsing all" << packets << packets->size();
     #endif
 
     // Najdu si ukazatel na první znak

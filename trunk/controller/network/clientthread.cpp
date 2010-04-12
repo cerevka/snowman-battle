@@ -35,7 +35,7 @@ void ClientThread::incomingMessage()
     // precte se vsechno, co prislo a nestaram se o obsah
     message = &socket->readAll();
 
-    qDebug() << "Velikost: " << message->size() << " ukazatel: " << message->data();
+    qDebug() << "Velikost: " << message->size() << " ukazatel: " << message;
 
     printMessage(message);
 
