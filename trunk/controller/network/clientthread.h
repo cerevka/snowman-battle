@@ -52,6 +52,8 @@ private:
      */
     int length;
 
+    void printMessage(QByteArray * message);
+
 signals:
     /**
      * Tento signal je vyemitovan vzdy, kdy jsou prijata

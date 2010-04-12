@@ -35,10 +35,18 @@ void ClientThread::incomingMessage()
     // precte se vsechno, co prislo a nestaram se o obsah
     message = &socket->readAll();
 
+    qDebug() << "Velikost: " << message->size();
+
     // vyemituji signal nove prichozi zpravy
     emit newMessage(message);
 
-    #ifdef _DEBUG_
-    qDebug() << "Network Client Thread: New message" << message->data();
-    #endif
+    printMessage(message);
+}
+
+void ClientThread::printMessage(QByteArray * message)
+{
+    qDebug() << "New message: ";
+    for (int i = 0; i < message->size(); ++i) {
+        qDebug() << (int) message->at(i);
+    }
 }
