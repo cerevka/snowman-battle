@@ -133,6 +133,13 @@ void ScenePanel::addNewPlayer(int id, int x, int y, int direction)
 {
     if(items.at(id) != NULL)
         removeGraficObj(id);
+    if(items.at(6 + id * guns) != NULL)
+        removeGraficObj(id);
+    if(items.at(6 + id * guns + 1) != NULL)
+        removeGraficObj(id);
+    if(items.at(6 + id * guns + 2) != NULL)
+        removeGraficObj(id);
+
 
     items[id] = new PixmapItem("snowman_" + colors.at(id) + ".png", playerW, playerH, playerW, playerH);
     items.at(id)->dir = direction;
@@ -210,13 +217,13 @@ void ScenePanel::changePlayerPosition(int id, int x, int y)
     int px = items.at(id)->x() - x;
     int py = items.at(id)->y() - y;
 
-    if(px < 0 /*&& pos != 1*/)
+    if(px < 0)
         changePlayerDirection(id, 1);
-    if(px > 0 /*&& pos != 3*/)
+    if(px > 0)
         changePlayerDirection(id, 3);
-    if(py > 0 /*&& pos != 0*/)
+    if(py > 0)
         changePlayerDirection(id, 0);
-    if(py < 0 /*&& pos != 2*/)
+    if(py < 0)
         changePlayerDirection(id, 2);
 
     setPosition(id, x, y);

@@ -1,4 +1,5 @@
 #include "connecteddialog.h"
+#include "globals.h"
 
 static const QSize resultSize(80, 65);
 
@@ -7,8 +8,16 @@ ConnectedDialog::ConnectedDialog(QWidget *parent)
 {
     colors << "black" << "red" << "blue" << "green" << "brown" << "yellow";
 
+
+    QLabel *lab = new QLabel(tr("ceka se na hrace"));
+    QPushButton *but = new QPushButton(tr("create"));
+
     layout = new QGridLayout;
+    layout->addWidget(lab, 0, 0);
+    layout->addWidget(but, 1, 0);
     setLayout(layout);
+
+    connect(but, SIGNAL(clicked()), Globals::gameFacade, SLOT(newGame(int)));
 }
 
 void ConnectedDialog::addPlayer(int id, QString &name)
