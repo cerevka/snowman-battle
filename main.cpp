@@ -3,6 +3,7 @@
 #include <QtGui>
 
 #include "globals.h"
+#include "cstdlib"
 
 Window * Globals::mainWindow = NULL;
 Network * Globals::network = NULL;
@@ -58,6 +59,9 @@ void debugConsole(void)
 
 #endif
 
+/**
+ * Pomocná funkce, pro připojení slotů a signálů
+ */
 void connectAll(void)
 {
 

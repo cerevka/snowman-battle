@@ -30,12 +30,12 @@ Player::Player(Game * const parent, const int id) :
 
 }
 
-bool Player::interactPlayer(Player * const player)
+bool Player::interactPlayer(Player * const)
 {
     return false;
 }
 
-bool Player::interactShot(Shot * const shot)
+bool Player::interactShot(Shot * const)
 {
 
     if(active){

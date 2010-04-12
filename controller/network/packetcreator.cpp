@@ -22,17 +22,26 @@ PacketCreator::~PacketCreator(void)
 }
 
 /***********************************************************/
+/* -------------------------init-------------------------- */
 
-void PacketCreator::startGame(void)
+void PacketCreator::chooseMap(int mapID)
 {
 
     QByteArray * const packet = new QByteArray();
 
-    packet->append(2); // délka
+    packet->append(3); // délka
     packet->append(Globals::network->getNetworkID());
-    packet->append(3); // typ start game
+    packet->append(2); // typ výběr mapy
+    packet->append(mapID);
 
     sendPacket(packet);
+
+}
+
+void PacketCreator::startGame(void)
+{
+
+    createThreeBytesPacket(3); // typ start hry
 
 }
 
@@ -85,26 +94,14 @@ void PacketCreator::pressChangeWeapon(void)
 void PacketCreator::stopMove(void)
 {
 
-    QByteArray * const packet = new QByteArray();
-
-    packet->append(2); // délka
-    packet->append(Globals::network->getNetworkID());
-    packet->append(11); // typ puštění klávesy
-
-    sendPacket(packet);
+    createThreeBytesPacket(11); // typ puštění klávesy
 
 }
 
 void PacketCreator::sendHelloPacket(void)
 {
 
-    QByteArray * const packet = new QByteArray();
-
-    packet->append(2); // délka
-    packet->append(Globals::network->getNetworkID());
-    packet->append(12); // typ hello paket
-
-    sendPacket(packet);
+    createThreeBytesPacket(12); // typ hello paket
 
 }
 
@@ -294,26 +291,14 @@ void PacketCreator::playerShots(int playerID)
 void PacketCreator::quitGame(void)
 {
 
-    QByteArray * const packet = new QByteArray();
-
-    packet->append(2); // délka
-    packet->append(Globals::network->getNetworkID());
-    packet->append(30); // typ ukončení hry
-
-    sendPacket(packet);
+    createThreeBytesPacket(30); // typ ukončení hry
 
 }
 
 void PacketCreator::pauseGame(void)
 {
 
-    QByteArray * const packet = new QByteArray();
-
-    packet->append(2); // délka
-    packet->append(Globals::network->getNetworkID());
-    packet->append(31); // typ pauznutí hry
-
-    sendPacket(packet);
+    createThreeBytesPacket(31); // typ pauznutí hry
 
 }
 
@@ -404,6 +389,19 @@ void PacketCreator::sendKeyPress(const int typeOfKey)
     packet->append(Globals::network->getNetworkID());
     packet->append(10); // typ stisk klávesy
     packet->append(typeOfKey); // zadaná klávesa
+
+    sendPacket(packet);
+
+}
+
+void PacketCreator::createThreeBytesPacket(const int typeOfPacket)
+{
+
+    QByteArray * const packet = new QByteArray();
+
+    packet->append(2); // délka
+    packet->append(Globals::network->getNetworkID());
+    packet->append(typeOfPacket); // typ definovaný parametrem
 
     sendPacket(packet);
 

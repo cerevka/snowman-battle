@@ -42,11 +42,11 @@ public slots:
 //     */
 //    void assignName(int id, QString * name);
 //
-//    /**
-//     * Slot pro výběr mapy (pro nás nezajímavé, protože máme jen jednu mapu)
-//     * @param mapID překvapivě id mapy
-//     */
-//    void chooseMap(int mapID);
+    /**
+     * Slot pro výběr mapy (pro nás nezajímavé, protože máme jen jednu mapu)
+     * @param mapID překvapivě id mapy
+     */
+    void chooseMap(int mapID);
 
     /**
      * Slot startu hry
@@ -237,6 +237,12 @@ private:
      * @param typeOfkey číslo klávesy, které se bude posílat v paketu
      */
     void sendKeyPress(const int typeOfKey);
+
+    /**
+     * Pomocná metoda pro vytváření 3-bytových paketů
+     * @param typeOfPacket číslo typu paketu
+     */
+    void createThreeBytesPacket(const int typeOfPacket);
 
     /**
      * Tato metoda slouží k odeslání paketu (přiodesílání zamkne odesílací mutex)
