@@ -30,7 +30,8 @@ void GameFacade::newGame(const int countOfPlayers)
         // Vytvářím objekt hry
         actualGame = new Game(countOfPlayers);
 
-        connectAll();
+        // Spojím signály a sloty
+//        connectAll();
 
         // Startuji vlákno
         actualGame->start();
@@ -160,6 +161,8 @@ void GameFacade::deactivatePlayer(const int playerID)
 void GameFacade::connectAll(void)
 {
 
+    connect(actualGame, SIGNAL(frameEnded()), Globals::packetCreator, SLOT(sendGameEnginePacket()));
+
     connect(actualGame, SIGNAL(shotCreated(int,int,int)), Globals::packetCreator, SLOT(createShot(int,int,int)));
     connect(actualGame, SIGNAL(shotMoved(int,int,int)), Globals::packetCreator, SLOT(moveShot(int,int,int)));
     connect(actualGame, SIGNAL(shotDestroyed(int)), Globals::packetCreator, SLOT(destroyShot(int)));
@@ -167,7 +170,7 @@ void GameFacade::connectAll(void)
     connect(actualGame, SIGNAL(playerMoved(int,int,int)), Globals::packetCreator, SLOT(movePlayer(int,int,int)));
 
     connect(actualGame, SIGNAL(wPackCreated(int,int,int,int)), Globals::packetCreator, SLOT(spawnWeaponPack(int,int,int,int)));
-    connect(actualGame, SIGNAL(wPackRemoved(int)), Globals::packetCreator, SLOT(despawnedWeaponPack(int)));
+    connect(actualGame, SIGNAL(wPackRemoved(int)), Globals::packetCreator, SLOT(despawnWeaponPack(int)));
 
     for(int i = 0; i < actualGame->allPlayers->size(); i++){
 
@@ -175,7 +178,11 @@ void GameFacade::connectAll(void)
 
         connect(actualPlayer, SIGNAL(playerSpawned(int,int,int,int)), Globals::packetCreator, SLOT(spawnPlayer(int,int,int,int)));
         connect(actualPlayer, SIGNAL(playerKilled(int)), Globals::packetCreator, SLOT(killPlayer(int)));
-        connect(actualPlayer, SIGNAL(weaponChanged(int,int,int)), Globals::packetCreator, SLOT(changedWeapon(int,int,int)));
+        connect(actualPlayer, SIGNAL(playerShoted(int)), Globals::packetCreator, SLOT(playerShots(int)));
+        connect(actualPlayer, SIGNAL(weaponChanged(int,int,int)), Globals::packetCreator, SLOT(changeWeapon(int,int,int)));
+
+        connect(actualPlayer, SIGNAL(playerActivated(int)), Globals::packetCreator, SLOT(activatePlayer(int)));
+        connect(actualPlayer, SIGNAL(playerDeactivated(int)), Globals::packetCreator, SLOT(deactivatePlayer(int)));
     }
 
 }

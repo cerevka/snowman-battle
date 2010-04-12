@@ -132,7 +132,11 @@ signals:
 
     void playerKilled(int playerID);
     void playerSpawned(int playerID, int x, int y, int direction);
-    void weaponChanged(int playerId, int weapon, int restOfAmmo);
+    void playerShoted(int playerID);
+    void weaponChanged(int playerID, int weapon, int restOfAmmo);
+
+    void playerActivated(int playerID);
+    void playerDeactivated(int playerID);
 
 private:
 

@@ -1,5 +1,7 @@
 #include "packetparser.h"
 
+#include <QDebug>
+
 PacketParser::PacketParser(QObject * const parent) :
     QObject(parent)
 {
@@ -31,10 +33,16 @@ void PacketParser::parseAll(QByteArray * const packets) {
     // Najdu si ukazatel, který mi ukazuje přesně o jedno místo za pole
     unsigned char * endOfArray = pointer + packets->size();
 
-    // Dokud jsem nedojel nakonec tak parsuji paket po paketu
+    // Dokud jsem nedojel nakonec, tak parsuji paket po paketu
     while(pointer < endOfArray){
 
-        pointer = parse(pointer);
+        try {
+            pointer = parse(pointer);
+        } catch (QString & ex){
+            #ifdef _DEBUG_
+            qDebug() << "Packet parser: Exception in parsing (" << ex << ")";
+            #endif
+        }
 
     }
 
@@ -68,9 +76,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 0 - přidělení ID (SERVER)
     case 0: {
 
-            if(length != 3){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, true);
 
             emit idAssigned(packet[3]);
 
@@ -80,9 +86,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 1 - představovací packet (kombinace ID a jména) (OBA)
     case 1: {
 
-            if(length < 3){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, false);
 
             QString * const name = new QString();
 
@@ -98,9 +102,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 2 - informace o mapě (posílá pouze server klientům, jednorázová akce) (SERVER)
     case 2: {
 
-            if(length != 3){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, true);
 
             emit mapChoosed(packet[3]);
 
@@ -110,9 +112,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 3 - začátek hry (SERVER)
     case 3: {
 
-            if(length != 2){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 2, true);
 
             emit gameStarted();
 
@@ -126,9 +126,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 10 - stisk klávesy (typ klávesy) (CLIENT)
     case 10: {
 
-            if(length != 3){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, true);
 
             // podle typu klávesy pošlu signál
             switch(packet[3]){
@@ -170,7 +168,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
                 }
 
             default: {
-                    // TODO - chyba!!!
+                    throw (QString("Type of key is unknown ") + QString(QString::number(packet[3])));
                     break;
                 }
 
@@ -182,9 +180,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 11 - puštění klávesy - pouze u šipek (CLIENT)
     case 11: {
 
-            if(length != 2){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 2, true);
 
             emit moveKeyReleased(senderID);
 
@@ -194,9 +190,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 12 - "Hello packet"
     case 12: {
 
-            if(length != 2){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 2, true);
 
             emit helloPacketAccepted(senderID);
 
@@ -210,9 +204,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 20 - zjevení hráče IDp hráče na X,Y + směr
     case 20: {
 
-            if(length != 8){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 8, true);
 
             emit playerSpawned(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]), packet[8]);
 
@@ -222,9 +214,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 21 - zjevení zbraně IDg na X,Y + typ
     case 21: {
 
-            if(length != 8){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 8, true);
 
             emit weaponPackSpawned(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]), packet[8]);
 
@@ -234,9 +224,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 22 - zabití hráče IDp
     case 22: {
 
-            if(length != 3){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, true);
 
             emit playerKilled(packet[3]);
 
@@ -246,21 +234,17 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 23 - zmizení zbraně IDg
     case 23: {
 
-            if(length != 3){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, true);
 
             emit weaponPackDespawned(packet[3]);
 
             break;
         }
 
-    // 24 - výměna zbraně IDp, typ zbraně
+    // 24 - výměna zbraně IDp, typ zbraně, zbývající náboje
     case 24: {
 
-            if(length != 5){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 5, true);
 
             emit weaponChanged(packet[3], packet[4], packet[5]);
 
@@ -270,9 +254,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 25 - vytvoření střely IDs, X, Y
     case 25: {
 
-            if(length != 7){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 7, true);
 
             emit shotCreated(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]));
 
@@ -282,9 +264,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 26 - přesun hráče IDp, X, Y
     case 26: {
 
-            if(length != 7){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 7, true);
 
             emit playerMoved(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]));
 
@@ -294,9 +274,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 27 - přesun střely IDs, X, Y
     case 27: {
 
-            if(length != 7){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, true);
 
             emit shotMoved(packet[3], convertBytesToInt(packet[4], packet[5]), convertBytesToInt(packet[6], packet[7]));
 
@@ -306,11 +284,19 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 28 - zničení střely IDs
     case 28: {
 
-            if(length != 3){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, true);
 
             emit shotDestroyed(packet[3]);
+
+            break;
+        }
+
+    // 29 - výstřel hráče IDp
+    case 29: {
+
+            testLenght(packet, 3, true);
+
+            emit playerShoted(packet[3]);
 
             break;
         }
@@ -322,9 +308,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 30 - konec hry
     case 30: {
 
-            if(length != 2){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 2, true);
 
             emit gameQuited();
 
@@ -334,11 +318,29 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 31 - pauza hry
     case 31: {
 
-            if(length != 2){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 2, true);
 
             emit gamePaused();
+
+            break;
+        }
+
+    // 32 - aktivování hráče IDp
+    case 32: {
+
+            testLenght(packet, 3, true);
+
+            emit playerActivated(packet[3]);
+
+            break;
+        }
+
+    // 33 - deaktivování hráče IDp
+    case 33: {
+
+            testLenght(packet, 3, true);
+
+            emit playerDeactivated(packet[3]);
 
             break;
         }
@@ -350,9 +352,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 40 - pokračující zpráva
     case 40: {
 
-            if(length < 3){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, false);
 
             for(int i = 4; i < (length + 1); i++){
                 messagesForChat.value(packet[3])->append(packet[i]);
@@ -365,9 +365,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 41 - ukončená zpráva
     case 41: {
 
-            if(length < 3){
-                // TODO - chyba!!!
-            }
+            testLenght(packet, 3, true);
 
             // Vyberu správnou zprávu pro daného hráče ze seznamu
             QString * const message = messagesForChat.value(packet[3]);
@@ -390,6 +388,9 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
 
     // Chyba!!! (neznámý typ)
     default: {
+
+            throw (QString("Unknown type: ") + QString(QString::number(packet[2])));
+
             break;
         }
 
@@ -399,9 +400,24 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
 
 }
 
-int PacketParser::convertBytesToInt(unsigned char high, unsigned char low)
+inline int PacketParser::convertBytesToInt(unsigned char high, unsigned char low)
 {
 
     return ( (high * 256) + low );
+
+}
+
+inline void PacketParser::testLenght(unsigned char * const packet, const int expectedLength, const bool equal)
+{
+
+    if(equal){
+        if(packet[0] != expectedLength){
+            throw (QString("Packet has incorrect length, type: ") + QString(QString::number(packet[2])));
+        }
+    } else {
+        if(packet[0] < expectedLength){
+            throw (QString("Packet is too short, type: ") + QString(QString::number(packet[2])));
+        }
+    }
 
 }

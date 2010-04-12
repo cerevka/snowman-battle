@@ -81,6 +81,8 @@ public:
 
 signals:
 
+    void frameEnded(void);
+
     void shotCreated(int shotID, int x, int y);
     void wPackRemoved(int wPackID);
     void playerMoved(int playerID, int x, int y);

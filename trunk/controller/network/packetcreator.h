@@ -101,6 +101,11 @@ public slots:
     /* -------------sloty pro výstup enginu hry------------- */
 
     /**
+     * Slot, do kterého se posílá informace o tom, že je možné odeslat paket enginu hry
+     */
+    void sendGameEnginePacket(void);
+
+    /**
      * Slot, do kterého se posílá informace o naspawnování hráče
      * @param playerID id hráče, který se má spawnout
      * @param x x-ová souřadnice místa spawnutí (levý horní roh)
@@ -128,7 +133,7 @@ public slots:
      * Slot, do kterého se posílá informace o zmizení zbraně
      * @param weaponPackID id zbraně, která zmizí
      */
-    void despawneWeaponPack(int weaponPackID);
+    void despawnWeaponPack(int weaponPackID);
 
     /**
      * Slot, do kterého se posílá informace o změny zbraně
@@ -168,6 +173,12 @@ public slots:
      */
     void destroyShot(int shotID);
 
+    /**
+     * Slot, do kterého se posílá informace o výstřelu hráče
+     * @param playerID id hráče, který střílí
+     */
+    void playerShots(int playerID);
+
     /**********************************************************/
     /* ------------------sloty pro řízení-------------------- */
 
@@ -180,6 +191,18 @@ public slots:
      * Slot pro zapauzování hry
      */
     void pauseGame(void);
+
+    /**
+     * Slot pro aktivování hráče
+     * @param playerID id hráče, který se má aktivovat
+     */
+    void activatePlayer(int playerID);
+
+    /**
+     * Slot pro aktivování hráče
+     * @param playerID id hráče, který se má deaktivovat
+     */
+    void deactivatePlayer(int playerID);
 
     /**********************************************************/
     /* -------------------sloty pro chat--------------------- */
