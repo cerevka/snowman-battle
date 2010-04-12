@@ -185,12 +185,13 @@ void Window::settings()
 
     //scenepanel->changeGun(3, 1);
 
+    /*
     scenepanel->changePlayerPosition(3, x--, y);
     scenepanel->removeGun(0);
     scenepanel->removeShot(0);
     scenepanel->changeGun(3, x%2);
     scenepanel->changePlayerDirection(3, x%4);
-    /*scenepanel->setDirection(1, x%4);
+    scenepanel->setDirection(1, x%4);
     scenepanel->setPosition(2, x1--, y1--);
     scenepanel->setDirection(2, x%4);
     scenepanel->hidePlayer(3);
@@ -198,7 +199,9 @@ void Window::settings()
     {
         scenepanel->appearePlayer(3, x, y, x%3);
     }
-*/
+    */
+
+    scenepanel->changePlayerPosition(3, 180, 150);
     ///////////////////testovani/////////////////////////////////
 
 }
