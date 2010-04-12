@@ -33,7 +33,7 @@ public:
      * Odeslani dat v poli znaku.
      * @param message pole dat k odeslani
      */
-    void send(const QByteArray * message) const;
+    void send(QByteArray * message);
 
     /**
      * Vrati ID v siti, ktera mu byla pridelena klientem.

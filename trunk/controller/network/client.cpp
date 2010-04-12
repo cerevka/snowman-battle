@@ -24,7 +24,7 @@ Client::~Client(void)
     clientThread->quit();
 }
 
-void Client::send(const QByteArray * message) const
+void Client::send(QByteArray * message)
 {
     if (clientSocket->write(*message) == -1) {
         #ifdef _DEBUG_
@@ -51,7 +51,7 @@ void Client::slotConnected()
     clientThread = new ClientThread(clientSocket);
 
     // napoji se na parser
-    QObject::connect(clientThread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*const)));
+    QObject::connect(clientThread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*)));
 
 
     clientThread->start();

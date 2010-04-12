@@ -35,7 +35,7 @@ public:
      * Odesilani dat v poli znaku.
      * @param message pole znaku k odeslani
      */
-    void send(const QByteArray * message) const;
+    void send(QByteArray * message);
 
     /**
      * Vrati ID server - vzdy 0.
@@ -77,7 +77,7 @@ signals:
      * Vyemituje zpravu, ze odeslal packet, aby ho i server
      * zpracoval.
      */
-    void sentMessage(const QByteArray * const message) const;
+    void sentMessage(QByteArray * message);
 
 
 

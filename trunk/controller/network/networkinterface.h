@@ -26,7 +26,7 @@ public:
      * Odeslani dat v poli znaku.
      * @param message pole znaku k odeslani
      */
-    virtual void send(const QByteArray * message) const = 0;
+    virtual void send(QByteArray * message) = 0;
 
     /**
      * Vrati hodnotu ID v siti.
