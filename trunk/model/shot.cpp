@@ -38,8 +38,8 @@ Shot::~Shot(void)
 
 void Shot::move(void)
 {
-    x = x + cos(angle) / speed;
-    y = y + (-1 * sin(angle)) / speed;
+    x = x + cos(angle) * speed;
+    y = y + (-1 * sin(angle)) * speed;
 }
 
 int Shot::getShotID(void) const
