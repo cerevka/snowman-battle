@@ -170,6 +170,7 @@ private:
     /* Pomocné metody, které se používají k detekci kolizí */
 
     static bool colideObjects(MapObject * const one, MapObject * const two);
+    static bool colideOverlap(MapObject * const first, MapObject * const second);
     static bool colideRectangles(MapObject * const first, MapObject * const second);
     static bool colideShots(MapObject * const object, Shot * const shot);
     static bool colideAlgorythm(const double recX1, const double recY1, const double recX2, const double recY2, const double pointX, const double pointY);

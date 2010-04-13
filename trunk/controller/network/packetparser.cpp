@@ -38,8 +38,6 @@ void PacketParser::parseAll(QByteArray * packets) {
     // Najdu si ukazatel, který mi ukazuje přesně o jedno místo za pole
     unsigned char * endOfArray = pointer + packets->size();
 
-//    qDebug() << "Packet parser: " << pointer << endOfArray << packets->size();
-
     // Dokud jsem nedojel nakonec, tak parsuji paket po paketu
     while(pointer < endOfArray){
 

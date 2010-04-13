@@ -331,7 +331,12 @@ bool Game::colideAllObjects(MapObject * const object) const
 
 inline bool Game::colideObjects(MapObject * const one, MapObject * const two)
 {
-    return colideRectangles(one, two) || colideRectangles(two, one);
+    return colideRectangles(one, two) || colideRectangles(two, one) || colideOverlap(one, two) || colideOverlap(one, two);
+}
+
+inline bool Game::colideOverlap(MapObject * const first, MapObject * const second)
+{
+    return (first->getX1() > second->getX1() && first->getX2() < second->getX2() && second->getY1() > first->getY1() && second->getY2() < second->getY1());
 }
 
 inline bool Game::colideRectangles(MapObject * const first, MapObject * const second)
