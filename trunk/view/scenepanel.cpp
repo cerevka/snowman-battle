@@ -220,13 +220,25 @@ void ScenePanel::changePlayerPosition(int id, int x, int y)
     int py = items.at(id)->y() - y;
 
     if(px < 0)
+    {
         changePlayerDirection(id, 1);
+        items.at(id)->dir = 1;
+    }
     if(px > 0)
+    {
         changePlayerDirection(id, 3);
+        items.at(id)->dir = 3;
+    }
     if(py > 0)
+    {
         changePlayerDirection(id, 0);
+        items.at(id)->dir = 0;
+    }
     if(py < 0)
+    {
         changePlayerDirection(id, 2);
+        items.at(id)->dir = 2;
+    }
 
     setPosition(id, x, y);
     setPosition(idGun, x + playerW * 0.67, y);
