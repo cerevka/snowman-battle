@@ -395,6 +395,10 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             // Vyšlu signál
             emit chatMessageRecieved(packet[3], message);
 
+            if((packet[1] != 0) && (Globals::network->getNetworkID() == 0)){
+                Globals::network->send(new QByteArray((char *)packet));
+            }
+
             // A svůj řetězec vynuluji
             message->clear();
 
