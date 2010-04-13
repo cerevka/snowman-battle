@@ -35,9 +35,9 @@ void ClientThread::incomingMessage()
     // precte se vsechno, co prislo a nestaram se o obsah
     QByteArray message = socket->readAll();
 
-     qDebug() << "Velikost: " << message.size() << " ukazatel: " << &message;
+//     qDebug() << "Velikost: " << message.size() << " ukazatel: " << &message;
 
-     printMessage(&message);
+//     printMessage(&message);
 
 //    // vyemituji signal nove prichozi zpravy
     emit newMessage(&message);

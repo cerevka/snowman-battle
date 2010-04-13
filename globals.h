@@ -48,6 +48,11 @@ public:
      */
     static GameFacade * gameFacade;
 
+    /**
+     * Priznak, zda jiz je hra odstartovana.
+     */
+    static bool isGameRunning;
+
 };
 
 

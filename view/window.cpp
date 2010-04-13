@@ -156,6 +156,7 @@ void Window::createGame()
         QDialog *dia = new ConnectedDialog();
         dia->show();
         dia->exec();
+        Globals::isGameRunning = true;
         Globals::gameFacade->newGame(players + 1);
      }
 }
