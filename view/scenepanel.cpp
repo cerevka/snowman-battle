@@ -146,15 +146,17 @@ void ScenePanel::addNewPlayer(int id, int x, int y, int direction)
     setNewGraficObj(id, x, y, direction);
 
     // Nastavi inventar zbrani
-    addNewGun(6 + id * guns - plusIdGuns, x + playerW * 0.67, y, direction, 0);
+    addNewGun(6 + id * guns - plusIdGuns, x + playerW * 0.67, y, 0);
     items.at(id)->actGun = 6 + id * guns;
-    addNewGun(6 + id * guns + 1 - plusIdGuns, x + playerW * 0.67, y, direction, 1);
+    addNewGun(6 + id * guns + 1 - plusIdGuns, x + playerW * 0.67, y, 1);
     hideObject(6 + id * guns + 1);
-    addNewGun(6 + id * guns + 2 - plusIdGuns, x + playerW * 0.67, y, direction, 2);
+    addNewGun(6 + id * guns + 2 - plusIdGuns, x + playerW * 0.67, y, 2);
     hideObject(6 + id * guns + 2);
+
+    changePlayerDirection(id, direction);
 }
 
-void ScenePanel::addNewGun(int id, int x, int y, int direction, int type)
+void ScenePanel::addNewGun(int id, int x, int y, int type)
 {
     id += plusIdGuns;
 
@@ -166,19 +168,19 @@ void ScenePanel::addNewGun(int id, int x, int y, int direction, int type)
         // Pistol
     case 0:
         items[id] = new PixmapItem("gun.png", gunW, gunH, gunW - 50, gunH + 10);
-        setNewGraficObj(id, x, y, direction);
+        setNewGraficObj(id, x, y, 1);
         break;
 
         // Samopal
     case 1:
         items[id] = new PixmapItem("machine_gun.png", machinegunW, machinegunH, machinegunW - 50, machinegunH - 10);
-        setNewGraficObj(id, x, y, direction);
+        setNewGraficObj(id, x, y, 1);
         break;
 
         // Brokovnice
     case 2:
         items[id] = new PixmapItem("shotgun.png", machinegunW, machinegunH, machinegunW - 50, machinegunH - 10);
-        setNewGraficObj(id, x, y, direction);
+        setNewGraficObj(id, x, y, 1);
         break;
     }
 
@@ -201,7 +203,7 @@ void ScenePanel::addNewShot(int id, int x, int y)
 
 }
 
-void ScenePanel::changeGun(int id, int type)
+void ScenePanel::changeGun(int id, int type, int restAmmo)
 {
     int p = id * 3 + 6;
     hideObject(items.at(id)->actGun);
