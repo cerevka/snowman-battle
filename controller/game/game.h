@@ -53,7 +53,7 @@ public:
      * @param size velikost daného objektu v pixelech
      * @param object ukazatel na objekt, který se má umístit
      */
-    void generateValidCoordinates(const double size, MapObject * const object);
+    void generateValidCoordinates(const double sizeX, const double sizeY, MapObject * const object);
 
     /**
      * Přidá střelu do seznamu střel(bude s ní pohybovat)

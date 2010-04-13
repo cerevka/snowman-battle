@@ -21,10 +21,10 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
     }
 
     // Okraje mapy
-    allObjects->append(new UnshootableBlock(this, -30, -30, 905, 0));
-    allObjects->append(new UnshootableBlock(this, -30, 567, 905, 743));
-    allObjects->append(new UnshootableBlock(this, -30, 0, 0, 713));
-    allObjects->append(new UnshootableBlock(this, 875, 0, 905, 743));
+    allObjects->append(new UnshootableBlock(this, -60, -60, 935, 0));
+    allObjects->append(new UnshootableBlock(this, -60, 567, 935, 627));
+    allObjects->append(new UnshootableBlock(this, -60, 0, 0, 576));
+    allObjects->append(new UnshootableBlock(this, 875, 0, 935, 576));
 
     // Skály
     allObjects->append(new UnshootableBlock(this, 201, 118, 282, 235));
@@ -92,14 +92,14 @@ void Game::quitGame(void)
     gameRun = false;
 }
 
-void Game::generateValidCoordinates(const double size, MapObject * const object)
+void Game::generateValidCoordinates(const double sizeX, const double sizeY, MapObject * const object)
 {
     do {
 
         object->x1 = qAbs(qrand() % 875);
-        object->x2 = object->x1 + size;
-        object->y1 = qAbs(qrand() % 713);
-        object->y2 = object->y1 + size;
+        object->x2 = object->x1 + sizeX;
+        object->y1 = qAbs(qrand() % 567);
+        object->y2 = object->y1 + sizeY;
 
     } while(colideAllObjects(object)); // provádím generování souřadnic, dokud nanajdu vyhovující místo
 }
