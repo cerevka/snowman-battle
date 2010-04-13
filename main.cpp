@@ -88,6 +88,9 @@ void connectAll(void)
     QObject::connect(Globals::packetParser, SIGNAL(shotMoved(int,int,int)), panel, SLOT(changeShotPosition(int,int,int)));
     QObject::connect(Globals::packetParser, SIGNAL(shotDestroyed(int)), panel, SLOT(removeShot(int)));
 
+    ChatPanel * chatpanel = Globals::mainWindow->getChatPanel();
+    QObject::connect(Globals::packetParser, SIGNAL(chatMessageRecieved(int,QString*)), chatpanel, SLOT(newMessage(int,QString*)));
+
 }
 
 

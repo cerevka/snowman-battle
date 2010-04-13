@@ -23,14 +23,14 @@ public:
       */
     explicit ChatPanel(QWidget *parent = 0);
 
+public slots:
+
     /**
       * Prida novou zpravu do chatovaciho okna
       * @param palyer autor zpravy
       * @param message text zpravy
       */
-    void newMessage(QString *player, QString *message);
-
-public slots:
+    void newMessage(int id, QString *message);
 
     /**
       * Odeslani nove vytvorene zpravy

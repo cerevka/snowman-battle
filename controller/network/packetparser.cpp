@@ -382,7 +382,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     // 41 - ukončená zpráva
     case 41: {
 
-            testLenght(packet, 3, true);
+            testLenght(packet, 3, false);
 
             // Vyberu správnou zprávu pro daného hráče ze seznamu
             QString * const message = messagesForChat.value(packet[3]);

@@ -88,6 +88,16 @@ ScenePanel * Window::getScenePanel( void )
     return scenepanel;
 }
 
+ChatPanel * Window::getChatPanel( void )
+{
+    return chatpanel;
+}
+
+StatusBar * Window::getStatusBar( void )
+{
+    return statusbar;
+}
+
 void Window::createMenus()
 {
     gameMenu = menuBar()->addMenu(tr("&Game"));

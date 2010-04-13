@@ -20,6 +20,7 @@ public:
       */
     explicit StatusBar(QWidget *parent = 0);
 
+public slots:
     /**
       * Prida na statusbar noveho hrace
       * @param id id hrace
@@ -30,9 +31,8 @@ public:
     /**
       * Zmeni score hrace
       * @param id id hrace
-      * @param score nove score hrace
       */
-    void changeScore(int id, int score);
+    void changeScore(int id);
 
     /**
       * Zmeni pocet naboju
@@ -82,8 +82,7 @@ private:
     QImage image6;
 
     QStringList colors;
-
-
+    QVector<int> score;
 
 };
 

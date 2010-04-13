@@ -27,6 +27,8 @@ ScenePanel::ScenePanel()
     connect(handler, SIGNAL(shot()), Globals::packetCreator, SLOT(pressShot()));
     connect(handler, SIGNAL(changeWeapon()), Globals::packetCreator, SLOT(pressChangeWeapon()));
     //connect(handler, SIGNAL(pauseGame()), facade, SLOT(pauseGame()));
+    //StatusBar *sta = Globals::mainWindow->getStatusBar();
+    //connect(this, SIGNAL(changeAmmo(int,int)), statusbar, SLOT(changeRound(int,int)));
 
     ///// Konec testování Ota
 
@@ -210,6 +212,8 @@ void ScenePanel::changeGun(int id, int type, int restAmmo)
 
     items.at(id)->actGun = p + type;
     appearObject(p + type, items.at(id)->x() + playerW * 0.67, items.at(id)->y(), items.at(id)->dir);
+
+    //emit changeAmmo(id, restAmmo);
 }
 
 void ScenePanel::changePlayerPosition(int id, int x, int y)
