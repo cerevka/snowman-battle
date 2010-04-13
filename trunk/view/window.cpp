@@ -79,7 +79,9 @@ Window::Window()
     createMenus();
 
     setWindowTitle(tr("Snowman Battle"));
-    resize(1150, 700);
+    setFixedHeight(700);
+    setFixedWidth(1150);
+    //resize(1150, 700);
 
 }
 

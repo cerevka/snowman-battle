@@ -27,7 +27,7 @@ ScenePanel::ScenePanel()
     connect(handler, SIGNAL(shot()), Globals::packetCreator, SLOT(pressShot()));
     connect(handler, SIGNAL(changeWeapon()), Globals::packetCreator, SLOT(pressChangeWeapon()));
     //connect(handler, SIGNAL(pauseGame()), facade, SLOT(pauseGame()));
-//    bar = Globals::mainWindow->getStatusBar();
+    //StatusBar *bar = Globals::mainWindow->getStatusBar();
 //    connect(this, SIGNAL(changeAmmo(int,int)), bar, SLOT(changeRound(int,int)));
 
     ///// Konec testování Ota

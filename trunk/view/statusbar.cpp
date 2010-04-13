@@ -1,4 +1,5 @@
 #include "statusbar.h"
+#include "globals.h"
 
 static const QSize resultSize(60, 50);
 
@@ -12,12 +13,13 @@ StatusBar::StatusBar(QWidget *parent) :
     setLayout(layout);
 }
 
-void StatusBar::addPlayer(int id, QString &name)
+void StatusBar::addPlayer(int id)
 {
+    QString *name = Globals::mainWindow->getName(id);
     switch(id)
     {
     case 0:
-        name1 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name1 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score1 = new QLabel(tr("Score: 0"));
         round1 = new QLabel(tr("Rounds: mnoho"));
         image1 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
@@ -33,7 +35,7 @@ void StatusBar::addPlayer(int id, QString &name)
         break;
 
     case 1:
-        name2 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name2 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score2 = new QLabel(tr("Score: 0"));
         round2 = new QLabel(tr("Rounds: 10"));
         image2 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
@@ -49,7 +51,7 @@ void StatusBar::addPlayer(int id, QString &name)
         break;
 
     case 2:
-        name3 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name3 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score3 = new QLabel(tr("Score: 0"));
         round3 = new QLabel(tr("Rounds: 10"));
         image3 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
@@ -65,7 +67,7 @@ void StatusBar::addPlayer(int id, QString &name)
         break;
 
     case 3:
-        name4 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name4 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score4 = new QLabel(tr("Score: 0"));
         round4 = new QLabel(tr("Rounds: 10"));
         image4 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
@@ -81,7 +83,7 @@ void StatusBar::addPlayer(int id, QString &name)
         break;
 
     case 4:
-        name5 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name5 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score5 = new QLabel(tr("Score: 0"));
         round5 = new QLabel(tr("Rounds: 10"));
         image5 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
@@ -97,7 +99,7 @@ void StatusBar::addPlayer(int id, QString &name)
         break;
 
     case 5:
-        name6 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name6 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score6 = new QLabel(tr("Score: 0"));
         round6 = new QLabel(tr("Rounds: 10"));
         image6 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);

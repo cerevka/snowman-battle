@@ -20,12 +20,13 @@ ConnectedDialog::ConnectedDialog(QWidget *parent)
     connect(but, SIGNAL(clicked()), Globals::gameFacade, SLOT(newGame(int)));
 }
 
-void ConnectedDialog::addPlayer(int id, QString &name)
+void ConnectedDialog::addPlayer(int id)
 {
+    QString *name = Globals::mainWindow->getName(id);
     switch(id)
     {
     case 0:
-        name1 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name1 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         image1 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image1Button = new QToolButton;
         image1Button->setIconSize(resultSize);
@@ -37,7 +38,7 @@ void ConnectedDialog::addPlayer(int id, QString &name)
         break;
 
     case 1:
-        name2 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name2 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         image2 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image2Button = new QToolButton;
         image2Button->setIconSize(resultSize);
@@ -49,7 +50,7 @@ void ConnectedDialog::addPlayer(int id, QString &name)
         break;
 
     case 2:
-        name3 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name3 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         image3 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image3Button = new QToolButton;
         image3Button->setIconSize(resultSize);
@@ -61,7 +62,7 @@ void ConnectedDialog::addPlayer(int id, QString &name)
         break;
 
     case 3:
-        name4 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name4 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         image4 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image4Button = new QToolButton;
         image4Button->setIconSize(resultSize);
@@ -73,7 +74,7 @@ void ConnectedDialog::addPlayer(int id, QString &name)
         break;
 
     case 4:
-        name5 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name5 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         image5 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image5Button = new QToolButton;
         image5Button->setIconSize(resultSize);
@@ -85,7 +86,7 @@ void ConnectedDialog::addPlayer(int id, QString &name)
         break;
 
     case 5:
-        name6 = new QLabel("<font color=" + colors.at(id) +">" + name + "</font>");
+        name6 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         image6 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image6Button = new QToolButton;
         image6Button->setIconSize(resultSize);
