@@ -22,7 +22,7 @@ void MachineGun::shot(void)
 
     findPointOfCreatingShots(x, y, angle);
 
-    Shot * newShot = new Shot(x, y, angle - 0.05, speed);
+    Shot * newShot = new Shot(x, y, angle - 0.05, speed, owner);
     owner->getParentGame()->addShot(newShot);
 
     // Startuji časovač na další střely
@@ -68,15 +68,15 @@ void MachineGun::timerEvent(QTimerEvent * const event)
 
         // podle pořadí střely určím odchylku
         if(restShots % 2){
-            angle += 0.05;
-        } else {
             angle -= 0.05;
+        } else {
+            angle += 0.05;
         }
 
         owner->getParentGame()->getBigGameMutex()->lock();
 
         try {
-            Shot * newShot = new Shot(x, y, angle, speed);
+            Shot * newShot = new Shot(x, y, angle, speed, owner);
             owner->getParentGame()->addShot(newShot);
             restShots--;
         } catch (QString & ex) {

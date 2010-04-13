@@ -3,6 +3,7 @@
 #include "handgun.h"
 #include "machinegun.h"
 #include "shotgun.h"
+#include "shot.h"
 
 double Player::playerSize = 55.0; // TODO - doplnit skutečnou šířku a výšku hráče v pixelech
 double Player::stepSize = 2.5; // TODO - doplnit skutečnou velikost kroku
@@ -18,6 +19,7 @@ Player::Player(Game * const parent, const int id) :
     moving = false;
     shoting = false;
     canShot = true;
+    score = 0;
 
     idCooldownTimer = 0;
     idRespawnTimer = 0;
@@ -35,7 +37,7 @@ bool Player::interactPlayer(Player * const)
     return false;
 }
 
-bool Player::interactShot(Shot * const)
+bool Player::interactShot(Shot * const shot)
 {
 
     if(active){
@@ -52,6 +54,8 @@ bool Player::interactShot(Shot * const)
         #ifdef _DEBUG_
         qDebug() << "Game engine: Player" << playerID << "killed";
         #endif
+
+        shot->getOwner()->incrementScore();
 
         // startuji časovač pro respawnutí
         idRespawnTimer = startTimer(5000);
@@ -209,6 +213,19 @@ void Player::setActualWeapon(const int actualWeapon)
     emit weaponChanged(playerID, actualWeapon, inventory[actualWeapon]->getAmmo());
     #ifdef _DEBUG_
     qDebug() << "Game engine: Player" << playerID << "equiped weapon" << actualWeapon;
+    #endif
+
+}
+
+void Player::incrementScore(void)
+{
+
+    score++;
+
+    emit scoreIncremented();
+
+    #ifdef _DEBUG_
+    qDebug() << "Game engine: Player" << playerID << "incremented score";
     #endif
 
 }

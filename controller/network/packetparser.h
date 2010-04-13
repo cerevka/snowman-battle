@@ -189,6 +189,12 @@ signals:
      */
     void playerShoted(int playerID);
 
+    /**
+     * Signál zvýšení skóre hráče
+     * @param playerID id hráče, kterému se zvýšilo skóre
+     */
+    void playersScoreIncremented(int playerID);
+
     /**********************************************************/
     /* -------------------řídící signály--------------------- */
 

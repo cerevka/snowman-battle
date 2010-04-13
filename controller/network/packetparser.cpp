@@ -401,7 +401,14 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             break;
         }
 
+    case 50: {
 
+            testLenght(packet, 3, true);
+
+            emit playersScoreIncremented(packet[3]);
+
+            break;
+        }
 
     // Chyba!!! (neznámý typ)
     default: {

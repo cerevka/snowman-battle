@@ -125,6 +125,10 @@ void PacketCreator::sendHelloPacket(void)
 void PacketCreator::sendGameEnginePacket(void)
 {
 
+    if(gameEnginePacket->size() == 0){
+        return;
+    }
+
     enginePacketMutex->lock();
 
     sendPacket(gameEnginePacket);
@@ -285,6 +289,20 @@ void PacketCreator::destroyShot(int shotID)
 }
 
 void PacketCreator::playerShots(int playerID)
+{
+
+    enginePacketMutex->lock();
+
+    gameEnginePacket->append(3); // délka
+    gameEnginePacket->append(Globals::network->getNetworkID());
+    gameEnginePacket->append(50); // typ zvýšení skóre
+    gameEnginePacket->append(playerID);
+
+    enginePacketMutex->unlock();
+
+}
+
+void PacketCreator::incrementScore(int playerID)
 {
 
     enginePacketMutex->lock();
