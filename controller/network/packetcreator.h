@@ -34,14 +34,14 @@ public slots:
      * @param id id, které se stanici přidělí
      */
     QByteArray * assignID(int id);
-//
-//    /**
-//     * Slot představovacího paketu
-//     * @param id id, kterému se přidělí jméno
-//     * @param name ukazatel na jméno
-//     */
-//    void assignName(int id, QString * name);
-//
+
+    /**
+     * Slot představovacího paketu
+     * @param id id hráče, kterému patří jméno
+     * @param name ukazatel na jméno
+     */
+    QByteArray * assignName(int id, QString * name);
+
     /**
      * Slot pro výběr mapy (pro nás nezajímavé, protože máme jen jednu mapu)
      * @param mapID překvapivě id mapy
