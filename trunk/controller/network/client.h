@@ -22,7 +22,7 @@ public:
      * @param address adresa, na ktere nasloucha server
      * @param port port, na kterem nasloucha server
      */
-    Client(QHostAddress address, int port, NetworkInterface * const parent = 0);
+    Client(QHostAddress address, int port, QString name, NetworkInterface * const parent = 0);
 
     /**
      * Destruktor uzavirajici socket
@@ -62,6 +62,8 @@ private:
      * Uchovava ID v siti.
      */
     int networkID;
+
+    QString name;
 
 private slots:
     /**

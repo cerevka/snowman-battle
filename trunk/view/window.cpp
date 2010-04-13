@@ -162,7 +162,6 @@ void Window::createGame()
 
         //TODO misto pro volani socketu
         Server * server = new Server(1234, players);
-        Globals::network = new Network(server);
         QDialog *dia = new ConnectedDialog();
         dia->show();
         dia->exec();
@@ -193,9 +192,8 @@ void Window::joinGame()
 
 
         //TODO misto pro volani socketu
-        Client * client = new Client(QHostAddress(address), 1234);
-        // zapouzdreni do Network
-        Globals::network = new Network(client);
+        Client * client = new Client(QHostAddress(address), 1234, nickname);
+
 
     }
 }
@@ -239,6 +237,16 @@ void Window::about()
 
 //O QT
 void Window::aboutQt(){}
+
+void Window::addName(int id, QString * name)
+{
+    names.insert(id, name);
+}
+
+QString * Window::getName(int id)
+{
+    return names.at(id);
+}
 
 
 
