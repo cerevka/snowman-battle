@@ -21,6 +21,9 @@ public:
      */
     explicit PacketCreator(QObject * const parent = 0);
 
+    /**
+     * Destruror ruší alokované prostředky
+     */
     ~PacketCreator(void);
 
 public slots:

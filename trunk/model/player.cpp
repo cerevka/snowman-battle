@@ -174,15 +174,19 @@ void Player::shot(void)
 void Player::changeWeapon(void)
 {
 
-    // Hledám v inventáři zbraň, která nemá nula zbývajících nábojů
-    do {
-        actualWeapon = (actualWeapon + 1) % 3;
-    } while(inventory[actualWeapon]->getAmmo() == 0);
+    if(spawned){
 
-    emit weaponChanged(playerID, actualWeapon, inventory[actualWeapon]->getAmmo());
-    #ifdef _DEBUG_
-    qDebug() << "Game engine: Player" << playerID << "equiped weapon" << actualWeapon;
-    #endif
+        // Hledám v inventáři zbraň, která nemá nula zbývajících nábojů
+        do {
+            actualWeapon = (actualWeapon + 1) % 3;
+        } while(inventory[actualWeapon]->getAmmo() == 0);
+
+        emit weaponChanged(playerID, actualWeapon, inventory[actualWeapon]->getAmmo());
+        #ifdef _DEBUG_
+        qDebug() << "Game engine: Player" << playerID << "equiped weapon" << actualWeapon;
+        #endif
+
+    }
 
 }
 

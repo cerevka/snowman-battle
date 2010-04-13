@@ -58,9 +58,9 @@ void PacketParser::parseAll(QByteArray * packets) {
 
 unsigned char * PacketParser::parse(unsigned char * const packet)
 {
-    #ifdef _DEBUG_
-    qDebug() << "Packet parser: Start parsing a packet";
-    #endif
+//    #ifdef _DEBUG_
+//    qDebug() << "Packet parser: Start parsing a packet";
+//    #endif
 
     // Čtu první znak (délka paketu)
     unsigned char length = packet[0];
@@ -387,16 +387,23 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             // Vyberu správnou zprávu pro daného hráče ze seznamu
             QString * const message = messagesForChat.value(packet[3]);
 
+
+
             // A rozšířím jí o znaky v paketu
             for(int i = 4; i < (length + 1); i++){
                 message->append(packet[i]);
             }
 
-            // Vyšlu signál
-            emit chatMessageRecieved(packet[3], message);
+            if((packet[1] != 0) ){
 
-            if((packet[1] != 0) && (Globals::network->getNetworkID() == 0)){
-                Globals::packetCreator->sendChatMessage(packet[3], message);
+                QString copyOfMsg(*message);
+                message->clear();
+
+                Globals::packetCreator->sendChatMessage(packet[3], &copyOfMsg);
+                break;
+            } else {
+                // Vyšlu signál
+                emit chatMessageRecieved(packet[3], message);
             }
 
             // A svůj řetězec vynuluji
