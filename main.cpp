@@ -78,10 +78,10 @@ void connectAll(void)
     ScenePanel * panel = Globals::mainWindow->getScenePanel();
 
     QObject::connect(Globals::packetParser, SIGNAL(playerSpawned(int,int,int,int)), panel, SLOT(addNewPlayer(int,int,int,int)));
-    QObject::connect(Globals::packetParser, SIGNAL(weaponPackSpawned(int,int,int,int)), panel, SLOT(addNewGun(int,int,int,int,int)));
+    QObject::connect(Globals::packetParser, SIGNAL(weaponPackSpawned(int,int,int,int)), panel, SLOT(addNewGun(int,int,int,int)));
     QObject::connect(Globals::packetParser, SIGNAL(playerKilled(int)), panel, SLOT(hidePlayer(int)));
     QObject::connect(Globals::packetParser, SIGNAL(weaponPackDespawned(int)), panel, SLOT(removeGun(int)));
-    QObject::connect(Globals::packetParser, SIGNAL(weaponChanged(int,int,int)), panel, SLOT(changeGun(int,int)));
+    QObject::connect(Globals::packetParser, SIGNAL(weaponChanged(int,int,int)), panel, SLOT(changeGun(int,int, int)));
     QObject::connect(Globals::packetParser, SIGNAL(shotCreated(int,int,int)), panel, SLOT(addNewShot(int,int,int)));
     QObject::connect(Globals::packetParser, SIGNAL(playerMoved(int,int,int)), panel, SLOT(changePlayerPosition(int,int,int)));
     QObject::connect(Globals::packetParser, SIGNAL(shotMoved(int,int,int)), panel, SLOT(changeShotPosition(int,int,int)));
