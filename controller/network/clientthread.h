@@ -42,10 +42,10 @@ private:
      */
     QTcpSocket * socket;
 
-    /**
-     * Pole prijatych dat.
-     */
-    QByteArray * message;
+//    /**
+//     * Pole prijatych dat.
+//     */
+//    QByteArray * message;
 
     /**
      * Uchovava informaci o delce prichoziho packetu.
