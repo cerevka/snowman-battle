@@ -38,7 +38,7 @@ QByteArray * PacketCreator::assignID(int id)
 
 }
 
-QByteArray * PacketCreator::assignName(int id, QString * name)
+void PacketCreator::assignName(int id, QString * name)
 {
 
     QByteArray * const packet = new QByteArray();
@@ -54,7 +54,9 @@ QByteArray * PacketCreator::assignName(int id, QString * name)
 
     }
 
-    return packet;
+    sendPacket(packet);
+
+//    return packet;
 
 }
 

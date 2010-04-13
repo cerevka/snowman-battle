@@ -30,8 +30,6 @@ public slots:
 
     /* ------------------------init------------------------- */
 
-    // TODO tyhle sloty si ještě musím promylset
-
     /**
      * Slot pro přidělení packetu
      * @param id id, které se stanici přidělí
@@ -43,7 +41,7 @@ public slots:
      * @param id id hráče, kterému patří jméno
      * @param name ukazatel na jméno
      */
-    QByteArray * assignName(int id, QString * name);
+    void assignName(int id, QString * name);
 
     /**
      * Slot pro výběr mapy (pro nás nezajímavé, protože máme jen jednu mapu)
