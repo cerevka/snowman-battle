@@ -85,6 +85,11 @@ public:
     void setActualWeapon(const int actualWeapon);
 
     /**
+     * Metoda pro zvýšení skóre
+     */
+    void incrementScore(void);
+
+    /**
      * Getr pro id
      */
     int getID(void) const;
@@ -135,6 +140,8 @@ signals:
     void playerShoted(int playerID);
     void weaponChanged(int playerID, int weapon, int restOfAmmo);
 
+    void scoreIncremented(void);
+
     void playerActivated(int playerID);
     void playerDeactivated(int playerID);
 
@@ -160,6 +167,11 @@ private:
      * Jednoznačný idetifikátor hráče (pořadí v allPlayer)
      */
     int playerID;
+
+    /**
+     * Počet kolikrát daný hráč zabil soupeře
+     */
+    int score;
 
     /**
      * Pokud je false, tak hráč nemůže vystřelit, protože mu běží cooldown

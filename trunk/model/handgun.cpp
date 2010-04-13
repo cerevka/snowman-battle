@@ -19,7 +19,7 @@ void HandGun::shot(void)
 
     findPointOfCreatingShots(x, y, angle);
 
-    Shot * newShot = new Shot(x, y, angle, speed);
+    Shot * newShot = new Shot(x, y, angle, speed, owner);
 
     owner->getParentGame()->addShot(newShot);
 

@@ -179,6 +179,12 @@ public slots:
      */
     void playerShots(int playerID);
 
+    /**
+     * Slot, do kterého se posílá informace o zvýšení skóre hráče
+     * @param playerID id hráče, kterému se zvýšilo skóre
+     */
+    void incrementScore(int playerID);
+
     /**********************************************************/
     /* ------------------sloty pro řízení-------------------- */
 

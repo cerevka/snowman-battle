@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QBitArray>
 
+#include "player.h"
+
 /**
  * Třída reprezentující střelu letící na hrací ploše
  */
@@ -22,7 +24,7 @@ public:
      * @param angle směr střely (zadaný v radiánech)
      * @param speed rychlost střely (jednotka pixel/frame)
      */
-    Shot(const double x, const double y, const double angle, const double speed, QObject * const parent = 0);
+    Shot(const double x, const double y, const double angle, const double speed, Player * const parent);
 
     /**
      * Destruktor zajišťuje, aby mohlo být znovu použité ID této střely
@@ -33,6 +35,11 @@ public:
      * Metoda pro pohyb o jeden frame
      */
     void move(void);
+
+    /**
+     * Getr pro vlastníka
+     */
+    Player * getOwner(void) const;
 
     /**
      * Getr pro id střely
@@ -56,6 +63,11 @@ private:
      * Jednoznačné ID střely
      */
     int shotID;
+
+    /**
+     * Ukazatel na hráče, kterému patří střela
+     */
+    Player * owner;
 
     /**
      * Souřadnice střely
