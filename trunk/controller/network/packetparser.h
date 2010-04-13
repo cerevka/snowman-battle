@@ -37,11 +37,11 @@ signals:
 
     /* ------------------------init------------------------- */
 
-    /**
-     * Signál přidělení id
-     * @param id přidělené id
-     */
-    void idAssigned(int id);
+//    /**
+//     * Signál přidělení id
+//     * @param id přidělené id
+//     */
+//    void idAssigned(int id);
 
     /**
      * Signál informující o tom, že danému id je přiděleno jméno (představovací paket)

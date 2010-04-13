@@ -66,7 +66,7 @@ void Player::respawn(void)
 {
 
     // Vygenerování nových souřednic
-    parentGame->generateValidCoordinates(playerSize, this);
+    parentGame->generateValidCoordinates(playerSize, playerSize, this);
 
     // Vygenerování nového směru
     direction = (Directions)(qrand() % 4);
