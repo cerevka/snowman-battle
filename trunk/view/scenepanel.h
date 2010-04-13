@@ -9,6 +9,7 @@
 
 #include "../controller/gui/keyboardhandler.h"
 #include "../controller/game/gamefacade.h"
+#include "view/statusbar.h"
 
 class QLabel;
 

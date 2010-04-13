@@ -91,6 +91,9 @@ void connectAll(void)
     ChatPanel * chatpanel = Globals::mainWindow->getChatPanel();
     QObject::connect(Globals::packetParser, SIGNAL(chatMessageRecieved(int,QString*)), chatpanel, SLOT(newMessage(int,QString*)));
 
+//    StatusBar * statusbar = Globals::mainWindow->getStatusBar();
+//    QObject::connect(panel, SIGNAL(changeAmmo(int,int)), statusbar, SLOT(changeRound(int,int)));
+
 }
 
 
