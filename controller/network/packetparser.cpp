@@ -1,4 +1,5 @@
 #include "packetparser.h"
+#include "globals.h"
 
 #include <QDebug>
 
@@ -88,7 +89,9 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
 
             testLenght(packet, 3, true);
 
-            emit idAssigned(packet[3]);
+//            emit idAssigned(packet[3]);
+
+            Globals::network->setNetworkID(packet[3]);
 
             #ifdef _DEBUG_
             qDebug() << "Packet parser: ID assigned";

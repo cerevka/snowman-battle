@@ -62,7 +62,7 @@ void MachineGun::timerEvent(QTimerEvent * const event)
         double x;
         double y;
         double angle;
-        double speed = 1.2;
+        double speed = 6.0;
 
         findPointOfCreatingShots(x, y, angle);
 
