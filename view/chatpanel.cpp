@@ -8,11 +8,14 @@ ChatPanel::ChatPanel(QWidget *parent) :
     sendButton = new QPushButton(tr("Send"));
     layout = new QGridLayout;
 
+    chatMess = new QTextEdit(this);
+
     QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->addWidget(messageEdit);
     buttonLayout->addWidget(sendButton);
 
-    layout->addLayout(buttonLayout, 1000, 0, Qt::AlignBottom);
+    layout->addWidget(chatMess, 0, 0);
+    layout->addLayout(buttonLayout, 1, 0, Qt::AlignBottom);
     number = 0;
     setLayout(layout);
 
@@ -23,18 +26,25 @@ ChatPanel::ChatPanel(QWidget *parent) :
 void ChatPanel::newMessage(int id, QString *message)
 {
     QStringList list;
-    list << "<" << "od" << ">  " << *message;
-    QString str = list.join("");
+    //QString *name = Globals::mainWindow->getName(id);
+    list << "<" << /**name*/QString::number(id) << ">  " << *message;
+    QString *str = new QString();
+    *str = list.join("");
 
     qDebug() << "prijakta zprava";
+    chatMess->append(*str);
 
-    QLabel *label = new QLabel(str);
-    layout->addWidget(label, number++, 0, Qt::AlignTop);
 }
 
 void ChatPanel::sendMessage( void )
 {
     QString mess = messageEdit->text();
+    if(!mess.compare(""))
+    {
+        QMessageBox::warning(this, tr("Chat panel"),
+                               tr("Please, insert your message."));
+        return;
+    }
     int id = Globals::network->getNetworkID();
     messageEdit->clear();
 

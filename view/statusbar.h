@@ -24,9 +24,8 @@ public slots:
     /**
       * Prida na statusbar noveho hrace
       * @param id id hrace
-      * @param name jmeno hrace
       */
-    void addPlayer(int id, QString &name);
+    void addPlayer(int id);
 
     /**
       * Zmeni score hrace

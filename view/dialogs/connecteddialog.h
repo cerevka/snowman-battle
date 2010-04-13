@@ -27,9 +27,8 @@ public slots:
     /**
       * Prida hrace na dialog
       * @param id id hrace
-      * @param name jemno hrace
       */
-    void addPlayer(int id, QString &name);
+    void addPlayer(int id);
 
 private:
     QGridLayout *layout;

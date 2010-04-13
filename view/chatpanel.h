@@ -4,9 +4,9 @@
 #include <QWidget>
 #include <QtGui>
 
-class QLabel;
 class QLineEdit;
 class QPushButton;
+class QTextEdit;
 
 
 /**
@@ -45,9 +45,16 @@ private:
       */
     int number;
     QLineEdit *messageEdit;
+    QTextEdit *chatMess;
     QPushButton *sendButton;
 
 signals:
+
+    /**
+      * Signal pro odeslani zpravy
+      * @param id id hrace
+      * @param message odesilana zprava
+      */
     void sendMessage(int id, QString *message);
 
 };
