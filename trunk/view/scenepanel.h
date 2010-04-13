@@ -52,10 +52,9 @@ public slots:
       * @param id id zbrane
       * @param x x-ova souradnice objektu
       * @param y y-ova souradnice objektu
-      * @param direction orientace zbrane
       * @param type typ zbrane
       */
-    void addNewGun(int id, int x, int y, int direction, int type);
+    void addNewGun(int id, int x, int y, int type);
 
     /**
       * Prida novou strelu
@@ -70,7 +69,7 @@ public slots:
       * @param id id hrace
       * @param type typ zbrane
       */
-    void changeGun(int id, int type);
+    void changeGun(int id, int type, int restAmmo);
 
     /**
       * Zmeni hracovu pozici
