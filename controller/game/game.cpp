@@ -224,7 +224,7 @@ void Game::movePlayers(void)
         }
 
         // Pokud mě hráč nastaven příznak střelby, tak vystřelí
-        if(actualPlayer->isShoting()){
+        if(actualPlayer->isSpawned() && actualPlayer->isShoting()){
             actualPlayer->shot();
         }
 
