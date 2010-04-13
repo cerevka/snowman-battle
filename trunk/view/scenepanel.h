@@ -36,6 +36,8 @@ public:
       */
     void setOpeningView();
 
+signals:
+    void changeAmmo(int id, int ammo);
 
 public slots:
     /**

@@ -20,11 +20,13 @@ ChatPanel::ChatPanel(QWidget *parent) :
     connect(this, SIGNAL(sendMessage(int, QString*)), Globals::packetCreator, SLOT(sendChatMessage(int, QString*)));
 }
 
-void ChatPanel::newMessage(QString *player, QString *message)
+void ChatPanel::newMessage(int id, QString *message)
 {
     QStringList list;
-    list << "<" << *player << ">  " << *message;
+    list << "<" << "od" << ">  " << *message;
     QString str = list.join("");
+
+    qDebug() << "prijakta zprava";
 
     QLabel *label = new QLabel(str);
     layout->addWidget(label, number++, 0, Qt::AlignTop);
@@ -37,4 +39,5 @@ void ChatPanel::sendMessage( void )
     messageEdit->clear();
 
     emit sendMessage(id, &mess);
+    qDebug() << "odeslana zprava";
 }

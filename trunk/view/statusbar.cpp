@@ -6,6 +6,7 @@ StatusBar::StatusBar(QWidget *parent) :
     QWidget(parent)
 {
     colors << "black" << "red" << "blue" << "green" << "brown" << "yellow";
+    score.resize(6);
 
     layout = new QGridLayout;
     setLayout(layout);
@@ -114,32 +115,32 @@ void StatusBar::addPlayer(int id, QString &name)
 
 }
 
-void StatusBar::changeScore(int id, int score)
+void StatusBar::changeScore(int id)
 {
     switch(id)
     {
     case 0:
-        score1->setText("Score: " + QString::number(score));
+        score1->setText("Score: " + score[id]++);
         break;
 
     case 1:
-        score2->setText("Score: " + QString::number(score));
+        score2->setText("Score: " + score[id]++);
         break;
 
     case 2:
-        score3->setText("Score: " + QString::number(score));
+        score3->setText("Score: " + score[id]++);
         break;
 
     case 3:
-        score4->setText("Score: " + QString::number(score));
+        score4->setText("Score: " + score[id]++);
         break;
 
     case 4:
-        score5->setText("Score: " + QString::number(score));
+        score5->setText("Score: " + score[id]++);
         break;
 
     case 5:
-        score6->setText("Score: " + QString::number(score));
+        score6->setText("Score: " + score[id]++);
         break;
     }
 }

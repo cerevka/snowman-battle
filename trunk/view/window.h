@@ -31,6 +31,8 @@ class Window : public QMainWindow
      Window();
 
      ScenePanel * getScenePanel( void );
+     ChatPanel * getChatPanel( void );
+     StatusBar * getStatusBar( void );
 
  private slots:
 
