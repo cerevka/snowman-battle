@@ -23,6 +23,7 @@ public:
       */
     ConnectedDialog(QWidget *parent=0);
 
+public slots:
     /**
       * Prida hrace na dialog
       * @param id id hrace

@@ -27,8 +27,8 @@ ScenePanel::ScenePanel()
     connect(handler, SIGNAL(shot()), Globals::packetCreator, SLOT(pressShot()));
     connect(handler, SIGNAL(changeWeapon()), Globals::packetCreator, SLOT(pressChangeWeapon()));
     //connect(handler, SIGNAL(pauseGame()), facade, SLOT(pauseGame()));
-    //StatusBar *sta = Globals::mainWindow->getStatusBar();
-    //connect(this, SIGNAL(changeAmmo(int,int)), statusbar, SLOT(changeRound(int,int)));
+//    bar = Globals::mainWindow->getStatusBar();
+//    connect(this, SIGNAL(changeAmmo(int,int)), bar, SLOT(changeRound(int,int)));
 
     ///// Konec testování Ota
 
@@ -156,11 +156,15 @@ void ScenePanel::addNewPlayer(int id, int x, int y, int direction)
     hideObject(6 + id * guns + 2);
 
     changePlayerDirection(id, direction);
+    changePlayerPosition(id, x, y);
 }
 
 void ScenePanel::addNewGun(int id, int x, int y, int type)
 {
     id += plusIdGuns;
+
+    x += 60;
+    y -= 30;
 
     if(items.at(id) != NULL)
         removeGraficObj(id);
@@ -218,8 +222,9 @@ void ScenePanel::changeGun(int id, int type, int restAmmo)
 
 void ScenePanel::changePlayerPosition(int id, int x, int y)
 {
-    int pos = items.at(id)->dir;
+    //int pos = items.at(id)->dir;
     int idGun = items.at(id)->actGun;
+    x -= 20;
     int px = items.at(id)->x() - x;
     int py = items.at(id)->y() - y;
 
