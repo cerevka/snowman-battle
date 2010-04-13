@@ -396,7 +396,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             emit chatMessageRecieved(packet[3], message);
 
             if((packet[1] != 0) && (Globals::network->getNetworkID() == 0)){
-                Globals::network->send(new QByteArray((char *)packet));
+                Globals::packetCreator->sendChatMessage(packet[3], message);
             }
 
             // A svůj řetězec vynuluji
