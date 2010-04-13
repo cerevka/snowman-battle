@@ -75,7 +75,7 @@ void Server::setNetworkID(int networkID)
 
 void Server::slotNewClient()
 {
-    if (clientsList.size()<10)
+    if (Globals::isGameRunning == false)
     {
       // ziska se socket, pomoci ktereho se bude komunikovat s klientam
       QTcpSocket * clientSocket = serverSocket->nextPendingConnection();

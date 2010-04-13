@@ -10,6 +10,7 @@ Network * Globals::network = NULL;
 PacketParser * Globals::packetParser = NULL;
 PacketCreator * Globals::packetCreator = NULL;
 GameFacade * Globals::gameFacade = NULL;
+bool Globals::isGameRunning = false;
 
 class ScenePanel;
 
