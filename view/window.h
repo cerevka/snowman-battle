@@ -34,6 +34,9 @@ class Window : public QMainWindow
      ChatPanel * getChatPanel( void );
      StatusBar * getStatusBar( void );
 
+     void addName(int id, QString * name);
+     QString * getName(int id);
+
  private slots:
 
      /**
@@ -94,6 +97,8 @@ class Window : public QMainWindow
      int y, y1;
      PixmapItem *snow;
      PixmapItem *snow1;
+
+     QList<QString*> names;
 
  };
 

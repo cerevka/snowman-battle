@@ -1,9 +1,12 @@
 #include "client.h"
 
-Client::Client(QHostAddress address, int port, NetworkInterface *const parent):NetworkInterface(parent)
+Client::Client(QHostAddress address, int port, QString name, NetworkInterface *const parent):NetworkInterface(parent)
 {
     // vytvori se TCP socket, kterym se pripoji k serveru
     clientSocket = new QTcpSocket(this);
+
+    // ulozi si jmeno
+    this->name = name;
 
     // napojeni signalu o uspesnem pripojeni
     QObject::connect(clientSocket, SIGNAL(connected()), this, SLOT(slotConnected()));
@@ -14,6 +17,10 @@ Client::Client(QHostAddress address, int port, NetworkInterface *const parent):N
 
     // pripojeni se k serveru
     clientSocket->connectToHost(address, port);
+
+    // zapouzdreni do Network
+    Globals::network = new Network(this);
+
 
 }
 
@@ -41,7 +48,10 @@ int Client::getNetworkID() const
 
 void Client::setNetworkID(int networkID)
 {
-    this->networkID = networkID;
+    this->networkID = networkID;    
+
+    // v odpovedi odesle packet se svym jmenem
+    Globals::packetCreator->assignName(networkID, &this->name);
 }
 
 void Client::slotConnected()
@@ -52,7 +62,6 @@ void Client::slotConnected()
 
     // napoji se na parser
     QObject::connect(clientThread, SIGNAL(newMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*)));
-
 
     clientThread->start();
 
