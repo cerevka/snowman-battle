@@ -4,14 +4,15 @@
 #include "../controller/game/game.h"
 
 QBitArray WeaponPackage::idArray = QBitArray(256);
-double WeaponPackage::weaponPackageSize = 70.0;
+double WeaponPackage::weaponPackageSizeX = 70.0;
+double WeaponPackage::weaponPackageSizeY = 20.0;
 
 WeaponPackage::WeaponPackage(Game * const parent) :
         MapObject(parent)
 {
 
     // Vygeneruji náhodné souřadnice
-    parent->generateValidCoordinates(weaponPackageSize, 20.0, this);
+    parent->generateValidCoordinates(weaponPackageSizeX, weaponPackageSizeY, this);
 
     // Vygeneruji náhodný typ zbraně
     if((qrand()%10) > 7){

@@ -60,9 +60,14 @@ public:
 protected:
 
     /**
-     * Velikost zbraně v pixelech
+     * Šířka zbraně v pixelech
      */
-    static double weaponPackageSize;
+    static double weaponPackageSizeX;
+
+    /**
+     * Výška zbraně v pixelech
+     */
+    static double weaponPackageSizeY;
 
     /**
      * Toto pole udržuje záznamy o tom, která ID jsou pro zbraně použity
