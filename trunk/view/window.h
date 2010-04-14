@@ -108,7 +108,7 @@ class Window : public QMainWindow
      QList<QString*> names;
 
  signals:
-     void clientNameAdded();
+     void clientNameAdded(int id);
 
  };
 

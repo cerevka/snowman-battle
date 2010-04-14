@@ -7,19 +7,18 @@ ConnectedDialog::ConnectedDialog(QWidget *parent)
     : QDialog(parent)
 {
     colors << "black" << "red" << "blue" << "green" << "brown" << "yellow";
-    id = 0;
 
 
     QLabel *lab = new QLabel(tr("Waiting for players"));
     createButton = new QPushButton(tr("Create"));
 
 
-    QString *name = Globals::mainWindow->getName(id);
-    name1 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
+    QString *name = Globals::mainWindow->getName(0);
+    name1 = new QLabel("<font color=" + colors.at(0) +">" + *name + "</font>");
     image1 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
     image1Button = new QToolButton;
     image1Button->setIconSize(resultSize);
-    image1.load(":/images/snowman_" + colors.at(id) + ".png");
+    image1.load(":/images/snowman_" + colors.at(0) + ".png");
     image1Button->setIcon(QPixmap::fromImage(image1));
 
     layout = new QGridLayout;
@@ -33,9 +32,8 @@ ConnectedDialog::ConnectedDialog(QWidget *parent)
     connect(createButton, SIGNAL(clicked()), this, SLOT(accept()));
 }
 
-void ConnectedDialog::addPlayer()
+void ConnectedDialog::addPlayer(int id)
 {
-    id++;
     qDebug() << "signal add player " << id;
 
     QString *name = Globals::mainWindow->getName(id);
