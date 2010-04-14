@@ -179,7 +179,7 @@ void Window::createGame()
 
         connectionDialog = new ConnectedDialog();
 
-        QObject::connect(this, SIGNAL(clientNameAdded()), connectionDialog, SLOT(addPlayer()));
+        QObject::connect(this, SIGNAL(clientNameAdded(int)), connectionDialog, SLOT(addPlayer(int)));
 
         Server * server = new Server(1234, players);
 
@@ -283,7 +283,7 @@ void Window::aboutQt(){}
 void Window::addName(int id, QString * name)
 {
     names.replace(id, name);
-    emit clientNameAdded();
+    emit clientNameAdded(id);
 }
 
 QString * Window::getName(int id)

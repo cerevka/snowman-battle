@@ -30,7 +30,7 @@ public slots:
       * Prida hrace na dialog
       * @param id id hrace
       */
-    void addPlayer();
+    void addPlayer(int id);
 
 private:
     QGridLayout *layout;
@@ -63,7 +63,6 @@ private:
       */
     QStringList colors;
     QPushButton *createButton;
-    int id;
 };
 
 #endif // CONNECTEDDIALOG_H
