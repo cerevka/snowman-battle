@@ -48,6 +48,11 @@ public:
      */
     void setNetworkID(int networkID);
 
+    /**
+     * Casovana metoda, ktera bude kontrolovat, zda se klient nelagnul.
+     */
+    void timerEvent(QTimerEvent * event);
+
 private:
     /**
      * Uchovava ukazatel na serverovy socket, ke
@@ -72,6 +77,18 @@ private:
      */
     int count;
 
+    /**
+     * Udrzuje si pro kazdeho hrace cas posledniho hello packetu.
+     */
+    QList<QTime> lastHelloList;
+
+    /**
+     * Obsahuje ID hracu, kteri jsou v lagu a jsou tedy deaktivovani.
+     */
+    QList<int> laggingClientsList;
+
+
+
 signals:
     /**
      * Vyemituje zpravu, ze odeslal packet, aby ho i server
@@ -79,10 +96,21 @@ signals:
      */
     void sentMessage(QByteArray * message);
 
+    /**
+     * Vysle signal s informaci, ze dany klient laguje.
+     */
+    void clientLags(int id);
+
+    /**
+     * Vysle signal, ze lagly klient opet odpovedel a aktivuje ho
+     */
+    void clientIsBack(int id);
+
 
 
 private slots:
     void slotNewClient();
+    void slotIncommingHelloPacket(int id);
 
 
 };

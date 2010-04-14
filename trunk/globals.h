@@ -53,6 +53,11 @@ public:
      */
     static bool isGameRunning;
 
+    /**
+     * Pocet hracu.
+     */
+    static int players;
+
 };
 
 

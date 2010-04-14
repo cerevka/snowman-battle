@@ -46,6 +46,11 @@ public:
      */
     void setNetworkID(int networkID);
 
+    /**
+     * Nastartuje timer posílají hello packety.
+     */
+    void timerEvent(QTimerEvent * event);
+
 private:
     /**
      * Udrzuje si ukazatel na socket, kterym komunikuje
@@ -64,6 +69,14 @@ private:
     int networkID;
 
     QString name;
+
+    int timerID;
+
+signals:
+    /**
+     * Informuje o umyslu odeslat hello packet.
+     */
+    void sendingHelloPacket();
 
 private slots:
     /**
