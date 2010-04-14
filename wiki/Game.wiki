@@ -1,13 +1,39 @@
 #summary Technologie pro engine hry
 
-= Introduction =
+= Herní engine =
 
-Pro realizaci detekce kolizí je realizováno v tzv. framech
+Pro realizaci detekce kolizí je realizováno zvláštním vláknem v tzv. framech. V každém framu se prochází seznamy všech hráčů a střel a detekují se u nich kolize. Tato metoda fremu je realizována pomocí QObject timru, který se volá každých 20 ms.
 
 
-= Details =
+{{{
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+void Game::timerEvent (QTimerEvent * const event)
+{
+
+    bigGameMutex->lock();
+
+    movePlayers();
+    moveShots();
+    generateWeaponPackages();
+
+    emit frameEnded();
+
+    // pokud se má hra pauznout zastavím vlákno
+    if(paused){
+        pauseCondition->wait(bigGameMutex);
+        paused = false;
+    }
+
+    bigGameMutex->unlock();
+
+    // pokud se má hra ukončit, ukončím event loop
+    if(!gameRun){
+
+        killTimer(event->timerId());
+        this->exit(0);
+
+    }
+
+}
+
+}}}
