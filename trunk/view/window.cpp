@@ -107,10 +107,6 @@ StatusBar * Window::getStatusBar( void )
     return statusbar;
 }
 
-ConnectedDialog * Window::getConnectedDialog( void )
-{
-    return connectionDialog;
-}
 
 void Window::createMenus()
 {
@@ -181,7 +177,10 @@ void Window::createGame()
 
         connectionDialog = new ConnectedDialog();
 
+        QObject::connect(this, SIGNAL(clientNameAdded()), connectionDialog, SLOT(addPlayer()));
+
         Server * server = new Server(1234, players);
+
 
 
 
@@ -279,6 +278,7 @@ void Window::aboutQt(){}
 void Window::addName(int id, QString * name)
 {
     names.replace(id, name);
+    emit clientNameAdded();
 }
 
 QString * Window::getName(int id)
