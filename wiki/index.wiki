@@ -5,25 +5,42 @@
   * [Vize]
   * [Model]
   * Dokumentace tříd
-    * Model
-      * Block
+    * Model /
+      * MapObject
         * Player
-        * Immovable
-          * ShootableBlock
-          * UnshootableBlock  
+        * WeaponPack
+        * ShootableBlock
+        * UnshootableBlock  
       * Weapon
         * HandGun
         * ShotGun
         * MachineRifle
       * Shot
-    * View
-      *  Window
-    * Controller
-      * Game
-      * Network
+    * View /
+      * Dialogs /
+        * ConnectedDialog
+        * CreateGame	
+        * JoinGame
+      * ChatPanel
+      * PixmapItem
+      * ScenePanel
+      * Statusbar
+      * Window
+    * Controller /
+      * Game /
+        * [Game]
+        * GameFacade
+      * Network /
         * Client
+        * ClientThread
+        * Network	
+        * NetworkInterface
+        * PacketCreator
+        * PacketParser
         * Server
-      * KeyboardHandler
+      * Gui /
+        * KeyboardHandler
+    * Globals
     * main.cpp
 
 
