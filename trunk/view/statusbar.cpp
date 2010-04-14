@@ -8,8 +8,12 @@ StatusBar::StatusBar(QWidget *parent) :
 {
     colors << "black" << "red" << "blue" << "green" << "brown" << "yellow";
     score.resize(6);
+    rounds.resize(6);
     for(int i = 0; i < 6; i++)
+    {
         score[i] = 0;
+        rounds[i] = 0;
+    }
 
     layout = new QGridLayout;
     setLayout(layout);
@@ -23,7 +27,7 @@ void StatusBar::addPlayer(int id)
     case 0:
         name1 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score1 = new QLabel(tr("Score: 0"));
-        round1 = new QLabel(tr("Rounds: mnoho"));
+        round1 = new QLabel(tr("Rounds: infinity"));
         image1 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image1Button = new QToolButton;
         image1Button->setIconSize(resultSize);
@@ -39,7 +43,7 @@ void StatusBar::addPlayer(int id)
     case 1:
         name2 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score2 = new QLabel(tr("Score: 0"));
-        round2 = new QLabel(tr("Rounds: 10"));
+        round2 = new QLabel(tr("Rounds: infinity"));
         image2 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image2Button = new QToolButton;
         image2Button->setIconSize(resultSize);
@@ -55,7 +59,7 @@ void StatusBar::addPlayer(int id)
     case 2:
         name3 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score3 = new QLabel(tr("Score: 0"));
-        round3 = new QLabel(tr("Rounds: 10"));
+        round3 = new QLabel(tr("Rounds: infinity"));
         image3 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image3Button = new QToolButton;
         image3Button->setIconSize(resultSize);
@@ -71,7 +75,7 @@ void StatusBar::addPlayer(int id)
     case 3:
         name4 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score4 = new QLabel(tr("Score: 0"));
-        round4 = new QLabel(tr("Rounds: 10"));
+        round4 = new QLabel(tr("Rounds: infinity"));
         image4 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image4Button = new QToolButton;
         image4Button->setIconSize(resultSize);
@@ -87,7 +91,7 @@ void StatusBar::addPlayer(int id)
     case 4:
         name5 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score5 = new QLabel(tr("Score: 0"));
-        round5 = new QLabel(tr("Rounds: 10"));
+        round5 = new QLabel(tr("Rounds: infinity"));
         image5 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image5Button = new QToolButton;
         image5Button->setIconSize(resultSize);
@@ -103,7 +107,7 @@ void StatusBar::addPlayer(int id)
     case 5:
         name6 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
         score6 = new QLabel(tr("Score: 0"));
-        round6 = new QLabel(tr("Rounds: 10"));
+        round6 = new QLabel(tr("Rounds: infinity"));
         image6 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
         image6Button = new QToolButton;
         image6Button->setIconSize(resultSize);
@@ -153,30 +157,45 @@ void StatusBar::changeScore(int id)
 
 void StatusBar::changeRound(int id, int round)
 {
+    QString str;
+    rounds[id] = round;
+    if(round > 7 || round < 1)
+    {
+        str = QString(tr("infinity"));
+    }else
+    {
+        str = QString::number(round);
+    }
     switch(id)
     {
     case 0:
-        round1->setText("Rounds: " + QString::number(round));
+        round1->setText("Rounds: " + str);
         break;
 
     case 1:
-        round2->setText("Rounds: " + QString::number(round));
+        round2->setText("Rounds: " + str);
         break;
 
     case 2:
-        round3->setText("Rounds: " + QString::number(round));
+        round3->setText("Rounds: " + str);
         break;
 
     case 3:
-        round4->setText("Rounds: " + QString::number(round));
+        round4->setText("Rounds: " + str);
         break;
 
     case 4:
-        round5->setText("Rounds: " + QString::number(round));
+        round5->setText("Rounds: " + str);
         break;
 
     case 5:
-        round6->setText("Rounds: " + QString::number(round));
+        round6->setText("Rounds: " + str);
         break;
     }
+}
+
+void StatusBar::decrementRounds(int id)
+{
+    rounds[id] = rounds.at(id) - 1;
+    changeRound(id, rounds.at(id));
 }

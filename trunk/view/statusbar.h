@@ -40,6 +40,8 @@ public slots:
       */
     void changeRound(int id, int round);
 
+    void decrementRounds(int id);
+
 private:
 
     QGridLayout *layout;
@@ -82,6 +84,7 @@ private:
 
     QStringList colors;
     QVector<int> score;
+    QVector<int> rounds;
 
 };
 
