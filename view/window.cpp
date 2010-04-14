@@ -13,6 +13,12 @@ Window::Window()
     scenepanel = new ScenePanel();
     setCentralWidget(scenepanel);
 
+    // predalokuje se pole jmen
+    for (int i = 0; i < 6; ++i) {
+        names.append(new QString ("Anonymous"));
+    }
+
+
     QDockWidget *statusWidget = new QDockWidget(tr(""), this);
     statusWidget->setAllowedAreas(Qt::BottomDockWidgetArea);
     statusWidget->setFixedHeight(100);
@@ -53,11 +59,6 @@ Window::Window()
 */
     QString *str = new QString("background1.jpg");
     scenepanel->setBackground(*str);
-
-    // predalokuje se pole jmen
-    for (int i = 0; i < 6; ++i) {
-        names.append(new QString ("Anonymous"));
-    }
 
 /*
     x1 = 265;
@@ -176,13 +177,17 @@ void Window::createGame()
         Globals::players = players;
 
         //TODO misto pro volani socketu
-        Server * server = new Server(1234, players);
-        connectionDialog = new ConnectedDialog();
-
-
         names.replace(0, new QString(nickname));
 
+        connectionDialog = new ConnectedDialog();
+
+        Server * server = new Server(1234, players);
+
+
+
+
         qDebug() << "Ja jsem server a jmenuji se " << *names.at(0);
+
 
         connectionDialog->show();
         connectionDialog->exec();
