@@ -28,7 +28,7 @@ void GameFacade::newGame(const int countOfPlayers)
     if(!isGameActive){
 
         // Vytvářím objekt hry
-        actualGame = new Game(countOfPlayers);
+        actualGame = new Game(countOfPlayers, 30);
 
         // Spojím signály a sloty
         connectAll();
@@ -47,6 +47,8 @@ void GameFacade::endGame(void)
 
     if(isGameActive){
 
+        isGameActive = false;
+
         // Nastavím ukončení vlákna
         actualGame->quitGame();
 
@@ -55,7 +57,6 @@ void GameFacade::endGame(void)
 
         delete actualGame;
 
-        isGameActive = false;
     }
 
 }
@@ -181,6 +182,8 @@ void GameFacade::connectAll(void)
         connect(actualPlayer, SIGNAL(playerShoted(int)), Globals::packetCreator, SLOT(playerShots(int)));
         connect(actualPlayer, SIGNAL(weaponChanged(int,int,int)), Globals::packetCreator, SLOT(changeWeapon(int,int,int)));
         connect(actualPlayer, SIGNAL(scoreIncremented(int)), Globals::packetCreator, SLOT(incrementScore(int)));
+        connect(actualPlayer, SIGNAL(playerWon(int)), Globals::packetCreator, SLOT(winPlayer(int)));
+        connect(actualPlayer, SIGNAL(playerWon(int)), this, SLOT(endGame()), Qt::QueuedConnection);
 
         connect(actualPlayer, SIGNAL(playerActivated(int)), Globals::packetCreator, SLOT(activatePlayer(int)));
         connect(actualPlayer, SIGNAL(playerDeactivated(int)), Globals::packetCreator, SLOT(deactivatePlayer(int)));
@@ -188,7 +191,7 @@ void GameFacade::connectAll(void)
 
 }
 
-Player * GameFacade::getPlayerById(const int playerID) const
+inline Player * GameFacade::getPlayerById(const int playerID) const
 {
     return actualGame->allPlayers->value(playerID);
 }

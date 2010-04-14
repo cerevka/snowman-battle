@@ -141,6 +141,7 @@ signals:
     void weaponChanged(int playerID, int weapon, int restOfAmmo);
 
     void scoreIncremented(int playerID);
+    void playerWon(int playerID);
 
     void playerActivated(int playerID);
     void playerDeactivated(int playerID);

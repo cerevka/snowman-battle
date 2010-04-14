@@ -211,6 +211,12 @@ public slots:
      */
     void deactivatePlayer(int playerID);
 
+    /**
+     * Slot pro výhru
+     * @param playerID id hráče, který vyhrál
+     */
+    void winPlayer(int playerID);
+
     /**********************************************************/
     /* -------------------sloty pro chat--------------------- */
 

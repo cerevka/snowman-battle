@@ -10,7 +10,6 @@
 #include <QThread>
 #include <QMutex>
 #include <QWaitCondition>
-#include <QApplication>
 #include <QTime>
 
 #ifdef _DEBUG_
@@ -36,7 +35,7 @@ public:
      * @param countOfPlayers počet hráču, kteří budou hrát hru
      * @param parent určuje rodičovský objekt
      */
-    explicit Game(const int countOfPlayers, QObject * const parent = 0);
+    explicit Game(const int countOfPlayers, const int scoreToWin, QObject * const parent = 0);
 
     /**
      * Uvolňuje prostředky alokované pro potřeby hry
@@ -72,6 +71,18 @@ public:
      * @param event časovač, který spustil tuhle metodu
      */
     void timerEvent (QTimerEvent * const event);
+
+    /**
+     * Getr sloužící ke zjištění zde toto má nastavenou řídící proměnou
+     * @return true, pokud hra běží
+     */
+    bool isGameRunning(void) const;
+
+    /**
+     * Getr pro skóre potřebné na výhru
+     * @return vrací, kolik je potřeba pro výhru zabít soupeřů
+     */
+    int getScoreToWin(void) const;
 
     /**
      * Getr pro hlavní mutex
@@ -118,6 +129,11 @@ private:
      * Tento seznam v sobě drží všechny letící střely
      */
     QList<Shot *> * allShots;
+
+    /**
+     * Skóre, jaké je potřeba k výhře
+     */
+    int scoreToWin;
 
     /**
      * Pokud je true, tak hlavní smyčka hry běží

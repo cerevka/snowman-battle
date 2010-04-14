@@ -228,10 +228,18 @@ void Player::incrementScore(void)
     score++;
 
     emit scoreIncremented(playerID);
-
     #ifdef _DEBUG_
     qDebug() << "Game engine: Player" << playerID << "incremented score";
     #endif
+
+    if((score == parentGame->getScoreToWin()) && (parentGame->isGameRunning())){
+
+        emit playerWon(playerID);
+        #ifdef _DEBUG_
+        qDebug() << "Game engine: Player" << playerID << "won";
+        #endif
+
+    }
 
 }
 
