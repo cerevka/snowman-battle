@@ -31,6 +31,7 @@ Server::Server(int port, int count, NetworkInterface *const parent) : NetworkInt
     // propoji se signal o odeslani packetu s parserem
     QObject::connect(this, SIGNAL(sentMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*)));
 
+
             Globals::network = new Network(this);
 }
 
@@ -111,3 +112,5 @@ void Server::slotNewClient()
     }
 
 }
+
+

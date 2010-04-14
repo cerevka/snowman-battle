@@ -6,7 +6,7 @@ Client::Client(QHostAddress address, int port, QString name, NetworkInterface *c
     clientSocket = new QTcpSocket(this);
 
     // ulozi si jmeno
-    this->name = name;
+    this->name = QString(name);
 
     // napojeni signalu o uspesnem pripojeni
     QObject::connect(clientSocket, SIGNAL(connected()), this, SLOT(slotConnected()));
@@ -52,6 +52,7 @@ void Client::setNetworkID(int networkID)
 
     // v odpovedi odesle packet se svym jmenem
     Globals::packetCreator->assignName(networkID, &this->name);
+    qDebug() << "Odesilam sve jmeno  " << (this->name);
 }
 
 void Client::slotConnected()
