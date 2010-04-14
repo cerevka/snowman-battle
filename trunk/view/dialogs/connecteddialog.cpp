@@ -13,6 +13,7 @@ ConnectedDialog::ConnectedDialog(QWidget *parent)
     QLabel *lab = new QLabel(tr("Waiting for players"));
     createButton = new QPushButton(tr("Create"));
 
+
     QString *name = Globals::mainWindow->getName(id);
     name1 = new QLabel("<font color=" + colors.at(id) +">" + *name + "</font>");
     image1 = QImage(resultSize, QImage::Format_ARGB32_Premultiplied);
@@ -34,6 +35,8 @@ ConnectedDialog::ConnectedDialog(QWidget *parent)
 void ConnectedDialog::addPlayer()
 {
     id++;
+    qDebug() << "signal add player " << id;
+
     QString *name = Globals::mainWindow->getName(id);
     switch(id)
     {
