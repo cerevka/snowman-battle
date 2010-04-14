@@ -34,7 +34,6 @@ class Window : public QMainWindow
      ScenePanel * getScenePanel( void );
      ChatPanel * getChatPanel( void );
      StatusBar * getStatusBar( void );
-     ConnectedDialog * getConnectedDialog( void );
 
      void addName(int id, QString * name);
      QString * getName(int id);
@@ -102,6 +101,9 @@ class Window : public QMainWindow
      ConnectedDialog *connectionDialog;
 
      QList<QString*> names;
+
+ signals:
+     void clientNameAdded();
 
  };
 
