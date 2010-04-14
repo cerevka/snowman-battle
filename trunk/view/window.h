@@ -41,6 +41,11 @@ class Window : public QMainWindow
  private slots:
 
      /**
+       * Signal, ktery informuje o zalozeni hry
+       */
+     void createNewGame();
+
+     /**
        * Zobrazi createGame dialog a zpracuje zadane informace
        */
      void createGame( void );

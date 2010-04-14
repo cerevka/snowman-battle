@@ -85,6 +85,8 @@ Window::Window()
     //Vytvori menu
     createMenus();
 
+    connect(Globals::packetParser, SIGNAL(gameStarted()), this, SLOT(createNewGame()));
+
     setWindowTitle(tr("Snowman Battle"));
     setFixedHeight(700);
     setFixedWidth(1150);
@@ -189,21 +191,24 @@ void Window::createGame()
 
 
         connectionDialog->show();
-        connectionDialog->exec();
+
+        if(connectionDialog->exec())
+        {
+            qDebug() << "Jdu predstavovat " << players+1 << "hracu vcetne sebe.";
+
+            // rozsirim mezi klienty jmena
+            for (int i = 0; i < players+1; ++i) {
+                Globals::packetCreator->assignName(i, names.at(i));
+                qDebug() << "Rozeslal jsem jmeno" << *names.at(i) << " pro " << i;
+            }
 
 
-        qDebug() << "Jdu predstavovat " << players+1 << "hracu vcetne sebe.";
+            Globals::packetCreator->startGame();
+            Globals::isGameRunning = true;
 
-        // rozsirim mezi klienty jmena
-        for (int i = 0; i < players+1; ++i) {
-            Globals::packetCreator->assignName(i, names.at(i));
-            qDebug() << "Rozeslal jsem jmeno" << *names.at(i) << " pro " << i;
+            Globals::gameFacade->newGame(players + 1);
         }
 
-
-        Globals::isGameRunning = true;
-
-        Globals::gameFacade->newGame(players + 1);
      }
 }
 
@@ -284,6 +289,17 @@ void Window::addName(int id, QString * name)
 QString * Window::getName(int id)
 {
     return names.at(id);
+}
+
+void Window::createNewGame()
+{
+    Globals::isGameRunning = true;
+    qDebug() << "new game";
+    for (int i = 0; i < 6; ++i)
+    {
+        if(names.at(i)->compare("Anonymous"))
+            statusbar->addPlayer(i);
+    }
 }
 
 

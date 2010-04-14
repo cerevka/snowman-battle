@@ -28,6 +28,7 @@ ConnectedDialog::ConnectedDialog(QWidget *parent)
     layout->addWidget(name1, 1 ,1);
     layout->addWidget(createButton, 20, 0);
     setLayout(layout);
+    setFixedWidth(210);
 
     connect(createButton, SIGNAL(clicked()), this, SLOT(accept()));
 }

@@ -24,7 +24,6 @@ public:
       */
     ConnectedDialog(QWidget *parent=0);
 
-    QPushButton *createButton;
 
 public slots:
     /**
@@ -63,6 +62,7 @@ private:
       * Barvy jednotlivych hracu
       */
     QStringList colors;
+    QPushButton *createButton;
     int id;
 };
 

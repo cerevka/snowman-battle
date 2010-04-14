@@ -76,7 +76,7 @@ void PacketCreator::chooseMap(int mapID)
 
 void PacketCreator::startGame(void)
 {
-
+    //qDebug() << "slot zavolan";
     createThreeBytesPacket(3); // typ start hry
 
 }
