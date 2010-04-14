@@ -44,7 +44,7 @@ void ScenePanel::setBackground(const QString &background)
 void ScenePanel::setOpeningView()
 {
 
-    PixmapItem *item = new PixmapItem("snowman-stickup.jpg", 1000, 800, 1000, 800);
+    PixmapItem *item = new PixmapItem("snowman-stickup.jpg", 400, 200, 400, 200);
     scene->addItem(item);
 }
 
@@ -217,7 +217,10 @@ void ScenePanel::changeGun(int id, int type, int restAmmo)
     items.at(id)->actGun = p + type;
     appearObject(p + type, items.at(id)->x() + playerW * 0.67, items.at(id)->y(), items.at(id)->dir);
 
-    //emit changeAmmo(id, restAmmo);
+    if(type == 0)
+        restAmmo == 10000;
+
+    emit changeAmmo(id, restAmmo);
 }
 
 void ScenePanel::changePlayerPosition(int id, int x, int y)

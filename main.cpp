@@ -99,7 +99,8 @@ void connectAll(void)
 
     StatusBar * statusbar = Globals::mainWindow->getStatusBar();
     QObject::connect(Globals::packetParser, SIGNAL(playersScoreIncremented(int)), statusbar, SLOT(changeScore(int)));
-//    QObject::connect(panel, SIGNAL(changeAmmo(int,int)), statusbar, SLOT(changeRound(int,int)));
+    QObject::connect(panel, SIGNAL(changeAmmo(int,int)), statusbar, SLOT(changeRound(int,int)));
+    QObject::connect(Globals::packetParser, SIGNAL(playerShoted(int)), statusbar, SLOT(decrementRounds(int)));
 
 }
 
