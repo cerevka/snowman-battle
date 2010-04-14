@@ -9,6 +9,7 @@ ChatPanel::ChatPanel(QWidget *parent) :
     layout = new QGridLayout;
 
     chatMess = new QTextEdit(this);
+    chatMess->setReadOnly(true);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->addWidget(messageEdit);
@@ -26,8 +27,8 @@ ChatPanel::ChatPanel(QWidget *parent) :
 void ChatPanel::newMessage(int id, QString *message)
 {
     QStringList list;
-    //QString *name = Globals::mainWindow->getName(id);
-    list << "<" << /**name*/QString::number(id) << ">  " << *message;
+    QString *name = Globals::mainWindow->getName(id);
+    list << "<" << *name << ">  " << *message;
     QString *str = new QString();
     *str = list.join("");
 
