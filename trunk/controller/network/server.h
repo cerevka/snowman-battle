@@ -9,6 +9,7 @@
 #include "clientthread.h"
 #include "networkinterface.h"
 #include "globals.h"
+#include "view/dialogs/connecteddialog.h"
 
 /**
  * Server implementuje serverovou logiku. Je zapouzdren
