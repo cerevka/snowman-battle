@@ -76,7 +76,6 @@ void PacketCreator::chooseMap(int mapID)
 
 void PacketCreator::startGame(void)
 {
-    //qDebug() << "slot zavolan";
     createThreeBytesPacket(3); // typ start hry
 
 }
@@ -318,7 +317,7 @@ void PacketCreator::playerShots(int playerID)
 
     gameEnginePacket->append(3); // délka
     gameEnginePacket->append(Globals::network->getNetworkID());
-    gameEnginePacket->append(50); // typ zvýšení skóre
+    gameEnginePacket->append(29); // typ zvýšení skóre
     gameEnginePacket->append(playerID);
 
     enginePacketMutex->unlock();
@@ -332,7 +331,7 @@ void PacketCreator::incrementScore(int playerID)
 
     gameEnginePacket->append(3); // délka
     gameEnginePacket->append(Globals::network->getNetworkID());
-    gameEnginePacket->append(29); // typ zničení střely
+    gameEnginePacket->append(50); // typ zničení střely
     gameEnginePacket->append(playerID);
 
     enginePacketMutex->unlock();
