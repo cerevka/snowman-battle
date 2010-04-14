@@ -48,8 +48,6 @@ void MachineGun::refill(void)
 void MachineGun::timerEvent(QTimerEvent * const event)
 {
 
-    // TODO - dořešit cooldown
-
     // pokud už jsem vystřílel celou dávku nebo se hráč pohnul, tak zruším časovač
     if((restShots == 0) || (owner->isMoving())){
 

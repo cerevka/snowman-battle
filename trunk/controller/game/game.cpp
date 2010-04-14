@@ -33,9 +33,9 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
     // Lesy
     allObjects->append(new UnshootableBlock(this, 361, 0, 443, 73));
     allObjects->append(new UnshootableBlock(this, 522, 40, 600, 114));
-    allObjects->append(new UnshootableBlock(this, 81, 480, 162, 602));
-    allObjects->append(new UnshootableBlock(this, 242, 602, 322, 681));
-    allObjects->append(new UnshootableBlock(this, 401, 561, 482, 636));
+    allObjects->append(new UnshootableBlock(this, 81, 485, 162, 602));
+//    allObjects->append(new UnshootableBlock(this, 242, 602, 322, 681));
+//    allObjects->append(new UnshootableBlock(this, 401, 561, 482, 636));
 
     // Voda
     allObjects->append(new ShootableBlock(this, 98, 264, 142, 301));
@@ -44,10 +44,10 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
 
     allObjects->append(new ShootableBlock(this, 343, 214, 415, 256));
     allObjects->append(new ShootableBlock(this, 343, 257, 506, 421));
-    allObjects->append(new ShootableBlock(this, 507, 340, 542, 421));
+    allObjects->append(new ShootableBlock(this, 507, 340, 530, 411));
 
-    allObjects->append(new ShootableBlock(this, 577, 466, 648, 544));
-    allObjects->append(new ShootableBlock(this, 624, 419, 734, 510));
+    allObjects->append(new ShootableBlock(this, 590, 470, 648, 544));
+    allObjects->append(new ShootableBlock(this, 624, 419, 734, 505));
 
     countOfWeapons = 0;
 
@@ -201,7 +201,7 @@ void Game::movePlayers(void)
                 }
 
                 // Pokud koliduji
-                if(colideRectangles(actualObject, actualPlayer)){
+                if(colideObjects(actualObject, actualPlayer)){
                     // Zavolám kolizní metodu
                     if(actualObject->interactPlayer(actualPlayer) == false){
                         // Pokud je objekt neprůchozí, pak rovnou vím, že se hráč nepohne
@@ -318,7 +318,7 @@ bool Game::colideAllObjects(MapObject * const object) const
         }
 
         // Pokud objekt koliduje, ukončím metodu s tím, že existuje objekt, který koliduje
-        if (colideRectangles(allObjects->value(i), object)){
+        if (colideObjects(allObjects->value(i), object)){
             output = true;
             break;
         }
