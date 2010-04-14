@@ -15,3 +15,12 @@ PixmapItem::PixmapItem(const QString &filename, int w, int h, int x, int y)
 
     }
 }
+
+void PixmapItem::changePixmap(const QString &filename, int w, int h)
+{
+    if(filename != NULL)
+    {
+        QPixmap pi(":/images/" + filename);
+        setPixmap(pi.scaled(w, h, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    }
+}

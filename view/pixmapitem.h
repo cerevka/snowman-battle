@@ -21,6 +21,8 @@ public:
       */
     PixmapItem(const QString &filename, int w, int h, int x, int y);
 
+    void changePixmap(const QString &filename, int w, int h);
+
     /**
       * Vyska obrazku
       */

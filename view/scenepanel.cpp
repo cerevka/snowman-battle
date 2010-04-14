@@ -155,8 +155,8 @@ void ScenePanel::addNewPlayer(int id, int x, int y, int direction)
     addNewGun(6 + id * guns + 2 - plusIdGuns, x + playerW * 0.67, y, 2);
     hideObject(6 + id * guns + 2);
 
-    changePlayerDirection(id, direction);
     changePlayerPosition(id, x, y);
+    changePlayerDirection(id, direction);
 }
 
 void ScenePanel::addNewGun(int id, int x, int y, int type)
@@ -281,10 +281,23 @@ void ScenePanel::hidePlayer(int id)
     hideObject(items.at(id)->actGun);
 }
 
-void ScenePanel::appearePlayer(int id, int x, int y, int direction)
+void ScenePanel::appearePlayer(int id)
 {
-    appearObject(id, x, y, direction);
-    appearObject(items.at(id)->actGun, x + playerW * 0.67, y, direction);
+    //appearObject(id, x, y, direction);
+    //appearObject(items.at(id)->actGun, x + playerW * 0.67, y, direction);
+    items.at(id)->changePixmap("snowman_" + colors.at(id) + ".png", playerW, playerH);
+    //changePlayerPosition(id, x, y);
+    //changePlayerDirection(id, direction);
+}
+
+void ScenePanel::playerDeactivated(int id)
+{
+    if(items.at(id) == NULL)
+    {
+        addNewPlayer(id, 0, 0, 0);
+        hidePlayer(id);
+    }
+    items.at(id)->changePixmap("snowman_lag.png", playerW, playerH);
 }
 
 ///// Testování Ota
