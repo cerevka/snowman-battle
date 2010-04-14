@@ -1,4 +1,5 @@
 #include "keyboardhandler.h"
+#include "globals.h"
 
 KeyboardHandler::KeyboardHandler(QObject * const parent) :
     QObject(parent)
@@ -23,7 +24,7 @@ void KeyboardHandler::handleKeyEvent(QKeyEvent * const event)
     int key = event->key();
     int type = event->type();
 
-    if(event->isAutoRepeat()){
+    if(event->isAutoRepeat() || (Globals::isGameRunning == false)){
         return;
     }
 
