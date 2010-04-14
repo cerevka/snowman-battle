@@ -128,7 +128,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     case 3: {
 
             testLenght(packet, 2, true);
-
+    qDebug() << "/////////////////////poslan signal";
             emit gameStarted();
 
             break;
