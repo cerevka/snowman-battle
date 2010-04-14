@@ -1,5 +1,4 @@
 #include "window.h"
-#include "view/dialogs/connecteddialog.h"
 
 Window::Window()
 {
@@ -107,6 +106,11 @@ StatusBar * Window::getStatusBar( void )
     return statusbar;
 }
 
+ConnectedDialog * Window::getConnectedDialog( void )
+{
+    return connectionDialog;
+}
+
 void Window::createMenus()
 {
     gameMenu = menuBar()->addMenu(tr("&Game"));
@@ -173,15 +177,15 @@ void Window::createGame()
 
         //TODO misto pro volani socketu
         Server * server = new Server(1234, players);
-        QDialog *dia = new ConnectedDialog();
+        connectionDialog = new ConnectedDialog();
 
 
         names.replace(0, new QString(nickname));
 
         qDebug() << "Ja jsem server a jmenuji se " << *names.at(0);
 
-        dia->show();
-        dia->exec();
+        connectionDialog->show();
+        connectionDialog->exec();
 
 
         qDebug() << "Jdu predstavovat " << players+1 << "hracu vcetne sebe.";

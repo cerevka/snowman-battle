@@ -9,15 +9,15 @@ ConnectedDialog::ConnectedDialog(QWidget *parent)
     colors << "black" << "red" << "blue" << "green" << "brown" << "yellow";
 
 
-    QLabel *lab = new QLabel(tr("ceka se na hrace"));
-    QPushButton *but = new QPushButton(tr("create"));
+    QLabel *lab = new QLabel(tr("Waiting for players"));
+    createButton = new QPushButton(tr("Create"));
 
     layout = new QGridLayout;
     layout->addWidget(lab, 0, 0);
-    layout->addWidget(but, 1, 0);
+    layout->addWidget(createButton, 20, 0);
     setLayout(layout);
 
-    connect(but, SIGNAL(clicked()), Globals::gameFacade, SLOT(newGame(int)));
+    connect(createButton, SIGNAL(clicked()), this, SLOT(accept()));
 }
 
 void ConnectedDialog::addPlayer(int id)
@@ -33,8 +33,8 @@ void ConnectedDialog::addPlayer(int id)
         image1.load(":/images/snowman_" + colors.at(id) + ".png");
         image1Button->setIcon(QPixmap::fromImage(image1));
 
-        layout->addWidget(image1Button, 0, 0);
-        layout->addWidget(name1, 0 ,1);
+        layout->addWidget(image1Button, 1, 0);
+        layout->addWidget(name1, 1 ,1);
         break;
 
     case 1:
@@ -45,8 +45,8 @@ void ConnectedDialog::addPlayer(int id)
         image2.load(":/images/snowman_" + colors.at(id) + ".png");
         image2Button->setIcon(QPixmap::fromImage(image2));
 
-        layout->addWidget(image2Button, 1, 0);
-        layout->addWidget(name2, 1 ,1);
+        layout->addWidget(image2Button, 2, 0);
+        layout->addWidget(name2, 2 ,1);
         break;
 
     case 2:
@@ -57,8 +57,8 @@ void ConnectedDialog::addPlayer(int id)
         image3.load(":/images/snowman_" + colors.at(id) + ".png");
         image3Button->setIcon(QPixmap::fromImage(image3));
 
-        layout->addWidget(image3Button, 2, 0);
-        layout->addWidget(name3, 2 ,1);
+        layout->addWidget(image3Button, 3, 0);
+        layout->addWidget(name3, 3 ,1);
         break;
 
     case 3:
@@ -69,8 +69,8 @@ void ConnectedDialog::addPlayer(int id)
         image4.load(":/images/snowman_" + colors.at(id) + ".png");
         image4Button->setIcon(QPixmap::fromImage(image4));
 
-        layout->addWidget(image4Button, 3, 0);
-        layout->addWidget(name4, 3 ,1);
+        layout->addWidget(image4Button, 4, 0);
+        layout->addWidget(name4, 4 ,1);
         break;
 
     case 4:
@@ -81,8 +81,8 @@ void ConnectedDialog::addPlayer(int id)
         image5.load(":/images/snowman_" + colors.at(id) + ".png");
         image5Button->setIcon(QPixmap::fromImage(image5));
 
-        layout->addWidget(image5Button, 4, 0);
-        layout->addWidget(name5, 4 ,1);
+        layout->addWidget(image5Button, 5, 0);
+        layout->addWidget(name5, 5 ,1);
         break;
 
     case 5:
@@ -93,8 +93,8 @@ void ConnectedDialog::addPlayer(int id)
         image6.load(":/images/snowman_" + colors.at(id) + ".png");
         image6Button->setIcon(QPixmap::fromImage(image6));
 
-        layout->addWidget(image6Button, 5, 0);
-        layout->addWidget(name6, 5, 1);;
+        layout->addWidget(image6Button, 6, 0);
+        layout->addWidget(name6, 6, 1);
         break;
     }
 }
