@@ -12,6 +12,7 @@
 #include "controller/network/server.h"
 #include "controller/network/client.h"
 #include "controller/network/network.h"
+#include "view/dialogs/connecteddialog.h"
 
 
 class QAction;
@@ -33,6 +34,7 @@ class Window : public QMainWindow
      ScenePanel * getScenePanel( void );
      ChatPanel * getChatPanel( void );
      StatusBar * getStatusBar( void );
+     ConnectedDialog * getConnectedDialog( void );
 
      void addName(int id, QString * name);
      QString * getName(int id);
@@ -97,6 +99,7 @@ class Window : public QMainWindow
      int y, y1;
      PixmapItem *snow;
      PixmapItem *snow1;
+     ConnectedDialog *connectionDialog;
 
      QList<QString*> names;
 

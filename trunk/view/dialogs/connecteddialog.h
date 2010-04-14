@@ -6,6 +6,7 @@
 
 class QLabel;
 class QToolButton;
+class QPushButton;
 
 /**
   * Trida, ktera zobrazi hrace, kteri jsou pripojeni k serveru na zacatku hry
@@ -22,6 +23,8 @@ public:
       * @param parent rodic dialogu
       */
     ConnectedDialog(QWidget *parent=0);
+
+    QPushButton *createButton;
 
 public slots:
     /**
@@ -56,7 +59,6 @@ private:
     QLabel *name6;
     QToolButton *image6Button;
     QImage image6;
-
     /**
       * Barvy jednotlivych hracu
       */
