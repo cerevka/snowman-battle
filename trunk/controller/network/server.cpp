@@ -39,8 +39,8 @@ Server::Server(int port, int count, NetworkInterface *const parent) : NetworkInt
     // propoji se informace o novem hello packetu
     QObject::connect(Globals::packetParser, SIGNAL(helloPacketAccepted(int)), this, SLOT(slotIncommingHelloPacket(int)));
     // propoji se signal o lagujicim klientovy
-    QObject::connect(this, SIGNAL(clientLags(int)), Globals::packetCreator, SLOT(deactivatePlayer(int)));
-    QObject::connect(this, SIGNAL(clientIsBack(int)), Globals::packetCreator, SLOT(activatePlayer(int)));
+    QObject::connect(this, SIGNAL(clientLags(int)), Globals::gameFacade, SLOT(deactivatePlayer(int)));
+    QObject::connect(this, SIGNAL(clientIsBack(int)), Globals::gameFacade, SLOT(activatePlayer(int)));
 
             Globals::network = new Network(this);
 
@@ -90,7 +90,7 @@ void Server::setNetworkID(int networkID)
 
 void Server::timerEvent(QTimerEvent *event)
 {
-    qDebug() << "Zahajena kontrola hello packetu.";
+    //qDebug() << "Zahajena kontrola hello packetu.";
     // podiva se na vsechny klienty a porovna jejich casy
     // od nuly mi stejne nikdy nic neprijde
     for (int i = 1; i < Globals::players + 1; ++i) {
@@ -122,7 +122,7 @@ void Server::timerEvent(QTimerEvent *event)
 
 
 
-        qDebug() << "Prodleva pro " << i << " je " <<(lastHelloList.at(i).msecsTo(QTime::currentTime()));
+       // qDebug() << "Prodleva pro " << i << " je " <<(lastHelloList.at(i).msecsTo(QTime::currentTime()));
     }
 }
 
@@ -168,6 +168,6 @@ void Server::slotIncommingHelloPacket(int id)
 {
     // Updatuju si cas posledniho hello packetu pro daneho klienta
     lastHelloList.replace(id, QTime::currentTime());
-    qDebug() << "Obdrzel jsem hello packet od " << id << " v " << lastHelloList.at(id);
+    // qDebug() << "Obdrzel jsem hello packet od " << id << " v " << lastHelloList.at(id);
 }
 
