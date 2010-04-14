@@ -14,6 +14,8 @@ Client::Client(QHostAddress address, int port, QString name, NetworkInterface *c
     QObject::connect(clientSocket, SIGNAL(disconnected()), this, SLOT(slotDisconnected()));
     // napojeni signalu o chybe spojeni
     QObject::connect(clientSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(slotErrorConnect()));
+    // napojeni signalu pro odeslani hello packetu
+    QObject::connect(this, SIGNAL(sendingHelloPacket()), Globals::packetCreator, SLOT(sendHelloPacket()));
 
     // pripojeni se k serveru
     clientSocket->connectToHost(address, port);
@@ -26,6 +28,9 @@ Client::Client(QHostAddress address, int port, QString name, NetworkInterface *c
 
 Client::~Client(void)
 {
+    // ukonci se odesilani hello packetu
+    killTimer(timerID);
+
     // ukonci naslouchaji vlakno, ktere pri svem zaniku
     // uzavre komunikacni socket
     clientThread->quit();
@@ -53,6 +58,8 @@ void Client::setNetworkID(int networkID)
     // v odpovedi odesle packet se svym jmenem
     Globals::packetCreator->assignName(networkID, &this->name);
     qDebug() << "Odesilam sve jmeno  " << (this->name);
+    // zacnu odesilat hello packety
+    timerID = startTimer(500);
 }
 
 void Client::slotConnected()
@@ -84,4 +91,9 @@ void Client::slotErrorConnect()
     #ifdef _DEBUG_
         qDebug() << "Network Client: Connect error.";
     #endif
+}
+
+void Client::timerEvent(QTimerEvent *event)
+{
+    emit sendingHelloPacket();
 }

@@ -168,6 +168,8 @@ void Window::createGame()
             return;
         }
 
+        Globals::players = players;
+
         //TODO misto pro volani socketu
         Server * server = new Server(1234, players);
         QDialog *dia = new ConnectedDialog();
@@ -191,6 +193,7 @@ void Window::createGame()
 
 
         Globals::isGameRunning = true;
+
         Globals::gameFacade->newGame(players + 1);
      }
 }
