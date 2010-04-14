@@ -1,6 +1,6 @@
 #include "game.h"
 
-Game::Game(const int countOfPlayers, QObject * const parent) :
+Game::Game(int countOfPlayers, const int scoreToWin, QObject *const parent) :
         QThread(parent)
 {
 
@@ -51,6 +51,7 @@ Game::Game(const int countOfPlayers, QObject * const parent) :
 
     countOfWeapons = 0;
 
+    this->scoreToWin = scoreToWin;
     paused = false;
     gameRun = true;
 
@@ -158,6 +159,18 @@ void Game::timerEvent (QTimerEvent * const event)
         this->exit(0);
 
     }
+
+}
+
+bool Game::isGameRunning(void) const
+{
+    return gameRun;
+}
+
+int Game::getScoreToWin(void) const
+{
+
+    return scoreToWin;
 
 }
 

@@ -18,7 +18,7 @@ void ShotGun::shot(void)
     double y;
     double angle;
 
-    double speed = 7.0;
+    double speed = 14.0;
 
     findPointOfCreatingShots(x, y, angle);
 

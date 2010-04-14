@@ -5,9 +5,6 @@
 #include "globals.h"
 #include "cstdlib"
 
-#include <QSplashScreen>
-#include <QPixmap>
-
 Window * Globals::mainWindow = NULL;
 Network * Globals::network = NULL;
 PacketParser * Globals::packetParser = NULL;
@@ -134,10 +131,6 @@ int main(int argc, char * argv[])
 
     //Vytvori hlavni okno
     Globals::mainWindow = new Window();
-
-    //app.setMainWidget( Globals::mainWindow );
-//    clock_t endwait = clock() + (clock_t)(5 * CLOCKS_PER_SEC);
-//        while (clock() < endwait) {;}
 
     Globals::mainWindow->show();
 

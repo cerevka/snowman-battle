@@ -220,6 +220,12 @@ signals:
      */
     void playerDeactivated(int playerID);
 
+    /**
+     * Signál vítězství hráče
+     * @param playerID id hráče, který vyhrál
+     */
+    void playerWon(int playerID);
+
     /**********************************************************/
     /* -------------------chatové signály-------------------- */
 

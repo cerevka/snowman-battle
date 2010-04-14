@@ -360,6 +360,17 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             break;
         }
 
+    // 34 - vítězství hráče IDp
+    case 34: {
+
+            testLenght(packet, 3, true);
+
+            emit playerWon(packet[3]);
+
+            break;
+
+        }
+
 
 
     /* -------------------chatové signály------------------ */

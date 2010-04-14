@@ -367,7 +367,6 @@ void PacketCreator::activatePlayer(int playerID)
 
     sendPacket(packet);
 
-
 }
 
 void PacketCreator::deactivatePlayer(int playerID)
@@ -382,6 +381,19 @@ void PacketCreator::deactivatePlayer(int playerID)
 
     sendPacket(packet);
 
+}
+
+void PacketCreator::winPlayer(int playerID)
+{
+
+    QByteArray * const packet = new QByteArray();
+
+    packet->append(3); // délka
+    packet->append(Globals::network->getNetworkID());
+    packet->append(34); // typ výhra hráče
+    packet->append(playerID);
+
+    sendPacket(packet);
 
 }
 
