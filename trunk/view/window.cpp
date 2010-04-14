@@ -53,6 +53,12 @@ Window::Window()
 */
     QString *str = new QString("background1.jpg");
     scenepanel->setBackground(*str);
+
+    // predalokuje se pole jmen
+    for (int i = 0; i < 6; ++i) {
+        names.append(new QString ("Anonymous"));
+    }
+
 /*
     x1 = 265;
     y1 = 150;
@@ -165,8 +171,25 @@ void Window::createGame()
         //TODO misto pro volani socketu
         Server * server = new Server(1234, players);
         QDialog *dia = new ConnectedDialog();
+
+
+        names.replace(0, new QString(nickname));
+
+        qDebug() << "Ja jsem server a jmenuji se " << *names.at(0);
+
         dia->show();
         dia->exec();
+
+
+        qDebug() << "Jdu predstavovat " << players+1 << "hracu vcetne sebe.";
+
+        // rozsirim mezi klienty jmena
+        for (int i = 0; i < players+1; ++i) {
+            Globals::packetCreator->assignName(i, names.at(i));
+            qDebug() << "Rozeslal jsem jmeno" << *names.at(i) << " pro " << i;
+        }
+
+
         Globals::isGameRunning = true;
         Globals::gameFacade->newGame(players + 1);
      }
@@ -242,7 +265,7 @@ void Window::aboutQt(){}
 
 void Window::addName(int id, QString * name)
 {
-    names.insert(id, name);
+    names.replace(id, name);
 }
 
 QString * Window::getName(int id)

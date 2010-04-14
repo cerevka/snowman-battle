@@ -105,7 +105,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
 
             QString * const name = new QString();
 
-            for(int i = 3; i < (length + 1); i++){
+            for(int i = 4; i < (length + 1); i++){
                 name->append(packet[i]);
             }
 

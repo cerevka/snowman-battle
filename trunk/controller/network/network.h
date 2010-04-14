@@ -1,6 +1,8 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
+#include "globals.h"
+
 #include <QObject>
 #include <QThread>
 #include <QHostAddress>
@@ -20,9 +22,7 @@ public:
      * Vytvoreni sitoveho rozhrani jako server ci client.
      * @param strategy ukazatel na zvoleny zpusob prace se siti
      */
-    explicit Network(NetworkInterface *strategy, QObject * const parent = 0){
-        network = strategy;
-    }
+    explicit Network(NetworkInterface *strategy, QObject * const parent = 0);
 
     virtual ~Network();
 
@@ -41,6 +41,9 @@ private:
      * Udrzuje odkaz na zvolenou strategii.
      */
     NetworkInterface * network;
+
+private slots:
+    void slotAddName(int id, QString *name);
 
 
 };
