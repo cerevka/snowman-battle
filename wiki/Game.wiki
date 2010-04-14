@@ -2,8 +2,9 @@
 
 = Herní engine =
 
-Pro realizaci detekce kolizí je realizováno zvláštním vláknem v tzv. framech. V každém framu se prochází seznamy všech hráčů a střel a detekují se u nich kolize. Tato metoda fremu je realizována pomocí QObject timru, který se volá každých 20 ms.
+Pro realizaci detekce kolizí je realizováno zvláštním vláknem v tzv. framech. V každém framu se prochází seznamy všech hráčů a střel a detekují se u nich kolize. Tato metoda framu je realizována pomocí QObject timeru, který se volá každých 20 ms.
 
+Takto vypadá metoda timerEvent, která je vlastním framem:
 
 {{{
 
