@@ -34,6 +34,7 @@ Server::Server(int port, int count, NetworkInterface *const parent) : NetworkInt
 
     // propoji se signal noveho spojeni s jeho obsluhou
     QObject::connect(serverSocket, SIGNAL(newConnection()), this, SLOT(slotNewClient()));
+    QObject::connect(serverSocket, SIGNAL(newConnection()), Globals::mainWindow->getConnectedDialog(), SLOT(addPlayer()));
     // propoji se signal o odeslani packetu s parserem
     QObject::connect(this, SIGNAL(sentMessage(QByteArray*)), Globals::packetParser, SLOT(parseAll(QByteArray*)));
     // propoji se informace o novem hello packetu
