@@ -76,6 +76,7 @@ void Player::respawn(void)
     direction = (Directions)(qrand() % 4);
 
     // Resetování příznaků
+    actualWeapon = 0;
     moving = false;
     shoting = false;
     spawned = true;
@@ -196,7 +197,7 @@ void Player::timerEvent(QTimerEvent * const event)
     killTimer(event->timerId());
 
     // Obsluha časovače na respawn hráče
-    if(event->timerId() == idRespawnTimer) {
+    if((event->timerId() == idRespawnTimer) && (spawned == false) ) {
         parentGame->getBigGameMutex()->lock();
         respawn();
         parentGame->getBigGameMutex()->unlock();
@@ -226,7 +227,7 @@ void Player::incrementScore(void)
 
     score++;
 
-    emit scoreIncremented();
+    emit scoreIncremented(playerID);
 
     #ifdef _DEBUG_
     qDebug() << "Game engine: Player" << playerID << "incremented score";

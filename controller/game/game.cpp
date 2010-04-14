@@ -143,13 +143,13 @@ void Game::timerEvent (QTimerEvent * const event)
 
     emit frameEnded();
 
-    bigGameMutex->unlock();
-
     // pokud se má hra pauznout zastavím vlákno
     if(paused){
         pauseCondition->wait(bigGameMutex);
         paused = false;
     }
+
+    bigGameMutex->unlock();
 
     // pokud se má hra ukončit, ukončím event loop
     if(!gameRun){

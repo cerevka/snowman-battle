@@ -180,6 +180,7 @@ void GameFacade::connectAll(void)
         connect(actualPlayer, SIGNAL(playerKilled(int)), Globals::packetCreator, SLOT(killPlayer(int)));
         connect(actualPlayer, SIGNAL(playerShoted(int)), Globals::packetCreator, SLOT(playerShots(int)));
         connect(actualPlayer, SIGNAL(weaponChanged(int,int,int)), Globals::packetCreator, SLOT(changeWeapon(int,int,int)));
+        connect(actualPlayer, SIGNAL(scoreIncremented(int)), Globals::packetCreator, SLOT(incrementScore(int)));
 
         connect(actualPlayer, SIGNAL(playerActivated(int)), Globals::packetCreator, SLOT(activatePlayer(int)));
         connect(actualPlayer, SIGNAL(playerDeactivated(int)), Globals::packetCreator, SLOT(deactivatePlayer(int)));

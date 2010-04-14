@@ -128,7 +128,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
     case 3: {
 
             testLenght(packet, 2, true);
-    qDebug() << "/////////////////////poslan signal";
+
             emit gameStarted();
 
             break;
@@ -410,6 +410,7 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             break;
         }
 
+    // 50 - ikrementace skóre hráče IDp
     case 50: {
 
             testLenght(packet, 3, true);
