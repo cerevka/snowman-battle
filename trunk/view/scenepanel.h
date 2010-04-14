@@ -41,6 +41,10 @@ signals:
     void changeAmmo(int id, int ammo);
 
 public slots:
+
+    void playerDeactivated(int id);
+
+
     /**
       * Prida noveho hrace
       * @param id id hrace
@@ -118,11 +122,8 @@ public slots:
     /**
       * Zjeveni hrace na pozici
       * @param id id hrace
-      * @param x x-ova souradnice objektu
-      * @param y y-ova souradnice objektu
-      * @param direction pozadovana orientace hrace
       */
-    void appearePlayer(int id, int x, int y, int direction);
+    void appearePlayer(int id);
 
     ///// Testování Ota
 

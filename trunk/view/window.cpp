@@ -7,11 +7,12 @@ Window::Window()
     //Tady se pridavaji dalsi komponenty hlavniho okna
 
     //Vytvori hraci plochu
-    scenepanel = new ScenePanel();
-    setCentralWidget(scenepanel);
 
     statusbar = new StatusBar();
     chatpanel = new ChatPanel();
+
+    scenepanel = new ScenePanel();
+    setCentralWidget(scenepanel);
 
     QDockWidget *statusWidget = new QDockWidget(tr(""), this);
     statusWidget->setAllowedAreas(Qt::BottomDockWidgetArea);
