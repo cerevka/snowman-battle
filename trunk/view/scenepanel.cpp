@@ -285,6 +285,11 @@ void ScenePanel::appearePlayer(int id)
 {
     //appearObject(id, x, y, direction);
     //appearObject(items.at(id)->actGun, x + playerW * 0.67, y, direction);
+    if(items.at(id) == NULL)
+    {
+        addNewPlayer(id, 0, 0, 0);
+        hidePlayer(id);
+    }
     items.at(id)->changePixmap("snowman_" + colors.at(id) + ".png", playerW, playerH);
     //changePlayerPosition(id, x, y);
     //changePlayerDirection(id, direction);
