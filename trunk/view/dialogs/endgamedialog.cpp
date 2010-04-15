@@ -6,12 +6,14 @@ EndGameDialog::EndGameDialog(QWidget *parent)
 
     colors << "black" << "red" << "blue" << "green" << "brown" << "yellow";
     ok = new QPushButton(tr("OK"));
+    winnerLabel = new QLabel(tr("Winner"));
 
     layout = new QGridLayout;
+    layout->addWidget(winnerLabel, 0, 0);
     layout->addWidget(ok, 3, 0);
     setLayout(layout);
-    setFixedHeight(150);
-    setFixedWidth(150);
+    setFixedHeight(210);
+    setFixedWidth(200);
 
     connect(ok, SIGNAL(clicked()), this, SLOT(accept()));
 }
@@ -27,6 +29,6 @@ void EndGameDialog::winner(int id)
     image.load(":/images/snowman_" + colors.at(id) + ".png");
     imageButton->setIcon(QPixmap::fromImage(image));
 
-    layout->addWidget(imageButton, 0, 0);
-    layout->addWidget(name, 0, 1);
+    layout->addWidget(imageButton, 1, 0);
+    layout->addWidget(name, 1, 1);
 }

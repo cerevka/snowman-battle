@@ -23,15 +23,14 @@ class CreateGame : public QDialog
       * @param parent rodic dialogu
       */
     CreateGame(QWidget *parent=0);
+
     QLineEdit *nickname;
     QComboBox *players;
-     //QComboBox *color;
 
 
  private:
      QLabel *nicknameLabel;
      QLabel *playersLabel;
-     //QLabel *colorLabel;
      QPushButton *okButton;
      QPushButton *cancelButton;
  };

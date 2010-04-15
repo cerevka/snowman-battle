@@ -22,17 +22,14 @@ class JoinGame : public QDialog
       * @param parent rodic dialogu
       */
     JoinGame(QWidget *parent=0);
+
     QLineEdit *nickname;
     QLineEdit *address;
-     //QLineEdit *port;
-     //QComboBox *color;
 
 
  private:
      QLabel *nicknameLabel;
      QLabel *addressLabel;
-     //QLabel *portLabel;
-     //QLabel *colorLabel;
      QPushButton *okButton;
      QPushButton *cancelButton;
  };
