@@ -13,6 +13,8 @@
 #include "controller/network/client.h"
 #include "controller/network/network.h"
 #include "view/dialogs/connecteddialog.h"
+#include "view/dialogs/connectjoindialog.h"
+#include "view/dialogs/endgamedialog.h"
 
 
 class QAction;
@@ -38,10 +40,17 @@ class Window : public QMainWindow
      void addName(int id, QString * name);
      QString * getName(int id);
 
+ public slots:
+     /**
+       * Zobrazi ukoncovaci dialog a postara se o uklizeni vytvorenych onjektu
+       * @param id jemeno vitezneho hrace
+       */
+     void endGame(int id);
+
  private slots:
 
      /**
-       * Signal, ktery informuje o zalozeni hry
+       * Slot, ktery informuje o zalozeni hry
        */
      void createNewGame();
 
@@ -106,6 +115,7 @@ class Window : public QMainWindow
      ConnectedDialog *connectionDialog;
 
      QList<QString*> names;
+     ConnectJoinDialog *connectJoinDialog;
 
  signals:
      void clientNameAdded(int id);

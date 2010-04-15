@@ -91,6 +91,8 @@ void connectAll(void)
     QObject::connect(Globals::packetParser, SIGNAL(playerDeactivated(int)), panel, SLOT(playerDeactivated(int)));
     QObject::connect(Globals::packetParser, SIGNAL(playerActivated(int)), panel, SLOT(appearePlayer(int)));
 
+    QObject::connect(Globals::packetParser, SIGNAL(playerWon(int)), Globals::mainWindow, SLOT(endGame(int)));
+
     ChatPanel * chatpanel = Globals::mainWindow->getChatPanel();
     QObject::connect(Globals::packetParser, SIGNAL(chatMessageRecieved(int,QString*)), chatpanel, SLOT(newMessage(int,QString*)));
 

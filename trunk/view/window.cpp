@@ -79,6 +79,7 @@ Window::Window()
     */
     /////////////////Konec testovani////////////
 
+    connectJoinDialog = NULL;
     //Vytvori akce
     createActions();
 
@@ -221,8 +222,6 @@ void Window::joinGame()
     if (joingame.exec()) {
         QString nickname = joingame.nickname->text();
         QString address = joingame.address->text();
-        //int port = joingame.port->text().toInt();
-        //int color = joingame.color->currentIndex();
 
         if(!nickname.compare("") || !address.compare(""))
         {
@@ -236,7 +235,8 @@ void Window::joinGame()
         //TODO misto pro volani socketu
         Client * client = new Client(QHostAddress(address), 1234, nickname);
 
-
+        connectJoinDialog = new ConnectJoinDialog();
+        connectJoinDialog->show();
     }
 }
 
@@ -293,12 +293,27 @@ QString * Window::getName(int id)
 
 void Window::createNewGame()
 {
+    if(connectJoinDialog != NULL)
+        connectJoinDialog->hide();
+
     Globals::isGameRunning = true;
     qDebug() << "new game";
     for (int i = 0; i < 6; ++i)
     {
         if(names.at(i)->compare("Anonymous"))
             statusbar->addPlayer(i);
+    }
+}
+
+void Window::endGame(int id)
+{
+    EndGameDialog *end = new EndGameDialog();
+    end->winner(id);
+    end->show();
+
+    if(end->exec())
+    {
+        scenepanel->deleteAllObjects();
     }
 }
 

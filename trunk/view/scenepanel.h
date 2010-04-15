@@ -37,6 +37,11 @@ public:
       */
     void setOpeningView();
 
+    /**
+      * Smaze vsechny alokovane objekty
+      */
+    void deleteAllObjects();
+
 signals:
     void changeAmmo(int id, int ammo);
 

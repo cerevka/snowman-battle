@@ -308,6 +308,15 @@ void ScenePanel::playerDeactivated(int id)
     items.at(id)->changePixmap("snowman_lag.png", playerW, playerH);
 }
 
+void ScenePanel::deleteAllObjects()
+{
+    for(int i = 0; i < 536; i++)
+    {
+        if(items.at(i) != NULL)
+            removeGraficObj(i);
+    }
+}
+
 ///// Testování Ota
 
 void ScenePanel::keyPressEvent(QKeyEvent * event)
