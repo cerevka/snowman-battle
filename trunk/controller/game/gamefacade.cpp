@@ -183,7 +183,7 @@ void GameFacade::connectAll(void)
         connect(actualPlayer, SIGNAL(weaponChanged(int,int,int)), Globals::packetCreator, SLOT(changeWeapon(int,int,int)));
         connect(actualPlayer, SIGNAL(scoreIncremented(int)), Globals::packetCreator, SLOT(incrementScore(int)));
         connect(actualPlayer, SIGNAL(playerWon(int)), Globals::packetCreator, SLOT(winPlayer(int)));
-        connect(actualPlayer, SIGNAL(playerWon(int)), this, SLOT(endGame()), Qt::QueuedConnection);
+        connect(actualPlayer, SIGNAL(playerWon(int)), this, SLOT(endGame()));
 
         connect(actualPlayer, SIGNAL(playerActivated(int)), Globals::packetCreator, SLOT(activatePlayer(int)));
         connect(actualPlayer, SIGNAL(playerDeactivated(int)), Globals::packetCreator, SLOT(deactivatePlayer(int)));
