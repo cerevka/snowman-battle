@@ -1,0 +1,972 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Dokumentace třídy PacketCreator</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+      <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+      <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentace třídy PacketCreator</h1><!-- doxytag: class="PacketCreator" -->
+<p><code>#include &quot;<a class="el" href="packetcreator_8h_source.html">packetcreator.h</a>&quot;</code></p>
+
+<p><a href="classPacketCreator-members.html">Seznam všech členů.</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Veřejné sloty</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">QByteArray *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a3ffee3e7da9d860724bf720f8c6b2f21">assignID</a> (int id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#afb5ca576e7dc5a9faeeaf78e814e01e5">assignName</a> (int id, QString *name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#aa3c1c161335fc615d6bb9a370e94e773">chooseMap</a> (int mapID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a0443c9d13c488ccadf630b0dab336150">startGame</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a895c4bb85809eabbe28345f74c597b60">startMoveNorth</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#af401362bdf2d8f3109edc9ba2139b1eb">startMoveWest</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#ac2c6fe0a12b45f9f6fb0da23e5e1aaa4">startMoveSouth</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#aa8ad11de6b6cef48e0a830c30dc32144">startMoveEast</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a5bfad1b9676e53d2d4e009e0242d6268">pressShot</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a207189cf2fd9dc4148a7e32cf9d765b4">pressChangeWeapon</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a4242bc1eb251ca5e6bd08bb9c14d433d">stopMove</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#adefc5eb675f3edf62bf423a664746c03">sendHelloPacket</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a594b63e603ba03b309be83e60108ea40">sendGameEnginePacket</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a81e4df637f82112d3196469b27899093">spawnPlayer</a> (int playerID, int x, int y, int direction)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#ac3e2b8a74f146568fb8adba06bc829f2">spawnWeaponPack</a> (int weaponPackID, int x, int y, int type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a53833047276b2fcbd8ebadebcc03bbb1">killPlayer</a> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#adc5e6e0aaa5b9aefc101fdeae480cfe0">despawnWeaponPack</a> (int weaponPackID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#afaa554d35dceeb636b110da4bb474432">changeWeapon</a> (int playerID, int weaponType, int restOfAmmo)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a9dcb7c57bf2479272c3fac71df484972">createShot</a> (int shotID, int x, int y)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a1a3e10bcda42450e9169f8c96ff4dd91">movePlayer</a> (int playerID, int x, int y)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a8a9c9ea6d562ff3f0b28266315ee3364">moveShot</a> (int shotID, int x, int y)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a346a6ff261cd197fb651ab1bef268396">destroyShot</a> (int shotID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#ae6bda03cc2cf7419717c2b7a7536d64a">playerShots</a> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#ac1ef9ae660e8d70978646fb64be99803">incrementScore</a> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a4822cdb00efc4bcf4d2867329d9c9597">quitGame</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a5f3a2f82f46a12c3e1a5c50f4847f1f1">pauseGame</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a3c2b50c2fb848998e1b9996dcf008e11">activatePlayer</a> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#aab4514985bad2e8408c8e6e6655ef318">deactivatePlayer</a> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#aa54f21043d849d99105c8a199653c3cb">winPlayer</a> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a59fe5913c4a2540956242e86bc7012d1">sendChatMessage</a> (int playerID, QString *msg)</td></tr>
+<tr><td colspan="2"><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#aad2cb6f1f01093aea27b0207988ff768">PacketCreator</a> (QObject *const parent=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPacketCreator.html#a6e0000c6d4e8cc0a74748817e67043fa">~PacketCreator</a> (void)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detailní popis</h2>
+<p>Třída, která slouží k vytváření paketů a jejich posílání po síti </p>
+<hr/><h2>Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="aad2cb6f1f01093aea27b0207988ff768"></a><!-- doxytag: member="PacketCreator::PacketCreator" ref="aad2cb6f1f01093aea27b0207988ff768" args="(QObject *const parent=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PacketCreator::PacketCreator </td>
+          <td>(</td>
+          <td class="paramtype">QObject *const &nbsp;</td>
+          <td class="paramname"> <em>parent</em> = <code>0</code></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [explicit]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Konstruktor slouží k vytvoření "vytvářeče" paketů </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>objekt, který je rodičem </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6e0000c6d4e8cc0a74748817e67043fa"></a><!-- doxytag: member="PacketCreator::~PacketCreator" ref="a6e0000c6d4e8cc0a74748817e67043fa" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PacketCreator::~PacketCreator </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Destruror ruší alokované prostředky </p>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k metodám</h2>
+<a class="anchor" id="a3c2b50c2fb848998e1b9996dcf008e11"></a><!-- doxytag: member="PacketCreator::activatePlayer" ref="a3c2b50c2fb848998e1b9996dcf008e11" args="(int playerID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::activatePlayer </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot pro aktivování hráče </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, který se má aktivovat </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3ffee3e7da9d860724bf720f8c6b2f21"></a><!-- doxytag: member="PacketCreator::assignID" ref="a3ffee3e7da9d860724bf720f8c6b2f21" args="(int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QByteArray * PacketCreator::assignID </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot pro přidělení packetu </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>id</em>&nbsp;</td><td>id, které se stanici přidělí </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afb5ca576e7dc5a9faeeaf78e814e01e5"></a><!-- doxytag: member="PacketCreator::assignName" ref="afb5ca576e7dc5a9faeeaf78e814e01e5" args="(int id, QString *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::assignName </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString *&nbsp;</td>
+          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot představovacího paketu </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>id</em>&nbsp;</td><td>id hráče, kterému patří jméno </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>ukazatel na jméno </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afaa554d35dceeb636b110da4bb474432"></a><!-- doxytag: member="PacketCreator::changeWeapon" ref="afaa554d35dceeb636b110da4bb474432" args="(int playerID, int weaponType, int restOfAmmo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::changeWeapon </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>weaponType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>restOfAmmo</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o změny zbraně </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, který si mění zbraň </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>weaponType</em>&nbsp;</td><td>typ zbraně, kterou si bere </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>restOfAmmo</em>&nbsp;</td><td>počet zbývajících nábojů v této zbrani </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa3c1c161335fc615d6bb9a370e94e773"></a><!-- doxytag: member="PacketCreator::chooseMap" ref="aa3c1c161335fc615d6bb9a370e94e773" args="(int mapID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::chooseMap </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>mapID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot pro výběr mapy (pro nás nezajímavé, protože máme jen jednu mapu) </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mapID</em>&nbsp;</td><td>překvapivě id mapy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9dcb7c57bf2479272c3fac71df484972"></a><!-- doxytag: member="PacketCreator::createShot" ref="a9dcb7c57bf2479272c3fac71df484972" args="(int shotID, int x, int y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::createShot </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>shotID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o vytvoření střely </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>shotID,id</em>&nbsp;</td><td>této střely </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>x-ová souřadnice střely (její střed) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>y-ová souřadnice střely (její střed) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aab4514985bad2e8408c8e6e6655ef318"></a><!-- doxytag: member="PacketCreator::deactivatePlayer" ref="aab4514985bad2e8408c8e6e6655ef318" args="(int playerID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::deactivatePlayer </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot pro aktivování hráče </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, který se má deaktivovat </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="adc5e6e0aaa5b9aefc101fdeae480cfe0"></a><!-- doxytag: member="PacketCreator::despawnWeaponPack" ref="adc5e6e0aaa5b9aefc101fdeae480cfe0" args="(int weaponPackID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::despawnWeaponPack </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>weaponPackID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o zmizení zbraně </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>weaponPackID</em>&nbsp;</td><td>id zbraně, která zmizí </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a346a6ff261cd197fb651ab1bef268396"></a><!-- doxytag: member="PacketCreator::destroyShot" ref="a346a6ff261cd197fb651ab1bef268396" args="(int shotID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::destroyShot </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>shotID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o zničení střely </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>shotID</em>&nbsp;</td><td>id střely, který se má zničit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac1ef9ae660e8d70978646fb64be99803"></a><!-- doxytag: member="PacketCreator::incrementScore" ref="ac1ef9ae660e8d70978646fb64be99803" args="(int playerID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::incrementScore </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o zvýšení skóre hráče </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, kterému se zvýšilo skóre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a53833047276b2fcbd8ebadebcc03bbb1"></a><!-- doxytag: member="PacketCreator::killPlayer" ref="a53833047276b2fcbd8ebadebcc03bbb1" args="(int playerID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::killPlayer </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o zabití hráče </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, který byl zabit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1a3e10bcda42450e9169f8c96ff4dd91"></a><!-- doxytag: member="PacketCreator::movePlayer" ref="a1a3e10bcda42450e9169f8c96ff4dd91" args="(int playerID, int x, int y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::movePlayer </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o pohybu hráče </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, který se bude přesouvat </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>x-ová souřadnice místa, kam se má hráč přesunout (levý horní roh) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>y-ová souřadnice místa, kam se má hráč přesunout (levý horní roh) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8a9c9ea6d562ff3f0b28266315ee3364"></a><!-- doxytag: member="PacketCreator::moveShot" ref="a8a9c9ea6d562ff3f0b28266315ee3364" args="(int shotID, int x, int y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::moveShot </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>shotID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o pohybu střely </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>shotID</em>&nbsp;</td><td>id střely, který se bude přesouvat </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>x-ová souřadnice místa, kam se má střela přesunout (její střed) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>y-ová souřadnice místa, kam se má střela přesunout (její střed) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5f3a2f82f46a12c3e1a5c50f4847f1f1"></a><!-- doxytag: member="PacketCreator::pauseGame" ref="a5f3a2f82f46a12c3e1a5c50f4847f1f1" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::pauseGame </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot pro zapauzování hry </p>
+
+</div>
+</div>
+<a class="anchor" id="ae6bda03cc2cf7419717c2b7a7536d64a"></a><!-- doxytag: member="PacketCreator::playerShots" ref="ae6bda03cc2cf7419717c2b7a7536d64a" args="(int playerID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::playerShots </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o výstřelu hráče </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, který střílí </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a207189cf2fd9dc4148a7e32cf9d765b4"></a><!-- doxytag: member="PacketCreator::pressChangeWeapon" ref="a207189cf2fd9dc4148a7e32cf9d765b4" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::pressChangeWeapon </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá, že hráč stisknul klávesu pro změnu zbraně </p>
+
+</div>
+</div>
+<a class="anchor" id="a5bfad1b9676e53d2d4e009e0242d6268"></a><!-- doxytag: member="PacketCreator::pressShot" ref="a5bfad1b9676e53d2d4e009e0242d6268" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::pressShot </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá, že hráč stisknul klávesu pro střelbu </p>
+
+</div>
+</div>
+<a class="anchor" id="a4822cdb00efc4bcf4d2867329d9c9597"></a><!-- doxytag: member="PacketCreator::quitGame" ref="a4822cdb00efc4bcf4d2867329d9c9597" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::quitGame </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot pro ukončení hry </p>
+
+</div>
+</div>
+<a class="anchor" id="a59fe5913c4a2540956242e86bc7012d1"></a><!-- doxytag: member="PacketCreator::sendChatMessage" ref="a59fe5913c4a2540956242e86bc7012d1" args="(int playerID, QString *msg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::sendChatMessage </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString *&nbsp;</td>
+          <td class="paramname"> <em>msg</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, kterým se odesílá chatová zpráva </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, jenž posílá zprávu </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>msg</em>&nbsp;</td><td>ukazatel na zprávu, která se odešle </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a594b63e603ba03b309be83e60108ea40"></a><!-- doxytag: member="PacketCreator::sendGameEnginePacket" ref="a594b63e603ba03b309be83e60108ea40" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::sendGameEnginePacket </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o tom, že je možné odeslat paket enginu hry </p>
+
+</div>
+</div>
+<a class="anchor" id="adefc5eb675f3edf62bf423a664746c03"></a><!-- doxytag: member="PacketCreator::sendHelloPacket" ref="adefc5eb675f3edf62bf423a664746c03" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::sendHelloPacket </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot pro odeslání hello paketu </p>
+
+</div>
+</div>
+<a class="anchor" id="a81e4df637f82112d3196469b27899093"></a><!-- doxytag: member="PacketCreator::spawnPlayer" ref="a81e4df637f82112d3196469b27899093" args="(int playerID, int x, int y, int direction)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::spawnPlayer </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>direction</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o naspawnování hráče </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, který se má spawnout </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>x-ová souřadnice místa spawnutí (levý horní roh) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>y-ová souřadnice místa spawnutí (levý horní roh) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>direction</em>&nbsp;</td><td>směr, kterým bude hráč otočený </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac3e2b8a74f146568fb8adba06bc829f2"></a><!-- doxytag: member="PacketCreator::spawnWeaponPack" ref="ac3e2b8a74f146568fb8adba06bc829f2" args="(int weaponPackID, int x, int y, int type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::spawnWeaponPack </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>weaponPackID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>type</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá informace o objevení zbraně na herní ploše </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>weaponPackID</em>&nbsp;</td><td>id zbraně, která se objeví </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>x-ová souřadnice místa objevení (levý horní roh) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>y-ová souřadnice místa objevení (levý horní roh) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>typ zbraně, která se objeví </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0443c9d13c488ccadf630b0dab336150"></a><!-- doxytag: member="PacketCreator::startGame" ref="a0443c9d13c488ccadf630b0dab336150" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::startGame </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot startu hry </p>
+
+</div>
+</div>
+<a class="anchor" id="aa8ad11de6b6cef48e0a830c30dc32144"></a><!-- doxytag: member="PacketCreator::startMoveEast" ref="aa8ad11de6b6cef48e0a830c30dc32144" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::startMoveEast </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá, že hráč stisknul klávesu pro pohyb doprava </p>
+
+</div>
+</div>
+<a class="anchor" id="a895c4bb85809eabbe28345f74c597b60"></a><!-- doxytag: member="PacketCreator::startMoveNorth" ref="a895c4bb85809eabbe28345f74c597b60" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::startMoveNorth </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá, že hráč stisknul klávesu pro pohyb nahoru </p>
+
+</div>
+</div>
+<a class="anchor" id="ac2c6fe0a12b45f9f6fb0da23e5e1aaa4"></a><!-- doxytag: member="PacketCreator::startMoveSouth" ref="ac2c6fe0a12b45f9f6fb0da23e5e1aaa4" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::startMoveSouth </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá, že hráč stisknul klávesu pro pohyb dolů </p>
+
+</div>
+</div>
+<a class="anchor" id="af401362bdf2d8f3109edc9ba2139b1eb"></a><!-- doxytag: member="PacketCreator::startMoveWest" ref="af401362bdf2d8f3109edc9ba2139b1eb" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::startMoveWest </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá, že hráč stisknul klávesu pro pohyb doleva </p>
+
+</div>
+</div>
+<a class="anchor" id="a4242bc1eb251ca5e6bd08bb9c14d433d"></a><!-- doxytag: member="PacketCreator::stopMove" ref="a4242bc1eb251ca5e6bd08bb9c14d433d" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::stopMove </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot, do kterého se posílá, že hráč pustil klávesu pro pohyb </p>
+
+</div>
+</div>
+<a class="anchor" id="aa54f21043d849d99105c8a199653c3cb"></a><!-- doxytag: member="PacketCreator::winPlayer" ref="aa54f21043d849d99105c8a199653c3cb" args="(int playerID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PacketCreator::winPlayer </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>playerID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Slot pro výhru </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>playerID</em>&nbsp;</td><td>id hráče, který vyhrál </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>controller/network/<a class="el" href="packetcreator_8h_source.html">packetcreator.h</a></li>
+<li>controller/network/packetcreator.cpp</li>
+</ul>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:57 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

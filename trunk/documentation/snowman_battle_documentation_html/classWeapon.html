@@ -1,0 +1,260 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Dokumentace třídy Weapon</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+      <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+      <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentace třídy Weapon</h1><!-- doxytag: class="Weapon" -->
+<p><code>#include &quot;<a class="el" href="weapon_8h_source.html">weapon.h</a>&quot;</code></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu Weapon</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="classWeapon.png" usemap="#Weapon_map" alt=""/>
+  <map id="Weapon_map" name="Weapon_map">
+<area href="classHandGun.html" alt="HandGun" shape="rect" coords="0,56,84,80"/>
+<area href="classMachineGun.html" alt="MachineGun" shape="rect" coords="94,56,178,80"/>
+<area href="classShotGun.html" alt="ShotGun" shape="rect" coords="188,56,272,80"/>
+</map>
+ </div>
+</div>
+
+<p><a href="classWeapon-members.html">Seznam všech členů.</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#addcdcde38466ae3e4b728609c70bfde5">Weapon</a> (<a class="el" href="classPlayer.html">Player</a> *const parent)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#a2bf3dd0d9794cc37a9b9d92eff73edc9">shot</a> (void)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#a7baa3afbe3451bbfedc059a834cf38a8">refill</a> (void)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#a4a69c6cf16fbde1b6adc8bb4a76819ad">getAmmo</a> (void) const </td></tr>
+<tr><td colspan="2"><h2>Chráněné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#ad4ca1791f4ca44c10d03038e4603eea3">findPointOfCreatingShots</a> (double &amp;x, double &amp;y, double &amp;angle)</td></tr>
+<tr><td colspan="2"><h2>Chráněné atributy</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#ac56d34d334c6e942e438b4dc9c2aea76">ammo</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPlayer.html">Player</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWeapon.html#a506ede273542bfb832b6a0d979141c24">owner</a></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detailní popis</h2>
+<p>Třída reprezentující zbraň, kterou nese hráč </p>
+<hr/><h2>Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="addcdcde38466ae3e4b728609c70bfde5"></a><!-- doxytag: member="Weapon::Weapon" ref="addcdcde38466ae3e4b728609c70bfde5" args="(Player *const parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Weapon::Weapon </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *const &nbsp;</td>
+          <td class="paramname"> <em>parent</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [explicit]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Konstruktor vytvoří zbraň, která drží zadaný hrač </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>hráč, který má tuto zbraň </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k metodám</h2>
+<a class="anchor" id="ad4ca1791f4ca44c10d03038e4603eea3"></a><!-- doxytag: member="Weapon::findPointOfCreatingShots" ref="ad4ca1791f4ca44c10d03038e4603eea3" args="(double &amp;x, double &amp;y, double &amp;angle)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Weapon::findPointOfCreatingShots </td>
+          <td>(</td>
+          <td class="paramtype">double &amp;&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&nbsp;</td>
+          <td class="paramname"> <em>angle</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Pomocná metoda, která na základě parametrů hráče, zjistí, ve kterém bodu se objeví střela(y) </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>na místo, kam ukazuje tento ukazatel, se zapíše x-ové souřadnice bodu </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>na místo, kam ukazuje tento ukazatel, se zapíše y-ové souřadnice bodu </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>angle</em>&nbsp;</td><td>na místo, kam ukazuje tento ukazatel, se zapíše úhel, pod kterým bude střela leťet </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4a69c6cf16fbde1b6adc8bb4a76819ad"></a><!-- doxytag: member="Weapon::getAmmo" ref="a4a69c6cf16fbde1b6adc8bb4a76819ad" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Weapon::getAmmo </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr pro počet zbývajících nábojů </p>
+<dl class="return"><dt><b>Návratová hodnota:</b></dt><dd>zbývající počet nábojů </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7baa3afbe3451bbfedc059a834cf38a8"></a><!-- doxytag: member="Weapon::refill" ref="a7baa3afbe3451bbfedc059a834cf38a8" args="(void)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Weapon::refill </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tato metoda doplní zbrani její náboje na plný počet </p>
+
+<p>Implementováno v <a class="el" href="classHandGun.html#a3bee75d9714d091e1e74a3a20ad1678a">HandGun</a>, <a class="el" href="classMachineGun.html#a317f4c8bdac19bb0c91f37f87f2cf429">MachineGun</a> a <a class="el" href="classShotGun.html#aded209d20cc3c2b67d499ae5d60717ce">ShotGun</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2bf3dd0d9794cc37a9b9d92eff73edc9"></a><!-- doxytag: member="Weapon::shot" ref="a2bf3dd0d9794cc37a9b9d92eff73edc9" args="(void)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Weapon::shot </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tato metoda "naprosto nečekaně" provede to, že daná zbraň vystřelí </p>
+
+<p>Implementováno v <a class="el" href="classHandGun.html#ac4df07f02c538583cd8833528b07468c">HandGun</a>, <a class="el" href="classMachineGun.html#af3b6de1132df1f1a38f37e8fcf08f06e">MachineGun</a> a <a class="el" href="classShotGun.html#ab4da3d1bda5b1194277d989e5f79094c">ShotGun</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k datovým členům</h2>
+<a class="anchor" id="ac56d34d334c6e942e438b4dc9c2aea76"></a><!-- doxytag: member="Weapon::ammo" ref="ac56d34d334c6e942e438b4dc9c2aea76" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classWeapon.html#ac56d34d334c6e942e438b4dc9c2aea76">Weapon::ammo</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Počet zbývajících nábojů ve zbrani </p>
+
+</div>
+</div>
+<a class="anchor" id="a506ede273542bfb832b6a0d979141c24"></a><!-- doxytag: member="Weapon::owner" ref="a506ede273542bfb832b6a0d979141c24" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPlayer.html">Player</a>* <a class="el" href="classWeapon.html#a506ede273542bfb832b6a0d979141c24">Weapon::owner</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Hráč, který má tuto zbraň </p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>model/<a class="el" href="weapon_8h_source.html">weapon.h</a></li>
+<li>model/weapon.cpp</li>
+</ul>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:58 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

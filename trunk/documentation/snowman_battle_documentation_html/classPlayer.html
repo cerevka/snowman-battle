@@ -1,0 +1,541 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Dokumentace třídy Player</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+      <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+      <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentace třídy Player</h1><!-- doxytag: class="Player" --><!-- doxytag: inherits="MapObject" -->
+<p><code>#include &quot;<a class="el" href="player_8h_source.html">player.h</a>&quot;</code></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu Player</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="classPlayer.png" usemap="#Player_map" alt=""/>
+  <map id="Player_map" name="Player_map">
+<area href="classMapObject.html" alt="MapObject" shape="rect" coords="0,0,74,24"/>
+</map>
+ </div>
+</div>
+
+<p><a href="classPlayer-members.html">Seznam všech členů.</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Signály</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdf6baddea1d6a7f85d2a7d489730f9a"></a><!-- doxytag: member="Player::playerKilled" ref="afdf6baddea1d6a7f85d2a7d489730f9a" args="(int playerID)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>playerKilled</b> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1d3138ed2c67ee58da1f26b63334798"></a><!-- doxytag: member="Player::playerSpawned" ref="ae1d3138ed2c67ee58da1f26b63334798" args="(int playerID, int x, int y, int direction)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>playerSpawned</b> (int playerID, int x, int y, int direction)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a911d7292f79cd8d57fb2260ae82dc1"></a><!-- doxytag: member="Player::playerShoted" ref="a0a911d7292f79cd8d57fb2260ae82dc1" args="(int playerID)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>playerShoted</b> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65e727bd7865b9da41b0225523a82874"></a><!-- doxytag: member="Player::weaponChanged" ref="a65e727bd7865b9da41b0225523a82874" args="(int playerID, int weapon, int restOfAmmo)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>weaponChanged</b> (int playerID, int weapon, int restOfAmmo)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90a8f2205d1a79f0047ba0d05e7ddc02"></a><!-- doxytag: member="Player::scoreIncremented" ref="a90a8f2205d1a79f0047ba0d05e7ddc02" args="(int playerID)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>scoreIncremented</b> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affae78f65b271cc2ee2251255f20d044"></a><!-- doxytag: member="Player::playerWon" ref="affae78f65b271cc2ee2251255f20d044" args="(int playerID)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>playerWon</b> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a3cb4df3b5b691bd4d090d5f0d3f89b"></a><!-- doxytag: member="Player::playerActivated" ref="a5a3cb4df3b5b691bd4d090d5f0d3f89b" args="(int playerID)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>playerActivated</b> (int playerID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a253bb50e254bb00bef3b1a0b1910a597"></a><!-- doxytag: member="Player::playerDeactivated" ref="a253bb50e254bb00bef3b1a0b1910a597" args="(int playerID)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>playerDeactivated</b> (int playerID)</td></tr>
+<tr><td colspan="2"><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a2c9fdf669fa0894aea6b5c39eaf6b102">Player</a> (<a class="el" href="classGame.html">Game</a> *const parent, const int id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#adfa1e34999dda1ca277ffa100af021c1">interactPlayer</a> (<a class="el" href="classPlayer.html">Player</a> *const player)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a76bf78e24db9174414f42fbc73c0a3d7">interactShot</a> (<a class="el" href="classShot.html">Shot</a> *const shot)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a591455c53297968c042a15a3d2d2ce03">respawn</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a9facc9a682ab76e827d6a6553b86e874">tryMove</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a9484d4af561caab8fe9474e3caca0865">backMove</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#abe7a765d0da8f0100efee0eb6c798599">shot</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#abac1034ad8d506c8904075ef01e6e851">changeWeapon</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#aa33a23d817628d58dd4d471a56f7adc6">timerEvent</a> (QTimerEvent *const event)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#aafde36b11d5b0b91aa568b8dba744a5a">setActualWeapon</a> (const int actualWeapon)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a6f7266c44caf06c6dd22905e89676529">incrementScore</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a897c194606d832c6cd44ed5b690661ec">getID</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Directions&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#ad79cc1544bc7af5788e4c6d0e4536983">getDirection</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41e163bc8668191e38e3b2f74002e1db"></a><!-- doxytag: member="Player::setDirection" ref="a41e163bc8668191e38e3b2f74002e1db" args="(const Directions direction)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>setDirection</b> (const Directions direction)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a25dfffc867a77e61f449d455d75bc807">isMoving</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae55401a324f350ae61b134490d080e28"></a><!-- doxytag: member="Player::setMoving" ref="ae55401a324f350ae61b134490d080e28" args="(const bool moving)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>setMoving</b> (const bool moving)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a3c7367282c4ff8559566d9dc017acda2">isShoting</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1be2a11924240432b4440fde00e5512c"></a><!-- doxytag: member="Player::setShoting" ref="a1be2a11924240432b4440fde00e5512c" args="(const bool shoting)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>setShoting</b> (const bool shoting)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a373737986b7ba0085ec82ce1c8aa2366">isSpawned</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a2f6fbda94f66142e27f85f6ddab58bf5">isActive</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab45881c7f35c87d999607ca10086cc2a"></a><!-- doxytag: member="Player::setActive" ref="ab45881c7f35c87d999607ca10086cc2a" args="(const bool active)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>setActive</b> (const bool active)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWeapon.html">Weapon</a> *const *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a2838e9bf38aab7a6b97556262287a89a">getInventory</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGame.html">Game</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a6843693ba41da7d9518956267206d203">getParentGame</a> (void) const </td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detailní popis</h2>
+<p>Tato třída reprezentuje hráče v herní logice </p>
+<hr/><h2>Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a2c9fdf669fa0894aea6b5c39eaf6b102"></a><!-- doxytag: member="Player::Player" ref="a2c9fdf669fa0894aea6b5c39eaf6b102" args="(Game *const parent, const int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Player::Player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGame.html">Game</a> *const &nbsp;</td>
+          <td class="paramname"> <em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>id</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vytvoření nového hráče (pouze na začátku hry) </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>hra, v rámci níž je hráč vytvořen </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k metodám</h2>
+<a class="anchor" id="a9484d4af561caab8fe9474e3caca0865"></a><!-- doxytag: member="Player::backMove" ref="a9484d4af561caab8fe9474e3caca0865" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::backMove </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Pokud se hráč na dané místo nemůže přesunout kvůli kolizi, tak jej tato metoda vrátí zpět </p>
+
+</div>
+</div>
+<a class="anchor" id="abac1034ad8d506c8904075ef01e6e851"></a><!-- doxytag: member="Player::changeWeapon" ref="abac1034ad8d506c8904075ef01e6e851" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::changeWeapon </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Změní aktuální zbraň hráče na další, která má náboje </p>
+
+</div>
+</div>
+<a class="anchor" id="ad79cc1544bc7af5788e4c6d0e4536983"></a><!-- doxytag: member="Player::getDirection" ref="ad79cc1544bc7af5788e4c6d0e4536983" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Directions Player::getDirection </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr a setr pro směr hráče </p>
+
+</div>
+</div>
+<a class="anchor" id="a897c194606d832c6cd44ed5b690661ec"></a><!-- doxytag: member="Player::getID" ref="a897c194606d832c6cd44ed5b690661ec" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Player::getID </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr pro id </p>
+
+</div>
+</div>
+<a class="anchor" id="a2838e9bf38aab7a6b97556262287a89a"></a><!-- doxytag: member="Player::getInventory" ref="a2838e9bf38aab7a6b97556262287a89a" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classWeapon.html">Weapon</a> *const * Player::getInventory </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr pro inventář zbraní </p>
+
+</div>
+</div>
+<a class="anchor" id="a6843693ba41da7d9518956267206d203"></a><!-- doxytag: member="Player::getParentGame" ref="a6843693ba41da7d9518956267206d203" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classGame.html">Game</a> * Player::getParentGame </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr vracející ukaztel na hru, v rámci níž je tento hráč vytvořen </p>
+
+</div>
+</div>
+<a class="anchor" id="a6f7266c44caf06c6dd22905e89676529"></a><!-- doxytag: member="Player::incrementScore" ref="a6f7266c44caf06c6dd22905e89676529" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::incrementScore </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Metoda pro zvýšení skóre </p>
+
+</div>
+</div>
+<a class="anchor" id="adfa1e34999dda1ca277ffa100af021c1"></a><!-- doxytag: member="Player::interactPlayer" ref="adfa1e34999dda1ca277ffa100af021c1" args="(Player *const player)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::interactPlayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *const&nbsp;</td>
+          <td class="paramname"> <em>player</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Implementace abstraktní metody předka </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>player</em>&nbsp;</td><td>zde nevyužit </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Návratová hodnota:</b></dt><dd>vrací false (hráč nemůže vstoupit na jiného hráče) </dd></dl>
+
+<p>Implementuje <a class="el" href="classMapObject.html#ae49e50d177e740dec1befa7bee032ec6">MapObject</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a76bf78e24db9174414f42fbc73c0a3d7"></a><!-- doxytag: member="Player::interactShot" ref="a76bf78e24db9174414f42fbc73c0a3d7" args="(Shot *const shot)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::interactShot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classShot.html">Shot</a> *const &nbsp;</td>
+          <td class="paramname"> <em>shot</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Implementace abstraktní metody předka </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>shot</em>&nbsp;</td><td>zde nevyužit </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Návratová hodnota:</b></dt><dd>vrací false (střela zabije hráče ale nepokračuje dále) </dd></dl>
+
+<p>Implementuje <a class="el" href="classMapObject.html#a7165a8b0fe86e770e222e15dd194f423">MapObject</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2f6fbda94f66142e27f85f6ddab58bf5"></a><!-- doxytag: member="Player::isActive" ref="a2f6fbda94f66142e27f85f6ddab58bf5" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::isActive </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr a setr pro příznak aktivity </p>
+
+</div>
+</div>
+<a class="anchor" id="a25dfffc867a77e61f449d455d75bc807"></a><!-- doxytag: member="Player::isMoving" ref="a25dfffc867a77e61f449d455d75bc807" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::isMoving </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr a setr pro příznak, zda se hráč pohybuje </p>
+
+</div>
+</div>
+<a class="anchor" id="a3c7367282c4ff8559566d9dc017acda2"></a><!-- doxytag: member="Player::isShoting" ref="a3c7367282c4ff8559566d9dc017acda2" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::isShoting </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr a setr pro příznak, zda hráč střílí </p>
+
+</div>
+</div>
+<a class="anchor" id="a373737986b7ba0085ec82ce1c8aa2366"></a><!-- doxytag: member="Player::isSpawned" ref="a373737986b7ba0085ec82ce1c8aa2366" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::isSpawned </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr pro příznak, zda je hráč na mapě </p>
+
+</div>
+</div>
+<a class="anchor" id="a591455c53297968c042a15a3d2d2ce03"></a><!-- doxytag: member="Player::respawn" ref="a591455c53297968c042a15a3d2d2ce03" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::respawn </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Obnoví hráče na náhodné lokaci </p>
+
+</div>
+</div>
+<a class="anchor" id="aafde36b11d5b0b91aa568b8dba744a5a"></a><!-- doxytag: member="Player::setActualWeapon" ref="aafde36b11d5b0b91aa568b8dba744a5a" args="(const int actualWeapon)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::setActualWeapon </td>
+          <td>(</td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>actualWeapon</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Setr pro nastavení konkrétní zbraně jako aktuální (volá se po sebrání zbraně) </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>actualWeapon</em>&nbsp;</td><td>pořadí zbraně, na kterou se má přepnout </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="abe7a765d0da8f0100efee0eb6c798599"></a><!-- doxytag: member="Player::shot" ref="abe7a765d0da8f0100efee0eb6c798599" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::shot </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Po zavolání této metody hráč vytřelí aktuální zbraní </p>
+
+</div>
+</div>
+<a class="anchor" id="aa33a23d817628d58dd4d471a56f7adc6"></a><!-- doxytag: member="Player::timerEvent" ref="aa33a23d817628d58dd4d471a56f7adc6" args="(QTimerEvent *const event)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::timerEvent </td>
+          <td>(</td>
+          <td class="paramtype">QTimerEvent *const &nbsp;</td>
+          <td class="paramname"> <em>event</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tato metoda je zavolána pět vteřin poté, co byl hráč zabit, a způsobí, že se hráč znovu spawne </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>event</em>&nbsp;</td><td>časovač, který spustil tuto metodu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9facc9a682ab76e827d6a6553b86e874"></a><!-- doxytag: member="Player::tryMove" ref="a9facc9a682ab76e827d6a6553b86e874" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::tryMove </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tato metoda posune hráčovy souřadnice, aby se mohly zjistit kolize </p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>model/<a class="el" href="player_8h_source.html">player.h</a></li>
+<li>model/player.cpp</li>
+</ul>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:57 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Dokumentace třídy KeyboardHandler</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+      <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+      <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentace třídy KeyboardHandler</h1><!-- doxytag: class="KeyboardHandler" -->
+<p><code>#include &quot;<a class="el" href="keyboardhandler_8h_source.html">keyboardhandler.h</a>&quot;</code></p>
+
+<p><a href="classKeyboardHandler-members.html">Seznam všech členů.</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Signály</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyboardHandler.html#aa5d30d1a3bd30dd5704b5d8b137a1fc7">upMove</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6da92caa200f264f4ad36319c76bcf8b"></a><!-- doxytag: member="KeyboardHandler::downMove" ref="a6da92caa200f264f4ad36319c76bcf8b" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>downMove</b> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34536fa2a30c3ce670d109ea0624ee9a"></a><!-- doxytag: member="KeyboardHandler::leftMove" ref="a34536fa2a30c3ce670d109ea0624ee9a" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>leftMove</b> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8787a0caec0a415a3c932b160534975"></a><!-- doxytag: member="KeyboardHandler::rightMove" ref="aa8787a0caec0a415a3c932b160534975" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>rightMove</b> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyboardHandler.html#a061d298fe702cca8c96c01ef8ec85605">stopMove</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyboardHandler.html#a152b8a82b7e88ae8bf338e8a11b6aa59">shot</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyboardHandler.html#ac8c54df1dd9cf488b525694c533b664c">changeWeapon</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyboardHandler.html#a46fdd4e0eda811251ebfae31b4e7f1e0">pauseGame</a> (void)</td></tr>
+<tr><td colspan="2"><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyboardHandler.html#a516234f89107aac582a92d033361ae2e">KeyboardHandler</a> (QObject *const parent)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyboardHandler.html#a6963455d763ce9a99bc4ced232cab519">handleKeyEvent</a> (QKeyEvent *const event)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detailní popis</h2>
+<p>Tato třída se napojí na grafický prvek a na něm odchytává herní klávesy a podle nich posílá signály </p>
+<hr/><h2>Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a516234f89107aac582a92d033361ae2e"></a><!-- doxytag: member="KeyboardHandler::KeyboardHandler" ref="a516234f89107aac582a92d033361ae2e" args="(QObject *const parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">KeyboardHandler::KeyboardHandler </td>
+          <td>(</td>
+          <td class="paramtype">QObject *const &nbsp;</td>
+          <td class="paramname"> <em>parent</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Konstruktor vytvoří "odchytavač" kláves </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>grafický prvek, na který je tento objekt napojen </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>myID</em>&nbsp;</td><td>id lokálního hráče </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k metodám</h2>
+<a class="anchor" id="ac8c54df1dd9cf488b525694c533b664c"></a><!-- doxytag: member="KeyboardHandler::changeWeapon" ref="ac8c54df1dd9cf488b525694c533b664c" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KeyboardHandler::changeWeapon </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [signal]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Toto je signál stisknutí talčítka pro změnu zbraně </p>
+
+</div>
+</div>
+<a class="anchor" id="a6963455d763ce9a99bc4ced232cab519"></a><!-- doxytag: member="KeyboardHandler::handleKeyEvent" ref="a6963455d763ce9a99bc4ced232cab519" args="(QKeyEvent *const event)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KeyboardHandler::handleKeyEvent </td>
+          <td>(</td>
+          <td class="paramtype">QKeyEvent *const &nbsp;</td>
+          <td class="paramname"> <em>event</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tato metoda rozpozná daný key event a podle toho vyšle odpovídající signál </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>event</em>&nbsp;</td><td>key event, který se má zpracovat </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a46fdd4e0eda811251ebfae31b4e7f1e0"></a><!-- doxytag: member="KeyboardHandler::pauseGame" ref="a46fdd4e0eda811251ebfae31b4e7f1e0" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KeyboardHandler::pauseGame </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [signal]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Toto je signál stisknutí talčítka pro pozastavení hry </p>
+
+</div>
+</div>
+<a class="anchor" id="a152b8a82b7e88ae8bf338e8a11b6aa59"></a><!-- doxytag: member="KeyboardHandler::shot" ref="a152b8a82b7e88ae8bf338e8a11b6aa59" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KeyboardHandler::shot </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [signal]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Toto je signál stisknutí talčítka pro střelbu </p>
+
+</div>
+</div>
+<a class="anchor" id="a061d298fe702cca8c96c01ef8ec85605"></a><!-- doxytag: member="KeyboardHandler::stopMove" ref="a061d298fe702cca8c96c01ef8ec85605" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KeyboardHandler::stopMove </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [signal]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tento signál je vyslán, když je puštěna pohybová klávesa </p>
+
+</div>
+</div>
+<a class="anchor" id="aa5d30d1a3bd30dd5704b5d8b137a1fc7"></a><!-- doxytag: member="KeyboardHandler::upMove" ref="aa5d30d1a3bd30dd5704b5d8b137a1fc7" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KeyboardHandler::upMove </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [signal]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tyto signály jsou vyslány, když je stisknuta odpovídající směrová klávesa </p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>controller/gui/<a class="el" href="keyboardhandler_8h_source.html">keyboardhandler.h</a></li>
+<li>controller/gui/keyboardhandler.cpp</li>
+</ul>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:57 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>
