@@ -33,11 +33,32 @@ class Window : public QMainWindow
       */
      Window();
 
+     /**
+       * Preda referenci na ScenePanel
+       */
      ScenePanel * getScenePanel( void );
+
+     /**
+       * Preda referenci na ChatPanel
+       */
      ChatPanel * getChatPanel( void );
+
+     /**
+       * Preda referenci na StatusBar
+       */
      StatusBar * getStatusBar( void );
 
+     /**
+       * Prida jemeno hrace do listu
+       * @param id id hrace
+       * @param name jmeno hrace
+       */
      void addName(int id, QString * name);
+
+     /**
+       * Preda jmeno, ktere je na pozici id
+       * @param id id hrace
+       */
      QString * getName(int id);
 
  public slots:
@@ -107,17 +128,20 @@ class Window : public QMainWindow
      StatusBar *statusbar;
      ChatPanel *chatpanel;
 
-     //// Tohle je pro testovani////
-     int x, x1;
-     int y, y1;
-     PixmapItem *snow;
-     PixmapItem *snow1;
      ConnectedDialog *connectionDialog;
-
-     QList<QString*> names;
      ConnectJoinDialog *connectJoinDialog;
 
+     /**
+       * List jmen hracu
+       */
+     QList<QString*> names;
+
  signals:
+
+     /**
+       * Signal rozesle zpravu o pridani jmeno no listu names
+       * @param id id hrace
+       */
      void clientNameAdded(int id);
 
  };

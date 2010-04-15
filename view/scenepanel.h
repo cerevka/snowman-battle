@@ -43,10 +43,20 @@ public:
     void deleteAllObjects();
 
 signals:
+
+    /**
+      * Signal, ktery se posila pri zmene zbrane
+      * @param id jmeno hrace
+      * @param ammo pocet naboju
+      */
     void changeAmmo(int id, int ammo);
 
 public slots:
 
+    /**
+      * Zobrazi jiny obrazek hrace, ktery je neaktivni
+      * @param
+      */
     void playerDeactivated(int id);
 
 
@@ -130,12 +140,18 @@ public slots:
       */
     void appearePlayer(int id);
 
-    ///// Testování Ota
-
+    /**
+      * Zaznamena stisk klavesy
+      * @param event udalost stisku klavesy
+      */
     void keyPressEvent(QKeyEvent * event);
+
+    /**
+      * Pusteni klavesy
+      * @param event udalost pusteni klavesy
+      */
     void keyReleaseEvent(QKeyEvent * event);
 
-    ///// Konec testování Ota
 
 private:
 
@@ -187,7 +203,7 @@ private:
 
     QGraphicsScene *scene;
 
-    /// Testování Ota
+    // Testování Ota
     KeyboardHandler * handler;
 
     /**

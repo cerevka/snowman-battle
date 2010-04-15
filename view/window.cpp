@@ -5,11 +5,10 @@ Window::Window()
 
     //Tady se pridavaji dalsi komponenty hlavniho okna
 
-    //Vytvori hraci plochu
-
     statusbar = new StatusBar();
     chatpanel = new ChatPanel();
 
+    //Vytvori hraci plochu
     scenepanel = new ScenePanel();
     setCentralWidget(scenepanel);
 
@@ -32,54 +31,12 @@ Window::Window()
     chatWidget->setWidget(chatpanel);
     addDockWidget(Qt::RightDockWidgetArea, chatWidget);
 
-    //////////////////Pro testovani/////////////
-
-    /*QString *na = new QString("Balouch");
-    QString *me = new QString("Tohle je zpravadfs fs dfdsf dsf dsf dsf d sf sd f dsf ds f dsf ds");
-    chatpanel->newMessage(na, me);
-
-    QString *pl = new QString("Balouch");
-    statusbar->addPlayer(0, *pl);
-    statusbar->changeScore(0, 10);
-
-    QString *pl1 = new QString("Zabijak");
-    statusbar->addPlayer(1, *pl1);
-
-    QString *pl2 = new QString("Ajtak");
-    statusbar->addPlayer(2, *pl2);
-
-    QString *pl3 = new QString("Mad");
-    statusbar->addPlayer(3, *pl3);
-
-    QString *pl4 = new QString("Good");
-    statusbar->addPlayer(4, *pl4);
-
-    QString *pl5 = new QString("Blod");
-    statusbar->addPlayer(5, *pl5);
-*/
+    //Nastavi pozadi plochy
     QString *str = new QString("background1.jpg");
     scenepanel->setBackground(*str);
 
-/*
-    x1 = 265;
-    y1 = 150;
-    //snow1 = new PixmapItem("machine_gun.png", 30, 100, 30-80, 100-15);
-
-
-
-
-    x = 200;
-    y = 150;
-    //snow = new PixmapItem("snowman_black.png", 150, 85, 150, 85);
-    scenepanel->addNewPlayer(3, x, y, 0);
-    scenepanel->changeGun(3, 2);
-    //scenepanel->addNewShot(0, 300, 300);
-    //scenepanel->addNewGun(0, 300, 250, 0, 0);
-    //scenepanel->addNewGun(5, x1, y1, 0, 1);
-    */
-    /////////////////Konec testovani////////////
-
     connectJoinDialog = NULL;
+
     //Vytvori akce
     createActions();
 
@@ -119,8 +76,8 @@ void Window::createMenus()
     gameMenu->addSeparator();
     gameMenu->addAction(exitAct);
 
-    toolMenu = menuBar()->addMenu(tr("&Settings"));
-    toolMenu->addAction(settingsAct);
+    //toolMenu = menuBar()->addMenu(tr("&Settings"));
+    //toolMenu->addAction(settingsAct);
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
     helpMenu->addAction(aboutAct);
@@ -142,9 +99,9 @@ void Window::createActions()
     joinGameAct->setShortcut(tr("F3"));
     connect(joinGameAct, SIGNAL(triggered()), this, SLOT(joinGame()));
 
-    settingsAct = new QAction(tr("&Settings"), this);
-    settingsAct->setShortcut(tr("F5"));
-    connect(settingsAct, SIGNAL(triggered()), this, SLOT(settings()));
+    //settingsAct = new QAction(tr("&Settings"), this);
+    //settingsAct->setShortcut(tr("F5"));
+    //connect(settingsAct, SIGNAL(triggered()), this, SLOT(settings()));
 
     aboutAct = new QAction(tr("&About application"), this);
     aboutAct->setShortcut(tr("F1"));
@@ -183,10 +140,6 @@ void Window::createGame()
         QObject::connect(this, SIGNAL(clientNameAdded(int)), connectionDialog, SLOT(addPlayer(int)));
 
         Server * server = new Server(1234, players);
-
-
-
-
 
         qDebug() << "Ja jsem server a jmenuji se " << *names.at(0);
 
@@ -243,31 +196,6 @@ void Window::joinGame()
 //Nastaveni
 void Window::settings()
 {
-
-    ///////////////////testovani//////////////////////////////////
-
-    //scenepanel->changeGun(3, 1);
-
-    /*
-    scenepanel->changePlayerPosition(3, x--, y);
-    scenepanel->removeGun(0);
-    scenepanel->removeShot(0);
-    scenepanel->changeGun(3, x%2);
-    scenepanel->changePlayerDirection(3, x%4);
-    scenepanel->setDirection(1, x%4);
-    scenepanel->setPosition(2, x1--, y1--);
-    scenepanel->changePlayerDirection(3, x--%4);
-    scenepanel->hidePlayer(3);
-    if(x%4 == 0)
-    {
-        scenepanel->appearePlayer(3, x, y, x%3);
-    }
-
-
-    scenepanel->changePlayerPosition(3, 180, 150);
-    */
-    ///////////////////testovani/////////////////////////////////
-
 }
 
 //O aplikaci

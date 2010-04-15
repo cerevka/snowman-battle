@@ -218,7 +218,7 @@ void ScenePanel::changeGun(int id, int type, int restAmmo)
     appearObject(p + type, items.at(id)->x() + playerW * 0.67, items.at(id)->y(), items.at(id)->dir);
 
     if(type == 0)
-        restAmmo == 10000;
+        restAmmo = 10000;
 
     emit changeAmmo(id, restAmmo);
 }
@@ -317,8 +317,6 @@ void ScenePanel::deleteAllObjects()
     }
 }
 
-///// Testování Ota
-
 void ScenePanel::keyPressEvent(QKeyEvent * event)
 {
 
@@ -336,6 +334,4 @@ void ScenePanel::keyReleaseEvent(QKeyEvent * event)
     handler->handleKeyEvent(event);
 
 }
-
-///// Konec testování Ota
 

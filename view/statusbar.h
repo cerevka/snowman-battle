@@ -40,6 +40,10 @@ public slots:
       */
     void changeRound(int id, int round);
 
+    /**
+      * Odecte naboj pri vystrelu
+      * @param id jmeno hrace
+      */
     void decrementRounds(int id);
 
 private:
@@ -83,7 +87,15 @@ private:
     QImage image6;
 
     QStringList colors;
+
+    /**
+      * Score jednotlivych hracu
+      */
     QVector<int> score;
+
+    /**
+      * Naboje, ktere hrac ma
+      */
     QVector<int> rounds;
 
 };
