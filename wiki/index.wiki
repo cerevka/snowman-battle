@@ -31,13 +31,13 @@
         * [Game]
         * !GameFacade
       * Network /
-        * Client
-        * !ClientThread
-        * Network	
-        * !NetworkInterface
+        * [Client]
+        * [ClientThread]
+        * [Network]	
+        * [NetworkInterface]
         * [Packets PacketCreator]
         * [Packets PacketParser]
-        * Server
+        * [Server]
       * Gui /
         * !KeyboardHandler
     * Globals
