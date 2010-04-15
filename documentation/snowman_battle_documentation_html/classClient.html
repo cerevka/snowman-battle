@@ -1,0 +1,276 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Dokumentace třídy Client</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+      <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+      <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentace třídy Client</h1><!-- doxytag: class="Client" --><!-- doxytag: inherits="NetworkInterface" -->
+<p><code>#include &quot;<a class="el" href="client_8h_source.html">client.h</a>&quot;</code></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu Client</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="classClient.png" usemap="#Client_map" alt=""/>
+  <map id="Client_map" name="Client_map">
+<area href="classNetworkInterface.html" alt="NetworkInterface" shape="rect" coords="0,0,108,24"/>
+</map>
+ </div>
+</div>
+
+<p><a href="classClient-members.html">Seznam všech členů.</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Signály</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#a78d60795641a129dfebec3493df82515">sendingHelloPacket</a> ()</td></tr>
+<tr><td colspan="2"><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#a9d391dde6131235828a788f9ab590a92">Client</a> (QHostAddress address, int port, QString name, <a class="el" href="classNetworkInterface.html">NetworkInterface</a> *const parent=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#a66e3074e5f09c5e9bb4ec36bdea01c91">~Client</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#acd47ab1221cce09d282c69614cdd14e4">send</a> (QByteArray *message)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#a58bb52290c48b82207f4508396f741c3">getNetworkID</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#a27ca98874c74793883cdf0d2d142d23f">setNetworkID</a> (int networkID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#a268c008d4ad110e8896040d75c506215">timerEvent</a> (QTimerEvent *event)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detailní popis</h2>
+<p><a class="el" href="classClient.html">Client</a> implementuje clientskou logiku. Je zapouzdren pod vzorem Strategy pod jednotne rozhrani s <a class="el" href="classNetworkInterface.html">NetworkInterface</a> a volani ji predava trida <a class="el" href="classNetwork.html">Network</a>, ktera ho obsluhuje. </p>
+<hr/><h2>Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a9d391dde6131235828a788f9ab590a92"></a><!-- doxytag: member="Client::Client" ref="a9d391dde6131235828a788f9ab590a92" args="(QHostAddress address, int port, QString name, NetworkInterface *const parent=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Client::Client </td>
+          <td>(</td>
+          <td class="paramtype">QHostAddress&nbsp;</td>
+          <td class="paramname"> <em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classNetworkInterface.html">NetworkInterface</a> *const &nbsp;</td>
+          <td class="paramname"> <em>parent</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vytvoreni klienta, ktery se pokusi pripojit na zvolenou adresu a port. </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>address</em>&nbsp;</td><td>adresa, na ktere nasloucha server </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>port, na kterem nasloucha server </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a66e3074e5f09c5e9bb4ec36bdea01c91"></a><!-- doxytag: member="Client::~Client" ref="a66e3074e5f09c5e9bb4ec36bdea01c91" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Client::~Client </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Destruktor uzavirajici socket </p>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k metodám</h2>
+<a class="anchor" id="a58bb52290c48b82207f4508396f741c3"></a><!-- doxytag: member="Client::getNetworkID" ref="a58bb52290c48b82207f4508396f741c3" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Client::getNetworkID </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vrati ID v siti, ktera mu byla pridelena klientem. </p>
+
+<p>Implementuje <a class="el" href="classNetworkInterface.html#aaed57721aaeb15b3163d1e9e66bdc225">NetworkInterface</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acd47ab1221cce09d282c69614cdd14e4"></a><!-- doxytag: member="Client::send" ref="acd47ab1221cce09d282c69614cdd14e4" args="(QByteArray *message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client::send </td>
+          <td>(</td>
+          <td class="paramtype">QByteArray *&nbsp;</td>
+          <td class="paramname"> <em>message</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Odeslani dat v poli znaku. </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>message</em>&nbsp;</td><td>pole dat k odeslani </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementuje <a class="el" href="classNetworkInterface.html#a1bfafcafdf712f9760af2a1613f92705">NetworkInterface</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a78d60795641a129dfebec3493df82515"></a><!-- doxytag: member="Client::sendingHelloPacket" ref="a78d60795641a129dfebec3493df82515" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client::sendingHelloPacket </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [signal]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Informuje o umyslu odeslat hello packet. </p>
+
+</div>
+</div>
+<a class="anchor" id="a27ca98874c74793883cdf0d2d142d23f"></a><!-- doxytag: member="Client::setNetworkID" ref="a27ca98874c74793883cdf0d2d142d23f" args="(int networkID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client::setNetworkID </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>networkID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nastavi klientovi jeho networkID </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>networkID</em>&nbsp;</td><td>pridelovane ID </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementuje <a class="el" href="classNetworkInterface.html#a52d23a923db96864bedc653109850faa">NetworkInterface</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a268c008d4ad110e8896040d75c506215"></a><!-- doxytag: member="Client::timerEvent" ref="a268c008d4ad110e8896040d75c506215" args="(QTimerEvent *event)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client::timerEvent </td>
+          <td>(</td>
+          <td class="paramtype">QTimerEvent *&nbsp;</td>
+          <td class="paramname"> <em>event</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nastartuje timer posílají hello packety. </p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>controller/network/<a class="el" href="client_8h_source.html">client.h</a></li>
+<li>controller/network/client.cpp</li>
+</ul>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:56 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Zdrojový soubor controller/network/packetparser.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Seznam&nbsp;souborů</span></a></li>
+    </ul>
+  </div>
+<h1>controller/network/packetparser.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef PACKETPARSER_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define PACKETPARSER_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;QObject&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;QByteArray&gt;</span>
+<a name="l00006"></a>00006 
+<a name="l00010"></a><a class="code" href="classPacketParser.html">00010</a> <span class="keyword">class </span><a class="code" href="classPacketParser.html">PacketParser</a> : <span class="keyword">public</span> QObject
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 Q_OBJECT
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="keyword">public</span>:
+<a name="l00016"></a>00016 
+<a name="l00021"></a>00021     <span class="keyword">explicit</span> <a class="code" href="classPacketParser.html#a31945d917e3659758dc8746d8b896519">PacketParser</a>(QObject * <span class="keyword">const</span> parent = 0);
+<a name="l00022"></a>00022 
+<a name="l00026"></a>00026     <a class="code" href="classPacketParser.html#a66b6424a8dbcc37ec8edbeb2f410af3b">~PacketParser</a>(<span class="keywordtype">void</span>);
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="keyword">public</span> slots:
+<a name="l00029"></a>00029 
+<a name="l00034"></a>00034     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a30c34375ca3b2db8a6d5201c2ac5bf4f">parseAll</a>(QByteArray * packets);
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 signals:
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038     <span class="comment">/* ------------------------init------------------------- */</span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="comment">//    /**</span>
+<a name="l00041"></a>00041 <span class="comment">//     * Signál přidělení id</span>
+<a name="l00042"></a>00042 <span class="comment">//     * @param id přidělené id</span>
+<a name="l00043"></a>00043 <span class="comment">//     */</span>
+<a name="l00044"></a>00044 <span class="comment">//    void idAssigned(int id);</span>
+<a name="l00045"></a>00045 
+<a name="l00051"></a>00051     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a9c33a8aee23e239a9a6e9c5cafe0f2fc">nameAssigned</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, QString * name);
+<a name="l00052"></a>00052 
+<a name="l00057"></a>00057     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a9c1ed4a6a34b53f0cc26197ee7ec4a8c">mapChoosed</a>(<span class="keywordtype">int</span> mapID);
+<a name="l00058"></a>00058 
+<a name="l00062"></a>00062     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a46c4cbeaa31441eed4eaf07feda897b1">gameStarted</a>(<span class="keywordtype">void</span>);
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064     <span class="comment">/***********************************************************/</span>
+<a name="l00065"></a>00065     <span class="comment">/* ----------------signály client -&gt; server--------------- */</span>
+<a name="l00066"></a>00066 
+<a name="l00071"></a>00071     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#aebee5cd132908465ac2d223f2953a8df">norhtKeyPressed</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00072"></a>00072 
+<a name="l00077"></a>00077     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a3f99532f726c80690c9cd7d46b4b426b">westKeyPressed</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00078"></a>00078 
+<a name="l00083"></a>00083     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#ad561eabd5afbaeabbbd02da457ff1fa9">southKeyPressed</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00084"></a>00084 
+<a name="l00089"></a>00089     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a9f74ad42709556dddcdd82cab6e8fe12">eastKeyPressed</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00090"></a>00090 
+<a name="l00095"></a>00095     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a1d6d02967e22f8f1a1283039acf9e442">shotKeyPressed</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00096"></a>00096 
+<a name="l00101"></a>00101     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a517f2bf346c4193e1db6465d971b614a">changeKeyPressed</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00102"></a>00102 
+<a name="l00107"></a>00107     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a2886958791a8989699469e7418140982">moveKeyReleased</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00108"></a>00108 
+<a name="l00113"></a>00113     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a50915cd640c650aa5b05d6fe2120786f">helloPacketAccepted</a>(<span class="keywordtype">int</span> senderID);
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115     <span class="comment">/*********************************************************/</span>
+<a name="l00116"></a>00116     <span class="comment">/* ----------------signály server-&gt;všem----------------- */</span>
+<a name="l00117"></a>00117 
+<a name="l00125"></a>00125     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#ab7428df5c628243da4bd78edd07d7f89">playerSpawned</a>(<span class="keywordtype">int</span> playerID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> direction);
+<a name="l00126"></a>00126 
+<a name="l00134"></a>00134     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a01e9e02a24f01be456bd89b79c71c3c4">weaponPackSpawned</a>(<span class="keywordtype">int</span> weaponPackID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> type);
+<a name="l00135"></a>00135 
+<a name="l00140"></a>00140     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a76e9455099f6825e037641fc399503dd">playerKilled</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00141"></a>00141 
+<a name="l00146"></a>00146     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#abd8f66b42d9a3f0abc644e42579c4255">weaponPackDespawned</a>(<span class="keywordtype">int</span> weaponPackID);
+<a name="l00147"></a>00147 
+<a name="l00154"></a>00154     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#ae92036d334885de1f90f796eef279381">weaponChanged</a>(<span class="keywordtype">int</span> playerID, <span class="keywordtype">int</span> weaponType, <span class="keywordtype">int</span> restOfAmmo);
+<a name="l00155"></a>00155 
+<a name="l00162"></a>00162     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#aaf18329f15dddcca0eba5c6bad43842e">shotCreated</a>(<span class="keywordtype">int</span> shotID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00163"></a>00163 
+<a name="l00170"></a>00170     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a30d1bf53914a5e12589a8e2ad817c40a">playerMoved</a>(<span class="keywordtype">int</span> playerID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00171"></a>00171 
+<a name="l00178"></a>00178     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a8b229684ae0d2eb5e14aa21549b269dd">shotMoved</a>(<span class="keywordtype">int</span> shotID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00179"></a>00179 
+<a name="l00184"></a>00184     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a65b4577a8ec9c0ac9ea0aab697288336">shotDestroyed</a>(<span class="keywordtype">int</span> shotID);
+<a name="l00185"></a>00185 
+<a name="l00190"></a>00190     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#aba4f7bb6ec797777483f8a1b17cc2b70">playerShoted</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00191"></a>00191 
+<a name="l00196"></a>00196     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a7f75aa92377e20f5b45dc07246325e9a">playersScoreIncremented</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198     <span class="comment">/**********************************************************/</span>
+<a name="l00199"></a>00199     <span class="comment">/* -------------------řídící signály--------------------- */</span>
+<a name="l00200"></a>00200 
+<a name="l00204"></a>00204     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a144aa5b69411d13cfff8b7f6dd1af1b3">gameQuited</a>(<span class="keywordtype">void</span>);
+<a name="l00205"></a>00205 
+<a name="l00209"></a>00209     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a7fddb13e1a5651a6f924c9d9ecdc3898">gamePaused</a>(<span class="keywordtype">void</span>);
+<a name="l00210"></a>00210 
+<a name="l00215"></a>00215     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a6e17f19d88ecc2a87b70ace16101e23f">playerActivated</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00216"></a>00216 
+<a name="l00221"></a>00221     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a5732a7af595caae7f1fa314938c02dfc">playerDeactivated</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00222"></a>00222 
+<a name="l00227"></a>00227     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a1f9f447657a37b256360db285251bf02">playerWon</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229     <span class="comment">/**********************************************************/</span>
+<a name="l00230"></a>00230     <span class="comment">/* -------------------chatové signály-------------------- */</span>
+<a name="l00231"></a>00231 
+<a name="l00237"></a>00237     <span class="keywordtype">void</span> <a class="code" href="classPacketParser.html#a1f479593ecc23bb5a08221d4e99461f9">chatMessageRecieved</a>(<span class="keywordtype">int</span> playerID, QString * msg);
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239 <span class="keyword">private</span>:
+<a name="l00240"></a>00240 
+<a name="l00244"></a>00244     QList&lt;QString *&gt; messagesForChat;
+<a name="l00245"></a>00245 
+<a name="l00251"></a>00251     <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> * parse(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> packet);
+<a name="l00252"></a>00252 
+<a name="l00259"></a>00259     <span class="keywordtype">int</span> convertBytesToInt(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> high, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> low);
+<a name="l00260"></a>00260 
+<a name="l00267"></a>00267     <span class="keywordtype">void</span> testLenght(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> packet, <span class="keyword">const</span> <span class="keywordtype">int</span> expectedLength, <span class="keyword">const</span> <span class="keywordtype">bool</span> equal);
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269 };
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271 <span class="preprocessor">#endif // PACKETPARSER_H</span>
+</pre></div></div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:56 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

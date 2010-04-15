@@ -1,0 +1,385 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Dokumentace třídy Game</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+      <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+      <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentace třídy Game</h1><!-- doxytag: class="Game" -->
+<p><code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code></p>
+
+<p><a href="classGame-members.html">Seznam všech členů.</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Signály</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa63598a6f4c166371aec3d897b90ccc9"></a><!-- doxytag: member="Game::frameEnded" ref="aa63598a6f4c166371aec3d897b90ccc9" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>frameEnded</b> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3c838ae5922d3c45f0ab85294cebe73"></a><!-- doxytag: member="Game::shotCreated" ref="af3c838ae5922d3c45f0ab85294cebe73" args="(int shotID, int x, int y)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>shotCreated</b> (int shotID, int x, int y)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a334c324c80a714392849c33584f425ee"></a><!-- doxytag: member="Game::wPackRemoved" ref="a334c324c80a714392849c33584f425ee" args="(int wPackID)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>wPackRemoved</b> (int wPackID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1830e56dd834ba0dca6b2158c690711a"></a><!-- doxytag: member="Game::playerMoved" ref="a1830e56dd834ba0dca6b2158c690711a" args="(int playerID, int x, int y)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>playerMoved</b> (int playerID, int x, int y)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90d0420b63443fbd4f9d66219d09c26b"></a><!-- doxytag: member="Game::shotMoved" ref="a90d0420b63443fbd4f9d66219d09c26b" args="(int shotID, int x, int y)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>shotMoved</b> (int shotID, int x, int y)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25a7a825b668dfaac12fb9e0bb7d1eb1"></a><!-- doxytag: member="Game::shotDestroyed" ref="a25a7a825b668dfaac12fb9e0bb7d1eb1" args="(int shotID)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>shotDestroyed</b> (int shotID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9c331d699200f9b4bca32e11021edca"></a><!-- doxytag: member="Game::wPackCreated" ref="aa9c331d699200f9b4bca32e11021edca" args="(int wPackID, int x, int y, int type)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>wPackCreated</b> (int wPackID, int x, int y, int type)</td></tr>
+<tr><td colspan="2"><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a17362fdf52882a0de7402b10eec99885">Game</a> (const int countOfPlayers, const int scoreToWin, QObject *const parent=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a5132fe2c0d2a41ad6b613dc2baeca24c">~Game</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#aba81e0ea6d651381dc5d657ebc02e76d">quitGame</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a30f55d25494fc200c246c90ef57cded8">generateValidCoordinates</a> (const double sizeX, const double sizeY, <a class="el" href="classMapObject.html">MapObject</a> *const object)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a02d9fb1a0911462080d46d65bc0bef4e">addShot</a> (<a class="el" href="classShot.html">Shot</a> *const shot)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a9577bc080c78ec6f030b3b6c104e1a62">removeWeaponPackage</a> (<a class="el" href="classWeaponPackage.html">WeaponPackage</a> *const wPackage)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a6acce8e23aef3b4c1843dcd892d3c4e2">timerEvent</a> (QTimerEvent *const event)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a10fb824a7551a6e225b07ee00e2495c8">isGameRunning</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#ac505b5369bbb078961d013ed3d75a29b">getScoreToWin</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">QMutex *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a7f12b8fa69e7f0cecbb52193f07821f0">getBigGameMutex</a> (void) const </td></tr>
+<tr><td colspan="2"><h2>Chráněné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a46165f87463fa8114fa44596ced90dbd">run</a> (void)</td></tr>
+<tr><td colspan="2"><h2>Friends</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b02369b47c31b637cfb956a6e42a22f"></a><!-- doxytag: member="Game::GameFacade" ref="a9b02369b47c31b637cfb956a6e42a22f" args="" -->
+class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a9b02369b47c31b637cfb956a6e42a22f">GameFacade</a></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detailní popis</h2>
+<p>Třída reprezentující hru samotnou, je to vlákno které obsluhuje pohyb objektů a kolizí mezi nimi </p>
+<hr/><h2>Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a17362fdf52882a0de7402b10eec99885"></a><!-- doxytag: member="Game::Game" ref="a17362fdf52882a0de7402b10eec99885" args="(const int countOfPlayers, const int scoreToWin, QObject *const parent=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game::Game </td>
+          <td>(</td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>countOfPlayers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>scoreToWin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QObject *const &nbsp;</td>
+          <td class="paramname"> <em>parent</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [explicit]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vytvoří novou hru </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>countOfPlayers</em>&nbsp;</td><td>počet hráču, kteří budou hrát hru </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>určuje rodičovský objekt </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5132fe2c0d2a41ad6b613dc2baeca24c"></a><!-- doxytag: member="Game::~Game" ref="a5132fe2c0d2a41ad6b613dc2baeca24c" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game::~Game </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Uvolňuje prostředky alokované pro potřeby hry </p>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k metodám</h2>
+<a class="anchor" id="a02d9fb1a0911462080d46d65bc0bef4e"></a><!-- doxytag: member="Game::addShot" ref="a02d9fb1a0911462080d46d65bc0bef4e" args="(Shot *const shot)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::addShot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classShot.html">Shot</a> *const &nbsp;</td>
+          <td class="paramname"> <em>shot</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Přidá střelu do seznamu střel(bude s ní pohybovat) </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>shot</em>&nbsp;</td><td>ukazatel na střelu, která bude do seznamu přidána </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a30f55d25494fc200c246c90ef57cded8"></a><!-- doxytag: member="Game::generateValidCoordinates" ref="a30f55d25494fc200c246c90ef57cded8" args="(const double sizeX, const double sizeY, MapObject *const object)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::generateValidCoordinates </td>
+          <td>(</td>
+          <td class="paramtype">const double&nbsp;</td>
+          <td class="paramname"> <em>sizeX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&nbsp;</td>
+          <td class="paramname"> <em>sizeY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMapObject.html">MapObject</a> *const &nbsp;</td>
+          <td class="paramname"> <em>object</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Metoda, která slouží pro vyhledání náhodných souřadnic, do kterých může být umísteň objekt </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>velikost daného objektu v pixelech </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>object</em>&nbsp;</td><td>ukazatel na objekt, který se má umístit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7f12b8fa69e7f0cecbb52193f07821f0"></a><!-- doxytag: member="Game::getBigGameMutex" ref="a7f12b8fa69e7f0cecbb52193f07821f0" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QMutex * Game::getBigGameMutex </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr pro hlavní mutex </p>
+<dl class="return"><dt><b>Návratová hodnota:</b></dt><dd>ukazatel mutex, který slouží pro uzamykání hlavního vlákna </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac505b5369bbb078961d013ed3d75a29b"></a><!-- doxytag: member="Game::getScoreToWin" ref="ac505b5369bbb078961d013ed3d75a29b" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Game::getScoreToWin </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr pro skóre potřebné na výhru </p>
+<dl class="return"><dt><b>Návratová hodnota:</b></dt><dd>vrací, kolik je potřeba pro výhru zabít soupeřů </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a10fb824a7551a6e225b07ee00e2495c8"></a><!-- doxytag: member="Game::isGameRunning" ref="a10fb824a7551a6e225b07ee00e2495c8" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Game::isGameRunning </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getr sloužící ke zjištění zde toto má nastavenou řídící proměnou </p>
+<dl class="return"><dt><b>Návratová hodnota:</b></dt><dd>true, pokud hra běží </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aba81e0ea6d651381dc5d657ebc02e76d"></a><!-- doxytag: member="Game::quitGame" ref="aba81e0ea6d651381dc5d657ebc02e76d" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::quitGame </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ukončí smyčku(vlákno) detekce kolizí </p>
+
+</div>
+</div>
+<a class="anchor" id="a9577bc080c78ec6f030b3b6c104e1a62"></a><!-- doxytag: member="Game::removeWeaponPackage" ref="a9577bc080c78ec6f030b3b6c104e1a62" args="(WeaponPackage *const wPackage)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::removeWeaponPackage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classWeaponPackage.html">WeaponPackage</a> *const &nbsp;</td>
+          <td class="paramname"> <em>wPackage</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Odebere zbraň ze seznamu objektů (poté co jí hráč vezme) </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>wPackage</em>&nbsp;</td><td>zbraň, jenž bude odebrána </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a46165f87463fa8114fa44596ced90dbd"></a><!-- doxytag: member="Game::run" ref="a46165f87463fa8114fa44596ced90dbd" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::run </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Metoda běhu vlákna, provede nezbytnou inicializaci a spustí smyčku událostí </p>
+
+</div>
+</div>
+<a class="anchor" id="a6acce8e23aef3b4c1843dcd892d3c4e2"></a><!-- doxytag: member="Game::timerEvent" ref="a6acce8e23aef3b4c1843dcd892d3c4e2" args="(QTimerEvent *const event)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::timerEvent </td>
+          <td>(</td>
+          <td class="paramtype">QTimerEvent *const &nbsp;</td>
+          <td class="paramname"> <em>event</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tato metoda se spouští každý frame a provádí deteci kolizí </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>event</em>&nbsp;</td><td>časovač, který spustil tuhle metodu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>controller/game/<a class="el" href="game_8h_source.html">game.h</a></li>
+<li>controller/game/game.cpp</li>
+</ul>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:57 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

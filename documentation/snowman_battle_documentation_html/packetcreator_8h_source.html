@@ -1,0 +1,178 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Zdrojový soubor controller/network/packetcreator.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Seznam&nbsp;souborů</span></a></li>
+    </ul>
+  </div>
+<h1>controller/network/packetcreator.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef PACKETCREATOR_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define PACKETCREATOR_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;QObject&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;QByteArray&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;QMutex&gt;</span>
+<a name="l00007"></a>00007 
+<a name="l00011"></a><a class="code" href="classPacketCreator.html">00011</a> <span class="keyword">class </span><a class="code" href="classPacketCreator.html">PacketCreator</a> : <span class="keyword">public</span> QObject
+<a name="l00012"></a>00012 {
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014     Q_OBJECT
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="keyword">public</span>:
+<a name="l00017"></a>00017 
+<a name="l00022"></a>00022     <span class="keyword">explicit</span> <a class="code" href="classPacketCreator.html#aad2cb6f1f01093aea27b0207988ff768">PacketCreator</a>(QObject * <span class="keyword">const</span> parent = 0);
+<a name="l00023"></a>00023 
+<a name="l00027"></a>00027     <a class="code" href="classPacketCreator.html#a6e0000c6d4e8cc0a74748817e67043fa">~PacketCreator</a>(<span class="keywordtype">void</span>);
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="keyword">public</span> slots:
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031     <span class="comment">/* ------------------------init------------------------- */</span>
+<a name="l00032"></a>00032 
+<a name="l00037"></a>00037     QByteArray * <a class="code" href="classPacketCreator.html#a3ffee3e7da9d860724bf720f8c6b2f21">assignID</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);
+<a name="l00038"></a>00038 
+<a name="l00044"></a>00044     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#afb5ca576e7dc5a9faeeaf78e814e01e5">assignName</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, QString * name);
+<a name="l00045"></a>00045 
+<a name="l00050"></a>00050     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#aa3c1c161335fc615d6bb9a370e94e773">chooseMap</a>(<span class="keywordtype">int</span> mapID);
+<a name="l00051"></a>00051 
+<a name="l00055"></a>00055     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a0443c9d13c488ccadf630b0dab336150">startGame</a>(<span class="keywordtype">void</span>);
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058     <span class="comment">/***********************************************************/</span>
+<a name="l00059"></a>00059     <span class="comment">/* -------------------sloty pro klienty------------------- */</span>
+<a name="l00060"></a>00060 
+<a name="l00064"></a>00064     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a895c4bb85809eabbe28345f74c597b60">startMoveNorth</a>(<span class="keywordtype">void</span>);
+<a name="l00065"></a>00065 
+<a name="l00069"></a>00069     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#af401362bdf2d8f3109edc9ba2139b1eb">startMoveWest</a>(<span class="keywordtype">void</span>);
+<a name="l00070"></a>00070 
+<a name="l00074"></a>00074     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#ac2c6fe0a12b45f9f6fb0da23e5e1aaa4">startMoveSouth</a>(<span class="keywordtype">void</span>);
+<a name="l00075"></a>00075 
+<a name="l00079"></a>00079     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#aa8ad11de6b6cef48e0a830c30dc32144">startMoveEast</a>(<span class="keywordtype">void</span>);
+<a name="l00080"></a>00080 
+<a name="l00084"></a>00084     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a5bfad1b9676e53d2d4e009e0242d6268">pressShot</a>(<span class="keywordtype">void</span>);
+<a name="l00085"></a>00085 
+<a name="l00089"></a>00089     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a207189cf2fd9dc4148a7e32cf9d765b4">pressChangeWeapon</a>(<span class="keywordtype">void</span>);
+<a name="l00090"></a>00090 
+<a name="l00094"></a>00094     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a4242bc1eb251ca5e6bd08bb9c14d433d">stopMove</a>(<span class="keywordtype">void</span>);
+<a name="l00095"></a>00095 
+<a name="l00099"></a>00099     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#adefc5eb675f3edf62bf423a664746c03">sendHelloPacket</a>(<span class="keywordtype">void</span>);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101     <span class="comment">/*********************************************************/</span>
+<a name="l00102"></a>00102     <span class="comment">/* -------------sloty pro výstup enginu hry------------- */</span>
+<a name="l00103"></a>00103 
+<a name="l00107"></a>00107     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a594b63e603ba03b309be83e60108ea40">sendGameEnginePacket</a>(<span class="keywordtype">void</span>);
+<a name="l00108"></a>00108 
+<a name="l00116"></a>00116     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a81e4df637f82112d3196469b27899093">spawnPlayer</a>(<span class="keywordtype">int</span> playerID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> direction);
+<a name="l00117"></a>00117 
+<a name="l00125"></a>00125     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#ac3e2b8a74f146568fb8adba06bc829f2">spawnWeaponPack</a>(<span class="keywordtype">int</span> weaponPackID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> type);
+<a name="l00126"></a>00126 
+<a name="l00131"></a>00131     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a53833047276b2fcbd8ebadebcc03bbb1">killPlayer</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00132"></a>00132 
+<a name="l00137"></a>00137     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#adc5e6e0aaa5b9aefc101fdeae480cfe0">despawnWeaponPack</a>(<span class="keywordtype">int</span> weaponPackID);
+<a name="l00138"></a>00138 
+<a name="l00145"></a>00145     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#afaa554d35dceeb636b110da4bb474432">changeWeapon</a>(<span class="keywordtype">int</span> playerID, <span class="keywordtype">int</span> weaponType, <span class="keywordtype">int</span> restOfAmmo);
+<a name="l00146"></a>00146 
+<a name="l00153"></a>00153     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a9dcb7c57bf2479272c3fac71df484972">createShot</a>(<span class="keywordtype">int</span> shotID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00154"></a>00154 
+<a name="l00161"></a>00161     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a1a3e10bcda42450e9169f8c96ff4dd91">movePlayer</a>(<span class="keywordtype">int</span> playerID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00162"></a>00162 
+<a name="l00169"></a>00169     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a8a9c9ea6d562ff3f0b28266315ee3364">moveShot</a>(<span class="keywordtype">int</span> shotID, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00170"></a>00170 
+<a name="l00175"></a>00175     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a346a6ff261cd197fb651ab1bef268396">destroyShot</a>(<span class="keywordtype">int</span> shotID);
+<a name="l00176"></a>00176 
+<a name="l00181"></a>00181     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#ae6bda03cc2cf7419717c2b7a7536d64a">playerShots</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00182"></a>00182 
+<a name="l00187"></a>00187     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#ac1ef9ae660e8d70978646fb64be99803">incrementScore</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189     <span class="comment">/**********************************************************/</span>
+<a name="l00190"></a>00190     <span class="comment">/* ------------------sloty pro řízení-------------------- */</span>
+<a name="l00191"></a>00191 
+<a name="l00195"></a>00195     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a4822cdb00efc4bcf4d2867329d9c9597">quitGame</a>(<span class="keywordtype">void</span>);
+<a name="l00196"></a>00196 
+<a name="l00200"></a>00200     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a5f3a2f82f46a12c3e1a5c50f4847f1f1">pauseGame</a>(<span class="keywordtype">void</span>);
+<a name="l00201"></a>00201 
+<a name="l00206"></a>00206     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a3c2b50c2fb848998e1b9996dcf008e11">activatePlayer</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00207"></a>00207 
+<a name="l00212"></a>00212     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#aab4514985bad2e8408c8e6e6655ef318">deactivatePlayer</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00213"></a>00213 
+<a name="l00218"></a>00218     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#aa54f21043d849d99105c8a199653c3cb">winPlayer</a>(<span class="keywordtype">int</span> playerID);
+<a name="l00219"></a>00219 
+<a name="l00220"></a>00220     <span class="comment">/**********************************************************/</span>
+<a name="l00221"></a>00221     <span class="comment">/* -------------------sloty pro chat--------------------- */</span>
+<a name="l00222"></a>00222 
+<a name="l00228"></a>00228     <span class="keywordtype">void</span> <a class="code" href="classPacketCreator.html#a59fe5913c4a2540956242e86bc7012d1">sendChatMessage</a>(<span class="keywordtype">int</span> playerID, QString * msg);
+<a name="l00229"></a>00229 
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 <span class="keyword">private</span>:
+<a name="l00232"></a>00232 
+<a name="l00236"></a>00236     QByteArray * gameEnginePacket;
+<a name="l00237"></a>00237 
+<a name="l00241"></a>00241     QMutex * sendingMutex;
+<a name="l00242"></a>00242 
+<a name="l00246"></a>00246     QMutex * enginePacketMutex;
+<a name="l00247"></a>00247 
+<a name="l00252"></a>00252     <span class="keywordtype">void</span> sendKeyPress(<span class="keyword">const</span> <span class="keywordtype">int</span> typeOfKey);
+<a name="l00253"></a>00253 
+<a name="l00258"></a>00258     <span class="keywordtype">void</span> createThreeBytesPacket(<span class="keyword">const</span> <span class="keywordtype">int</span> typeOfPacket);
+<a name="l00259"></a>00259 
+<a name="l00264"></a>00264     <span class="keywordtype">void</span> sendPacket(QByteArray * <span class="keyword">const</span> packet);
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266     <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> getFirstCharFromInt(<span class="keyword">const</span> <span class="keywordtype">int</span> number);
+<a name="l00267"></a>00267     <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> getSecondCharFromInt(<span class="keyword">const</span> <span class="keywordtype">int</span> number);
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269 };
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271 <span class="preprocessor">#endif // PACKETCREATOR_H</span>
+</pre></div></div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:56 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

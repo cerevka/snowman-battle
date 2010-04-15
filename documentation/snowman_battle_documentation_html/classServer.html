@@ -1,0 +1,305 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Dokumentace třídy Server</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+      <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+      <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentace třídy Server</h1><!-- doxytag: class="Server" --><!-- doxytag: inherits="NetworkInterface" -->
+<p><code>#include &quot;<a class="el" href="server_8h_source.html">server.h</a>&quot;</code></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu Server</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="classServer.png" usemap="#Server_map" alt=""/>
+  <map id="Server_map" name="Server_map">
+<area href="classNetworkInterface.html" alt="NetworkInterface" shape="rect" coords="0,0,108,24"/>
+</map>
+ </div>
+</div>
+
+<p><a href="classServer-members.html">Seznam všech členů.</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Signály</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a58d825565a096c9d53e50223ab800951">sentMessage</a> (QByteArray *message)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a4df9a27f4facd41fd90a77f31ca6e889">clientLags</a> (int id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a45d115f511efb4e9c7b09e278746f8c1">clientIsBack</a> (int id)</td></tr>
+<tr><td colspan="2"><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a2532acab28127bffacfad56e165b391e">Server</a> (int port, int count, <a class="el" href="classNetworkInterface.html">NetworkInterface</a> *const parent=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a803b89b673283131d2ae765c82923f8d">~Server</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#ad585a01cb89dd6b4cc4f2aa3005da426">send</a> (QByteArray *message)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a7c74303da7e02d02174a042161ad8a58">getNetworkID</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#aad9d81122ade8523c67fb3166653c1e9">setNetworkID</a> (int networkID)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a73747fbde04631acc3d24fee51b9864d">timerEvent</a> (QTimerEvent *event)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detailní popis</h2>
+<p><a class="el" href="classServer.html">Server</a> implementuje serverovou logiku. Je zapouzdren pod vzorem Strategy pod jednotne rozhrani s <a class="el" href="classNetworkInterface.html">NetworkInterface</a> a volani ji predava trida <a class="el" href="classNetwork.html">Network</a>, ktera ho obsluhuje. </p>
+<hr/><h2>Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a2532acab28127bffacfad56e165b391e"></a><!-- doxytag: member="Server::Server" ref="a2532acab28127bffacfad56e165b391e" args="(int port, int count, NetworkInterface *const parent=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Server::Server </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classNetworkInterface.html">NetworkInterface</a> *const &nbsp;</td>
+          <td class="paramname"> <em>parent</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vytvoreni serveru naslouchajiciho na zvolenem portu. </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>port, na kterem bude server naslouchat </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>count</em>&nbsp;</td><td>pocet hracu, kteri budou hrat </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a803b89b673283131d2ae765c82923f8d"></a><!-- doxytag: member="Server::~Server" ref="a803b89b673283131d2ae765c82923f8d" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Server::~Server </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Desktruktor uzavirajici serverovy socket. </p>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k metodám</h2>
+<a class="anchor" id="a45d115f511efb4e9c7b09e278746f8c1"></a><!-- doxytag: member="Server::clientIsBack" ref="a45d115f511efb4e9c7b09e278746f8c1" args="(int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::clientIsBack </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [signal]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vysle signal, ze lagly klient opet odpovedel a aktivuje ho </p>
+
+</div>
+</div>
+<a class="anchor" id="a4df9a27f4facd41fd90a77f31ca6e889"></a><!-- doxytag: member="Server::clientLags" ref="a4df9a27f4facd41fd90a77f31ca6e889" args="(int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::clientLags </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [signal]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vysle signal s informaci, ze dany klient laguje. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7c74303da7e02d02174a042161ad8a58"></a><!-- doxytag: member="Server::getNetworkID" ref="a7c74303da7e02d02174a042161ad8a58" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Server::getNetworkID </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vrati ID server - vzdy 0. </p>
+
+<p>Implementuje <a class="el" href="classNetworkInterface.html#aaed57721aaeb15b3163d1e9e66bdc225">NetworkInterface</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad585a01cb89dd6b4cc4f2aa3005da426"></a><!-- doxytag: member="Server::send" ref="ad585a01cb89dd6b4cc4f2aa3005da426" args="(QByteArray *message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::send </td>
+          <td>(</td>
+          <td class="paramtype">QByteArray *&nbsp;</td>
+          <td class="paramname"> <em>message</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Odesilani dat v poli znaku. </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>message</em>&nbsp;</td><td>pole znaku k odeslani </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementuje <a class="el" href="classNetworkInterface.html#a1bfafcafdf712f9760af2a1613f92705">NetworkInterface</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58d825565a096c9d53e50223ab800951"></a><!-- doxytag: member="Server::sentMessage" ref="a58d825565a096c9d53e50223ab800951" args="(QByteArray *message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::sentMessage </td>
+          <td>(</td>
+          <td class="paramtype">QByteArray *&nbsp;</td>
+          <td class="paramname"> <em>message</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [signal]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vyemituje zpravu, ze odeslal packet, aby ho i server zpracoval. </p>
+
+</div>
+</div>
+<a class="anchor" id="aad9d81122ade8523c67fb3166653c1e9"></a><!-- doxytag: member="Server::setNetworkID" ref="aad9d81122ade8523c67fb3166653c1e9" args="(int networkID)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::setNetworkID </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>networkID</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Nastavi ID serveru - nic nemeni, je pouze kvuli jednotnemu pristupu pres <a class="el" href="classNetwork.html">Network</a>. </p>
+
+<p>Implementuje <a class="el" href="classNetworkInterface.html#a52d23a923db96864bedc653109850faa">NetworkInterface</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a73747fbde04631acc3d24fee51b9864d"></a><!-- doxytag: member="Server::timerEvent" ref="a73747fbde04631acc3d24fee51b9864d" args="(QTimerEvent *event)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::timerEvent </td>
+          <td>(</td>
+          <td class="paramtype">QTimerEvent *&nbsp;</td>
+          <td class="paramname"> <em>event</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Casovana metoda, ktera bude kontrolovat, zda se klient nelagnul. </p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>controller/network/<a class="el" href="server_8h_source.html">server.h</a></li>
+<li>controller/network/server.cpp</li>
+</ul>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:57 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

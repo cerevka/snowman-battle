@@ -1,0 +1,124 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Zdrojový soubor controller/network/server.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Seznam&nbsp;souborů</span></a></li>
+    </ul>
+  </div>
+<h1>controller/network/server.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef SERVER_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define SERVER_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;QTcpServer&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;QTcpSocket&gt;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;QNetworkProxy&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;QList&gt;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;clientthread.h&quot;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;networkinterface.h&quot;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;globals.h&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;view/dialogs/connecteddialog.h&quot;</span>
+<a name="l00013"></a>00013 
+<a name="l00019"></a><a class="code" href="classServer.html">00019</a> <span class="keyword">class </span><a class="code" href="classServer.html">Server</a> : <span class="keyword">public</span> <a class="code" href="classNetworkInterface.html">NetworkInterface</a>
+<a name="l00020"></a>00020 {
+<a name="l00021"></a>00021     Q_OBJECT
+<a name="l00022"></a>00022 <span class="keyword">public</span>:
+<a name="l00028"></a>00028     <a class="code" href="classServer.html#a2532acab28127bffacfad56e165b391e">Server</a>(<span class="keywordtype">int</span> port, <span class="keywordtype">int</span> count, <a class="code" href="classNetworkInterface.html">NetworkInterface</a> * <span class="keyword">const</span> parent = 0);
+<a name="l00029"></a>00029 
+<a name="l00033"></a>00033     <span class="keyword">virtual</span> <a class="code" href="classServer.html#a803b89b673283131d2ae765c82923f8d">~Server</a>(<span class="keywordtype">void</span>);
+<a name="l00034"></a>00034 
+<a name="l00039"></a>00039     <span class="keywordtype">void</span> <a class="code" href="classServer.html#ad585a01cb89dd6b4cc4f2aa3005da426">send</a>(QByteArray * message);
+<a name="l00040"></a>00040 
+<a name="l00044"></a>00044     <span class="keywordtype">int</span> <a class="code" href="classServer.html#a7c74303da7e02d02174a042161ad8a58">getNetworkID</a>() <span class="keyword">const</span>;
+<a name="l00045"></a>00045 
+<a name="l00050"></a>00050     <span class="keywordtype">void</span> <a class="code" href="classServer.html#aad9d81122ade8523c67fb3166653c1e9">setNetworkID</a>(<span class="keywordtype">int</span> networkID);
+<a name="l00051"></a>00051 
+<a name="l00055"></a>00055     <span class="keywordtype">void</span> <a class="code" href="classServer.html#a73747fbde04631acc3d24fee51b9864d">timerEvent</a>(QTimerEvent * event);
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 <span class="keyword">private</span>:
+<a name="l00062"></a>00062     QTcpServer * serverSocket;
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 
+<a name="l00068"></a>00068     QList&lt;QTcpSocket*&gt; clientsList;
+<a name="l00069"></a>00069 
+<a name="l00074"></a>00074     QList&lt;ClientThread*&gt; clientThreadList;
+<a name="l00075"></a>00075 
+<a name="l00079"></a>00079     <span class="keywordtype">int</span> count;
+<a name="l00080"></a>00080 
+<a name="l00084"></a>00084     QList&lt;QTime&gt; lastHelloList;
+<a name="l00085"></a>00085 
+<a name="l00089"></a>00089     QList&lt;int&gt; laggingClientsList;
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 signals:
+<a name="l00098"></a>00098     <span class="keywordtype">void</span> <a class="code" href="classServer.html#a58d825565a096c9d53e50223ab800951">sentMessage</a>(QByteArray * message);
+<a name="l00099"></a>00099 
+<a name="l00103"></a>00103     <span class="keywordtype">void</span> <a class="code" href="classServer.html#a4df9a27f4facd41fd90a77f31ca6e889">clientLags</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);
+<a name="l00104"></a>00104 
+<a name="l00108"></a>00108     <span class="keywordtype">void</span> <a class="code" href="classServer.html#a45d115f511efb4e9c7b09e278746f8c1">clientIsBack</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112 <span class="keyword">private</span> slots:
+<a name="l00113"></a>00113     <span class="keywordtype">void</span> slotNewClient();
+<a name="l00114"></a>00114     <span class="keywordtype">void</span> slotIncommingHelloPacket(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 };
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 <span class="preprocessor">#endif // SERVER_H</span>
+</pre></div></div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:56 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

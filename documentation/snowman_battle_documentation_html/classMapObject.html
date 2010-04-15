@@ -1,0 +1,289 @@
+<!-- This comment will put IE 6, 7 and 8 in quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Snowman battle: Dokumentace třídy MapObject</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generováno programem Doxygen 1.6.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <img id="MSearchSelect" src="search/search.png"
+             onmouseover="return searchBox.OnSearchSelectShow()"
+             onmouseout="return searchBox.OnSearchSelectHide()"
+             alt=""/>
+        <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+             onfocus="searchBox.OnSearchFieldFocus(true)" 
+             onblur="searchBox.OnSearchFieldFocus(false)" 
+             onkeyup="searchBox.OnSearchFieldChange(event)"/>
+        <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+      <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+      <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Dokumentace třídy MapObject</h1><!-- doxytag: class="MapObject" -->
+<p><code>#include &quot;<a class="el" href="mapobject_8h_source.html">mapobject.h</a>&quot;</code></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu MapObject</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="classMapObject.png" usemap="#MapObject_map" alt=""/>
+  <map id="MapObject_map" name="MapObject_map">
+<area href="classPlayer.html" alt="Player" shape="rect" coords="0,56,112,80"/>
+<area href="classShootableBlock.html" alt="ShootableBlock" shape="rect" coords="122,56,234,80"/>
+<area href="classUnshootableBlock.html" alt="UnshootableBlock" shape="rect" coords="244,56,356,80"/>
+<area href="classWeaponPackage.html" alt="WeaponPackage" shape="rect" coords="366,56,478,80"/>
+</map>
+ </div>
+</div>
+
+<p><a href="classMapObject-members.html">Seznam všech členů.</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapObject.html#a3a9f87a4c66530d1f90dd33185bd7ecd">MapObject</a> (<a class="el" href="classGame.html">Game</a> *const parent, const double <a class="el" href="classMapObject.html#a27969c056f1747b22220e4044f231cda">x1</a>=-100.0, const double y1=-100.0, const double <a class="el" href="classMapObject.html#abeb2e5fa40fe718cab1a4591f1caf7a3">x2</a>=-100.0, const double y2=-100.0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapObject.html#ae49e50d177e740dec1befa7bee032ec6">interactPlayer</a> (<a class="el" href="classPlayer.html">Player</a> *const player)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapObject.html#a7165a8b0fe86e770e222e15dd194f423">interactShot</a> (<a class="el" href="classShot.html">Shot</a> *const shot)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapObject.html#aa89c89327d77a3917288c65d909fe057">getX1</a> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58604ae96d0de17f694ccafce3345aad"></a><!-- doxytag: member="MapObject::getY1" ref="a58604ae96d0de17f694ccafce3345aad" args="(void) const " -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><b>getY1</b> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9064e1a2ef842f467b56e6a296a7a96"></a><!-- doxytag: member="MapObject::getX2" ref="af9064e1a2ef842f467b56e6a296a7a96" args="(void) const " -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><b>getX2</b> (void) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a118da8a3413af4563bd69268137dbd"></a><!-- doxytag: member="MapObject::getY2" ref="a9a118da8a3413af4563bd69268137dbd" args="(void) const " -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><b>getY2</b> (void) const </td></tr>
+<tr><td colspan="2"><h2>Chráněné atributy</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGame.html">Game</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapObject.html#a9d634af7dc6862a68a74eee12443d362">parentGame</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapObject.html#a27969c056f1747b22220e4044f231cda">x1</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0be4322bef916eee1c304088b368c481"></a><!-- doxytag: member="MapObject::y1" ref="a0be4322bef916eee1c304088b368c481" args="" -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><b>y1</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapObject.html#abeb2e5fa40fe718cab1a4591f1caf7a3">x2</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf1000ac35fb6af34ced81512c8298e8"></a><!-- doxytag: member="MapObject::y2" ref="acf1000ac35fb6af34ced81512c8298e8" args="" -->
+double&nbsp;</td><td class="memItemRight" valign="bottom"><b>y2</b></td></tr>
+<tr><td colspan="2"><h2>Friends</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2fab026580d6f14280c2ffb8063a314"></a><!-- doxytag: member="MapObject::Game" ref="aa2fab026580d6f14280c2ffb8063a314" args="" -->
+class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMapObject.html#aa2fab026580d6f14280c2ffb8063a314">Game</a></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Detailní popis</h2>
+<p>Toto je abstraktní třída, která reprezentuje objekt na herní ploše </p>
+<hr/><h2>Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a3a9f87a4c66530d1f90dd33185bd7ecd"></a><!-- doxytag: member="MapObject::MapObject" ref="a3a9f87a4c66530d1f90dd33185bd7ecd" args="(Game *const parent, const double x1=&#45;100.0, const double y1=&#45;100.0, const double x2=&#45;100.0, const double y2=&#45;100.0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MapObject::MapObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGame.html">Game</a> *const &nbsp;</td>
+          <td class="paramname"> <em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&nbsp;</td>
+          <td class="paramname"> <em>x1</em> = <code>-100.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&nbsp;</td>
+          <td class="paramname"> <em>y1</em> = <code>-100.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&nbsp;</td>
+          <td class="paramname"> <em>x2</em> = <code>-100.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&nbsp;</td>
+          <td class="paramname"> <em>y2</em> = <code>-100.0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Vytvoří objekt na mapě na konkrétních souřadnicích </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>hra v rámci níž je tento objekt vytvořen </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>x-ová souřadnice levého horního rohu objektu </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>y-ová souřadnice levého horního rohu objektu </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>x-ová souřadnice pravého dolního rohu objektu </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>y-ová souřadnice pravého dolního rohu objektu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k metodám</h2>
+<a class="anchor" id="aa89c89327d77a3917288c65d909fe057"></a><!-- doxytag: member="MapObject::getX1" ref="aa89c89327d77a3917288c65d909fe057" args="(void) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double MapObject::getX1 </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Getry pro jednotlivé souřadnice </p>
+
+</div>
+</div>
+<a class="anchor" id="ae49e50d177e740dec1befa7bee032ec6"></a><!-- doxytag: member="MapObject::interactPlayer" ref="ae49e50d177e740dec1befa7bee032ec6" args="(Player *const player)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool MapObject::interactPlayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a> *const &nbsp;</td>
+          <td class="paramname"> <em>player</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Metoda popisující jak se objekt zachová, když na něj vběhne hráč </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>player</em>&nbsp;</td><td>hráč, který chce na místo objektu vejít </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Návratová hodnota:</b></dt><dd>vrací true, pokud hráč na místo objektu může vstoupit </dd></dl>
+
+<p>Implementováno v <a class="el" href="classPlayer.html#adfa1e34999dda1ca277ffa100af021c1">Player</a>, <a class="el" href="classShootableBlock.html#a02eb41d3fec70dd5525bfe63a28f864f">ShootableBlock</a>, <a class="el" href="classUnshootableBlock.html#a6c6bce6f8ede419dfb3abdc4ad03f4c4">UnshootableBlock</a> a <a class="el" href="classWeaponPackage.html#a466714a01303eca6e7ebf0680e672cee">WeaponPackage</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7165a8b0fe86e770e222e15dd194f423"></a><!-- doxytag: member="MapObject::interactShot" ref="a7165a8b0fe86e770e222e15dd194f423" args="(Shot *const shot)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool MapObject::interactShot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classShot.html">Shot</a> *const &nbsp;</td>
+          <td class="paramname"> <em>shot</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Metoda popisující jak se objekt zachová, když do něj vletí střela </p>
+<dl><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>shot</em>&nbsp;</td><td>střela, která vniká do objektů </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Návratová hodnota:</b></dt><dd>vrací true, pokud přes objekt může střela letět </dd></dl>
+
+<p>Implementováno v <a class="el" href="classPlayer.html#a76bf78e24db9174414f42fbc73c0a3d7">Player</a>, <a class="el" href="classShootableBlock.html#ac2420cb53a98391a182f467a223b58e3">ShootableBlock</a>, <a class="el" href="classUnshootableBlock.html#aebeab10e0bc53aa19f9f5c4e1409b019">UnshootableBlock</a> a <a class="el" href="classWeaponPackage.html#ab22d335de2c54611d4600504dbb5d86e">WeaponPackage</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Dokumentace k datovým členům</h2>
+<a class="anchor" id="a9d634af7dc6862a68a74eee12443d362"></a><!-- doxytag: member="MapObject::parentGame" ref="a9d634af7dc6862a68a74eee12443d362" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classGame.html">Game</a>* <a class="el" href="classMapObject.html#a9d634af7dc6862a68a74eee12443d362">MapObject::parentGame</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Ukazatel na hru, ke které tento objekt patří </p>
+
+</div>
+</div>
+<a class="anchor" id="a27969c056f1747b22220e4044f231cda"></a><!-- doxytag: member="MapObject::x1" ref="a27969c056f1747b22220e4044f231cda" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classMapObject.html#a27969c056f1747b22220e4044f231cda">MapObject::x1</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Souřadnice pro levý horní roh </p>
+
+</div>
+</div>
+<a class="anchor" id="abeb2e5fa40fe718cab1a4591f1caf7a3"></a><!-- doxytag: member="MapObject::x2" ref="abeb2e5fa40fe718cab1a4591f1caf7a3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classMapObject.html#abeb2e5fa40fe718cab1a4591f1caf7a3">MapObject::x2</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Souřadnice pravý dolní roh </p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>model/<a class="el" href="mapobject_8h_source.html">mapobject.h</a></li>
+<li>model/mapobject.cpp</li>
+</ul>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Proměnné</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address style="text-align: right;"><small>Generováno Thu Apr 15 13:58:57 2010 pro projekt Snowman battle programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>
