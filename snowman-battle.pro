@@ -27,7 +27,9 @@ HEADERS += controller/game/gamefacade.h \
     controller/network/clientthread.h \
     globals.h \
     controller/network/packetcreator.h \
-    view/dialogs/connecteddialog.h
+    view/dialogs/connecteddialog.h \
+    view/dialogs/connectjoindialog.h \
+    view/dialogs/endgamedialog.h
 SOURCES += controller/game/gamefacade.cpp \
     controller/game/game.cpp \
     controller/gui/keyboardhandler.cpp \
@@ -56,7 +58,9 @@ SOURCES += controller/game/gamefacade.cpp \
     controller/network/networkinterface.cpp \
     controller/network/clientthread.cpp \
     controller/network/packetcreator.cpp \
-    view/dialogs/connecteddialog.cpp
+    view/dialogs/connecteddialog.cpp \
+    view/dialogs/connectjoindialog.cpp \
+    view/dialogs/endgamedialog.cpp
 RESOURCES += images.qrc
 TRANSLATIONS += snowman-battle_cs.ts
 DEFINES += _DEBUG_
