@@ -75,6 +75,7 @@ void connectAll(void)
     QObject::connect(Globals::packetParser, SIGNAL(eastKeyPressed(int)), Globals::gameFacade, SLOT(startMoveEast(int)));
     QObject::connect(Globals::packetParser, SIGNAL(shotKeyPressed(int)), Globals::gameFacade, SLOT(shot(int)));
     QObject::connect(Globals::packetParser, SIGNAL(changeKeyPressed(int)), Globals::gameFacade, SLOT(changeWeapon(int)));
+    QObject::connect(Globals::packetParser, SIGNAL(pauseKeyPressed()), Globals::gameFacade, SLOT(pauseGame()));
     QObject::connect(Globals::packetParser, SIGNAL(moveKeyReleased(int)), Globals::gameFacade, SLOT(stopMove(int)));
 
     ScenePanel * panel = Globals::mainWindow->getScenePanel();

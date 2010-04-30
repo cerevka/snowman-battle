@@ -1,12 +1,12 @@
+
 #include "player.h"
+
 #include "../controller/game/game.h"
+#include "../controller/game/gametimer.h"
 #include "handgun.h"
 #include "machinegun.h"
 #include "shotgun.h"
 #include "shot.h"
-
-double Player::playerSize = 55.0; // TODO - doplnit skutečnou šířku a výšku hráče v pixelech
-double Player::stepSize = 2.5; // TODO - doplnit skutečnou velikost kroku
 
 Player::Player(Game * const parent, const int id) :
         MapObject(parent)
@@ -21,8 +21,8 @@ Player::Player(Game * const parent, const int id) :
     canShot = true;
     score = 0;
 
-    idCooldownTimer = 0;
-    idRespawnTimer = 0;
+    respawnTimer = NULL;
+    cooldownTimer = NULL;
 
     // Vytvoření inventáře se zbraněmi
     inventory[0] = new HandGun(this);
@@ -30,11 +30,6 @@ Player::Player(Game * const parent, const int id) :
     inventory[2] = new ShotGun(this);
     actualWeapon = 0;
 
-}
-
-bool Player::interactPlayer(Player * const)
-{
-    return false;
 }
 
 bool Player::interactShot(Shot * const shot)
@@ -51,14 +46,16 @@ bool Player::interactShot(Shot * const shot)
         y2 = -100.0;
 
         emit playerKilled(playerID);
-        #ifdef _DEBUG_
+        #ifdef _DEBUG_GAME_ENGINE_
         qDebug() << "Game engine: Player" << playerID << "killed";
         #endif
 
         shot->getOwner()->incrementScore();
 
         // startuji časovač pro respawnutí
-        idRespawnTimer = startTimer(5000);
+        respawnTimer = new GameTimer(respawnTimeFrames, this);
+        connect(respawnTimer, SIGNAL(timeout()), this, SLOT(respawn()));
+        parentGame->addTimer(respawnTimer);
 
     }
 
@@ -68,6 +65,11 @@ bool Player::interactShot(Shot * const shot)
 
 void Player::respawn(void)
 {
+
+    if(respawnTimer != NULL){
+        parentGame->removeTimer(respawnTimer);
+        delete respawnTimer;
+    }
 
     // Vygenerování nových souřednic
     parentGame->generateValidCoordinates(playerSize, playerSize, this);
@@ -82,7 +84,7 @@ void Player::respawn(void)
     spawned = true;
 
     emit playerSpawned(playerID, qRound(x1), qRound(y1), direction);
-    #ifdef _DEBUG_
+    #ifdef _DEBUG_GAME_ENGINE_
     qDebug() << "Game engine: Player" << playerID << "spawned at (" << x1 << "," << y1 << "),(" << x2 << "," << y2 << "); direction:" << direction;
     #endif
 
@@ -154,16 +156,19 @@ void Player::shot(void)
         try{
             inventory[actualWeapon]->shot();
             canShot = false;
-            idCooldownTimer = startTimer(600);
+
+            cooldownTimer = new GameTimer(cooldownTimeFrames, this);
+            connect(cooldownTimer, SIGNAL(timeout()), this, SLOT(enableShooting()));
+            parentGame->addTimer(cooldownTimer);
 
             emit playerShoted(playerID);
-            #ifdef _DEBUG_
+            #ifdef _DEBUG_GAME_ENGINE_
             qDebug() << "Game engine: Player" << playerID << "shoted";
             #endif
 
         } catch (QString & ex){
             // Tato výjimka se ignoruje (střely navíc se prostě nevytvoří)
-            #ifdef _DEBUG_
+            #ifdef _DEBUG_GAME_ENGINE_
             qDebug() << "Game engine: Exception - to many shots";
             #endif
         }
@@ -183,29 +188,10 @@ void Player::changeWeapon(void)
         } while(inventory[actualWeapon]->getAmmo() == 0);
 
         emit weaponChanged(playerID, actualWeapon, inventory[actualWeapon]->getAmmo());
-        #ifdef _DEBUG_
+        #ifdef _DEBUG_GAME_ENGINE_
         qDebug() << "Game engine: Player" << playerID << "equiped weapon" << actualWeapon;
         #endif
 
-    }
-
-}
-
-void Player::timerEvent(QTimerEvent * const event)
-{
-
-    killTimer(event->timerId());
-
-    // Obsluha časovače na respawn hráče
-    if((event->timerId() == idRespawnTimer) && (spawned == false) ) {
-        parentGame->getBigGameMutex()->lock();
-        respawn();
-        parentGame->getBigGameMutex()->unlock();
-    }
-
-    // Obsluha časovače na cooldown zbraně
-    if(event->timerId() == idCooldownTimer) {
-        canShot = true;
     }
 
 }
@@ -216,7 +202,7 @@ void Player::setActualWeapon(const int actualWeapon)
     this->actualWeapon = actualWeapon;
 
     emit weaponChanged(playerID, actualWeapon, inventory[actualWeapon]->getAmmo());
-    #ifdef _DEBUG_
+    #ifdef _DEBUG_GAME_ENGINE_
     qDebug() << "Game engine: Player" << playerID << "equiped weapon" << actualWeapon;
     #endif
 
@@ -228,14 +214,14 @@ void Player::incrementScore(void)
     score++;
 
     emit scoreIncremented(playerID);
-    #ifdef _DEBUG_
+    #ifdef _DEBUG_GAME_ENGINE_
     qDebug() << "Game engine: Player" << playerID << "incremented score";
     #endif
 
     if((score == parentGame->getScoreToWin()) && (parentGame->isGameRunning())){
 
         emit playerWon(playerID);
-        #ifdef _DEBUG_
+        #ifdef _DEBUG_GAME_ENGINE_
         qDebug() << "Game engine: Player" << playerID << "won";
         #endif
 
@@ -243,50 +229,20 @@ void Player::incrementScore(void)
 
 }
 
-int Player::getID(void) const
-{
-    return playerID;
-}
-
 void Player::setDirection(const Directions direction)
 {
+
+    // TODO promyslet synchronizaci tady!!!
+    if(this->direction != direction){
+        emit playerTurned(playerID, direction);
+        #ifdef _DEBUG_GAME_ENGINE_
+        qDebug() << "Game engine: Player" << playerID << "turned (New direction:" << direction << ")";
+        #endif
+    }
+
     this->direction = direction;
 }
 
-Directions Player::getDirection(void) const
-{
-    return direction;
-}
-
-void Player::setMoving(const bool moving)
-{
-    this->moving = moving;
-}
-
-bool Player::isMoving(void) const
-{
-    return moving;
-}
-
-void Player::setShoting(const bool shoting)
-{
-    this->shoting = shoting;
-}
-
-bool Player::isShoting(void) const
-{
-    return shoting;
-}
-
-bool Player::isSpawned(void) const
-{
-    return spawned;
-}
-
-bool Player::isActive(void) const
-{
-    return active;
-}
 
 void Player::setActive(const bool active)
 {
@@ -295,24 +251,24 @@ void Player::setActive(const bool active)
 
     if(active){
         emit playerActivated(playerID);
-        #ifdef _DEBUG_
+        #ifdef _DEBUG_GAME_ENGINE_
         qDebug() << "Game engine: Player" << playerID << "activated";
         #endif
     } else {
         emit playerDeactivated(playerID);
-        #ifdef _DEBUG_
+        #ifdef _DEBUG_GAME_ENGINE_
         qDebug() << "Game engine: Player" << playerID << "deactivated";
         #endif
     }
 
 }
 
-Weapon * const * Player::getInventory(void) const
+void Player::enableShooting(void)
 {
-    return inventory;
-}
 
-Game * Player::getParentGame(void) const
-{
-    return parentGame;
+    parentGame->removeTimer(cooldownTimer);
+    delete cooldownTimer;
+
+    canShot = true;
+
 }

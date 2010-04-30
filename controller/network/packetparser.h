@@ -2,10 +2,12 @@
 #define PACKETPARSER_H
 
 #include <QObject>
-#include <QByteArray>
+
+class QByteArray;
 
 /**
  * Tato třída slouží pro parsování paketů přicházejících ze sítě
+ * @author Ota Sandr
  */
 class PacketParser : public QObject
 {
@@ -36,12 +38,6 @@ public slots:
 signals:
 
     /* ------------------------init------------------------- */
-
-//    /**
-//     * Signál přidělení id
-//     * @param id přidělené id
-//     */
-//    void idAssigned(int id);
 
     /**
      * Signál informující o tom, že danému id je přiděleno jméno (představovací paket)
@@ -99,6 +95,11 @@ signals:
      * @param playerID id hráče, jenž klávesu stiskl
      */
     void changeKeyPressed(int playerID);
+
+    /**
+     * Signál, že hráč zapauzoval hru
+     */
+    void pauseKeyPressed(void);
 
     /**
      * Signál, že hráč pustil klávesu pohybu
@@ -195,6 +196,13 @@ signals:
      */
     void playersScoreIncremented(int playerID);
 
+    /**
+     * Signál změny směru hráče
+     * @param playerID id hráče, který změnil směr
+     * @param direction nový hráčův směr
+     */
+    void playerTurned(int playerID, int direction);
+
     /**********************************************************/
     /* -------------------řídící signály--------------------- */
 
@@ -207,6 +215,11 @@ signals:
      * Signál zapauzování hry
      */
     void gamePaused(void);
+
+    /**
+     * Signál pokračování ve hře
+     */
+    void gameResumed(void);
 
     /**
      * Signál aktivování hráče

@@ -1,12 +1,8 @@
+
 #include "handgun.h"
 #include "../controller/game/game.h"
 #include "shot.h"
-
-HandGun::HandGun(Player * const parent) :
-        Weapon(parent)
-{
-    this->refill();
-}
+#include "player.h"
 
 void HandGun::shot(void)
 {
@@ -15,19 +11,11 @@ void HandGun::shot(void)
     double y;
     double angle;
 
-    double speed = 10.0;
-
     findPointOfCreatingShots(x, y, angle);
 
-    Shot * newShot = new Shot(x, y, angle, speed, owner);
+    Shot * newShot = new Shot(x, y, angle, shotSpeed, owner);
 
     owner->getParentGame()->addShot(newShot);
 
 }
 
-void HandGun::refill(void)
-{
-
-    ammo = 1;
-
-}

@@ -2,11 +2,13 @@
 #define PACKETCREATOR_H
 
 #include <QObject>
-#include <QByteArray>
-#include <QMutex>
+
+class QByteArray;
+class QMutex;
 
 /**
  * Třída, která slouží k vytváření paketů a jejich posílání po síti
+ * @author Ota Sandr
  */
 class PacketCreator : public QObject
 {
@@ -87,6 +89,11 @@ public slots:
      * Slot, do kterého se posílá, že hráč stisknul klávesu pro změnu zbraně
      */
     void pressChangeWeapon(void);
+
+    /**
+     * Slot, do kterého se posílá, že hráč stisknul klávesu pro pauzu
+     */
+    void pressPause(void);
 
     /**
      * Slot, do kterého se posílá, že hráč pustil klávesu pro pohyb
@@ -186,6 +193,13 @@ public slots:
      */
     void incrementScore(int playerID);
 
+    /**
+     * Slot, do kterého se posílá informace o otočení hráče
+     * @param playerID id hráče, který se otáčí
+     * @param direction nový směr hráče
+     */
+    void turnPlayer(int playerID, int direction);
+
     /**********************************************************/
     /* ------------------sloty pro řízení-------------------- */
 
@@ -198,6 +212,11 @@ public slots:
      * Slot pro zapauzování hry
      */
     void pauseGame(void);
+
+    /**
+     * Slot pro pokračování ve hře
+     */
+    void resumeGame(void);
 
     /**
      * Slot pro aktivování hráče
@@ -258,12 +277,23 @@ private:
     void createThreeBytesPacket(const int typeOfPacket);
 
     /**
-     * Tato metoda slouží k odeslání paketu (přiodesílání zamkne odesílací mutex)
+     * Tato metoda slouží k odeslání paketu (při odesílání zamkne odesílací mutex)
      * @param packet data k odeslání
      */
     void sendPacket(QByteArray * const packet);
 
+    /**
+     * Pomocná, která získá první byte z čísla
+     * @param number číslo, ze kterého se vezme první byte
+     * @return první byte daného čísla
+     */
     unsigned char getFirstCharFromInt(const int number);
+
+    /**
+     * Pomocná, která získá druhý byte z čísla
+     * @param number číslo, ze kterého se vezme druhý byte
+     * @return druhý byte daného čísla
+     */
     unsigned char getSecondCharFromInt(const int number);
 
 };

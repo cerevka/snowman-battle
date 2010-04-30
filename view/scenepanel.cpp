@@ -16,9 +16,7 @@ ScenePanel::ScenePanel()
     colors << "black" << "red" << "blue" << "green" << "brown" << "yellow";
     //setOpeningView();
 
-    ///// Testování Ota
-
-    handler = new KeyboardHandler(NULL);
+    handler = new KeyboardHandler(this);
     connect(handler, SIGNAL(upMove()), Globals::packetCreator, SLOT(startMoveNorth()));
     connect(handler, SIGNAL(downMove()), Globals::packetCreator, SLOT(startMoveSouth()));
     connect(handler, SIGNAL(leftMove()), Globals::packetCreator, SLOT(startMoveWest()));
@@ -26,11 +24,10 @@ ScenePanel::ScenePanel()
     connect(handler, SIGNAL(stopMove()), Globals::packetCreator, SLOT(stopMove()));
     connect(handler, SIGNAL(shot()), Globals::packetCreator, SLOT(pressShot()));
     connect(handler, SIGNAL(changeWeapon()), Globals::packetCreator, SLOT(pressChangeWeapon()));
-    //connect(handler, SIGNAL(pauseGame()), facade, SLOT(pauseGame()));
+    connect(handler, SIGNAL(pauseGame()), Globals::packetCreator, SLOT(pressPause()));
+
     //StatusBar *bar = Globals::mainWindow->getStatusBar();
 //    connect(this, SIGNAL(changeAmmo(int,int)), bar, SLOT(changeRound(int,int)));
-
-    ///// Konec testování Ota
 
 }
 

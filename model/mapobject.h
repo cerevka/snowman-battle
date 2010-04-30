@@ -2,7 +2,6 @@
 #define MAPOBJECT_H
 
 #include <QObject>
-#include <QApplication>
 
 class Player;
 class Shot;
@@ -10,6 +9,7 @@ class Game;
 
 /**
  * Toto je abstraktní třída, která reprezentuje objekt na herní ploše
+ * @author Ota Sandr
  */
 class MapObject : public QObject
 {
@@ -42,13 +42,31 @@ public:
      */
     virtual bool interactShot(Shot * const shot) = 0;
 
+    /***************************************************/
+
     /**
-     * Getry pro jednotlivé souřadnice
+     * Getr pro x-ovou souřadnici levého horního rohu
+     * @return x-ová souřadnice levého horního rohu
      */
-    double getX1(void) const;
-    double getY1(void) const;
-    double getX2(void) const;
-    double getY2(void) const;
+    inline double getX1(void) const { return this->x1; }
+
+    /**
+     * Getr pro y-ovou souřadnici levého horního rohu
+     * @return y-ová souřadnice levého horního rohu
+     */
+    inline double getY1(void) const { return this->y1; }
+
+    /**
+     * Getr pro x-ovou souřadnici pravého spodního rohu
+     * @return x-ová souřadnice pravého spodního rohu
+     */
+    inline double getX2(void) const { return this->x2; }
+
+    /**
+     * Getr pro y-ovou souřadnici pravého spodního rohu
+     * @return y-ová souřadnice pravého spodního rohu
+     */
+    inline double getY2(void) const { return this->y2; }
 
 protected:
 
@@ -57,16 +75,27 @@ protected:
      */
     Game * parentGame;
 
-    /**
-     * Souřadnice pro levý horní roh
-     */
-    double x1;
-    double y1;
+    /***************************************************/
 
     /**
-     * Souřadnice pravý dolní roh
+     * X-ová souřadnice pro levý horní roh
+     */
+    double x1;
+
+    /**
+     * Y-ová souřadnice pro levý horní roh
+     */
+    double y1;
+
+
+    /**
+     * X-ová souřadnice pro pravý dolní roh
      */
     double x2;
+
+    /**
+     * Y-ová souřadnice pro pravý dolní roh
+     */
     double y2;
 
     friend class Game;

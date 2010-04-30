@@ -3,8 +3,11 @@
 
 #include "weapon.h"
 
+class GameTimer;
+
 /**
  * Třída reprezentující samopal
+ * @author Ota Sandr
  */
 class MachineGun : public Weapon
 {
@@ -17,7 +20,10 @@ public:
      * Konstruktor vytvoří danému hráči samopal
      * @param parent hráč, kterému zbraň patří
      */
-    explicit MachineGun(Player * const parent);
+    inline explicit MachineGun(Player * const parent) :
+            Weapon(parent) {    this->ammo = 0;
+                                this->restShots = batchOfShots;
+                                this->cooldownTimer = NULL; }
 
     /**
      * Implementace abstraktní metody předka (výstřel zbraně)
@@ -27,20 +33,51 @@ public:
     /**
      * Implementace abstraktní metody předka (doplnění nábojů)
      */
-    void refill(void);
+    inline void refill(void) { this->ammo = this->maxAmmo; }
+
+public slots:
 
     /**
-     * Tato metoda slouží k tomu, aby ze samopalu správně vystřelily další střely
-     * @param event časovač, který spustil tuto metodu
+     * Vystřelí další střelu dávky
      */
-    void timerEvent (QTimerEvent * const event);
+    void netxShotOfBatch(void);
 
 private:
+
+    /**
+     * Maximální počet nábojů v samopalu
+     */
+    static int maxAmmo;
+
+    /**
+     * Rychlost střely ze samopalu
+     */
+    static double shotSpeed;
+
+    /**
+     * Úhel roztptylu střel
+     */
+    static double spreadAngle;
+
+    /**
+     * Počet střel v dávce
+     */
+    static int batchOfShots;
+
+    /**
+     * Prodleva mezi jednotlivými střelami dávky
+     */
+    static int cooldownBatchFrames;
 
     /**
      * Počet nábojů, které se mají v dané dávce ještě vystřelit
      */
     int restShots;
+
+    /**
+     * Časovač podlevy mezi jednotlivými střelami dávky
+     */
+    GameTimer * cooldownTimer;
 
 };
 

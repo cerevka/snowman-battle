@@ -29,7 +29,8 @@ HEADERS += controller/game/gamefacade.h \
     controller/network/packetcreator.h \
     view/dialogs/connecteddialog.h \
     view/dialogs/connectjoindialog.h \
-    view/dialogs/endgamedialog.h
+    view/dialogs/endgamedialog.h \
+    controller/game/gametimer.h
 SOURCES += controller/game/gamefacade.cpp \
     controller/game/game.cpp \
     controller/gui/keyboardhandler.cpp \
@@ -38,10 +39,8 @@ SOURCES += controller/game/gamefacade.cpp \
     controller/network/client.cpp \
     model/weaponpackage.cpp \
     model/weapon.cpp \
-    model/unshootableblock.cpp \
     model/shotgun.cpp \
     model/shot.cpp \
-    model/shootableblock.cpp \
     model/player.cpp \
     model/mapobject.cpp \
     model/machinegun.cpp \
@@ -60,7 +59,8 @@ SOURCES += controller/game/gamefacade.cpp \
     controller/network/packetcreator.cpp \
     view/dialogs/connecteddialog.cpp \
     view/dialogs/connectjoindialog.cpp \
-    view/dialogs/endgamedialog.cpp
+    view/dialogs/endgamedialog.cpp \
+    model/gameconstants.cpp \
+    controller/game/gametimer.cpp
 RESOURCES += images.qrc
 TRANSLATIONS += snowman-battle_cs.ts
-DEFINES += _DEBUG_

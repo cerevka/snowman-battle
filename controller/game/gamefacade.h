@@ -8,6 +8,7 @@ class Player;
 
 /**
  * Fasáda, která vytváří rozhraní pro komunikaci s herní logikou
+ * @author Ota Sandr
  */
 class GameFacade : public QObject
 {
@@ -46,27 +47,57 @@ public slots:
     void pauseGame(void);
 
     /**
-     * Sloty pro zahájení pohybu danným směrem
+     * Slot pro zahájení pohybu směrem nahoru
      * @param playerID id hráče, který tuto akci má vykonat
      */
     void startMoveNorth(const int playerID);
+
+    /**
+     * Slot pro zahájení pohybu směrem vlevo
+     * @param playerID id hráče, který tuto akci má vykonat
+     */
     void startMoveWest(const int playerID);
+
+    /**
+     * Slot pro zahájení pohybu směrem dolů
+     * @param playerID id hráče, který tuto akci má vykonat
+     */
     void startMoveSouth(const int playerID);
+
+    /**
+     * Slot pro zahájení pohybu směrem vpravo
+     * @param playerID id hráče, který tuto akci má vykonat
+     */
     void startMoveEast(const int playerID);
 
     /**
-     * Sloty pro přerušení pohybu, střelbu a změnu zbraně
+     * Slot pro přerušení pohybu
      * @param playerID id hráče, který tuto akci má vykonat
      */
     void stopMove(const int playerID);
+
+    /**
+     * Slot pro střelbu
+     * @param playerID id hráče, který tuto akci má vykonat
+     */
     void shot(const int playerID);
+
+    /**
+     * Slot pro změnu zbraně
+     * @param playerID id hráče, který tuto akci má vykonat
+     */
     void changeWeapon(const int playerID);
 
     /**
-     * Sloty pro aktivování a deaktivování hráče
-     * @param playerID id hráče, jenž se má aktivovat nebo deaktivovat
+     * Slot pro aktivování hráče
+     * @param playerID id hráče, jenž se má aktivovat
      */
     void activatePlayer(const int playerID);
+
+    /**
+     * Sloty pro deaktivování hráče
+     * @param playerID id hráče, jenž se má deaktivovat
+     */
     void deactivatePlayer(const int playerID);
 
 private:
@@ -87,7 +118,7 @@ private:
     void connectAll(void);
 
     /**
-     * Jednoduchá metoda, kterou tato tída používá, aby se v ní tolik neopakoval kód
+     * Jednoduchá metoda, kterou tato třída používá, aby se v ní tolik neopakoval kód
      * @param playerID id hráče, který se má vyhledat
      * @return ukazatel na hráče, který byl vyhledán podle id
      */

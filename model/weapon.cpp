@@ -1,9 +1,11 @@
+
 #include "weapon.h"
 #include "player.h"
+
 #include "cmath"
 
 Weapon::Weapon(Player * const parent) :
-    QObject(/*(QObject *)parent*/)
+    QObject()
 {
 
     this->moveToThread((QThread *)parent->getParentGame());
@@ -11,11 +13,6 @@ Weapon::Weapon(Player * const parent) :
 
     ammo = 1;
     owner = parent;
-}
-
-int Weapon::getAmmo(void) const
-{
-    return ammo;
 }
 
 void Weapon::findPointOfCreatingShots(double & x, double & y, double & angle)

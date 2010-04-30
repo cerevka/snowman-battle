@@ -7,6 +7,7 @@ class Player;
 
 /**
  * Třída reprezentující zbraň, kterou nese hráč
+ * @author Ota Sandr
  */
 class Weapon : public QObject
 {
@@ -35,7 +36,7 @@ public:
      * Getr pro počet zbývajících nábojů
      * @return zbývající počet nábojů
      */
-    int getAmmo(void) const;
+    inline int getAmmo(void) const { return this->ammo; }
 
 protected:
 

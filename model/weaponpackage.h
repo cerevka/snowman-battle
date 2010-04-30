@@ -2,10 +2,11 @@
 #define WEAPONPACKAGE_H
 
 #include "mapobject.h"
-#include "QBitArray"
+
+class QBitArray;
 
 /**
- * Výčtvový typ pro druh ležící zbraně
+ * Výčtový typ pro druh ležící zbraně
  */
 enum WeaponType
 {
@@ -45,17 +46,19 @@ public:
      * @param shot zde nevyužit
      * @return vrací true (ležící zbraň je přestřelitelná)
      */
-    bool interactShot(Shot * const shot);
+    inline bool interactShot(Shot * const) { return true; }
 
     /**
      * Getr pro id zbraně
+     * @return id zbraně
      */
-    int getWeaponPackageID(void) const;
+    inline int getWeaponPackageID(void) const { return this->weaponPackageID; }
 
     /**
      * Getr pro typ zbraně
+     * @return typ zbraně
      */
-    WeaponType getType(void) const;
+    inline WeaponType getType(void) const { return this->type; }
 
 protected:
 

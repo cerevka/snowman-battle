@@ -1,11 +1,12 @@
+
 #include "weaponpackage.h"
 #include "player.h"
 #include "weapon.h"
 #include "../controller/game/game.h"
 
+#include "QBitArray"
+
 QBitArray WeaponPackage::idArray = QBitArray(256);
-double WeaponPackage::weaponPackageSizeX = 70.0;
-double WeaponPackage::weaponPackageSizeY = 20.0;
 
 WeaponPackage::WeaponPackage(Game * const parent) :
         MapObject(parent)
@@ -82,17 +83,3 @@ bool WeaponPackage::interactPlayer(Player * const player)
     return true;
 }
 
-bool WeaponPackage::interactShot(Shot * const)
-{
-    return true;
-}
-
-int WeaponPackage::getWeaponPackageID(void) const
-{
-    return weaponPackageID;
-}
-
-WeaponType WeaponPackage::getType(void) const
-{
-    return type;
-}
