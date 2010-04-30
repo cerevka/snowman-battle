@@ -1,6 +1,26 @@
+
+#include "../../model/mapobject.h"
+#include "../../model/player.h"
+#include "../../model/shot.h"
+#include "../../model/weaponpackage.h"
+#include "../../model/shootableblock.h"
+#include "../../model/unshootableblock.h"
+#include "gametimer.h"
+
+#include <QMutex>
+#include <QWaitCondition>
+#include <QTime>
+#include <QTimerEvent>
+
+#ifdef _DEBUG_GAME_ENGINE_
+
+#include <QtDebug>
+
+#endif
+
 #include "game.h"
 
-Game::Game(int countOfPlayers, const int scoreToWin, QObject *const parent) :
+Game::Game(const int countOfPlayers, const int scoreToWin, QObject * const parent) :
         QThread(parent)
 {
 
@@ -12,6 +32,8 @@ Game::Game(int countOfPlayers, const int scoreToWin, QObject *const parent) :
     allObjects = new QList<MapObject *>();
     allPlayers = new QList<Player *>();
     allShots = new QList<Shot *>();
+
+    time = 0;
 
     // Zde vytvářím hráče pro hru
     for(int i = 0; i < countOfPlayers; i++){
@@ -88,11 +110,6 @@ void Game::run(void)
 
 }
 
-void Game::quitGame(void)
-{
-    gameRun = false;
-}
-
 void Game::generateValidCoordinates(const double sizeX, const double sizeY, MapObject * const object)
 {
     do {
@@ -114,7 +131,7 @@ void Game::addShot(Shot * const shot)
     allShots->append(shot);
 
     emit shotCreated(shot->getShotID(), qRound(shot->getX()), qRound(shot->getY()));
-    #ifdef _DEBUG_
+    #ifdef _DEBUG_GAME_ENGINE_
     qDebug() << "Game engine: Shot" << shot->getShotID() << "created at" << shot->getX() << "," << shot->getY();
     #endif
 
@@ -127,7 +144,7 @@ void Game::removeWeaponPackage(WeaponPackage * const wPackage)
     countOfWeapons--;
 
     emit wPackRemoved(wPackage->getWeaponPackageID());
-    #ifdef _DEBUG_
+    #ifdef _DEBUG_GAME_ENGINE_
     qDebug() << "Game engine: Weapon package" << wPackage->getWeaponPackageID() << "removed from" << wPackage->getX1() << "," << wPackage->getY1();
     #endif
 
@@ -138,16 +155,31 @@ void Game::timerEvent (QTimerEvent * const event)
 
     bigGameMutex->lock();
 
+    // zvedám čas
+    time++;
+
+    // hlavní frame hry
     movePlayers();
     moveShots();
     generateWeaponPackages();
+
+    // upravuji všechny časovače
+    for(int i = 0; i < allTimers.size(); i++){
+        allTimers.value(i)->update(time);
+    }
 
     emit frameEnded();
 
     // pokud se má hra pauznout zastavím vlákno
     if(paused){
+
+        emit gamePaused();
+
         pauseCondition->wait(bigGameMutex);
         paused = false;
+
+        emit gameResumed();
+
     }
 
     bigGameMutex->unlock();
@@ -160,23 +192,6 @@ void Game::timerEvent (QTimerEvent * const event)
 
     }
 
-}
-
-bool Game::isGameRunning(void) const
-{
-    return gameRun;
-}
-
-int Game::getScoreToWin(void) const
-{
-
-    return scoreToWin;
-
-}
-
-QMutex * Game::getBigGameMutex(void) const
-{
-    return bigGameMutex;
 }
 
 void Game::movePlayers(void)
@@ -228,7 +243,7 @@ void Game::movePlayers(void)
             // Pokud nestojí v cestě překážka, tak dám informaci o pohybu, jinak vrátím pohyb zpět
             if(canMove){
                 emit playerMoved(actualPlayer->getID(), qRound(actualPlayer->getX1()), qRound(actualPlayer->getY1()));
-                #ifdef _DEBUG_
+                #ifdef _DEBUG_GAME_ENGINE_
                 qDebug() << "Game engine: Player" << actualPlayer->getID() << "moved to" << actualPlayer->getX1() << "," << actualPlayer->getY1();
                 #endif
             } else {
@@ -280,13 +295,13 @@ void Game::moveShots(void)
         // Pokud nestojí v cestě překážka, tak dám informaci o pohybu, jinak smažu střelu
         if(canMove){
             emit shotMoved(actualShot->getShotID(), qRound(actualShot->getX()), qRound(actualShot->getY()));
-            #ifdef _DEBUG_
+            #ifdef _DEBUG_GAME_ENGINE_
             qDebug() << "Game engine: Shot" << actualShot->getShotID() << "moved to" << actualShot->getX() << "," << actualShot->getY();
             #endif
         } else {
             allShots->removeAt(i);
             emit shotDestroyed(actualShot->getShotID());
-            #ifdef _DEBUG_
+            #ifdef _DEBUG_GAME_ENGINE_
             qDebug() << "Game engine: Shot" << actualShot->getShotID() << "destroyed";
             #endif
             delete actualShot;
@@ -309,7 +324,7 @@ void Game::generateWeaponPackages(void)
         allObjects->append(newPack);
 
         emit wPackCreated(newPack->getWeaponPackageID(), newPack->getX1(), newPack->getY1(), newPack->getType());
-        #ifdef _DEBUG_
+        #ifdef _DEBUG_GAME_ENGINE_
         qDebug() << "Game engine: Weapon pack" << newPack->getWeaponPackageID() << "created at" << newPack->getX1() << "," << newPack->getY1() << "; Type:" << newPack->getType();
         #endif
 
@@ -342,9 +357,9 @@ bool Game::colideAllObjects(MapObject * const object) const
 
 }
 
-inline bool Game::colideObjects(MapObject * const one, MapObject * const two)
+inline bool Game::colideObjects(MapObject * const first, MapObject * const second)
 {
-    return colideRectangles(one, two) || colideRectangles(two, one) || colideOverlap(one, two) || colideOverlap(one, two);
+    return colideRectangles(first, second) || colideRectangles(second, first) || colideOverlap(first, second) || colideOverlap(first, second);
 }
 
 inline bool Game::colideOverlap(MapObject * const first, MapObject * const second)

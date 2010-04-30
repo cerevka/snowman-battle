@@ -2,12 +2,13 @@
 #define SHOT_H
 
 #include <QObject>
-#include <QBitArray>
 
-#include "player.h"
+class Player;
+class QBitArray;
 
 /**
  * Třída reprezentující střelu letící na hrací ploše
+ * @author Ota Sandr
  */
 class Shot : public QObject
 {
@@ -37,20 +38,28 @@ public:
     void move(void);
 
     /**
-     * Getr pro vlastníka
+     * Getr pro vlastníka střely
+     * @return ukazatel na hráče, který tuto střelu vytvořil
      */
-    Player * getOwner(void) const;
+    inline Player * getOwner(void) const { return this->owner; }
 
     /**
      * Getr pro id střely
+     * @return id této střely
      */
-    int getShotID(void) const;
+    inline int getShotID(void) const { return this->shotID; }
 
     /**
-     * Getry pro souřadnice střely
+     * Getr pro x-ovou souřadnici střely
+     * @return x-ová souřadnice střely
      */
-    double getX(void) const;
-    double getY(void) const;
+    inline double getX(void) const { return this->x; }
+
+    /**
+     * Getr pro y-ovou souřadnici střely
+     * @return y-ová souřadnice střely
+     */
+    inline double getY(void) const { return this->y; }
 
 private:
 
@@ -70,9 +79,13 @@ private:
     Player * owner;
 
     /**
-     * Souřadnice střely
+     * X-ová souřadnice střely
      */
     double x;
+
+    /**
+     * Y-ová souřadnice střely
+     */
     double y;
 
     /**

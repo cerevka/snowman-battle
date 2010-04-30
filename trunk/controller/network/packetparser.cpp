@@ -1,7 +1,14 @@
+
 #include "packetparser.h"
 #include "globals.h"
 
+#include <QByteArray>
+
+#ifdef _DEBUG_PACKET_PARSER_
+
 #include <QDebug>
+
+#endif
 
 PacketParser::PacketParser(QObject * const parent) :
     QObject(parent)
@@ -22,15 +29,16 @@ PacketParser::~PacketParser(void)
     for(int i = 0; i < 6; i++){
 
         delete messagesForChat.value(i);
+
     }
 
 }
 
 void PacketParser::parseAll(QByteArray * packets) {
 
-//    #ifdef _DEBUG_
-//    qDebug() << "Packet parser: Start parsing all" << packets << packets->size();
-//    #endif
+    #ifdef _DEBUG_PACKET_PARSER_
+    qDebug() << "Packet parser: Start parsing all (lenght:" packets->size() << ")";
+    #endif
 
     // Najdu si ukazatel na první znak
     unsigned char * pointer = (unsigned char *)packets->data();
@@ -56,9 +64,9 @@ void PacketParser::parseAll(QByteArray * packets) {
 
 unsigned char * PacketParser::parse(unsigned char * const packet)
 {
-//    #ifdef _DEBUG_
-//    qDebug() << "Packet parser: Start parsing a packet";
-//    #endif
+    #ifdef _DEBUG_PACKET_PARSER_
+    qDebug() << "Packet parser: Start parsing a packet";
+    #endif
 
     // Čtu první znak (délka paketu)
     unsigned char length = packet[0];
@@ -87,11 +95,9 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
 
             testLenght(packet, 3, true);
 
-//            emit idAssigned(packet[3]);
-
             Globals::network->setNetworkID(packet[3]);
 
-            #ifdef _DEBUG_
+            #ifdef _DEBUG_PACKET_PARSER_
             qDebug() << "Packet parser: ID assigned";
             #endif
 
@@ -179,6 +185,12 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             // změna zbraně
             case 5: {
                     emit changeKeyPressed(senderID);
+                    break;
+                }
+
+            // pauza hry
+            case 6: {
+                    emit pauseKeyPressed();
                     break;
                 }
 
@@ -340,8 +352,19 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             break;
         }
 
-    // 32 - aktivování hráče IDp
+    // 32 - pokračování ve hře
     case 32: {
+
+            testLenght(packet, 2, true);
+
+            emit gameResumed();
+
+            break;
+
+        }
+
+    // 33 - aktivování hráče IDp
+    case 33: {
 
             testLenght(packet, 3, true);
 
@@ -350,8 +373,8 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             break;
         }
 
-    // 33 - deaktivování hráče IDp
-    case 33: {
+    // 34 - deaktivování hráče IDp
+    case 34: {
 
             testLenght(packet, 3, true);
 
@@ -360,8 +383,8 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             break;
         }
 
-    // 34 - vítězství hráče IDp
-    case 34: {
+    // 35 - vítězství hráče IDp
+    case 35: {
 
             testLenght(packet, 3, true);
 
@@ -396,8 +419,6 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             // Vyberu správnou zprávu pro daného hráče ze seznamu
             QString * const message = messagesForChat.value(packet[3]);
 
-
-
             // A rozšířím jí o znaky v paketu
             for(int i = 4; i < (length + 1); i++){
                 message->append(packet[i]);
@@ -429,6 +450,16 @@ unsigned char * PacketParser::parse(unsigned char * const packet)
             emit playersScoreIncremented(packet[3]);
 
             break;
+        }
+
+    case 51: {
+
+            testLenght(packet, 4, true);
+
+            emit playerTurned(packet[3], packet[4]);
+
+            break;
+
         }
 
     // Chyba!!! (neznámý typ)

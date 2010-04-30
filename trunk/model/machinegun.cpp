@@ -1,16 +1,8 @@
+
 #include "machinegun.h"
 #include "../controller/game/game.h"
 #include "shot.h"
 #include "player.h"
-
-MachineGun::MachineGun(Player * const parent) :
-        Weapon(parent)
-{
-
-    ammo = 0;
-    restShots = 5;
-
-}
 
 void MachineGun::shot(void)
 {
@@ -18,15 +10,16 @@ void MachineGun::shot(void)
     double x;
     double y;
     double angle;
-    double speed = 12.0;
 
     findPointOfCreatingShots(x, y, angle);
 
-    Shot * newShot = new Shot(x, y, angle - 0.05, speed, owner);
+    Shot * newShot = new Shot(x, y, angle - spreadAngle, shotSpeed, owner);
     owner->getParentGame()->addShot(newShot);
 
     // Startuji časovač na další střely
-    startTimer(100);
+    cooldownTimer = new GameTimer(cooldownBatchFrames, this);
+    connect(cooldownTimer, SIGNAL(timeout()), this, SLOT(netxShotOfBatch()));
+    owner->getParentGame()->addTimer(cooldownTimer);
     restShots--;
 
     ammo--;
@@ -38,21 +31,16 @@ void MachineGun::shot(void)
 
 }
 
-void MachineGun::refill(void)
+void MachineGun::netxShotOfBatch(void)
 {
 
-    ammo = 5;
-
-}
-
-void MachineGun::timerEvent(QTimerEvent * const event)
-{
+    owner->getParentGame()->removeTimer(cooldownTimer);
+    delete cooldownTimer;
 
     // pokud už jsem vystřílel celou dávku nebo se hráč pohnul, tak zruším časovač
     if((restShots == 0) || (owner->isMoving())){
 
-        killTimer(event->timerId());
-        restShots = 5;
+        restShots = batchOfShots;
 
     } else {
 
@@ -60,30 +48,30 @@ void MachineGun::timerEvent(QTimerEvent * const event)
         double x;
         double y;
         double angle;
-        double speed = 12.0;
 
         findPointOfCreatingShots(x, y, angle);
 
         // podle pořadí střely určím odchylku
         if(restShots % 2){
-            angle -= 0.05;
+            angle -= spreadAngle;
         } else {
-            angle += 0.05;
+            angle += spreadAngle;
         }
-
-        owner->getParentGame()->getBigGameMutex()->lock();
 
         try {
-            Shot * newShot = new Shot(x, y, angle, speed, owner);
+            Shot * newShot = new Shot(x, y, angle, shotSpeed, owner);
             owner->getParentGame()->addShot(newShot);
-            restShots--;
-        } catch (QString & ex) {
-            // Pokud už nelez vytvářet střely, tak vypnu časovač
-            killTimer(event->timerId());
-            restShots = 5;
-        }
 
-        owner->getParentGame()->getBigGameMutex()->unlock();
+            // časovač další střely z dávky
+            cooldownTimer = new GameTimer(cooldownBatchFrames, this);
+            connect(cooldownTimer, SIGNAL(timeout()), this, SLOT(netxShotOfBatch()));
+            owner->getParentGame()->addTimer(cooldownTimer);
+            restShots--;
+
+        } catch (QString & ex) {
+
+            restShots = batchOfShots;
+        }
 
     }
 

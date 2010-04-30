@@ -1,3 +1,4 @@
+
 #include "gamefacade.h"
 
 #include "game.h"
@@ -173,6 +174,9 @@ void GameFacade::connectAll(void)
     connect(actualGame, SIGNAL(wPackCreated(int,int,int,int)), Globals::packetCreator, SLOT(spawnWeaponPack(int,int,int,int)));
     connect(actualGame, SIGNAL(wPackRemoved(int)), Globals::packetCreator, SLOT(despawnWeaponPack(int)));
 
+    connect(actualGame, SIGNAL(gamePaused()), Globals::packetCreator, SLOT(pauseGame()));
+    connect(actualGame, SIGNAL(gameResumed()), Globals::packetCreator, SLOT(resumeGame()));
+
     for(int i = 0; i < actualGame->allPlayers->size(); i++){
 
         Player * actualPlayer = actualGame->allPlayers->value(i);
@@ -181,6 +185,8 @@ void GameFacade::connectAll(void)
         connect(actualPlayer, SIGNAL(playerKilled(int)), Globals::packetCreator, SLOT(killPlayer(int)));
         connect(actualPlayer, SIGNAL(playerShoted(int)), Globals::packetCreator, SLOT(playerShots(int)));
         connect(actualPlayer, SIGNAL(weaponChanged(int,int,int)), Globals::packetCreator, SLOT(changeWeapon(int,int,int)));
+        connect(actualPlayer, SIGNAL(playerTurned(int,int)), Globals::packetCreator, SLOT(turnPlayer(int,int)));
+
         connect(actualPlayer, SIGNAL(scoreIncremented(int)), Globals::packetCreator, SLOT(incrementScore(int)));
         connect(actualPlayer, SIGNAL(playerWon(int)), Globals::packetCreator, SLOT(winPlayer(int)));
         connect(actualPlayer, SIGNAL(playerWon(int)), this, SLOT(endGame()));

@@ -203,7 +203,9 @@ private:
 
     QGraphicsScene *scene;
 
-    // Testování Ota
+    /**
+      * Obsluha stisků kláves
+      */
     KeyboardHandler * handler;
 
     /**

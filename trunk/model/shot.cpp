@@ -1,4 +1,9 @@
+
 #include "shot.h"
+#include "player.h"
+
+#include <QBitArray>
+
 #include "cmath"
 using namespace std;
 
@@ -42,24 +47,4 @@ void Shot::move(void)
 {
     x = x + cos(angle) * speed;
     y = y + (-1 * sin(angle)) * speed;
-}
-
-Player * Shot::getOwner(void) const
-{
-    return owner;
-}
-
-int Shot::getShotID(void) const
-{
-    return shotID;
-}
-
-double Shot::getX(void) const
-{
-    return x;
-}
-
-double Shot::getY(void) const
-{
-    return y;
 }

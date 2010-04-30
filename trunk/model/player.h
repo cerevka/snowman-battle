@@ -1,13 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <QMutex>
-#include <QTimerEvent>
-
 #include "mapobject.h"
 
 class Game;
 class Weapon;
+class GameTimer;
 
 /**
  * Výčtový typ pro směr hráče
@@ -38,19 +36,14 @@ public:
      * @param player zde nevyužit
      * @return vrací false (hráč nemůže vstoupit na jiného hráče)
      */
-    bool interactPlayer(Player * const player);
+    inline bool interactPlayer(Player * const) { return false; }
 
     /**
      * Implementace abstraktní metody předka
-     * @param shot zde nevyužit
-     * @return vrací false (střela zabije hráče ale nepokračuje dále)
+     * @param shot ten, komu patří střela, si připíše bod
+     * @return vrací false (střela zabije hráče, ale nepokračuje dále)
      */
     bool interactShot(Shot * const shot);
-
-    /**
-     * Obnoví hráče na náhodné lokaci
-     */
-    void respawn(void);
 
     /**
      * Tato metoda posune hráčovy souřadnice, aby se mohly zjistit kolize
@@ -72,11 +65,7 @@ public:
      */
     void changeWeapon(void);
 
-    /**
-     * Tato metoda je zavolána pět vteřin poté, co byl hráč zabit, a způsobí, že se hráč znovu spawne
-     * @param event časovač, který spustil tuto metodu
-     */
-    void timerEvent (QTimerEvent * const event);
+    /***************************************************/
 
     /**
      * Setr pro nastavení konkrétní zbraně jako aktuální (volá se po sebrání zbraně)
@@ -91,68 +80,179 @@ public:
 
     /**
      * Getr pro id
+     * @return id tohoto hráče
      */
-    int getID(void) const;
+    inline int getID(void) const { return this->playerID; }
 
     /**
-     * Getr a setr pro směr hráče
+     * Getr pro směr hráče
+     * @return směr, kterým je hráč otočený
      */
-    Directions getDirection(void) const;
+    inline Directions getDirection(void) const { return this->direction; }
+
+    /**
+     * Setr pro směr hráče
+     * @param direction směr, který se má nastavit
+     */
     void setDirection(const Directions direction);
 
     /**
-     * Getr a setr pro příznak, zda se hráč pohybuje
+     * Getr pro příznak, zda se hráč pohybuje
+     * @return je-li true, pak se hráč pohybuje
      */
-    bool isMoving(void) const;
-    void setMoving(const bool moving);
+    inline bool isMoving(void) const { return this->moving; }
 
     /**
-     * Getr a setr pro příznak, zda hráč střílí
+     * Setr pro příznak, zda se hráč pohybuje
+     * @param pokud je true, hráč se začne pohybovat
      */
-    bool isShoting(void) const;
-    void setShoting(const bool shoting);
+    inline void setMoving(const bool moving) { this->moving = moving; }
+
+    /**
+     * Getr pro příznak, zda hráč bude střílet
+     * @return pokud je true, tak hráč v příštím frame vystřelí
+     */
+    inline bool isShoting(void) const { return this->shoting; }
+
+    /**
+     * Setr pro příznak, zda hráč bude střílet
+     * @param shoting pokud je true, tak hráč v příštím frame vystřelí
+     */
+    inline void setShoting(const bool shoting) { this->shoting = shoting; }
 
     /**
      * Getr pro příznak, zda je hráč na mapě
+     * @return true pokud je hráč spawnut
      */
-    bool isSpawned(void) const;
+    inline bool isSpawned(void) const { return this->spawned; }
 
     /**
-     * Getr a setr pro příznak aktivity
+     * Getr pro příznak aktivity
+     * @return true pokud je hráč aktivovaný
      */
-    bool isActive(void) const;
+    inline bool isActive(void) const { return this->active; }
+
+    /**
+     * Setr pro příznak aktivity
+     * @param active pokud je true, tak hráč bude aktivován
+     */
     void setActive(const bool active);
 
     /**
      * Getr pro inventář zbraní
+     * @return ukazatel na inventář zbraní
      */
-    Weapon * const * getInventory(void) const;
+    inline Weapon * const * getInventory(void) const { return this->inventory; }
 
     /**
      * Getr vracející ukaztel na hru, v rámci níž je tento hráč vytvořen
+     * @return ukazatel na hru, kterou tento hráč hraje
      */
-    Game * getParentGame(void) const;
+    inline Game * getParentGame(void) const { return this->parentGame; }
+
+
+public slots:
+
+    /**
+     * Obnoví hráče na náhodné lokaci
+     */
+    void respawn(void);
+
+    /**
+     * Zajistí, že hráč může střílet
+     */
+    void enableShooting(void);
+
 
 signals:
 
-    void playerKilled(int playerID);
+    /**
+     * Signál spawnutí hráče
+     * @param playerID id spawnutého hráče
+     * @param x nová x-ová souřadnice hráče (levý horní roh)
+     * @param y nová y-ová souřadnice hráče (levý horní roh)
+     * @param direction směr, kterým je hráč otočený
+     */
     void playerSpawned(int playerID, int x, int y, int direction);
+
+    /**
+     * Signál otočení hráče
+     * @param playerID id hráče, který se otočil
+     * @param direction nový směr, kterým je hráč otočený
+     */
+    void playerTurned(int playerID, int direction);
+
+    /**
+     * Signál výstřelu hráče
+     * @param playerID id hráče, který vystřelil
+     */
     void playerShoted(int playerID);
+
+    /**
+     * Signál změny zbraně
+     * @param playerID id hráče, který změnil zbraň
+     * @param weapon zbraň, kterou si vzal
+     * @param restOfAmmo zbývající náboje ve zbrani
+     */
     void weaponChanged(int playerID, int weapon, int restOfAmmo);
 
+    /**
+     * Signál zabití hráče
+     * @param playerID id hráče, který byl zabit
+     */
+    void playerKilled(int playerID);
+
+    /***************************************************/
+
+    /**
+     * Signál zvýšení skóre
+     * @param playerID id hráče, kterému se skóre zvýšilo
+     */
     void scoreIncremented(int playerID);
+
+    /**
+     * Signál vítězství hráče
+     * @param playerID id hráče, který zvítězil
+     */
     void playerWon(int playerID);
 
+    /***************************************************/
+
+    /**
+     * Signál aktivování hráče
+     * @param playerID id hráče, který byl aktivován
+     */
     void playerActivated(int playerID);
+
+    /**
+     * Signál deaktivování hráče
+     * @param playerID id hráče, který byl deaktivován
+     */
     void playerDeactivated(int playerID);
 
 private:
 
     /**
-     * Velikost hráče a kroku hráče
+     * Velikost hráče v pixelech
      */
     static double playerSize;
+
+    /**
+     * Velikost kroku hráče
+     */
     static double stepSize;
+
+    /**
+     * Doba respawnu hráče ve framech
+     */
+    static int respawnTimeFrames;
+
+    /**
+     * Prodeleva mezi dvěma výstřely zbraně
+     */
+    static int cooldownTimeFrames;
+
+    /***************************************************/
 
     /**
      * Seznam zbraní hráče
@@ -180,20 +280,28 @@ private:
     bool canShot;
 
     /**
-     * Id timeru, který řídí respawn hráče
+     * Časovač, který řídí respawn hráče
      */
-    int idRespawnTimer;
+    GameTimer * respawnTimer;
 
     /**
-     * Id timeru, který řídí cooldown zbraně
+     * Časovač, který řídí cooldown zbraně
      */
-    int idCooldownTimer;
+    GameTimer * cooldownTimer;
 
     /**
-     * Proměnná pro směr, příznak pohybu a příznak střelby
+     * Proměnná pro směr
      */
     Directions direction;
+
+    /**
+     * Proměnná pro příznak pohybu
+     */
     bool moving;
+
+    /**
+     * Proměnná pro příznak střelby
+     */
     bool shoting;
 
     /**
@@ -206,12 +314,26 @@ private:
      */
     bool active;
 
+    /***************************************************/
+
     /**
-     * Zálohy souřadnice pro případ, že je potřeba hráče posunout zpět (na cílové místě je překážka)
+     * Záloha x-ové souřadnice (levého horního rohu) pro případ, že je potřeba hráče posunout zpět (na cílovém místě je překážka)
      */
     double x1Backup;
+
+    /**
+     * Záloha y-ové souřadnice (levého horního rohu) pro případ, že je potřeba hráče posunout zpět (na cílovém místě je překážka)
+     */
     double x2Backup;
+
+    /**
+     * Záloha x-ové souřadnice (pravého spodního rohu) pro případ, že je potřeba hráče posunout zpět (na cílovém místě je překážka)
+     */
     double y1Backup;
+
+    /**
+     * Záloha y-ové souřadnice (pravého spodního rohu) pro případ, že je potřeba hráče posunout zpět (na cílovém místě je překážka)
+     */
     double y2Backup;
 
 };

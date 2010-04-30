@@ -5,6 +5,7 @@
 
 /**
  * Tato třída reprezentuje pistoli, kterou každý hráč používá jako základní zbraň
+ * @author Ota Sandr
  */
 class HandGun : public Weapon
 {
@@ -17,7 +18,8 @@ public:
      * Konstruktor vytvoří danému hráči pistoli
      * @param parent hráč, kterému zbraň patří
      */
-    explicit HandGun(Player * const parent);
+    inline explicit HandGun(Player * const parent) :
+            Weapon(parent) { this->ammo = 1; }
 
     /**
      * Implementace abstraktní metody předka (výstřel zbraně)
@@ -27,7 +29,14 @@ public:
     /**
      * Implementace abstraktní metody předka (doplnění nábojů)
      */
-    void refill(void);
+    inline void refill(void) { this->ammo = 1; }
+
+private:
+
+    /**
+     * Rychlost střely z pistole
+     */
+    static double shotSpeed;
 
 };
 

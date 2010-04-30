@@ -2,6 +2,9 @@
 #include "../../globals.h"
 #include "packetcreator.h"
 
+#include <QByteArray>
+#include <QMutex>
+
 PacketCreator::PacketCreator(QObject * const parent) :
     QObject(parent)
 {
@@ -55,8 +58,6 @@ void PacketCreator::assignName(int id, QString * name)
     }
 
     sendPacket(packet);
-
-//    return packet;
 
 }
 
@@ -123,6 +124,13 @@ void PacketCreator::pressChangeWeapon(void)
 {
 
     sendKeyPress(5);
+
+}
+
+void PacketCreator::pressPause(void)
+{
+
+    sendKeyPress(6);
 
 }
 
@@ -317,7 +325,7 @@ void PacketCreator::playerShots(int playerID)
 
     gameEnginePacket->append(3); // délka
     gameEnginePacket->append(Globals::network->getNetworkID());
-    gameEnginePacket->append(29); // typ zvýšení skóre
+    gameEnginePacket->append(29); // hráč střílí
     gameEnginePacket->append(playerID);
 
     enginePacketMutex->unlock();
@@ -331,8 +339,23 @@ void PacketCreator::incrementScore(int playerID)
 
     gameEnginePacket->append(3); // délka
     gameEnginePacket->append(Globals::network->getNetworkID());
-    gameEnginePacket->append(50); // typ zničení střely
+    gameEnginePacket->append(50); // typ zvýšení skóre
     gameEnginePacket->append(playerID);
+
+    enginePacketMutex->unlock();
+
+}
+
+void PacketCreator::turnPlayer(int playerID, int direction)
+{
+
+    enginePacketMutex->lock();
+
+    gameEnginePacket->append(4); // délka
+    gameEnginePacket->append(Globals::network->getNetworkID());
+    gameEnginePacket->append(51); // typ otočení hráče
+    gameEnginePacket->append(playerID);
+    gameEnginePacket->append(direction);
 
     enginePacketMutex->unlock();
 
@@ -355,6 +378,13 @@ void PacketCreator::pauseGame(void)
 
 }
 
+void PacketCreator::resumeGame(void)
+{
+
+    createThreeBytesPacket(32); // typ pokračování hry
+
+}
+
 void PacketCreator::activatePlayer(int playerID)
 {
 
@@ -362,7 +392,7 @@ void PacketCreator::activatePlayer(int playerID)
 
     packet->append(3); // délka
     packet->append(Globals::network->getNetworkID());
-    packet->append(32); // typ aktivování hráče
+    packet->append(33); // typ aktivování hráče
     packet->append(playerID);
 
     sendPacket(packet);
@@ -376,7 +406,7 @@ void PacketCreator::deactivatePlayer(int playerID)
 
     packet->append(3); // délka
     packet->append(Globals::network->getNetworkID());
-    packet->append(33); // typ deaktivování hráče
+    packet->append(34); // typ deaktivování hráče
     packet->append(playerID);
 
     sendPacket(packet);
@@ -390,7 +420,7 @@ void PacketCreator::winPlayer(int playerID)
 
     packet->append(3); // délka
     packet->append(Globals::network->getNetworkID());
-    packet->append(34); // typ výhra hráče
+    packet->append(35); // typ výhra hráče
     packet->append(playerID);
 
     sendPacket(packet);
@@ -445,7 +475,7 @@ void PacketCreator::sendChatMessage(int playerID, QString * msg)
 /*********************************************************/
 
 
-void PacketCreator::sendKeyPress(const int typeOfKey)
+inline void PacketCreator::sendKeyPress(const int typeOfKey)
 {
 
     QByteArray * const packet = new QByteArray(4, '\0');
@@ -459,7 +489,7 @@ void PacketCreator::sendKeyPress(const int typeOfKey)
 
 }
 
-void PacketCreator::createThreeBytesPacket(const int typeOfPacket)
+inline void PacketCreator::createThreeBytesPacket(const int typeOfPacket)
 {
 
     QByteArray * const packet = new QByteArray();
@@ -472,7 +502,7 @@ void PacketCreator::createThreeBytesPacket(const int typeOfPacket)
 
 }
 
-void PacketCreator::sendPacket(QByteArray * const packet)
+inline void PacketCreator::sendPacket(QByteArray * const packet)
 {
 
     sendingMutex->lock();
@@ -483,14 +513,14 @@ void PacketCreator::sendPacket(QByteArray * const packet)
 
 }
 
-unsigned char PacketCreator::getFirstCharFromInt(const int number)
+inline unsigned char PacketCreator::getFirstCharFromInt(const int number)
 {
 
     return (unsigned char)(number / 256);
 
 }
 
-unsigned char PacketCreator::getSecondCharFromInt(const int number)
+inline unsigned char PacketCreator::getSecondCharFromInt(const int number)
 {
 
     return (unsigned char)(number % 256);
