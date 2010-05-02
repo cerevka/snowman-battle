@@ -103,7 +103,7 @@ void ScenePanel::setDirection(int id, int direction)
             // Orientace doprava
         case 1:
             {
-                items.at(id)->setTransform(QTransform().translate(x, y).rotate(90).translate(-x, -y));
+                items.at(id)->setTransform(QTransform().translate(x, y).rotate(270).translate(-x, -y));
                 break;
             }
             // Orientace dolu
@@ -115,7 +115,7 @@ void ScenePanel::setDirection(int id, int direction)
             // Orientace doleva
         case 3:
             {
-                items.at(id)->setTransform(QTransform().translate(x, y).rotate(270).translate(-x, -y));
+                items.at(id)->setTransform(QTransform().translate(x, y).rotate(90).translate(-x, -y));
                 break;
             }
         }
@@ -225,6 +225,8 @@ void ScenePanel::changePlayerPosition(int id, int x, int y)
     //int pos = items.at(id)->dir;
     int idGun = items.at(id)->actGun;
     x -= 20;
+
+    /*
     int px = items.at(id)->x() - x;
     int py = items.at(id)->y() - y;
 
@@ -248,6 +250,7 @@ void ScenePanel::changePlayerPosition(int id, int x, int y)
         changePlayerDirection(id, 2);
         items.at(id)->dir = 2;
     }
+    */
 
     setPosition(id, x, y);
     setPosition(idGun, x + playerW * 0.67, y);
@@ -258,6 +261,7 @@ void ScenePanel::changePlayerDirection(int id, int direction)
 {
     setDirection(id, direction);
     setDirection(items.at(id)->actGun, direction);
+    items.at(id)->dir = direction;
 }
 
 void ScenePanel::changeShotPosition(int id, int x, int y)
