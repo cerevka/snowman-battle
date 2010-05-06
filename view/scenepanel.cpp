@@ -161,7 +161,6 @@ void ScenePanel::addNewGun(int id, int x, int y, int type)
     id += plusIdGuns;
 
     x += 60;
-    y -= 30;
 
     if(items.at(id) != NULL)
         removeGraficObj(id);
